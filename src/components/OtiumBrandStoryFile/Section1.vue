@@ -23,8 +23,12 @@ const { BrandStory } = useOtiumBrandStory();
     <img src="../../assets/images/Rectangle 940.png" alt="" />
     <img src="../../assets/images/Rectangle 941.png" alt="" />
   </div>
-  <div class="flex gap-8 justify-center ">
-    <p class="w-[640px] text-xl	font-medium	leading-8	">{{ BrandStory[0].BrandStoryDescription.description }}</p>
+  <div class="flex gap-16	 justify-center ">
+    <p class="w-[640px] text-xl	font-medium	leading-8	pr-10 ">{{ BrandStory[0].BrandStoryDescription.description }}</p>
     <p class="w-[640px] text-xl	font-medium	leading-8	">{{ BrandStory[0].BrandStoryDescription.description1 }}</p>
+  </div>
+  <div class="pt-24 flex gap-8 pb-20">
+    <h2 class="text-8xl	font-medium	">Team</h2>
+    <img class="pt-10" src="../../assets//icons//forward_FILL0_wght400_GRAD0_opsz48 1.svg" alt="">
   </div>
 </template>
