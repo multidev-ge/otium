@@ -8,6 +8,11 @@ const router = createRouter({
       name: "Home",
       component: () => import("../views/Pages/Homepage.vue"),
     },
+    {
+      path: '/otiumbrandstory',
+      name: 'OtiumBrandStory',
+      component: () => import('../views/Pages/OtiumBrandStory.vue')
+  },
   ],
 });
 
