@@ -1,4 +1,5 @@
 <template>
+  
   <swiper :navigation="true" :modules="modules" :slidesPerView="4" :slidesPerGroup="4" class="mySwiper h-[440px]">
     <!-- Slide 1 with the image from BrandStoryPhotos -->
     <swiper-slide v-if="BrandStory && BrandStory.length > 0">
