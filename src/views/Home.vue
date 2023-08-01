@@ -1,4 +1,6 @@
-<script></script>
+<script setup>
+import media from "@/composables/mediaInner"
+</script>
+
 <template>
-  <p class="text-amber-400">Home</p>
 </template>

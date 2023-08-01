@@ -8,6 +8,12 @@ const router = createRouter({
       name: "Home",
       component: () => import("../views/Home.vue"),
     },
+
+    {
+      path: "/media-inner",
+      name: "mediaInner",
+      component: () => import("../views/mediaInner.vue"),
+    },
   ],
 });
 
