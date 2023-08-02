@@ -1,28 +1,19 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
-.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
-  display: none !important;
+.carousel__prev,
+.carousel__next {
+    position: relative !important;
+    width: 38px  !important;
+    height: 38px !important;
+    transform: translateY(0) !important;
+    display: flex !important;
 }
-.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
-  display: none !important;
+.carousel__slide {
+    width: auto !important;
 }
-.swiper-button-prev, .swiper-button-next {
-  top: 95% !important;
-  width: 42px !important;
-  height: 42px !important;
-}
-.swiper-button-prev {
-  background-image: url('../assets/icons/prev.svg'); 
-  left: 88% !important;
-}
-.swiper-button-next {
-  background-image: url('../assets/icons/next.svg'); 
-  right: 55px !important;
-}
-.swiper-wrapper {
-  padding-left: 50px !important;
-}
-.swiper-slide {
-  width: 327px !important;
+.carousel__track {
+    justify-content: center !important;
+    display: flex !important; 
+    gap: 30px !important;
 }
