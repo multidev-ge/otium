@@ -6,14 +6,22 @@ const router = createRouter({
     {
       path: "/",
       name: "Home",
-      component: () => import("../views/Home.vue"),
+      component: () => import("../views/Pages/Homepage.vue"),
     },
+<<<<<<< HEAD
 
     {
       path: "/media-inner",
       name: "mediaInner",
       component: () => import("../views/mediaInner.vue"),
     },
+=======
+    {
+      path: '/otiumbrandstory',
+      name: 'OtiumBrandStory',
+      component: () => import('../views/Pages/OtiumBrandStory.vue')
+  },
+>>>>>>> master
   ],
 });
 
