@@ -1,8 +1,6 @@
 import {ref} from "vue";
 
 export default function useNavigation() {
-
-
     const currentPageInfo = ref({
         mainPart: {
             type: "News",
@@ -22,38 +20,39 @@ export default function useNavigation() {
             text2: "The integration of technology also plays a significant role in sustainable design solutions. Building Information Modeling (BIM) and other advanced tools help construction companies analyze and optimize designs, reducing waste and improving the overall construction process."
         }
     }
-
     )
-
     const similarNews = ref([
         {
-        id: 1,
-        img: "https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?cs=srgb&dl=pexels-yentl-jacobs-157811.jpg&fm=jpg",
-        date: "2 Jul,2023",
-        type: "News"
-    },
+            id: 1,
+            img: "https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?cs=srgb&dl=pexels-yentl-jacobs-157811.jpg&fm=jpg",
+            date: "2 Jul,2023",
+            type: "Photo gallery",
+            text:"Embracing Minimalism: The Construction Industry's Path to Sustainable Design",
+        },
         {
             id: 2,
             img: "https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?cs=srgb&dl=pexels-yentl-jacobs-157811.jpg&fm=jpg",
             date: "2 Jul,2023",
-            type: "News"
+            type: "News",
+            text:"Simplicity in Architecture: Unveiling the Beauty of Minimalist Constructions"
         },
         {
             id: 3,
             img: "https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?cs=srgb&dl=pexels-yentl-jacobs-157811.jpg&fm=jpg",
             date: "2 Jul,2023",
-            type: "News"
+            type: "News",
+            text:"Simplicity in Architecture: Unveiling the Beauty of Minimalist Constructions"
+
         },
         {
             id: 4,
             img: "https://images.pexels.com/photos/157811/pexels-photo-157811.jpeg?cs=srgb&dl=pexels-yentl-jacobs-157811.jpg&fm=jpg",
             date: "2 Jul,2023",
-            type: "News"
+            type: "Video Gallery",
+            text:"Simplicity in Architecture: Unveiling the Beauty of Minimalist Constructions"
+
         },
-
     ])
-
-
     return {
         similarNews,
         currentPageInfo,
