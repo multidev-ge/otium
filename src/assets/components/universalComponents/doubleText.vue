@@ -5,8 +5,8 @@ const props = defineProps({
 })
 </script>
 <template>
-  <div class="flex gap-10 text-[#00000099]">
-    <p class="w-5/12		font-medium text-2xl	">{{props.text1}}</p>
-    <p class="w-5/12		font-medium text-2xl	">{{props.text2}}</p>
+  <div class="flex text-2xl font-medium gap-10 w-11/12 text-[#00000099]">
+    <p>{{props.text1}}</p>
+    <p >{{props.text2}}</p>
   </div>
 </template>

@@ -11,7 +11,8 @@ const mainOptions = {
   focus: 'center',
   gap: '1rem',
   arrows: true,
-  rewind: true
+  rewind: true,
+  autoplay:true,
 };
 </script>
 <template>
