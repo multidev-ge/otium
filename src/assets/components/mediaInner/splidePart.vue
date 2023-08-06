@@ -16,7 +16,7 @@ const mainOptions = {
 };
 </script>
 <template>
-  <section>
+  <section class="">
     <Splide class="w-full" :options="mainOptions" :has-track="false" aria-label="My Favorite Images">
         <div class="custom-wrapper relative flex flex-col gap-5">
           <SplideTrack>

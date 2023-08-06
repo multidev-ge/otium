@@ -16,7 +16,7 @@ const {currentPageInfo} = useNavigation()
           <DoubleText :text2="currentPageInfo.mainPart.text2" :text1="currentPageInfo.mainPart.text1"/>
         </div>
         <div class="flex flex-col gap-10">
-          <SplidePart/>
+          <SplidePart class="mb-5"/>
           <DoubleText :text2="currentPageInfo.mainPart.text4" :text1="currentPageInfo.mainPart.text3"/>
         </div>
         <div class="flex flex-col gap-10">

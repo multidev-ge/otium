@@ -10,7 +10,7 @@ const {similarNews} = useNavigation()
           <img class=" h-40  rounded-lg" :src="news.img" alt="">
           <div class="flex gap-5 flex-col ">
               <p class="text-lg text-[#00000099]">{{news.type}} // {{news.date}}</p>
-              <p class="text-2xl pb-5 ">{{news.text}}</p>
+              <p class="text-2xl pb-5 leading-9">{{news.text}}</p>
           </div>
       </div>
 
