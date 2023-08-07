@@ -1,65 +1,14 @@
 <script setup>
 import MainLayout from "@/layouts/mainLayout.vue";
-import {computed, ref} from "vue";
+import ArrowDownIcon from "@/assets/icons/MediaPage/ArrowDownIcon.vue";
+import {useMedia} from "@/composables/useMedia";
 
-const data = [
-  {
-    name: '1',
-    category: 'News'
-  },
-  {
-    name: '2',
-    category: 'Photo Gallery'
-  },
-  {
-    name: '3',
-    category: 'News'
-  },
-  {
-    name: '4',
-    category: 'Photo Gallery'
-  },
-  {
-    name: '5',
-    category: 'Video Gallery'
-  },
-  {
-    name: '6',
-    category: 'Video Gallery'
-  },
-  {
-    name: '7',
-    category: 'Photo Gallery'
-  },
-  {
-    name: '8',
-    category: 'News'
-  },
-  {
-    name: '9',
-    category: 'Video Gallery'
-  },
-]
-
-const categories = [
-    'All',
-    'News',
-    'Photo Gallery',
-    'Video Gallery'
-]
-
-function setCategory(cat){
-  selectedCategory.value = cat
-}
-const selectedCategory = ref('All')
-
-const filteredData = computed(() => {
-  if (selectedCategory.value === 'All') {
-    return data
-  }
-  return data.filter(e => e.category === selectedCategory.value)
-})
-
+const {
+  categories,
+  filteredData,
+  selectedCategory,
+  setCategory,
+} = useMedia()
 
 </script>
 
@@ -73,23 +22,29 @@ const filteredData = computed(() => {
                 :class="selectedCategory === category?'bg-[#000] text-white':''"
                 class="px-6 py-3 rounded-2xl text-xl font-medium transition-all duration-250
                         hover:bg-[#000] hover:text-white border border-[#000]">
-          {{category}}
+          {{ category }}
         </button>
       </div>
 
-      <div class="grid grid-cols-3 gap-8">
+      <div class="grid grid-cols-3 gap-8 pb-16">
         <div v-for="element in filteredData" class="w-full">
-          <div class="h-44 w-full rounded-lg bg-amber-200 mb-7"></div>
-          <p class="text-lg font-medium text-[#626262]">
-            News, 2 Jul,2023
+          <div class="h-44 w-full rounded-lg mb-7">
+            <img alt="media img" :src="element.image" class="rounded-lg w-full h-full object-cover">
+          </div>
+          <p class="text-lg font-medium text-[#626262] mb-2">
+            {{ element.category }}, {{ element.date }}
           </p>
           <div class="h-28 text-3xl font-medium text-[#000] truncate-last-line">
-            Embracing Minimalism: The Construction
-            Industry's Path to Sustainable Design
+            {{ element.title }}
           </div>
         </div>
-
       </div>
+
+      <button class="flex gap-1.5 items-center mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl">
+        More
+        <ArrowDownIcon/>
+      </button>
+
     </div>
   </mainLayout>
 </template>
