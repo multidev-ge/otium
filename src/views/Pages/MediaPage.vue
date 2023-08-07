@@ -2,6 +2,7 @@
 import MainLayout from "@/layouts/mainLayout.vue";
 import ArrowDownIcon from "@/assets/icons/MediaPage/ArrowDownIcon.vue";
 import {useMedia} from "@/composables/useMedia";
+import MediaCard from "@/components/MediaPage/MediaCard.vue";
 
 const {
   categories,
@@ -27,17 +28,7 @@ const {
       </div>
 
       <div class="grid grid-cols-3 gap-8 pb-16">
-        <div v-for="element in filteredData" class="w-full">
-          <div class="h-44 w-full rounded-lg mb-7">
-            <img alt="media img" :src="element.image" class="rounded-lg w-full h-full object-cover">
-          </div>
-          <p class="text-lg font-medium text-[#626262] mb-2">
-            {{ element.category }}, {{ element.date }}
-          </p>
-          <div class="h-28 text-3xl font-medium text-[#000] truncate-last-line">
-            {{ element.title }}
-          </div>
-        </div>
+        <MediaCard v-for="data in filteredData" :data="data"/>
       </div>
 
       <button class="flex gap-1.5 items-center mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl">
