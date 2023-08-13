@@ -8,9 +8,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@splidejs/vue-splide": "^0.6.12",
     "@splidejs/splide": "^4.1.4",
     "axios": "^1.4.0",
-    "swiper": "^10.0.4",
     "vue": "^3.2.36",
     "vue-awesome-swiper": "^5.0.1",
     "vue-carousel": "^0.18.0",
