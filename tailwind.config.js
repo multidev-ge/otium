@@ -11,8 +11,11 @@ module.exports = {
 
       },
       lineHeight:{
-        '6.5xl': '1.1'
-      }
+        '6.5xl': '1.1',
+      },
+      fontFamily: {
+        sans: ["PPNeueMontreal-Thin", "sans-serif"]
+      },
     },
   },
   plugins: [],
