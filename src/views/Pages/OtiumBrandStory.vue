@@ -7,7 +7,7 @@ import Section3Vue from "../../components/OtiumBrandStoryFile/Section3.vue";
 </script>
 <template>
   <mainLayout>
-    <div class="px-16 pt-24">
+    <div class=" pt-24">
       <Section1 />
       <Section2 />
       <Carousel />
