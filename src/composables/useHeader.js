@@ -10,7 +10,12 @@ export default (function useHeader() {
                 img: markRaw(Logo),
                 img1: markRaw(arrowRight),
                 language: "En",
-                language1: "Ge "
+                language1: "Ge ",
+                title: "Company",
+                title1: "Projects",
+                title2: "Media",
+                title3: "Contact",
+                title4: "Find your apartment",
             },
         }
     ]);

@@ -23,19 +23,19 @@
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
         <a href="#" class="text-lg font-medium leading-6 text-gray-900"
-          >Company</a
+          >{{ headerInfo[0].headercomponents.title }}</a
         >
         <a href="#" class="text-lg font-medium leading-6 text-gray-900"
-          >Projects</a
+          >{{ headerInfo[0].headercomponents.title1  }}</a
         >
         <router-link to="/media">
           <a href="#" class="text-lg font-medium leading-6 text-gray-900"
-            >Media</a
+            >{{ headerInfo[0].headercomponents.title2  }}</a
           >
         </router-link>
         <router-link to="/contact">
           <a href="#" class="text-lg font-medium leading-6 text-gray-900"
-            >Contact</a
+            >{{ headerInfo[0].headercomponents.title3  }}</a
           >
         </router-link>
       </PopoverGroup>
@@ -58,7 +58,7 @@
         </div>
 
         <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
-          <button class="flex">Find your apartment</button>
+          <button class="flex">{{ headerInfo[0].headercomponents.title4  }}</button>
           <component class="mt-1" :is="headerInfo[0].headercomponents.img1" />
         </div>
       </div>
@@ -94,25 +94,25 @@
               <a
                 href="#"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
-                >Company</a
+                >{{ headerInfo[0].headercomponents.title }}</a
               >
               <a
                 href="#"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
-                >Projects</a
+                >{{ headerInfo[0].headercomponents.title1 }}</a
               >
               <router-link to="/media">
                 <a
                   href="#"
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
-                  >Media</a
+                  >{{ headerInfo[0].headercomponents.title2 }}</a
                 >
               </router-link>
               <router-link to="/media">
                 <a
                   href="#"
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-900 hover:bg-gray-50"
-                  >Contact</a
+                  >{{ headerInfo[0].headercomponents.title3 }}</a
                 >
               </router-link>
             </div>
