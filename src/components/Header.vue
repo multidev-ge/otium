@@ -1,14 +1,12 @@
 <template>
-  <header class="bg-white">
+  <header class="bg-white ">
     <nav
-      class="mx-auto flex container items-center justify-between pb-20"
+      class="mx-auto flex container items-center justify-between pb-20 pt-5"
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
         <router-link to="/">
-          <a href="#" class="-m-1.5 p-1.5">
-            <component :is="headerInfo[0].headercomponents.img" />
-          </a>
+            <img src="../assets/images/Logo.jpg" alt="">
         </router-link>
       </div>
       <div class="flex lg:hidden">
@@ -75,9 +73,7 @@
       >
         <div class="flex items-center justify-between">
           <router-link to="/">
-            <a href="#" class="-m-1.5 p-1.5">
               <component :is="headerInfo[0].headercomponents.img" />
-            </a>
           </router-link>
           <button
             type="button"
