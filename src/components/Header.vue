@@ -20,19 +20,19 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-        <a href="#" class="text-lg font-medium leading-6 text-gray-900"
+        <a href="#" class="text-lg font-medium leading-6 text-[#000000]"
           >{{ headerInfo[0].headercomponents.title }}</a
         >
-        <a href="#" class="text-lg font-medium leading-6 text-gray-900"
+        <a href="#" class="text-lg font-medium leading-6 text-[#000000]"
           >{{ headerInfo[0].headercomponents.title1  }}</a
         >
         <router-link to="/media">
-          <a href="#" class="text-lg font-medium leading-6 text-gray-900"
+          <a href="#" class="text-lg font-medium leading-6 text-[#000000]"
             >{{ headerInfo[0].headercomponents.title2  }}</a
           >
         </router-link>
         <router-link to="/contact">
-          <a href="#" class="text-lg font-medium leading-6 text-gray-900"
+          <a href="#" class="text-lg font-medium leading-6 text-[#000000]"
             >{{ headerInfo[0].headercomponents.title3  }}</a
           >
         </router-link>
