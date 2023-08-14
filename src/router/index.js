@@ -1,19 +1,26 @@
-import { createRouter, createWebHistory } from "vue-router";
+import {
+  createRouter,
+  createWebHistory
+} from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [
-    {
+  routes: [{
       path: "/",
       name: "Home",
-      component: () => import("../views/Home.vue"),
+      component: () => import("../views/Pages/Homepage.vue"),
     },
     {
       path: "/contact",
       name: "Contact",
       component: () => import("../views/ContactView.vue"),
     },
-  ],
-});
+    {
+      path: '/otiumbrandstory',
+      name: 'OtiumBrandStory',
+      component: () => import('../views/Pages/OtiumBrandStory.vue')
+    },
+  ]
+})
 
 export default router;
