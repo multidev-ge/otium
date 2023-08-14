@@ -18,7 +18,7 @@ const router = createRouter({
     {
       path: "/contact",
       name: "Contact",
-      component: () => import("../views/Contact.vue")
+      component: () => import("../views/ContactView.vue")
     },
     {
       path: '/otiumbrandstory',
