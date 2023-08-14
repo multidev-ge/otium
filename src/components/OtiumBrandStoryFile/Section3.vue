@@ -5,8 +5,8 @@ const { BrandStory } = useOtiumBrandStory();
 </script>
 <template>
   <div class="pb-28 ">
-    <div class="flex gap-20 pb-20 justify-center">
-      <div class="justify-center">
+    <div class="flex gap-20 pb-20 ">
+      <div class="">
         <h2 class="text-2xl text-[#000000] font-ppNeueMontrealMedium">
           Design and Architecture
         </h2>
@@ -17,7 +17,7 @@ const { BrandStory } = useOtiumBrandStory();
         </p>
       </div>
     </div>
-    <div class="flex gap-8 ml-3 justify-center">
+    <div class="flex gap-8 ml-3 ">
 
       <div class="">
         <img class="rounded-lg	" :src="BrandStory[0].BrandStoryPhotos.img5" alt="Slide Image" />
@@ -53,8 +53,8 @@ const { BrandStory } = useOtiumBrandStory();
 
   <div class="pb-28 ">
     <div class="flex gap-8 pb-20 justify-center">
-      <div class="justify-center ">
-        <h2 class="mx-10 text-2xl text-[#000000] font-ppNeueMontrealMedium">
+      <div class="">
+        <h2 class="mr-20 text-2xl text-[#000000] font-ppNeueMontrealMedium">
             Construction and Engineering
         </h2>
       </div>
@@ -64,7 +64,7 @@ const { BrandStory } = useOtiumBrandStory();
         </p>
       </div>
     </div>
-    <div class="flex gap-8 ml-3 justify-center">
+    <div class="flex gap-8 ml-3 ">
 
       <div class="">
         <img :src="BrandStory[0].BrandStoryPhotos.img8" alt="Slide Image" />

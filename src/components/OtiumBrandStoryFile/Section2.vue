@@ -4,8 +4,8 @@ import useOtiumBrandStory from "@/composables/useOtiumBrandStory";
 const { BrandStory } = useOtiumBrandStory();
 </script>
 <template>
-    <div class="flex gap-52 pb-20 justify-center ">
-        <div class="justify-center">
+    <div class="flex gap-52 pb-20 ">
+        <div class="">
             <h2 class="text-2xl	text-[#000000] font-ppNeueMontrealMedium	">Leadership</h2>
         </div>
         <div>

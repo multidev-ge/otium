@@ -19,7 +19,7 @@
     width: auto !important;
 }
 .carousel__track {
-    justify-content: center !important;
     display: flex !important; 
     gap: 30px !important;
 }
+

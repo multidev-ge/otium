@@ -1,11 +1,11 @@
 <template>
-  <div class="mx-4 mb-28">
+  <div class=" mb-28">
     <Carousel v-bind="settings" :breakpoints="breakpoints">
       <Slide v-for="(slide, index) in brandStoryData" :key="index">
         <div class="carousel__item">
           <img :src="slide.BrandStoryPhotos.img1" alt="Slide Image" />
           <div class="carousel__content">
-            <h2 class="pt-2 font-medium text-2xl grid justify-start">
+            <h2 class="pt-2 font-medium text-2xl grid ">
               {{ slide.BrandStoryName.name }}
             </h2>
             <p
@@ -66,7 +66,7 @@
       </Slide>
 
       <template #addons>
-        <div class="w-full flex justify-center">
+        <div class="w-full flex">
           <div class="w-[1200px]"></div>
           <div class="flex">
             <Navigation>
