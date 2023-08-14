@@ -1,13 +1,13 @@
 import { ref } from "vue";
 import { markRaw } from 'vue';
-import Logo from "../assets/icons/Logo.vue"
 import arrowRight from "../assets/icons/arrow-right.vue"
+import logo from "../assets/images/Logo.png"
 
 export default (function useHeader() {
     const headerInfo = ref([
         {
             headercomponents: {
-                img: markRaw(Logo),
+                img: logo,
                 img1: markRaw(arrowRight),
                 language: "En",
                 language1: "Ge ",
