@@ -18,7 +18,7 @@ const router = createRouter({
     {
       path: "/contact",
       name: "Contact",
-      component: () => import("../views/ContactView.vue")
+      component: () => import("../views/Pages/ContactPage.vue")
     },
     {
       path: '/otiumbrandstory',
@@ -30,6 +30,11 @@ const router = createRouter({
       name: 'Media',
       component: () => import('../views/Pages/MediaPage.vue')
     },
+    {
+      path: '/floor',
+      name: 'Floor',
+      component: () => import('../views/Pages/FloorPage.vue')
+    }
   ]
 })
 
