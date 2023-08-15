@@ -1,6 +1,6 @@
 <script setup>
 import useContact from "@/composables/useContact";
-import ContactRightArrowIcon from "@/assets/icons/ContactRightArrowIcon.vue";
+import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue";
 
 const {contactFormData, submitContactForm} = useContact;
 </script>

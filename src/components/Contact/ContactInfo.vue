@@ -1,6 +1,6 @@
 <script setup>
 import useContact from "@/composables/useContact";
-import ContactItem from "@/components/ContactItem.vue";
+import ContactItem from "@/components/Contact/ContactItem.vue";
 
 const {contactInfo} = useContact;
 </script>

@@ -1,7 +1,7 @@
 <script setup>
-import ContactInfo from "@/components/ContactInfo.vue";
-import ContactForm from "@/components/ContactForm.vue";
-import ContactMap from "@/components/ContactMap.vue";
+import ContactInfo from "@/components/Contact/ContactInfo.vue";
+import ContactForm from "@/components/Contact/ContactForm.vue";
+import ContactMap from "@/components/Contact/ContactMap.vue";
 </script>
 
 <template>
