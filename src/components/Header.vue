@@ -1,12 +1,12 @@
 <template>
-  <header class="bg-white ">
+  <header class="bg-white">
     <nav
       class="mx-auto flex container items-center justify-between pb-20 pt-5"
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
         <router-link to="/">
-          <img :src="headerInfo[0].headercomponents.img" alt="">
+          <img :src="headerInfo[0].headercomponents.img" alt="" />
         </router-link>
       </div>
       <div class="flex lg:hidden">
@@ -20,21 +20,21 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-        <a href="#" class="text-lg font-medium leading-6 text-[#000000]"
-          >{{ headerInfo[0].headercomponents.title }}</a
-        >
-        <a href="#" class="text-lg font-medium leading-6 text-[#000000]"
-          >{{ headerInfo[0].headercomponents.title1  }}</a
-        >
+        <a href="#" class="text-lg font-medium leading-6 text-[#000000]">{{
+          headerInfo[0].headercomponents.title
+        }}</a>
+        <a href="#" class="text-lg font-medium leading-6 text-[#000000]">{{
+          headerInfo[0].headercomponents.title1
+        }}</a>
         <router-link to="/media">
-          <a href="#" class="text-lg font-medium leading-6 text-[#000000]"
-            >{{ headerInfo[0].headercomponents.title2  }}</a
-          >
+          <a href="#" class="text-lg font-medium leading-6 text-[#000000]">{{
+            headerInfo[0].headercomponents.title2
+          }}</a>
         </router-link>
         <router-link to="/contact">
-          <a href="#" class="text-lg font-medium leading-6 text-[#000000]"
-            >{{ headerInfo[0].headercomponents.title3  }}</a
-          >
+          <a href="#" class="text-lg font-medium leading-6 text-[#000000]">{{
+            headerInfo[0].headercomponents.title3
+          }}</a>
         </router-link>
       </PopoverGroup>
 
@@ -56,7 +56,9 @@
         </div>
 
         <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
-          <button class="flex text-[#000000]">{{ headerInfo[0].headercomponents.title4  }}</button>
+          <button class="flex text-[#000000]">
+            {{ headerInfo[0].headercomponents.title4 }}
+          </button>
           <component class="mt-1" :is="headerInfo[0].headercomponents.img1" />
         </div>
       </div>
@@ -73,7 +75,7 @@
       >
         <div class="flex items-center justify-between">
           <router-link to="/">
-              <component :is="headerInfo[0].headercomponents.img" />
+            <img :src="headerInfo[0].headercomponents.img" alt="" />
           </router-link>
           <button
             type="button"
@@ -104,7 +106,7 @@
                   >{{ headerInfo[0].headercomponents.title2 }}</a
                 >
               </router-link>
-              <router-link to="/media">
+              <router-link to="/contact">
                 <a
                   href="#"
                   class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
