@@ -1,6 +1,6 @@
 <script setup>
-import useNavigation from "@/composables/mediaInner";
-const {similarNews} = useNavigation()
+import mediaInner from "@/composables/mediaInner";
+const {similarNews} = mediaInner()
 </script>
 
 <template>
