@@ -1,9 +1,9 @@
 <script setup>
-import apartmentFinder from "@/composables/apartmentFinder";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
-const {gurama, maxFloors, apartmentComponents} = apartmentFinder()
-console.log(gurama.value)
-
+import apartmentFinder from "@/composables/apartmentFinder";
+const apartments = apartmentFinder
+const {filterApartments, maxFloors, apartmentComponents,} = apartments()
+console.log(filterApartments)
 </script>
 
 <template>
@@ -18,12 +18,12 @@ console.log(gurama.value)
               </tr>
             </thead>
             <tbody>
-            <tr class="text-xl" v-for="apartment in gurama">
-              <td class="whitespace-nowrap px-6 w-44 py-4"><img class="rounded-lg" :src="apartment.img" alt=""></td>
-              <td class="whitespace-nowrap px-6  py-4"><span>{{apartment.floor}}</span><span class="opacity-30"> / </span><span class="opacity-30">{{maxFloors}}</span></td>
-              <td class="whitespace-nowrap px-6  py-4">{{apartment.rooms}}</td>
-              <td class="whitespace-nowrap px-6  py-4">{{apartment.area.toFixed(1)}}</td>
-              <td class="whitespace-nowrap px-6  py-4"><RightArrow class="cursor-pointer"/></td>
+            <tr class="text-xl" v-for="apartment in filterApartments">
+              <td class="whitespace-nowrap px-6 w-1/4 py-4"><img class="rounded-lg w-full" :src="apartment.img" alt=""></td>
+              <td class="whitespace-nowrap px-6 w-1/4 py-4"><span>{{apartment.floor}}</span><span class="opacity-30"> / </span><span class="opacity-30">{{maxFloors}}</span></td>
+              <td class="whitespace-nowrap px-6 w-1/4 py-4">{{apartment.rooms}}</td>
+              <td class="whitespace-nowrap px-6 w-1/4 py-4">{{apartment.area.toFixed(1)}}</td>
+              <td class="whitespace-nowrap px-6 w-1/4 py-4"><RightArrow class="cursor-pointer"/></td>
             </tr>
             </tbody>
           </table>
