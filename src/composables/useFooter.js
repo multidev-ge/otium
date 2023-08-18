@@ -9,6 +9,7 @@ import Linked from "../assets/icons/in.vue";
 import facebook from "../assets/icons/facebook.vue";
 import instagram from "../assets/icons/instagram.vue";
 import footerlogo from "../assets/icons/footerlogo.vue"
+import otiumm from "../assets/images/otiumm.png"
 import { reactive } from "vue";
 
 export default (function useFooter() {
@@ -33,6 +34,7 @@ export default (function useFooter() {
         mediaicon3:markRaw(Linked),
         mediaicon4:markRaw(youtube),
         logo:markRaw(footerlogo),
+        otiumlogo: otiumm,
       },
     },
   ]);

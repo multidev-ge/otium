@@ -1,7 +1,7 @@
 <template>
   <header class="bg-white">
     <nav
-      class="mx-auto flex container items-center justify-between pb-20 pt-5"
+      class="mx-auto flex container items-center justify-between pb-20 pt-5 px-4 md:px-0"
       aria-label="Global"
     >
       <div class="flex lg:flex-1">
@@ -20,23 +20,28 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-        <a href="#" class="text-lg font-medium leading-6 text-[#000000]">{{
-          headerInfo[0].headercomponents.title
-        }}</a>
-        <a href="#" class="text-lg font-medium leading-6 text-[#000000]">{{
-          headerInfo[0].headercomponents.title1
-        }}</a>
-        <router-link to="/media">
-          <a href="#" class="text-lg font-medium leading-6 text-[#000000]">{{
-            headerInfo[0].headercomponents.title2
-          }}</a>
-        </router-link>
-        <router-link to="/contact">
-          <a href="#" class="text-lg font-medium leading-6 text-[#000000]">{{
-            headerInfo[0].headercomponents.title3
-          }}</a>
-        </router-link>
-      </PopoverGroup>
+  <router-link to="/company">
+    <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/company' }">
+      {{ headerInfo[0].headercomponents.title }}
+    </a>
+  </router-link>
+  <router-link to="/projects">
+    <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/projects' }">
+      {{ headerInfo[0].headercomponents.title1 }}
+    </a>
+  </router-link>
+  <router-link to="/media">
+    <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/media' }">
+      {{ headerInfo[0].headercomponents.title2 }}
+    </a>
+  </router-link>
+  <router-link to="/contact">
+    <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/contact' }">
+      {{ headerInfo[0].headercomponents.title3 }}
+    </a>
+  </router-link>
+</PopoverGroup>
+
 
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
         <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-1">
@@ -203,5 +208,8 @@ const mobileMenuOpen = ref(false);
 <style scoped>
 .bold-button {
   font-weight: bold;
+}
+.active-link {
+  color: #88407C; /* You can replace 'red' with your desired shade of red */
 }
 </style>
