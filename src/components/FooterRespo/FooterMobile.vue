@@ -53,7 +53,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
 
             <button
               type="submit"
-              class="flex gap-2 md:pt-3 px-6 py-3 w-full justify-center md:mt-1 md:px-14 text-base font-medium text-center text-[#221C32] rounded-xl bg-white sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              class="flex gap-2 sm:w-full md:pt-3 px-6 py-3 w-full justify-center md:mt-1 md:px-14 text-base font-medium text-center text-[#221C32] rounded-xl bg-white  hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Submit
               <component
@@ -217,7 +217,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
         class="my-6   border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
       />
         </div>
-      <div class="sm:flex px-4 sm:items-center sm:justify-between mt-16">
+      <div class="sm:grid sm:justify-center px-4 sm:items-center  mt-16">
         <div class="flex mt-4 justify-center space-x-5 sm:justify-center sm:mt-0">
           <h2 class="text-[#FFFFFF] text-lg">POWERED BY</h2>
           <h2 class="text-[#61C5E2] text-lg">GROWTH HUNTERS</h2>
