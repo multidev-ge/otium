@@ -8,6 +8,7 @@ import youtube from "../assets/icons/youtube.vue";
 import Linked from "../assets/icons/in.vue";
 import facebook from "../assets/icons/facebook.vue";
 import instagram from "../assets/icons/instagram.vue";
+import footerlogo from "../assets/icons/footerlogo.vue"
 import { reactive } from "vue";
 
 export default (function useFooter() {
@@ -31,6 +32,7 @@ export default (function useFooter() {
         mediaicon2:markRaw(instagram),
         mediaicon3:markRaw(Linked),
         mediaicon4:markRaw(youtube),
+        logo:markRaw(footerlogo),
       },
     },
   ]);
