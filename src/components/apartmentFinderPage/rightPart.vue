@@ -2,7 +2,7 @@
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
 import apartmentFinder from "@/composables/forApartmentFinder/apartmentFinder";
 const apartments = apartmentFinder
-const {filterApartments, maxFloors, apartmentComponents,} = apartments()
+const {filterApartments, maxFloors, apartmentComponents,prefix} = apartments()
 </script>
 
 <template>
@@ -22,6 +22,8 @@ const {filterApartments, maxFloors, apartmentComponents,} = apartments()
               <td class="whitespace-nowrap px-6 w-1/4 py-4"><span>{{apartment.floor}}</span><span class="opacity-30"> / </span><span class="opacity-30">{{maxFloors}}</span></td>
               <td class="whitespace-nowrap px-6 w-1/4 py-4">{{apartment.rooms}}</td>
               <td class="whitespace-nowrap px-6 w-1/4 py-4">{{apartment.area.toFixed(1)}}</td>
+              <td class="whitespace-nowrap px-6 w-1/4 py-4">{{prefix}} {{apartment.price.toLocaleString()}}</td>
+
               <td class="whitespace-nowrap px-6 w-1/4 py-4"><RightArrow class="cursor-pointer"/></td>
             </tr>
             </tbody>

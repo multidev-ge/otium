@@ -2,11 +2,9 @@
 import Dropdown from "@/components/apartmentFinderPage/universalComponents/Dropdown.vue";
 import TwoDotRange from "@/components/apartmentFinderPage/universalComponents/twoDotRange.vue";
 import apartmentFinder from "@/composables/forApartmentFinder/apartmentFinder";
-import {ref} from "vue";
+import {ref, watch} from "vue";
 const apartments = apartmentFinder
-const {dropDowns, rooms, selectRoom, doubleSliderOptions, clearFilter} = apartments()
-
-
+const {dropDowns, rooms, selectRoom, doubleSliderOptions, clearFilter,changeSoldApartmentValue, soldApartmentOption} = apartments()
 </script>
 <template>
   <div class="w-1/6 flex flex-col font-medium  gap-10">
@@ -25,18 +23,19 @@ const {dropDowns, rooms, selectRoom, doubleSliderOptions, clearFilter} = apartme
     <div class="flex flex-col gap-3">
       <p class="text-xl">Sold Apartments</p>
       <div class="flex gap-10">
+
         <div class="flex gap-2">
-          <input class="w-5 h-5 accent-black" name="hideShow" type="radio">
+          <input v-model="soldApartmentOption" @input="changeSoldApartmentValue" class="w-5 h-5 accent-black   rounded-full" name="hideShow" value="option1"  type="radio">
           <label>Show</label>
         </div>
 
         <div class="flex gap-2">
-          <input class="w-5 h-5 accent-black" name="hideShow" type="radio">
+          <input v-model="soldApartmentOption" @input="changeSoldApartmentValue" class="w-5 h-5 accent-black rounded-full" value="option2" name="hideShow" type="radio">
           <label>Hide</label>
         </div>
 
       </div>
     </div>
-    <p @click="clearFilter" class="underline opacity-40 text-base cursor-pointer">Clear Filter</p>
+    <p @click="clearFilter"  class="underline opacity-40 text-base cursor-pointer">Clear Filter</p>
   </div>
 </template>
