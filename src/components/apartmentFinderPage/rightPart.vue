@@ -1,9 +1,8 @@
 <script setup>
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
-import apartmentFinder from "@/composables/apartmentFinder";
+import apartmentFinder from "@/composables/forApartmentFinder/apartmentFinder";
 const apartments = apartmentFinder
 const {filterApartments, maxFloors, apartmentComponents,} = apartments()
-console.log(filterApartments)
 </script>
 
 <template>

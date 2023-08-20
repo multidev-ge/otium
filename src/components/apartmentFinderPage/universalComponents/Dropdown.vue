@@ -1,5 +1,5 @@
 <script setup>
-import apartmentFinder from "@/composables/apartmentFinder";
+import apartmentFinder from "@/composables/forApartmentFinder/apartmentFinder";
 const apartments = apartmentFinder
 const {selectFloor, defaultValueForDropdown, changeDropDownValue} = apartments()
 const props = defineProps({
