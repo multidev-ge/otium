@@ -6,20 +6,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.carousel__prev,
-.carousel__next {
-    position: relative !important;
-    width: 38px  !important;
-    height: 38px !important;
-    transform: translateY(0) !important;
-    display: flex !important;
-}
-.carousel__slide {
-    width: auto !important;
-}
-.carousel__track {
-    justify-content: center !important;
-    display: flex !important; 
-    gap: 30px !important;
-}
