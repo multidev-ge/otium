@@ -1,6 +1,6 @@
-import ContactPhoneIcon from "@/assets/icons/ContactPhoneIcon.vue";
-import ContactEnvelopeIcon from "@/assets/icons/ContactEnvelopeIcon.vue";
-import ContactLocationDotIcon from "@/assets/icons/ContactLocationDotIcon.vue";
+import ContactPhoneIcon from "@/assets/icons/Contact/ContactPhoneIcon.vue";
+import ContactEnvelopeIcon from "@/assets/icons/Contact/ContactEnvelopeIcon.vue";
+import ContactLocationDotIcon from "@/assets/icons/Contact/ContactLocationDotIcon.vue";
 import {reactive} from "vue";
 
 function useForm() {
