@@ -19,6 +19,7 @@ export default (function useOtiumBrandStory() {
                 description2: "Our Design and Architecture team is composed of creative and skilled individuals who excel at merging aesthetics with functionality. They are the driving force behind our stunning and innovative designs, bringing our clients' visions to life while upholding our commitment to minimalism and sustainable design. Their expertise and artistic flair create spaces that inspire and reflect the unique needs of our clients.",
                 description3: "Our Design and Architecture team is composed of creative and skilled individuals who excel at merging aesthetics with functionality. They are the driving force behind our stunning and innovative designs, bringing our clients' visions to life while upholding our commitment to minimalism and sustainable design. Their expertise and artistic flair create spaces that inspire and reflect the unique needs of our clients.",
                 description4: "Our Construction and Engineering team comprises skilled builders and innovators dedicated to bringing our designs to life with precision and excellence. With their expertise and commitment to sustainability, they ensure our projects are executed to the highest standards while pushing the boundaries of innovation in the construction industry.",
+                description5: "Our Journey to Simplify Construction: Crafting Timeless Spaces",
             },
             BrandStoryPhotos: {
                 img1: photo1,
@@ -33,6 +34,11 @@ export default (function useOtiumBrandStory() {
                 img10: photo10,
             },
             BrandStoryName: {
+                title: "Otium brand story ",
+                title1: "Team",
+                title2: "Leadership",
+                title3: "Design and Architecture",
+                title4: "Construction and Engineering",
                 name: "Name Surname",
                 position1: "Co-Founder",
                 position2: "Manager",

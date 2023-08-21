@@ -1,6 +1,6 @@
 <script setup>
-import LeftSide from "@/assets/components/mediaInner/leftSide.vue";
-import RightPart from "@/assets/components/mediaInner/rightPart.vue";
+import LeftSide from "@/components/mediaInnerPage/mediaInner/leftSide.vue";
+import RightPart from "@/components/mediaInnerPage/mediaInner/rightPart.vue";
 </script>
 
 <template>

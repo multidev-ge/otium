@@ -3,6 +3,8 @@ import mainLayout from "@/layouts/mainLayout.vue";
 </script>
 <template>
   <mainLayout>
-    <p class="text-amber-400">Home</p>
+    <div class="mx-auto container">
+      <p class="text-amber-400">Home</p>
+    </div>
   </mainLayout>
 </template>

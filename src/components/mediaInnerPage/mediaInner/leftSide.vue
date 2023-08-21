@@ -1,8 +1,8 @@
 <script setup>
-import useNavigation from "@/composables/mediaInner";
-import DoubleText from "@/assets/components/universalComponents/doubleText.vue";
-import SplidePart from "@/assets/components/mediaInner/splidePart.vue";
-const {currentPageInfo} = useNavigation()
+import mediaInner from "@/composables/mediaInner";
+import DoubleText from "@/components/mediaInnerPage/universalComponents/doubleText.vue";
+import SplidePart from "@/components/mediaInnerPage/mediaInner/splidePart.vue";
+const {currentPageInfo} = mediaInner()
 
 </script>
 

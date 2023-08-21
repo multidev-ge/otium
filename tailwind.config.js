@@ -1,6 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx,html}"],
+  plugins: [
+    require('@vueform/slider/tailwind'),
+
+  ],
+  content: [
+    "./index.html",
+    "./src/**/*.{vue,js,ts,jsx,tsx}",
+  ],
   theme: {
     container: {
       screens: {
@@ -26,6 +33,6 @@ module.exports = {
         sans: ["PPNeueMontreal-Thin", "sans-serif"]
       },
     },
-    plugins: [],
+
   }
 }
