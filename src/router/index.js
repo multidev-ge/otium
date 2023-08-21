@@ -53,7 +53,7 @@ const router = createRouter({
   {
     path: '/apartment-finder',
     name: 'ApartmentFinder',
-    component: () => import('../views/Pages/ApartmentFinder.vue')
+    component: () => import('../views/Pages/apartmentFinder.vue')
   }]
 })
 
