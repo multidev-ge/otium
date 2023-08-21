@@ -1,6 +1,6 @@
 import {ref} from "vue";
 
-export default function useNavigation() {
+export default function mediaInner() {
     const currentPageInfo = ref({
             mainPart: {
                 type: "News",

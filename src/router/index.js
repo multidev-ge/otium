@@ -30,6 +30,17 @@ const router = createRouter({
       name: 'Media',
       component: () => import('../views/Pages/MediaPage.vue')
     },
+    {
+      path: '/media-inner',
+      name: 'mediaInner',
+      component: () => import('../views/Pages/mediaInner.vue')
+    },
+    {
+      path: '/apartment-finder',
+      name: 'apartmentFinder',
+      component: () => import('../views/Pages/apartmentFinder.vue')
+    },
+
   ]
 })
 
