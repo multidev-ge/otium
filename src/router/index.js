@@ -41,6 +41,16 @@ const router = createRouter({
     component: () => import('../views/Pages/mediaInner.vue')
   },
   {
+    path: '/projects',
+    name: 'Projects',
+    component: () => import('../views/Pages/projects.vue')
+  },
+  {
+    path: '/company',
+    name: 'Company',
+    component: () => import('../views/Pages/Company.vue')
+  },
+  {
     path: '/apartment-finder',
     name: 'apartmentFinder',
     component: () => import('../views/Pages/apartmentFinder.vue')
