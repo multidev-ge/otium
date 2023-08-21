@@ -7,7 +7,7 @@ const {width, height, apartments} = useFloor()
 
 <template>
   <!-- Floor Plan -->
-  <div class="relative mx-auto mt-20" :style="{width, height}">
+  <div class="relative" :style="{width, height}">
     <img class="absolute" loading="lazy" src="../../assets/images/floor/plan.png" alt="floor plan">
     <FloorApartment v-for="(apartment, index) in apartments" :apartment="apartment" :key="index"/>
   </div>
