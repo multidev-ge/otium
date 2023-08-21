@@ -38,7 +38,7 @@ const router = createRouter({
   {
     path: '/media-inner',
     name: 'MediaInner',
-    component: () => import('../views/Pages/MediaInner.vue')
+    component: () => import('../views/Pages/mediaInner.vue')
   },
   {
     path: '/projects',
