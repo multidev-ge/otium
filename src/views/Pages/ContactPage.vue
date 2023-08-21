@@ -5,12 +5,13 @@ import ContactMap from "@/components/Contact/ContactMap.vue";
 </script>
 
 <template>
-  <div class="max-w-7xl mt-20 mb-44 mx-auto space-y-14">
-    <h1 class="text-8xl font-medium leading-normal">Contact</h1>
+  <div
+      class="max-w-7xl mt-7 sm:max-2xl:mt-14 2xl:mt-20 mb-36 sm:max-2xl:mb-40 2xl:mb-44 mx-4 sm:max-2xl:mx-10 2xl:mx-auto space-y-7 sm:max-2xl:space-y-11 2xl:space-y-16">
+    <h1 class="text-5xl sm:max-2xl:text-6.5xl 2xl:text-8xl font-medium leading-normal">Contact</h1>
     <ContactInfo/>
-    <div class="grid grid-cols-2 gap-36">
-      <ContactForm/>
-      <ContactMap/>
-    </div>
+    <!--    <div class="grid grid-cols-1 gap-36">-->
+    <!--      <ContactForm/>-->
+    <!--      <ContactMap/>-->
+    <!--    </div>-->
   </div>
 </template>
