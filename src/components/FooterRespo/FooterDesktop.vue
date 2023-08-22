@@ -163,7 +163,6 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                    :class="{ 'active-link': $route.path === '/company' }"
                   >
                     {{ headerInfo[0].headercomponents.title }}
                   </a>
@@ -172,7 +171,6 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                    :class="{ 'active-link': $route.path === '/projects' }"
                   >
                     {{ headerInfo[0].headercomponents.title1 }}
                   </a>
@@ -181,7 +179,6 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                    :class="{ 'active-link': $route.path === '/media' }"
                   >
                     {{ headerInfo[0].headercomponents.title2 }}
                   </a>
@@ -190,7 +187,6 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                    :class="{ 'active-link': $route.path === '/contact' }"
                   >
                     {{ headerInfo[0].headercomponents.title3 }}
                   </a>
@@ -216,8 +212,3 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
     </div>
   </footer>
 </template>
-<style scoped>
-.active-link {
-  color: #88407c; /* You can replace 'red' with your desired shade of red */
-}
-</style>

@@ -158,41 +158,37 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
             </div>
             <div class="grid grid-cols-2 gap-y-4 md:gap-[76px] md:pl-28 pt-11 px-4">
               <router-link to="/company">
-                <a
-                  href="#"
-                  class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                  :class="{ 'active-link': $route.path === '/company' }"
-                >
-                  {{ headerInfo[0].headercomponents.title }}
-                </a>
-              </router-link>
-              <router-link to="/projects">
-                <a
-                  href="#"
-                  class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                  :class="{ 'active-link': $route.path === '/projects' }"
-                >
-                  {{ headerInfo[0].headercomponents.title1 }}
-                </a>
-              </router-link>
-              <router-link to="/media">
-                <a
-                  href="#"
-                  class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                  :class="{ 'active-link': $route.path === '/media' }"
-                >
-                  {{ headerInfo[0].headercomponents.title2 }}
-                </a>
-              </router-link>
-              <router-link to="/contact">
-                <a
-                  href="#"
-                  class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                  :class="{ 'active-link': $route.path === '/contact' }"
-                >
-                  {{ headerInfo[0].headercomponents.title3 }}
-                </a>
-              </router-link>
+                  <a
+                    href="#"
+                    class="text-lg font-medium leading-6 text-[#FFFFFF]"
+                  >
+                    {{ headerInfo[0].headercomponents.title }}
+                  </a>
+                </router-link>
+                <router-link to="/projects">
+                  <a
+                    href="#"
+                    class="text-lg font-medium leading-6 text-[#FFFFFF]"
+                  >
+                    {{ headerInfo[0].headercomponents.title1 }}
+                  </a>
+                </router-link>
+                <router-link to="/media">
+                  <a
+                    href="#"
+                    class="text-lg font-medium leading-6 text-[#FFFFFF]"
+                  >
+                    {{ headerInfo[0].headercomponents.title2 }}
+                  </a>
+                </router-link>
+                <router-link to="/contact">
+                  <a
+                    href="#"
+                    class="text-lg font-medium leading-6 text-[#FFFFFF]"
+                  >
+                    {{ headerInfo[0].headercomponents.title3 }}
+                  </a>
+                </router-link>
             </div>
             
             <div class="mt-14 ">
@@ -229,8 +225,3 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
     </div>
   </footer>
 </template>
-<style scoped>
-.active-link {
-  color: #88407c; /* You can replace 'red' with your desired shade of red */
-}
-</style>
