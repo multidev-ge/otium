@@ -36,7 +36,7 @@ const { BrandStory } = useOtiumBrandStory();
   </div>
 </template>
 <style scoped>
-@media (max-width: 1399px) {
+@media (max-width: 1400px) {
     .mydiv {
       justify-content: center ;
     }
