@@ -37,12 +37,22 @@ const router = createRouter({
   },
   {
     path: '/media-inner',
-    name: 'mediaInner',
+    name: 'MediaInner',
     component: () => import('../views/Pages/mediaInner.vue')
   },
   {
+    path: '/projects',
+    name: 'Projects',
+    component: () => import('../views/Pages/Projects.vue')
+  },
+  {
+    path: '/company',
+    name: 'Company',
+    component: () => import('../views/Pages/Company.vue')
+  },
+  {
     path: '/apartment-finder',
-    name: 'apartmentFinder',
+    name: 'ApartmentFinder',
     component: () => import('../views/Pages/apartmentFinder.vue')
   }]
 })
