@@ -199,7 +199,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   alt=""
                 />
               </div>
-              <div class="z-10 relative w-[137px]">
+              <div class="z-10 relative w-[137px] pl-4">
                 <router-link to="/">
                   <img
                     class="	"
@@ -217,7 +217,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
           class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
         />
       </div>
-      <div class="sm:grid sm:justify-center px-4 sm:items-center mt-16">
+      <div class="sm:grid sm:justify-center px-4 sm:items-center mt-16 relative z-10">
         <div
           class="flex mt-4 justify-center space-x-5 sm:justify-center sm:mt-0"
         >

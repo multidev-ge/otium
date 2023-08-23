@@ -158,7 +158,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   />
                 </div>
               </a>
-              <div class="flex gap-[76px] md:pl-28">
+              <div class="flex gap-[76px] md:pl-28 md:grid md:grid-cols-2 xl:flex">
                 <router-link to="/otiumbrandstory">
                   <a
                     href="#"
