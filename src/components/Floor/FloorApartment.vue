@@ -10,9 +10,8 @@ const {apartment} = defineProps({
 <template>
   <!-- Apartment -->
   <div class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment"
-       :style="{top: apartment.top, right: apartment.right, bottom: apartment.bottom, left: apartment.left,
-                width: apartment.width,height: apartment.height,
-                clipPath: `polygon(${apartment.points})`, backgroundColor: apartment.isSold ? 'white' : 'transparent'}">
+       :style="{width: apartment.width,height: apartment.height,
+                clipPath: `polygon(${apartment.points})`, backgroundColor: apartment.isSold ? 'white' : 'transparent',top: apartment.top, left:apartment.left }">
 
     <!-- Sold Label -->
     <span v-if="apartment.isSold"
