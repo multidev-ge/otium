@@ -20,11 +20,11 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-        <router-link to="/company">
+        <router-link to="/otiumbrandstory">
           <a
             href="#"
             class="text-lg font-medium leading-6"
-            :class="{ 'active-link': $route.path === '/company' }"
+            :class="{ 'active-link': $route.path === '/otiumbrandstory' }"
           >
             {{ headerInfo[0].headercomponents.title }}
           </a>
@@ -111,16 +111,20 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
+              <router-link to="/otiumbrandstory">
               <a
                 href="#"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
                 >{{ headerInfo[0].headercomponents.title }}</a
               >
+            </router-link>
+            <router-link to="/projects">
               <a
                 href="#"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
                 >{{ headerInfo[0].headercomponents.title1 }}</a
               >
+            </router-link>
               <router-link to="/media">
                 <a
                   href="#"

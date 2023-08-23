@@ -159,7 +159,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                 </div>
               </a>
               <div class="flex gap-[76px] md:pl-28">
-                <router-link to="/company">
+                <router-link to="/otiumbrandstory">
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
