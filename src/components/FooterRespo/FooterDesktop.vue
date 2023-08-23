@@ -200,7 +200,9 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
         class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
       />
       <div class="sm:flex sm:items-center sm:justify-between mt-16">
-        <component class="" :is="FooterInfo[0].Footercomponents.logo" />
+        <router-link to="/">
+          <component class="" :is="FooterInfo[0].Footercomponents.logo" />
+        </router-link>
         <div>
           <h2 class="text-[#FFFFFF] text-lg md:pl-36">ALL RIGHTS RESERVED</h2>
         </div>
