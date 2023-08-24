@@ -2,3 +2,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 300;
+    src: local('PPNeueMontreal-thin'), url('fonts/PPNeueMontreal-thin.otf') format('opentype');
+}
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 400;
+    src: local('PPNeueMontreal-book'), url('fonts/PPNeueMontreal-book.otf') format('opentype');
+}
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 500;
+    src: local('PPNeueMontreal-book'), url('fonts/PPNeueMontreal-book.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 600;
+    src: local('PPNeueMontreal-medium'), url('fonts/PPNeueMontreal-medium.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'PP Neue Montreal';
+    font-style: normal;
+    font-weight: 700;
+    src: local('PPNeueMontreal-bold'), url('fonts/PPNeueMontreal-bold.otf') format('opentype');
+}

@@ -15,8 +15,8 @@ const { BrandStory } = useOtiumBrandStory();
       </h3>
     </div>
   </div>
-  <div class="xl:flex  xl:gap-8 pb-12 ">
-    <img class="pb-7 xl:pb-0" src="../../assets/images/Rectangle940.png" alt="" />
+  <div class="mydiv xl:flex  xl:gap-8 pb-12 " >
+    <img class="photo  pb-7 xl:pb-0" src="../../assets/images/Rectangle940.png"  alt="" />
     <img src="../../assets/images/Rectangle941.png" alt="" />
   </div>
   <div class="xl:flex xl:gap-8">
@@ -35,3 +35,19 @@ const { BrandStory } = useOtiumBrandStory();
     <div class="w-[640px]"></div>
   </div>
 </template>
+<style scoped>
+@media (max-width: 1400px) {
+    .mydiv {
+      justify-content: center ;
+    }
+    .photo {
+      width: 63%;
+    }
+  }
+  @media (max-width: 1279px) {
+    .photo {
+      width: auto;
+    }
+  }
+ 
+</style>
