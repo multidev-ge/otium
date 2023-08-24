@@ -12,7 +12,7 @@ const { BrandStory } = useOtiumBrandStory();
         </h2>
       </div>
       <div>
-        <p class="text-xl text-[#00000099] xl:w-[976px] pr-12 font-ppNeueMontrealMedium">
+        <p class="text-xl text-[#00000099] md:pr-40 font-ppNeueMontrealMedium">
           {{ BrandStory[0].BrandStoryDescription.description3 }}
         </p>
       </div>
@@ -54,7 +54,7 @@ const { BrandStory } = useOtiumBrandStory();
   <div class="xl:pb-28 pb-7">
     <div class="xl:flex gap-8 xl:pb-20 justify-center pb-5">
       <div class="">
-        <h2 class="mr-20 text-2xl text-[#000000] font-ppNeueMontrealMedium">
+        <h2 class="mr-20 pb-5 md:pb-0 text-2xl text-[#000000] font-ppNeueMontrealMedium">
           {{ BrandStory[0].BrandStoryName.title4 }}
         </h2>
       </div>
@@ -92,8 +92,6 @@ const { BrandStory } = useOtiumBrandStory();
         <p class="pt-1 xl:pt-2  text-xl font-ppNeueMontrealMedium text-[#00000099] grid justify-start">
           {{ BrandStory[0].BrandStoryName.position5 }}
         </p>
-      </div>
-      <div class="w-[304px]">
       </div>
     </div>
   </div>

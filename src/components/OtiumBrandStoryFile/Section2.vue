@@ -9,7 +9,7 @@ const { BrandStory } = useOtiumBrandStory();
             <h2 class="text-2xl	text-[#000000] font-ppNeueMontrealMedium	pb-7 xl:pb-0">{{ BrandStory[0].BrandStoryName.title2 }}</h2>
         </div>
         <div>
-            <p class="text-xl  text-[#00000099]	xl:w-[976px] pr-12 font-ppNeueMontrealMedium	">{{ BrandStory[0].BrandStoryDescription.description2 }}</p>
+            <p class="text-xl  text-[#00000099]	 md:pr-40 font-ppNeueMontrealMedium	">{{ BrandStory[0].BrandStoryDescription.description2 }}</p>
         </div>
     </div>
 </template>
