@@ -6,11 +6,11 @@ const { BrandStory } = useOtiumBrandStory();
 <template>
   <div class="xl:flex   pb-14  ">
     <div class="  pb-6 xl:pt-0 xl:w-[63%]">
-      <h2 class="xl:text-8xl  text-5xl xl:gap-8  text-[#000000] font-ppNeueMontrealMedium md:pr-0 pr-[16%]">{{ BrandStory[0].BrandStoryName.title }} <img class="xl:mt-16 inline w-[36px] md:w-auto	" src="../../assets/icons/forward.svg" alt="" /></h2>
+      <h2 class="xl:text-8xl  text-5xl xl:gap-8  text-[#000000] font-ppNeueMontrealMedium md:pr-0 pr-[16%] ">{{ BrandStory[0].BrandStoryName.title }} <img class="xl:mt-16 inline w-[36px] md:w-auto	" src="../../assets/icons/forward.svg" alt="" /></h2>
 
     </div>
     <div class="xl:w-[415px]">
-      <h3 class="text-2xl	 md:text-3xl	 pr-22  font-ppNeueMontrealMedium">
+      <h3 class="text-2xl	 md:text-3xl	   font-ppNeueMontrealMedium ">
         {{ BrandStory[0].BrandStoryDescription.description5 }}
       </h3>
     </div>
