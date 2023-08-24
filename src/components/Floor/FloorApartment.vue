@@ -8,13 +8,21 @@ const {apartment} = defineProps({
 </script>
 
 <template>
-  <div class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment"
-       :style="{width: apartment.width,height: apartment.height,
-                clipPath: `polygon(${apartment.points})`, backgroundColor: apartment.isSold ? 'white' : 'transparent',top: apartment.top, left:apartment.left }">
+  <div
+      class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment max-md:pointer-events-none"
+      :class="{'sold-apartment': apartment.isSold}"
+      :style="{
+                width: apartment.width,
+                height: apartment.height,
+                clipPath: `polygon(${apartment.points})`,
+                backgroundColor: apartment.isSold ? 'white' : 'transparent',
+                top: apartment.top,
+                left:apartment.left
+  }">
     <span v-if="apartment.isSold"
-          class="block text-xl font-bold leading-8 !opacity-100 text-[#E24A4A] rounded-2xl border-2 border-[#E24A4A] px-6 py-3 -rotate-12 sold">
+          class="max-md:hidden block lg:max-2xl:text-lg 2xl:text-xl font-bold leading-8 !opacity-100 text-[#E24A4A] rounded-2xl border-2 border-[#E24A4A] md:max-lg:px-2 lg:max-2xl:px-4 2xl:px-6 md:max-lg:py-1 lg:max-2xl:py-2 2xl:py-3 -rotate-12 sold">
       Sold</span>
-    <div class="hidden !opacity-100 details">
+    <div class="hidden !opacity-100 details md:max-lg:text-xs lg:max-xl:text-sm">
       <p class="text-white font-medium leading-7"><span class="opacity-70">Size:</span> {{ apartment.details.size }} m2
       </p>
       <p class="text-white font-medium leading-7"><span class="opacity-70">Bedroom:</span> {{
@@ -34,5 +42,12 @@ const {apartment} = defineProps({
 
 .apartment:hover .sold {
   display: none;
+}
+
+@media not all and (min-width: 768px) {
+  .sold-apartment {
+    background-color: #E35553 !important;
+    opacity: 0.7 !important;
+  }
 }
 </style>
