@@ -30,7 +30,7 @@ module.exports = {
         '6.5xl': '1.1',
       },
       fontFamily: {
-        sans: ["PPNeueMontreal-Thin", "sans-serif"]
+        sans: ['PP Neue Montreal', "sans-serif"]
       },
     },
 
