@@ -4,9 +4,9 @@ import useOtiumBrandStory from "@/composables/useOtiumBrandStory";
 const { BrandStory } = useOtiumBrandStory();
 </script>
 <template>
-  <div class="xl:flex  xl:gap-8 pb-14  ">
+  <div class="xl:flex   pb-14  ">
     <div class="  pb-6 xl:pt-0 xl:w-[63%]">
-      <h2 class="xl:text-8xl  text-5xl xl:gap-8  text-[#000000] font-ppNeueMontrealMedium ">{{ BrandStory[0].BrandStoryName.title }} <img class="xl:mt-16 inline w-[36px] md:w-auto	" src="../../assets/icons/forward.svg" alt="" /></h2>
+      <h2 class="xl:text-8xl  text-5xl xl:gap-8  text-[#000000] font-ppNeueMontrealMedium pr-1 md:pr-0">{{ BrandStory[0].BrandStoryName.title }} <img class="xl:mt-16 inline w-[36px] md:w-auto	" src="../../assets/icons/forward.svg" alt="" /></h2>
 
     </div>
     <div class="xl:w-[415px]">
@@ -18,7 +18,7 @@ const { BrandStory } = useOtiumBrandStory();
   <div class="lg:flex lg:gap-8 pb-7 md:pb-12">
     <div class="bg-[#D9D9D9] w-full h-[186px] md:h-[464px] mb-7  rounded-lg	">
     </div>
-    <div class="bg-[#D9D9D9] w-full md:w-5/12	h-[384px]	 md:h-[464px] rounded-lg	">
+    <div class="bg-[#D9D9D9] w-full md:w-3/5					h-[384px]	 md:h-[464px] rounded-lg	">
     </div>
 </div>
 
