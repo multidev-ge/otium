@@ -20,28 +20,43 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-  <router-link to="/company">
-    <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/company' }">
-      {{ headerInfo[0].headercomponents.title }}
-    </a>
-  </router-link>
-  <router-link to="/projects">
-    <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/projects' }">
-      {{ headerInfo[0].headercomponents.title1 }}
-    </a>
-  </router-link>
-  <router-link to="/media">
-    <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/media' }">
-      {{ headerInfo[0].headercomponents.title2 }}
-    </a>
-  </router-link>
-  <router-link to="/contact">
-    <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/contact' }">
-      {{ headerInfo[0].headercomponents.title3 }}
-    </a>
-  </router-link>
-</PopoverGroup>
-
+        <router-link to="/otiumbrandstory">
+          <a
+            href="#"
+            class="text-lg font-medium leading-6"
+            :class="{ 'active-link': $route.path === '/otiumbrandstory' }"
+          >
+            {{ headerInfo[0].headercomponents.title }}
+          </a>
+        </router-link>
+        <router-link to="/projects">
+          <a
+            href="#"
+            class="text-lg font-medium leading-6"
+            :class="{ 'active-link': $route.path === '/projects' }"
+          >
+            {{ headerInfo[0].headercomponents.title1 }}
+          </a>
+        </router-link>
+        <router-link to="/media">
+          <a
+            href="#"
+            class="text-lg font-medium leading-6"
+            :class="{ 'active-link': $route.path === '/media' }"
+          >
+            {{ headerInfo[0].headercomponents.title2 }}
+          </a>
+        </router-link>
+        <router-link to="/contact">
+          <a
+            href="#"
+            class="text-lg font-medium leading-6"
+            :class="{ 'active-link': $route.path === '/contact' }"
+          >
+            {{ headerInfo[0].headercomponents.title3 }}
+          </a>
+        </router-link>
+      </PopoverGroup>
 
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
         <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-1">
@@ -60,12 +75,14 @@
           </button>
         </div>
 
-        <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
-          <button class="flex text-[#000000]">
-            {{ headerInfo[0].headercomponents.title4 }}
-          </button>
-          <component class="mt-1" :is="headerInfo[0].headercomponents.img1" />
-        </div>
+        <router-link to="/apartment-finder">
+          <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
+            <button class="flex text-[#554242]">
+              {{ headerInfo[0].headercomponents.title4 }}
+            </button>
+            <component class="mt-1" :is="headerInfo[0].headercomponents.img1" />
+          </div>
+        </router-link>
       </div>
     </nav>
     <Dialog
@@ -94,16 +111,20 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10">
             <div class="space-y-2 py-6">
+              <router-link to="/otiumbrandstory">
               <a
                 href="#"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
                 >{{ headerInfo[0].headercomponents.title }}</a
               >
+            </router-link>
+            <router-link to="/projects">
               <a
                 href="#"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
                 >{{ headerInfo[0].headercomponents.title1 }}</a
               >
+            </router-link>
               <router-link to="/media">
                 <a
                   href="#"
@@ -210,6 +231,6 @@ const mobileMenuOpen = ref(false);
   font-weight: bold;
 }
 .active-link {
-  color: #88407C; /* You can replace 'red' with your desired shade of red */
+  color: #88407c; /* You can replace 'red' with your desired shade of red */
 }
 </style>
