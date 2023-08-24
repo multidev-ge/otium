@@ -1,6 +1,6 @@
 <template>
   <div class="lg:mb-28 mb-12">
-    <div class="lg:flex gap-8 ml-3">
+    <div class="lg:flex gap-8 ">
       <div class="pb-7 lg:pb-0">
         <img
           class="rounded-lg"

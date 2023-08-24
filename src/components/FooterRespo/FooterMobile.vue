@@ -7,7 +7,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
 </script>
 <template>
   <footer class="bg-[#000000] mt-12">
-    <div class="mx-auto py-20 justify-between w-full md:px-0">
+    <div class="mx-auto py-20 justify-between w-full ">
       <div class="md:flex gap-8">
         <div class="mb-6 md:mb-0 w-[45%] px-4">
           <h2 class="text-[#FFFFFF] text-3xl">

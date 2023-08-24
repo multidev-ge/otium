@@ -17,7 +17,7 @@ const { BrandStory } = useOtiumBrandStory();
         </p>
       </div>
     </div>
-    <div class="xl:flex gap-8 ml-3 ">
+    <div class="xl:flex gap-8  ">
 
       <div class="pb-7 xl:pb-0">
         <img class="rounded-xl	" :src="BrandStory[0].BrandStoryPhotos.img5" alt="Slide Image" />
@@ -64,7 +64,7 @@ const { BrandStory } = useOtiumBrandStory();
         </p>
       </div>
     </div>
-    <div class="xl:flex gap-8 ml-3 ">
+    <div class="xl:flex gap-8  ">
 
       <div class="pb-7 xl:pb-0">
         <img :src="BrandStory[0].BrandStoryPhotos.img8" alt="Slide Image" />
