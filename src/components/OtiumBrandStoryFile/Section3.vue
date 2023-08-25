@@ -46,8 +46,6 @@ const { BrandStory } = useOtiumBrandStory();
           {{ BrandStory[0].BrandStoryName.position4 }}
         </p>
       </div>
-      <div class="w-[304px]">
-      </div>
     </div>
   </div>
 
