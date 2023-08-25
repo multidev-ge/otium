@@ -7,30 +7,31 @@ const {currentPageInfo} = mediaInner()
 const mainOptions = {
   type: 'slide',
   perPage: 1,
-  pagination: false,
+  pagination: true,
   focus: 'center',
   gap: '1rem',
   arrows: true,
   rewind: true,
   autoplay:true,
+
 };
 </script>
 <template>
   <section class="">
     <Splide class="w-full" :options="mainOptions" :has-track="false" aria-label="My Favorite Images">
-        <div class="custom-wrapper relative flex flex-col gap-5">
           <SplideTrack>
             <SplideSlide v-for="img in currentPageInfo.images">
               <img class="rounded-lg" :src="img" alt="">
             </SplideSlide>
           </SplideTrack>
           <div class="splide__arrows">
-            <div class="flex gap-4 absolute right-0">
-              <button class="splide__arrow--prev border  rounded-full p-1.5 border-black"><splide-arrow/></button>
-              <button class="splide__arrow--next border rounded-full p-1.5 border-black"><splide-arrow/></button>
+            <div class="flex">
+              <div class="splide__arrows">
+                <button class="splide__arrow splide__arrow--prev "><splide-arrow color="white"/></button>
+                <button class="splide__arrow splide__arrow--next "><splide-arrow color="white"/></button>
+              </div>
             </div>
           </div>
-        </div>
     </Splide>
   </section>
 </template>

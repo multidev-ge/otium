@@ -14,37 +14,32 @@ const {
 </script>
 
 <template>
-  <mainLayout>
-    <div class="container mx-auto">
-      <h1 class="mb-12 text-8xl font-medium text-[#000]">Media</h1>
 
-      <div class="flex gap-4 mb-8">
+    <div class="px-4 md:px-0 container mx-auto">
+      <h1 class="mb-12 text-5xl md:text-8xl font-medium text-[#000]">Media</h1>
+
+      <div class="overflow-scroll md:overflow-hidden flex gap-2.5 md:gap-4 mb-8 w-full">
         <button v-for="category in categories" @click="setCategory(category)"
                 :class="selectedCategory === category?'bg-[#000] text-white':''"
-                class="px-6 py-3 rounded-2xl text-xl font-medium transition-all duration-250
+                class="flex-none px-6 py-3 rounded-2xl text-base md:text-xl font-medium transition-all duration-250
                         hover:bg-[#000] hover:text-white border border-[#000]">
           {{ category }}
         </button>
       </div>
 
-      <div class="grid grid-cols-3 gap-8 pb-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-8 pb-16">
         <MediaCard v-for="data in filteredData" :data="data"/>
       </div>
 
-      <button class="flex gap-1.5 items-center mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl">
+      <button class="flex gap-1.5  mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl">
         More
         <ArrowDownIcon/>
       </button>
 
     </div>
-  </mainLayout>
+
 </template>
 
 <style scoped>
-.truncate-last-line {
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+
 </style>
