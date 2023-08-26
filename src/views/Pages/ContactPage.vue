@@ -8,8 +8,8 @@ import MainLayout from "@/layouts/mainLayout.vue";
 <template>
   <mainLayout>
     <div
-        class="container flex flex-col gap-y-7 sm:max-2xl:gap-y-11 2xl:gap-y-16 mt-7 sm:max-2xl:mt-14 2xl:mt-20 mb-36 sm:max-2xl:mb-40 2xl:mb-44 mx-4 sm:max-2xl:mx-10 2xl:mx-auto font-sans">
-      <h1 class="text-5xl sm:max-2xl:text-6.5xl 2xl:text-8xl font-medium leading-normal">Contact</h1>
+        class="container flex flex-col gap-y-7 sm:max-2xl:gap-y-11 2xl:gap-y-16 mt-7 sm:max-2xl:mt-14 2xl:mt-20 mb-36 sm:max-2xl:mb-40 2xl:mb-44 mx-4 sm:max-2xl:mx-10 2xl:mx-auto">
+      <h1 class="font-medium text-5xl sm:max-2xl:text-6.5xl 2xl:text-8xl leading-normal">Contact</h1>
       <ContactInfo/>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-20 lg:gap-x-36">
         <ContactForm/>
