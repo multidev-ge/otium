@@ -14,8 +14,13 @@ const props = defineProps({
   decimal:Number,
   thousand:String,
   merge:Number,
-  clear:Function
+  clear:Function,
+
 })
+const test = () =>{
+  props.defaultValues = [0,200]
+
+}
 const components = { Slider };
 const value = ref(props.defaultValues);
 const max = ref(props.maxValue);
@@ -28,7 +33,7 @@ const format = ref({
 
 </script>
 <template>
-  <div >
+  <div class="" >
     <p class="text-xl mb-14">{{props.displayName}}</p>
     <Slider v-model="value" :max="max" :format="format" :merge="merge" :lazy="true" @end="updateValues(value[0],value[1],props.name)" :classes="{
   textDirectionRtl: 'slider-txt-rtl',

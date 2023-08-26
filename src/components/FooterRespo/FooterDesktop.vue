@@ -158,12 +158,11 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   />
                 </div>
               </a>
-              <div class="flex gap-[76px] md:pl-28">
-                <router-link to="/company">
+              <div class="flex gap-[76px] lg:gap-[76px] md:pl-20 lg:pl-28 md:gap-10 ">
+                <router-link to="/otiumbrandstory">
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                    :class="{ 'active-link': $route.path === '/company' }"
                   >
                     {{ headerInfo[0].headercomponents.title }}
                   </a>
@@ -172,7 +171,6 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                    :class="{ 'active-link': $route.path === '/projects' }"
                   >
                     {{ headerInfo[0].headercomponents.title1 }}
                   </a>
@@ -181,7 +179,6 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                    :class="{ 'active-link': $route.path === '/media' }"
                   >
                     {{ headerInfo[0].headercomponents.title2 }}
                   </a>
@@ -190,7 +187,6 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   <a
                     href="#"
                     class="text-lg font-medium leading-6 text-[#FFFFFF]"
-                    :class="{ 'active-link': $route.path === '/contact' }"
                   >
                     {{ headerInfo[0].headercomponents.title3 }}
                   </a>
@@ -204,7 +200,9 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
         class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
       />
       <div class="sm:flex sm:items-center sm:justify-between mt-16">
-        <component class="" :is="FooterInfo[0].Footercomponents.logo" />
+        <router-link to="/">
+          <component class="" :is="FooterInfo[0].Footercomponents.logo" />
+        </router-link>
         <div>
           <h2 class="text-[#FFFFFF] text-lg md:pl-36">ALL RIGHTS RESERVED</h2>
         </div>
@@ -216,8 +214,3 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
     </div>
   </footer>
 </template>
-<style scoped>
-.active-link {
-  color: #88407c; /* You can replace 'red' with your desired shade of red */
-}
-</style>
