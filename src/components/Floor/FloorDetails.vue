@@ -4,7 +4,7 @@ import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.
 
 <template>
   <div class="flex flex-col justify-between">
-    <h1 class="text-3xl lg:text-4xl font-medium leading-normal max-xl:hidden">
+    <h1 class="text-3xl lg:text-4.5xl font-medium leading-normal max-xl:hidden">
       6th floor
     </h1>
     <div class="grid max-xl:grid-cols-2 gap-y-6">
