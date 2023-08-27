@@ -4,8 +4,8 @@ import FloorApartment from "@/components/Floor/FloorApartment.vue";
 import FloorCaretUpIcon from "@/assets/icons/Floor/FloorCaretUpIcon.vue";
 import {ref} from "vue";
 
-const block = useFloor()
-const floorNumber = ref(Math.round(block.value.length / 2));
+const block = useFloor();
+const floorNumber = ref(Math.round(block.length / 2));
 </script>
 
 <template>

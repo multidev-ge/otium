@@ -3,7 +3,7 @@ import {ref} from "vue";
 
 const {planWidth, planHeight} = imageDimensions(plan);
 export default function useFloor() {
-    return ref(Array.from({length: 10}, () => [
+    const apartments = [
         {
             points: ["0 0", "179 0", "179 239", "258 239", "258 287", "267 287", "267 471", "267 534", "0 534"],
             isSold: Math.random() > 0.5,
@@ -76,18 +76,45 @@ export default function useFloor() {
                 price: 60_000
             }
         }
-    ].map((apartment) => {
-        return {
-            ...apartment,
-            ...apartmentDimensionsInPercentage(apartment.points)
-        };
-    })));
-};
+    ];
+
+    // block
+    return Array.from({length: 10}, () =>
+        apartments.map(createProcessedApartment)
+    );
+}
 
 function imageDimensions(imagePath) {
     const img = new Image();
     img.src = imagePath;
-    return {planWidth: img.naturalWidth, planHeight: img.naturalHeight};
+    return {
+        planWidth: img.naturalWidth,
+        planHeight: img.naturalHeight
+    };
+}
+
+function createProcessedApartment(apartment) {
+    return {
+        ...apartment,
+        ...apartmentDimensionsInPercentage(apartment.points)
+    };
+}
+
+function apartmentDimensionsInPercentage(points) {
+    const {minX, minY, width, height} = apartmentDimensions(points);
+
+    return {
+        top: (minY / planHeight) * 100 + '%',
+        left: (minX / planWidth) * 100 + '%',
+        width: (width / planWidth) * 100 + '%',
+        height: (height / planHeight) * 100 + '%',
+        points: points.map(point => {
+            const [x, y] = point.split(' ').map(Number);
+            const xPercentage = ((x - minX) / width) * 100;
+            const yPercentage = ((y - minY) / height) * 100;
+            return `${xPercentage}% ${yPercentage}%`;
+        })
+    };
 }
 
 function apartmentDimensions(polygonPoints) {
@@ -108,22 +135,5 @@ function apartmentDimensions(polygonPoints) {
         height: maxY - minY,
         minX,
         minY
-    };
-}
-
-function apartmentDimensionsInPercentage(points) {
-    const {minX, minY, width, height} = apartmentDimensions(points)
-
-    return {
-        top: (minY / planHeight) * 100 + '%',
-        left: (minX / planWidth) * 100 + '%',
-        width: (width / planWidth) * 100 + '%',
-        height: (height / planHeight) * 100 + '%',
-        points: points.map(point => {
-            const [x, y] = point.split(' ').map(Number);
-            const xPercentage = ((x - minX) / width) * 100;
-            const yPercentage = ((y - minY) / height) * 100;
-            return `${xPercentage}% ${yPercentage}%`;
-        })
     };
 }
