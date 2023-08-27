@@ -23,7 +23,7 @@ const nextFloor = () => {
 
 const changeFloor = (number) => {
   floorNumber.value = number;
-}
+};
 </script>
 
 <template>
@@ -36,7 +36,7 @@ const changeFloor = (number) => {
       <FloorApartment v-for="(apartment, index) in currentFloor" :apartment="apartment" :key="index"/>
     </div>
     <FloorCarousel :floorNumber="floorNumber" :blockLength="blockLength" @previousFloor="previousFloor"
-                   @nextFloor="nextFloor" @changeFloor="currentFloor"/>
+                   @nextFloor="nextFloor" @changeFloor="changeFloor"/>
   </div>
 </template>
 
