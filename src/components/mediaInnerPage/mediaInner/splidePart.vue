@@ -2,7 +2,7 @@
 import '@splidejs/vue-splide/css';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
 import SplideArrow from "@/assets/icons/mediaInnerPage/splideArrow.vue";
-import mediaInner from "@/composables/mediaInner";
+import mediaInner from "@/composables/forMediaInner/mediaInner";
 const {currentPageInfo} = mediaInner()
 const mainOptions = {
   type: 'slide',
