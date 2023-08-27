@@ -13,13 +13,13 @@ const isValid = (floor) => floor >= 1 && floor <= blockLength;
 </script>
 
 <template>
-  <div class="flex items-center max-lg:flex-row-reverse max-lg:gap-x-6">
-    <div class="flex lg:flex-col h-full lg:justify-between lg:items-center">
+  <div class="flex items-center justify-end max-xl:flex-row-reverse max-xl:gap-x-6">
+    <div class="flex xl:flex-col xl:h-full xl:justify-between xl:items-center">
       <div v-for="floor in 5"
            :key="floor"
            :class="[
-            isFeatured(floor) ? 'flex flex-row-reverse lg:flex-col items-center': 'max-lg:invisible',
-            {'invisible': !isValid(floor)}
+            isFeatured(floor) ? 'flex flex-row-reverse xl:flex-col items-center': 'max-xl:invisible',
+            {'invisible': !isValid(floorNumber + 3 - floor)}
           ]">
         <floor-caret-up-icon v-if="isFeatured(floor)"
                              @click="emit('nextFloor')"
@@ -29,13 +29,13 @@ const isValid = (floor) => floor >= 1 && floor <= blockLength;
               @click="emit('changeFloor', floorNumber + 3 - floor)"
               class="cursor-pointer font-medium lg:max-xl:text-xl xl:max-2xl:text-3xl 2xl:text-5xl"
               :class="{
-              'text-3xl lg:max-xl:text-2xl xl:max-2xl:text-4xl 2xl:text-6xl text-[#88407C] px-6 lg:py-2 lg:rounded-3xl lg:border-2 lg:border-[#88407C]': isFeatured(floor)}"/>
+              'text-3xl lg:max-xl:text-2xl xl:max-2xl:text-4xl 2xl:text-6xl text-[#88407C] px-6 xl:py-2 xl:rounded-3xl xl:border-2 xl:border-[#88407C]': isFeatured(floor)}"/>
         <floor-caret-up-icon v-if="isFeatured(floor)"
                              @click="emit('previousFloor')"
                              class="rotate-180 cursor-pointer"
                              :disabled="floorNumber === 1"/>
       </div>
     </div>
-    <span class="lg:-rotate-90 lg:-translate-x-1/4 font-medium max-lg:opacity-40 lg:text-xs whitespace-nowrap">Floor Number</span>
+    <span class="xl:-rotate-90 xl:-translate-x-1/4 font-medium max-xl:opacity-40 xl:text-xs whitespace-nowrap">Floor Number</span>
   </div>
 </template>
