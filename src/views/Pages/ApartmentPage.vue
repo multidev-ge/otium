@@ -2,6 +2,53 @@
 import mainLayout from "@/layouts/mainLayout.vue";
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue";
 import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIcon.vue";
+import ApartmentKitchenIcon from "@/assets/icons/Apartment/ApartmentKitchenIcon.vue";
+import ApartmentHallIcon from "@/assets/icons/Apartment/ApartmentHallIcon.vue";
+import ApartmentBedroomIcon from "@/assets/icons/Apartment/ApartmentBedroomIcon.vue";
+import ApartmentClosetIcon from "@/assets/icons/Apartment/ApartmentClosetIcon.vue";
+import ApartmentWCIcon from "@/assets/icons/Apartment/ApartmentWCIcon.vue";
+import ApartmentTerraceIcon from "@/assets/icons/Apartment/ApartmentTerraceIcon.vue";
+import {ref} from "vue";
+
+const currentRoom = ref(3);
+
+const rooms = ref([
+  {
+    icon: ApartmentKitchenIcon,
+    title: 'kitchen/living room',
+    area: 20
+  },
+  {
+    icon: ApartmentHallIcon,
+    title: 'Hall',
+    area: 8
+  },
+  {
+    icon: ApartmentBedroomIcon,
+    title: 'Bedroom',
+    area: 23
+  },
+  {
+    icon: ApartmentTerraceIcon,
+    title: 'Terrace',
+    area: 24
+  },
+  {
+    icon: ApartmentWCIcon,
+    title: 'WC',
+    area: 9
+  },
+  {
+    icon: ApartmentClosetIcon,
+    title: 'Closet',
+    area: 18
+  },
+  {
+    icon: ApartmentBedroomIcon,
+    title: 'Bedroom',
+    area: 26
+  },
+]);
 </script>
 
 <template>
@@ -54,7 +101,7 @@ import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIco
             </a>
           </div>
         </div>
-        <div class="relative">
+        <div class="relative ml-1 mr-8">
           <img src="../../assets/images/apartment/apartment.png" alt="apartment image">
           <div class="absolute top-1/2 left-1/2">
             <svg xmlns="http://www.w3.org/2000/svg" width="177" height="130" viewBox="0 0 177 130" fill="none">
@@ -64,8 +111,16 @@ import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIco
             </svg>
           </div>
         </div>
-        <div>
-
+        <div class="flex flex-col justify-between py-3">
+          <div @click="currentRoom = index + 1" v-for="(room, index) in rooms" :key="index"
+               class="cursor-pointer flex flex-col gap-y-1.5">
+            <div class="flex gap-x-1.5" :class="{'text-[#7B9F89] opacity-80': currentRoom === index + 1}">
+              <component :is="room.icon"/>
+              <span v-text="room.title" class="whitespace-nowrap font-medium leading-6 opacity-40"/>
+            </div>
+            <p class="text-xl font-medium leading-8" :class="{'text-[#7B9F89]': currentRoom === index + 1}"
+               v-text="room.area + ' m2'"/>
+          </div>
         </div>
       </div>
     </div>
