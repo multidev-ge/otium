@@ -7,7 +7,7 @@ import MainLayout from "@/layouts/mainLayout.vue";
 <template>
   <mainLayout>
     <div
-        class="container flex max-lg:flex-col-reverse lg:gap-x-14 max-lg:gap-y-7 mx-auto mt-7 sm:max-2xl:mt-28 2xl:mt-48 mb-40 sm:max-2xl:mb-52 2xl:mb-60">
+        class="container flex max-lg:flex-col-reverse lg:gap-x-14 max-lg:gap-y-7 px-4 sm:max-2xl:px-10 2xl:mx-auto mt-7 sm:max-2xl:mt-28 2xl:mt-48 mb-40 sm:max-2xl:mb-52 2xl:mb-60">
       <div class="flex flex-col justify-between">
         <h1 class="text-3xl lg:text-4xl font-medium leading-normal max-lg:hidden">
           6th floor

@@ -1,8 +1,9 @@
 import plan from "@/assets/images/floor/plan.png";
-import { ref} from "vue";
+import {ref} from "vue";
 
-const {planWidth, planHeight} = imageDimensions(plan);
+const {planWidth, planHeight} = await imageDimensions(plan).then(dimensions => dimensions);
 export default function useFloor() {
+    console.log(planWidth, planHeight)
     return ref(Array.from({length: 10}, () => [
         {
             points: ["0 0", "179 0", "179 239", "258 239", "258 287", "267 287", "267 471", "267 534", "0 534"],
@@ -80,12 +81,19 @@ export default function useFloor() {
 }
 
 function imageDimensions(imagePath) {
-    const img = new Image();
-    img.src = imagePath;
-    return {
-        planWidth: img.naturalWidth,
-        planHeight: img.naturalHeight
-    };
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = function () {
+            resolve({
+                planWidth: img.naturalWidth,
+                planHeight: img.naturalHeight
+            });
+        };
+        img.onerror = function (error) {
+            reject(error);
+        };
+        img.src = imagePath;
+    });
 }
 
 function createProcessedApartment(apartment) {
