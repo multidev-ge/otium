@@ -2,7 +2,7 @@
 import useFloor from "@/composables/floor/useFloor";
 import FloorApartment from "@/components/Floor/FloorApartment.vue";
 import FloorCarousel from "@/components/Floor/FloorCarousel.vue";
-import {onMounted, ref, watch} from "vue";
+import {ref, watch} from "vue";
 
 const block = useFloor();
 const blockLength = block.value.length;

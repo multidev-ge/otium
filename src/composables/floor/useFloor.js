@@ -3,7 +3,6 @@ import {ref} from "vue";
 
 const {planWidth, planHeight} = await imageDimensions(plan).then(dimensions => dimensions);
 export default function useFloor() {
-    console.log(planWidth, planHeight)
     return ref(Array.from({length: 10}, () => [
         {
             points: ["0 0", "179 0", "179 239", "258 239", "258 287", "267 287", "267 471", "267 534", "0 534"],
