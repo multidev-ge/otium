@@ -1,9 +1,9 @@
 import plan from "@/assets/images/floor/plan.png";
-import {ref} from "vue";
+import { ref} from "vue";
 
 const {planWidth, planHeight} = imageDimensions(plan);
 export default function useFloor() {
-    const apartments = [
+    return ref(Array.from({length: 10}, () => [
         {
             points: ["0 0", "179 0", "179 239", "258 239", "258 287", "267 287", "267 471", "267 534", "0 534"],
             isSold: Math.random() > 0.5,
@@ -76,12 +76,7 @@ export default function useFloor() {
                 price: 60_000
             }
         }
-    ];
-
-    // block
-    return Array.from({length: 10}, () =>
-        apartments.map(createProcessedApartment)
-    );
+    ].map((apartment) => createProcessedApartment(apartment))));
 }
 
 function imageDimensions(imagePath) {
