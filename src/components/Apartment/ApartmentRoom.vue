@@ -15,7 +15,7 @@ const {room, display} = defineProps({
   <div
       class="absolute flex justify-center items-center bg-[#7B9F89] bg-opacity-60 cursor-pointer"
       :style="{
-                display: display,
+                display,
                 width: room.width,
                 height: room.height,
                 clipPath: `polygon(${room.points})`,
