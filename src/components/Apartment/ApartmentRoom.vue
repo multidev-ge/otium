@@ -9,6 +9,7 @@ const {room, display} = defineProps({
     default: 'none'
   }
 })
+console.log(room)
 </script>
 
 <template>

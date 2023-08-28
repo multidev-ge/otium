@@ -1,61 +1,9 @@
 <script setup>
 import mainLayout from "@/layouts/mainLayout.vue";
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue";
+
+import ApartmentPlan from "@/components/Apartment/ApartmentPlan.vue";
 import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIcon.vue";
-import ApartmentKitchenIcon from "@/assets/icons/Apartment/ApartmentKitchenIcon.vue";
-import ApartmentHallIcon from "@/assets/icons/Apartment/ApartmentHallIcon.vue";
-import ApartmentBedroomIcon from "@/assets/icons/Apartment/ApartmentBedroomIcon.vue";
-import ApartmentClosetIcon from "@/assets/icons/Apartment/ApartmentClosetIcon.vue";
-import ApartmentWCIcon from "@/assets/icons/Apartment/ApartmentWCIcon.vue";
-import ApartmentTerraceIcon from "@/assets/icons/Apartment/ApartmentTerraceIcon.vue";
-import {ref} from "vue";
-import ApartmentMortgageCalculator from "@/components/Apartment/ApartmentMortgageCalculator.vue";
-
-const currentRoom = ref(3);
-
-const rooms = ref([
-  {
-    icon: ApartmentKitchenIcon,
-    title: 'kitchen/living room',
-    area: 20
-  },
-  {
-    icon: ApartmentHallIcon,
-    title: 'Hall',
-    area: 8
-  },
-  {
-    icon: ApartmentBedroomIcon,
-    title: 'Bedroom',
-    area: 23
-  },
-  {
-    icon: ApartmentTerraceIcon,
-    title: 'Terrace',
-    area: 24
-  },
-  {
-    icon: ApartmentWCIcon,
-    title: 'WC',
-    area: 9
-  },
-  {
-    icon: ApartmentClosetIcon,
-    title: 'Closet',
-    area: 18
-  },
-  {
-    icon: ApartmentBedroomIcon,
-    title: 'Bedroom',
-    area: 26
-  },
-]);
-
-import useApartment from "@/composables/apartment/useApartment";
-import ApartmentRoom from "@/components/Apartment/ApartmentRoom.vue";
-
-const rooms1 = useApartment();
-console.log(rooms1)
 </script>
 
 <template>
@@ -66,7 +14,12 @@ console.log(rooms1)
         <contact-right-arrow-icon class="rotate-180" stroke="black"/>
         Back to floor
       </router-link>
-      <div class="flex">
+      <div class="flex relative">
+        <svg class="absolute bottom-0 -z-10" xmlns="http://www.w3.org/2000/svg" width="448" height="315"
+             viewBox="0 0 448 315" fill="none">
+          <path d="M223.988 159.732L448 315V155.291L223.988 0L0 155.291V315L223.988 159.732Z" fill="#0A0A0A"
+                fill-opacity="0.03"/>
+        </svg>
         <div class="flex flex-col gap-y-7">
           <h1 class="text-3.5xl xl:text-4.5xl font-medium whitespace-nowrap" v-text="'Apartment name'"/>
           <div class="flex flex-col gap-y-1.5">
@@ -108,24 +61,9 @@ console.log(rooms1)
             </a>
           </div>
         </div>
-        <div class="relative ml-1 mr-8">
-          <img class="h-full w-full" src="../../assets/images/apartment/apartment.png" alt="apartment image">
-          <ApartmentRoom v-for="(room, index) in rooms1" :room="room" :key="index"
-                         :display="currentRoom === index + 1 ? 'block' : undefined"/>
-        </div>
-        <div class="flex flex-col justify-between py-5">
-          <div @click="currentRoom = index + 1" v-for="(room, index) in rooms" :key="index"
-               class="cursor-pointer flex flex-col gap-y-1.5">
-            <div class="flex gap-x-1.5" :class="{'text-[#7B9F89] opacity-80': currentRoom === index + 1}">
-              <component :is="room.icon"/>
-              <span v-text="room.title" class="whitespace-nowrap font-medium leading-6 opacity-40"/>
-            </div>
-            <p class="text-xl font-medium leading-8" :class="{'text-[#7B9F89]': currentRoom === index + 1}"
-               v-text="room.area + ' m2'"/>
-          </div>
-        </div>
+        <ApartmentPlan/>
       </div>
-      <apartment-mortgage-calculator/>
+      <!--      <apartment-mortgage-calculator/>-->
     </div>
   </mainLayout>
 </template>
