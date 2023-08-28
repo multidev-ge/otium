@@ -1,16 +1,12 @@
-import plan from "@/assets/images/floor/plan.png";
-import {ref} from "vue";
+import floorPlan from "@/assets/images/floor/plan.png";
+import imageDimensions from "@/helpers/imageDimensions";
 import processPoints from "@/helpers/processPoints";
+import {ref} from "vue";
 
-const img = new Image();
-img.src = plan;
-
-const promise = new Promise((resolve, reject) => {
-    img.onload = () => resolve({planWidth: img.naturalWidth, planHeight: img.naturalHeight});
-    img.onerror = error => reject(error);
-});
-
-const {planWidth, planHeight} = await promise.then(dimensions => dimensions).catch(err => console.log(err));
+const {
+    planWidth,
+    planHeight
+} = await imageDimensions(floorPlan).then(dimensions => dimensions).catch(err => console.log(err));
 export default function useFloor() {
     return ref(Array.from({length: 10}, () => [
         {

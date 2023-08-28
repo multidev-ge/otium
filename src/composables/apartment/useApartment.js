@@ -1,22 +1,18 @@
-import apartmentPlan from "@/assets/images/apartment/apartment.png";
+import apartmentPlan from "@/assets/images/apartment/plan.png";
 import ApartmentKitchenIcon from "@/assets/icons/Apartment/ApartmentKitchenIcon.vue";
 import ApartmentHallIcon from "@/assets/icons/Apartment/ApartmentHallIcon.vue";
 import ApartmentBedroomIcon from "@/assets/icons/Apartment/ApartmentBedroomIcon.vue";
 import ApartmentTerraceIcon from "@/assets/icons/Apartment/ApartmentTerraceIcon.vue";
 import ApartmentWCIcon from "@/assets/icons/Apartment/ApartmentWCIcon.vue";
 import ApartmentClosetIcon from "@/assets/icons/Apartment/ApartmentClosetIcon.vue";
+import imageDimensions from "@/helpers/imageDimensions";
 import processPoints from "@/helpers/processPoints";
 import {ref} from "vue";
 
-const img = new Image();
-img.src = apartmentPlan;
-
-const promise = new Promise((resolve, reject) => {
-    img.onload = () => resolve({planWidth: img.naturalWidth, planHeight: img.naturalHeight});
-    img.onerror = error => reject(error);
-});
-
-const {planWidth, planHeight} = await promise.then(dimensions => dimensions).catch(err => console.log(err));
+const {
+    planWidth,
+    planHeight
+} = await imageDimensions(apartmentPlan).then(dimensions => dimensions).catch(err => console.log(err));
 export default function useApartment() {
     const apartment = [
         {

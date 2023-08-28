@@ -10,7 +10,7 @@ const rooms = useApartment();
 <template>
   <div class="flex gap-x-1" v-if="rooms">
     <div class="relative">
-      <img class="h-full w-full" src="../../assets/images/apartment/apartment.png" alt="apartment image">
+      <img class="h-full w-full" src="../../assets/images/apartment/plan.png" alt="apartment image">
       <ApartmentRoom v-for="(room, index) in rooms" :room="room" :key="index"
                      :display="currentRoom === index + 1 ? 'block' : undefined"/>
     </div>
