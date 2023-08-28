@@ -10,6 +10,7 @@ import ApartmentWCIcon from "@/assets/icons/Apartment/ApartmentWCIcon.vue";
 import ApartmentTerraceIcon from "@/assets/icons/Apartment/ApartmentTerraceIcon.vue";
 import {ref} from "vue";
 import ApartmentMortgageCalculator from "@/components/Apartment/ApartmentMortgageCalculator.vue";
+
 const currentRoom = ref(3);
 
 const rooms = ref([
@@ -49,6 +50,12 @@ const rooms = ref([
     area: 26
   },
 ]);
+
+import useApartment from "@/composables/apartment/useApartment";
+import ApartmentRoom from "@/components/Apartment/ApartmentRoom.vue";
+
+const rooms1 = useApartment();
+console.log(rooms1)
 </script>
 
 <template>
@@ -102,14 +109,9 @@ const rooms = ref([
           </div>
         </div>
         <div class="relative ml-1 mr-8">
-          <img src="../../assets/images/apartment/apartment.png" alt="apartment image">
-          <div class="absolute top-1/2 left-1/2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="177" height="130" viewBox="0 0 177 130" fill="none">
-              <path
-                  d="M87.3938 114.511L125.559 130L177 41.4894L59.7375 0L0 81.8723L42.0375 97.3617L44.8031 110.638L81.3094 124.468L87.3938 114.511Z"
-                  fill="#7B9F89" fill-opacity="0.6"/>
-            </svg>
-          </div>
+          <img class="h-full w-full" src="../../assets/images/apartment/apartment.png" alt="apartment image">
+          <ApartmentRoom v-for="(room, index) in rooms1" :room="room" :key="index"
+                         :display="currentRoom === index + 1 ? 'block' : undefined"/>
         </div>
         <div class="flex flex-col justify-between py-5">
           <div @click="currentRoom = index + 1" v-for="(room, index) in rooms" :key="index"
@@ -123,7 +125,7 @@ const rooms = ref([
           </div>
         </div>
       </div>
-      <apartment-mortgage-calculator />
+      <apartment-mortgage-calculator/>
     </div>
   </mainLayout>
 </template>

@@ -2,6 +2,24 @@
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue";
 import BOGLogo from "../../assets/logos/apartment/BOGLogo.png";
 import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
+
+function calculateMonthlyPayment(totalPropertyPrice, downPaymentPercentage, interestRate, loanTerm) {
+  const loanAmount = totalPropertyPrice * (1 - downPaymentPercentage / 100);
+  const monthlyInterestRate = (interestRate / 100) / 12;
+  const loanTermMonths = loanTerm * 12;
+
+  const monthlyPayment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTermMonths)) / (Math.pow(1 + monthlyInterestRate, loanTermMonths) - 1);
+
+  return monthlyPayment;
+}
+
+// Example usage
+const totalPropertyPrice = 80_000; // Total property price
+const downPaymentPercentage = 0;  // Down payment as a percentage of total property price
+const interestRate = 6;          // Annual interest rate (in percentage)
+const loanTerm = 12;               // Loan term in years
+
+const monthlyPayment = calculateMonthlyPayment(totalPropertyPrice, downPaymentPercentage, interestRate, loanTerm);
 </script>
 
 <template>
@@ -15,20 +33,24 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
         </p>
       </div>
       <div class="flex items-center gap-x-6">
-        <div class="relative py-8 pl-6 pr-12 bg-[#FCE1D3] rounded-xl">
-          <div class="flex gap-x-4 items-center">
-            <img :src="BOGLogo" alt="BOG logo">
-            <span class="text-xl font-medium leading-8">Start applying</span>
+        <a class="cursor-pointer" target="_blank" href="https://bankofgeorgia.ge/ka/retail/loans/mortgage/mortgage-application">
+          <div class="relative py-8 pl-6 pr-12 bg-[#FCE1D3] rounded-xl">
+            <div class="flex gap-x-4 items-center">
+              <img :src="BOGLogo" alt="BOG logo">
+              <span class="text-xl font-medium leading-8">Start applying</span>
+            </div>
+            <contact-right-arrow-icon stroke="black" class="-rotate-45 absolute top-3 right-3"/>
           </div>
-          <contact-right-arrow-icon stroke="black" class="-rotate-45 absolute top-3 right-3"/>
-        </div>
-        <div class="relative py-8 pl-6 pr-12 bg-[#E5F7FD] rounded-xl">
-          <div class="flex gap-x-4 items-center">
-            <img :src="TBCLogo" alt="TBC logo">
-            <span class="text-xl font-medium leading-8">Start applying</span>
+        </a>
+        <a class="cursor-pointer" target="_blank" href="https://tbcmortgage.ge/?utm_source=google&utm_medium=search_keyword&utm_campaign=tbcmortgage_general&utm_content=mainkeywords&gad=1&gclid=Cj0KCQjwi7GnBhDXARIsAFLvH4mgkdxtROzPQkwxdd07hEBVsQJBPCsAL5xW9bHiCyBuNCK9gf8j-9UaAuc1EALw_wcB">
+          <div class="relative py-8 pl-6 pr-12 bg-[#E5F7FD] rounded-xl">
+            <div class="flex gap-x-4 items-center">
+              <img :src="TBCLogo" alt="TBC logo">
+              <span class="text-xl font-medium leading-8">Start applying</span>
+            </div>
+            <contact-right-arrow-icon stroke="black" class="-rotate-45 absolute top-3 right-3"/>
           </div>
-          <contact-right-arrow-icon stroke="black" class="-rotate-45 absolute top-3 right-3"/>
-        </div>
+        </a>
       </div>
     </div>
     <div class="bg-white rounded-xl m-4 p-12 flex flex-col gap-y-12">
@@ -61,7 +83,7 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
       </div>
       <div class="flex items-center justify-between">
         <p class="text-xl font-medium leading-8 opacity-40">Your monthly payment</p>
-        <p class="text-2xl font-medium leading-8">$540</p>
+        <p class="text-2xl font-medium leading-8">${{Math.floor(monthlyPayment)}}</p>
       </div>
     </div>
   </div>
