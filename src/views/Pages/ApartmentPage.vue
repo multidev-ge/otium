@@ -14,7 +14,7 @@ import ApartmentMortgageCalculator from "@/components/Apartment/ApartmentMortgag
         <ContactRightArrowIcon class="rotate-180" stroke="black"/>
         Back to floor
       </router-link>
-      <div class="flex relative">
+      <div class="flex relative max-lg:flex-col">
         <ApartmentDetails/>
         <ApartmentPlan/>
       </div>

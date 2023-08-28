@@ -8,13 +8,13 @@ const rooms = useApartment();
 </script>
 
 <template>
-  <div class="flex gap-x-1" v-if="rooms">
+  <div class="flex gap-x-1  max-lg:flex-col">
     <div class="relative">
       <img class="h-full w-full" src="../../assets/images/apartment/plan.png" alt="apartment image">
       <ApartmentRoom v-for="(room, index) in rooms" :room="room" :key="index"
                      :display="currentRoom === index + 1 ? 'block' : undefined"/>
     </div>
-    <div class="flex flex-col justify-between py-5">
+    <div class="grid grid-cols-2 lg:grid-cols-1 gap-5 py-5">
       <div @click="currentRoom = index + 1" v-for="(room, index) in rooms" :key="index"
            class="cursor-pointer flex flex-col gap-y-1.5">
         <div class="flex gap-x-1.5" :class="{'text-[#7B9F89] opacity-80': currentRoom === index + 1}">

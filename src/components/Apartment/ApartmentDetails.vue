@@ -4,7 +4,7 @@ import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-7">
+  <div class="flex flex-col gap-y-7 w-fit">
     <h1 class="text-3.5xl xl:text-4.5xl font-medium whitespace-nowrap" v-text="'Apartment name'"/>
     <div class="flex flex-col gap-y-1.5">
       <h3 class="text-xl xl:text-xl font-medium leading-8" v-text="'Floor'"/>
