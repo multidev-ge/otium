@@ -4,12 +4,11 @@ const {room, display} = defineProps({
     type: Object,
     required: true
   },
-  display:{
+  display: {
     type: String,
     default: 'none'
   }
-})
-console.log(room)
+});
 </script>
 
 <template>

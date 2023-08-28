@@ -1,11 +1,20 @@
 import plan from "@/assets/images/floor/plan.png";
 import {ref} from "vue";
+import processPoints from "@/helpers/processPoints";
 
-const {planWidth, planHeight} = await imageDimensions(plan).then(dimensions => dimensions);
+const img = new Image();
+img.src = plan;
+
+const promise = new Promise((resolve, reject) => {
+    img.onload = () => resolve({planWidth: img.naturalWidth, planHeight: img.naturalHeight});
+    img.onerror = error => reject(error);
+});
+
+const {planWidth, planHeight} = await promise.then(dimensions => dimensions).catch(err => console.log(err));
 export default function useFloor() {
     return ref(Array.from({length: 10}, () => [
         {
-            points: ["0 0", "179 0", "179 239", "258 239", "258 287", "267 287", "267 471", "267 534", "0 534"],
+            points: [0, 0, 179, 0, 179, 239, 258, 239, 258, 287, 267, 287, 267, 471, 267, 534, 0, 534],
             isSold: Math.random() > 0.5,
             details: {
                 size: 64,
@@ -14,7 +23,7 @@ export default function useFloor() {
             }
         },
         {
-            points: ["179 0", "352 0", "352 239", "179 239"],
+            points: [179, 0, 352, 0, 352, 239, 179, 239],
             isSold: Math.random() > 0.5,
             details: {
                 size: 64,
@@ -23,7 +32,7 @@ export default function useFloor() {
             }
         },
         {
-            points: ["352 0", "596 0", "596 239", "352 239"],
+            points: [352, 0, 596, 0, 596, 239, 352, 239],
             isSold: Math.random() > 0.5,
             details: {
                 size: 64,
@@ -32,7 +41,7 @@ export default function useFloor() {
             }
         },
         {
-            points: ["596 0", "852 0", "852 239", "596 239"],
+            points: [596, 0, 852, 0, 852, 239, 596, 239],
             isSold: Math.random() > 0.5,
             details: {
                 size: 64,
@@ -41,7 +50,7 @@ export default function useFloor() {
             }
         },
         {
-            points: ["852 0", "1199 0", "1199 262", "1088 262", "1088 300", "1031 300", "1031 224", "978 224", "978 239", "852 239"],
+            points: [852, 0, 1199, 0, 1199, 262, 1088, 262, 1088, 300, 1031, 300, 1031, 224, 978, 224, 978, 239, 852, 239],
             isSold: Math.random() > 0.5,
             details: {
                 size: 64,
@@ -50,7 +59,7 @@ export default function useFloor() {
             }
         },
         {
-            points: ["934 238", "978 239", "978 224", "1031 224", "1031 300", "1088 300", "1088 262", "1199 262", "1199 534", "934 534"],
+            points: [934, 238, 978, 239, 978, 224, 1031, 224, 1031, 300, 1088, 300, 1088, 262, 1199, 262, 1199, 534, 934, 534],
             isSold: Math.random() > 0.5,
             details: {
                 size: 64,
@@ -59,7 +68,7 @@ export default function useFloor() {
             }
         },
         {
-            points: ["604 287", "787 287", "787 362", "855 362", "855 467", "772 467", "772 534", "604 534"],
+            points: [604, 287, 787, 287, 787, 362, 855, 362, 855, 467, 772, 467, 772, 534, 604, 534],
             isSold: Math.random() > 0.5,
             details: {
                 size: 64,
@@ -68,7 +77,7 @@ export default function useFloor() {
             }
         },
         {
-            points: ["347 287", "604 287", "604 534", "347 534"],
+            points: [347, 287, 604, 287, 604, 534, 347, 534],
             isSold: Math.random() > 0.5,
             details: {
                 size: 64,
@@ -76,66 +85,5 @@ export default function useFloor() {
                 price: 60_000
             }
         }
-    ].map((apartment) => createProcessedApartment(apartment))));
-}
-
-function imageDimensions(imagePath) {
-    return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.onload = function () {
-            resolve({
-                planWidth: img.naturalWidth,
-                planHeight: img.naturalHeight
-            });
-        };
-        img.onerror = function (error) {
-            reject(error);
-        };
-        img.src = imagePath;
-    });
-}
-
-function createProcessedApartment(apartment) {
-    return {
-        ...apartment,
-        ...apartmentDimensionsInPercentage(apartment.points)
-    };
-}
-
-function apartmentDimensionsInPercentage(points) {
-    const {minX, minY, width, height} = apartmentDimensions(points);
-
-    return {
-        top: (minY / planHeight) * 100 + '%',
-        left: (minX / planWidth) * 100 + '%',
-        width: (width / planWidth) * 100 + '%',
-        height: (height / planHeight) * 100 + '%',
-        points: points.map(point => {
-            const [x, y] = point.split(' ').map(Number);
-            const xPercentage = ((x - minX) / width) * 100;
-            const yPercentage = ((y - minY) / height) * 100;
-            return `${xPercentage}% ${yPercentage}%`;
-        })
-    };
-}
-
-function apartmentDimensions(polygonPoints) {
-    let minX = Infinity, maxX = -Infinity,
-        minY = Infinity, maxY = -Infinity;
-
-    for (let i = 0; i < polygonPoints.length; i++) {
-        const [x, y] = polygonPoints[i].split(' ').map(Number);
-
-        if (x < minX) minX = x;
-        if (x > maxX) maxX = x;
-        if (y < minY) minY = y;
-        if (y > maxY) maxY = y;
-    }
-
-    return {
-        width: maxX - minX,
-        height: maxY - minY,
-        minX,
-        minY
-    };
+    ]).map(apartment => processPoints(apartment, planWidth, planHeight)));
 }

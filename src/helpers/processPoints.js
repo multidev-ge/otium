@@ -1,6 +1,6 @@
 export default function processPoints(array, planWidth, planHeight) {
-    return array.map((room) => {
-        const coords = room.points.split(',').map(Number);
+    return array.map(room => {
+        const coords = room.points;
 
         let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
         for (let i = 0; i < coords.length; i += 2) {
