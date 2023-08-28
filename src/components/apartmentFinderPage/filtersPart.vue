@@ -7,7 +7,6 @@ const {dropDowns, rooms, selectRoom, doubleSliderOptions, clearFilter,changeSold
 
 </script>
 <template>
-
   <div class="md:w-1/6 w-11/12 md:mx-0 mx-auto flex flex-col font-medium  gap-10">
     <p class="text-4xl ">Find your apartment</p>
     <dropdown :name="dropDowns.project.name" :defaultName="dropDowns.project.value" :options="dropDowns.project.list"/>

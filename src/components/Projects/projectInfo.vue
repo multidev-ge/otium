@@ -15,6 +15,6 @@ const getIconComponent = (company) => {
       <component :is="getIconComponent(props.icon)"></component>
       <p class="text-lg text-[#000000CC]">{{props.iconName}}</p>
     </div>
-    <p class="text-2xl">{{props.value}}</p>
+    <p class="md:text-2xl text-lg">{{props.value}}</p>
   </div>
 </template>
