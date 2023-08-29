@@ -17,9 +17,9 @@ import Apartment from "@/components/Apartment/Apartment.vue";
         Back to floor
       </router-link>
 
-      <Apartment class="mt-7"/>
+      <Apartment class="xl:mt-7"/>
 
-      <MortgageCalculator class="mt-28"/>
+      <MortgageCalculator class="mt-20 xl:mt-28"/>
 
       <!--      <ApartmentFinder class="mt-40" />-->
     </div>

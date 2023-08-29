@@ -5,7 +5,7 @@ import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.
 
 <template>
   <!-- Apartment Details -->
-  <div class="flex flex-col justify-between xl:py-12">
+  <div class="flex sm:max-xl:w-3/5 flex-col justify-between xl:py-14">
     <div class="flex flex-col gap-y-1.5">
 
       <h3 class="text-xl xl:text-xl font-medium leading-8" v-text="'Floor'"/>
@@ -25,13 +25,13 @@ import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.
       </select>
     </div>
 
-    <div class="flex xl:flex-col max-xl:mt-10 max-xl:justify-between gap-x-7 xl:gap-y-7">
-      <div class="flex flex-col gap-y-1.5">
+    <div class="flex xl:flex-col max-xl:mt-10 sm:max-xl:justify-between max-xl:gap-x-10 xl:gap-y-7">
+      <div class="flex flex-col xl:gap-y-1.5 max-xl:justify-between">
         <span class="font-medium leading-6 opacity-40" v-text="'Area, m2'"/>
         <p class="text-xl font-medium leading-8" v-text="'120 m2'"/>
       </div>
 
-      <div class="flex flex-col gap-y-1.5">
+      <div class="flex flex-col xl:gap-y-1.5 max-xl:justify-between">
         <span class="font-medium leading-6 opacity-40" v-text="'Price'"/>
         <p class="text-4.5xl font-bold text-[#7B9F89]" v-text="'$ 80 000'"/>
       </div>
