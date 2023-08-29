@@ -7,7 +7,7 @@ import ApartmentWCIcon from "@/assets/icons/Apartment/ApartmentWCIcon.vue";
 import ApartmentClosetIcon from "@/assets/icons/Apartment/ApartmentClosetIcon.vue";
 import imageDimensions from "@/helpers/imageDimensions";
 import processPoints from "@/helpers/processPoints";
-import {ref} from "vue";
+import {shallowRef} from "vue";
 
 const {
     planWidth,
@@ -59,5 +59,5 @@ export default function useApartment() {
         }
     ];
 
-    return ref(processPoints(apartment, planWidth, planHeight));
+    return shallowRef(processPoints(apartment, planWidth, planHeight));
 };

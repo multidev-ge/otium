@@ -5,8 +5,8 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
 </script>
 
 <template>
-  <div class="grid grid-cols-2 bg-black rounded-xl">
-    <div class="flex flex-col justify-between p-16">
+  <div class="grid grid-cols-1 xl:grid-cols-2 bg-black rounded-xl">
+    <div class="flex flex-col justify-between p-4 xl:p-16">
       <div class="flex flex-col gap-y-4">
         <h2 class="text-white font-medium text-4.5xl">Calculator</h2>
         <p class="text-white text-xl font-medium leading-8 opacity-60">
@@ -14,25 +14,25 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
           id, volutpat tortor. In vulputate lorem quis
         </p>
       </div>
-      <div class="flex items-center gap-x-6">
+      <div class="flex max-xl:flex-col max-xl:gap-y-5 items-center gap-x-6 max-xl:mt-7">
         <a class="cursor-pointer" target="_blank"
            href="https://bankofgeorgia.ge/ka/retail/loans/mortgage/mortgage-application">
-          <div class="relative py-8 pl-6 pr-12 bg-[#FCE1D3] rounded-xl">
+          <div class="xl:relative flex items-center py-4 xl:py-8 pl-10 xl:pl-6 pr-20 xl:pr-12 bg-[#FCE1D3] rounded-xl">
             <div class="flex gap-x-4 items-center">
               <img :src="BOGLogo" alt="BOG logo">
-              <span class="text-xl font-medium leading-8">Start applying</span>
+              <span class="text-xl font-medium leading-8 whitespace-nowrap">Start applying</span>
             </div>
-            <contact-right-arrow-icon stroke="black" class="-rotate-45 absolute top-3 right-3"/>
+            <contact-right-arrow-icon stroke="black" class="-rotate-45 max-xl:ml-6 xl:absolute xl:top-3 xl:right-3"/>
           </div>
         </a>
         <a class="cursor-pointer" target="_blank"
            href="https://tbcmortgage.ge/?utm_source=google&utm_medium=search_keyword&utm_campaign=tbcmortgage_general&utm_content=mainkeywords&gad=1&gclid=Cj0KCQjwi7GnBhDXARIsAFLvH4mgkdxtROzPQkwxdd07hEBVsQJBPCsAL5xW9bHiCyBuNCK9gf8j-9UaAuc1EALw_wcB">
-          <div class="relative py-8 pl-6 pr-12 bg-[#E5F7FD] rounded-xl">
+          <div class="xl:relative flex  items-center py-4 xl:py-8 pl-10 xl:pl-6 pr-20 xl:pr-12 bg-[#E5F7FD] rounded-xl">
             <div class="flex gap-x-4 items-center">
               <img :src="TBCLogo" alt="TBC logo">
-              <span class="text-xl font-medium leading-8">Start applying</span>
+              <span class="text-xl font-medium leading-8 whitespace-nowrap">Start applying</span>
             </div>
-            <contact-right-arrow-icon stroke="black" class="-rotate-45 absolute top-3 right-3"/>
+            <contact-right-arrow-icon stroke="black" class="-rotate-45 max-xl:ml-6 xl:absolute xl:top-3 xl:right-3"/>
           </div>
         </a>
       </div>
@@ -47,7 +47,7 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
           there
         </p>
       </div>
-      <div class="grid grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
           <span class="block text-sm font-medium leading-6 opacity-40">Total property price</span>
           $<input type="number" value="80_000">
