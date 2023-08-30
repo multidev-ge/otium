@@ -50,19 +50,19 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
       <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
           <span class="block text-sm font-medium leading-6 opacity-40">Total property price</span>
-          $<input type="number" value="80_000">
+          $<input type="text" value="80 000" class="border-0 outline-0">
         </div>
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
           <span class="block text-sm font-medium leading-6 opacity-40">Split payment in years</span>
-          <input type="number" value="12">
+          <input type="text" value="12" class="border-0 outline-0">
         </div>
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
           <span class="block text-sm font-medium leading-6 opacity-40">Percentage</span>
-          %<input type="number" value="6">
+          %<input type="text" value="6" class="border-0 outline-0">
         </div>
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
           <span class="block text-sm font-medium leading-6 opacity-40">Pre payment</span>
-          $<input type="number" value="0">
+          $<input type="text" value="0" class="border-0 outline-0">
         </div>
       </div>
       <div class="flex items-center justify-between">

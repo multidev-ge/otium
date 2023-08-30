@@ -10,7 +10,7 @@ const {apartment} = defineProps({
 <template>
   <router-link :to="{name: 'Apartment'}">
   <div
-      class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment max-md:pointer-events-none"
+      class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment"
       :class="{'sold-apartment': apartment.isSold}"
       :style="{
                 width: apartment.width,

@@ -1,6 +1,26 @@
 <script setup>
 import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIcon.vue";
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue";
+
+const order = (index) => {
+  let suffix;
+
+  switch(index) {
+    case 1:
+      suffix = 'st';
+      break;
+    case 2:
+      suffix = 'nd';
+      break;
+    case 3:
+      suffix = 'rd';
+      break;
+    default:
+      suffix = 'th';
+  }
+
+  return index + suffix;
+};
 </script>
 
 <template>
@@ -12,16 +32,7 @@ import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.
 
       <select
           class="w-full font-medium leading-6 py-3 px-4 focus:outline-0 rounded-md border border-black border-opacity-40">
-        <option value="10">10th</option>
-        <option value="9">9th</option>
-        <option value="8">8th (sold)</option>
-        <option value="7">7th</option>
-        <option value="6" selected>6th</option>
-        <option value="5">5th</option>
-        <option value="4">4th</option>
-        <option value="3">3rd</option>
-        <option value="2">2nd</option>
-        <option value="1">1st</option>
+        <option v-for="i in 9" :selected="10 - i === 6" v-text="order(10 - i)"/>
       </select>
     </div>
 
