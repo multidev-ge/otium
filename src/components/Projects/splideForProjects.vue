@@ -36,53 +36,53 @@ const changeValue = (value) =>{
 
 </script>
 <template>
-  <section class="">
+  <section class="container  w-11/12 mx-auto">
     <Splide  :options="mainOptions" :has-track="false"  @splide:moved="function (newIndex, prevIndex, destIndex){
       changeValue(newIndex.index+1)
     }" >
-      <div class="custom-wrapper  flex flex-col container  w-11/12 mx-auto ">
-        <SplideTrack>
-          <SplideSlide v-for="(project,index) in projectsList">
-            <div class="flex ">
-              <div class=" flex md:flex-row flex-col md:w-full  justify-between">
-                <div class="md:w-2/6 flex flex-col md:items-start">
-                  <p class="font-medium text-5xl md:text-8xl md:mb-12 mb-7">Projects</p>
-                  <div class="gap-7 flex flex-col mb-6 ">
-                    <p class="text-4xl font">{{projectsList[0].projectName}}</p>
-                    <img class="md:hidden" alt="" :src="project.image">
+      <div class="custom-wrapper  flex flex-col  ">
+     <div>
+       <SplideTrack>
+         <SplideSlide v-for="(project) in projectsList">
+           <div class="flex">
+             <div class=" flex md:flex-row flex-col md:w-full  justify-between">
+               <div class="md:w-2/6 flex flex-col md:items-start">
+                 <p class="font-medium text-5xl md:text-8xl md:mb-12 mb-7">Projects</p>
+                 <div class="gap-7 flex flex-col mb-6 ">
+                   <p class="text-4xl font">{{projectsList[0].projectName}}</p>
+                   <img class="md:hidden" alt="" :src="project.image">
 
-                    <ProjectInfo :icon="AddressIcon" icon-name="Address" :value="project.address"/>
-                    <div class="flex md:flex-col justify-between gap-7">
-                      <ProjectInfo :icon="HomeIcon" icon-name="Apartments for sale" :value="project.apartmentsForSale+' apartments left'"/>
-                      <ProjectInfo :icon="StatusIcon" icon-name="Status" :value="project.status"/>
-                    </div>
-                  </div>
-                  <button class="bg-[#F0EEEC] flex items-center gap-3 px-6 py-3 justify-center  rounded-2xl mb-7 ">More About Project <right-arrow/></button>
+                   <ProjectInfo :icon="AddressIcon" icon-name="Address" :value="project.address"/>
+                   <div class="flex md:flex-col justify-between gap-7">
+                     <ProjectInfo :icon="HomeIcon" icon-name="Apartments for sale" :value="project.apartmentsForSale+' apartments left'"/>
+                     <ProjectInfo :icon="StatusIcon" icon-name="Status" :value="project.status"/>
+                   </div>
+                 </div>
+                 <button class="bg-[#F0EEEC] flex items-center gap-3 px-6 py-3 justify-center  rounded-2xl mb-7 ">More About Project <right-arrow/></button>
 
-                </div>
+               </div>
 
-                <img class="md:w-2/4 md:flex hidden" alt="" :src="project.image">
-              </div>
-            </div>
-          </SplideSlide>
-        </SplideTrack>
+               <img class="md:w-2/4 md:flex hidden" alt="" :src="project.image">
+             </div>
+           </div>
+         </SplideSlide>
+       </SplideTrack>
+     </div>
 
 
-        <div class="relative  md:w-1/4	flex  ">
-          <div class=" flex w-full relative items-center justify-between">
 
+          <div class=" flex  max-w-md relative items-center justify-between">
             <p class="text-xl mr-5 md:w-auto w-1/2">Scroll to view other projects</p>
 
             <div class="splide__arrows !flex relative  pt-24 ">
               <button class="splide__arrow splide__arrow--prev !hidden">Prev</button>
-              <button class="splide__arrow !bg-black !w-12 !h-12 text-xl absolute   splide__arrow--next"><ArrowForProjectsSplide/></button>
+              <button class="splide__arrow !bg-black !w-12 !h-12 text-xl  splide__arrow--next"><ArrowForProjectsSplide/></button>
             </div>
 
             <p class="md:-ml-16 md:pl-0 pl-8 text-2xl"><span>{{currentValue}}</span> / <span class="opacity-30">{{projectsList.length}}</span></p>
           </div>
 
         </div>
-      </div>
     </Splide>
   </section>
 </template>
