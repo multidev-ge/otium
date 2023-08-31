@@ -1,5 +1,5 @@
 <script setup>
-import mediaInner from "@/composables/mediaInner";
+import mediaInner from "@/composables/forMediaInner/mediaInner";
 import DoubleText from "@/components/mediaInnerPage/universalComponents/doubleText.vue";
 import SplidePart from "@/components/mediaInnerPage/mediaInner/splidePart.vue";
 const {currentPageInfo} = mediaInner()

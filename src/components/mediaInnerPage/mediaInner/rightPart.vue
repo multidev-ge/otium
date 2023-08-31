@@ -1,5 +1,5 @@
 <script setup>
-import mediaInner from "@/composables/mediaInner";
+import mediaInner from "@/composables/forMediaInner/mediaInner";
 const {similarNews} = mediaInner()
 </script>
 

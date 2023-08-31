@@ -63,7 +63,14 @@ const router = createRouter({
     path: '/apartment-finder',
     name: 'ApartmentFinder',
     component: () => import('../views/Pages/apartmentFinder.vue')
-  }]
+  },
+    {
+      path: '/projects',
+      name: 'Projects',
+      component: () => import('../views/Pages/projectsInner.vue')
+    }
+
+  ]
 })
 
 export default router;
