@@ -8,8 +8,9 @@ const {apartment} = defineProps({
 </script>
 
 <template>
+  <router-link :to="{name: 'Apartment'}">
   <div
-      class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment max-md:pointer-events-none"
+      class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment"
       :class="{'sold-apartment': apartment.isSold}"
       :style="{
                 width: apartment.width,
@@ -32,6 +33,7 @@ const {apartment} = defineProps({
         {{ apartment.details.price.toLocaleString('en-US', {useGrouping: true}).replace(/,/g, ' ') }}</p>
     </div>
   </div>
+  </router-link>
 </template>
 
 

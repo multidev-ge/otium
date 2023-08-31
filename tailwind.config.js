@@ -24,7 +24,8 @@ module.exports = {
       },
       fontSize: {
         '6.5xl': '4rem',
-
+        '4.5xl': '40px',
+        '3.5xl': '32px',
       },
       lineHeight: {
         '6.5xl': '1.1',
