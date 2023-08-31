@@ -6,8 +6,8 @@ const { headerInfo } = useHeader();
 const { FooterInfo, contactFormData, submitContactForm } = useFooter();
 </script>
 <template>
-  <footer class="bg-[#000000] mt-12">
-    <div class="mx-auto container py-20 justify-between w-full px-4 md:px-0">
+  <footer class="bg-[#000000] mt-12 ">
+    <div class="mx-auto container  justify-between w-full py-20">
       <div class="block md:block xl:flex gap-8">
         <div class="mb-6 md:mb-0 w-[45%]">
           <h2 class="text-[#FFFFFF] text-3xl">

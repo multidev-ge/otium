@@ -2,6 +2,8 @@ import {
   createRouter,
   createWebHistory
 } from "vue-router";
+import {defineComponent} from "vue";
+import {RouterView} from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -43,7 +45,19 @@ const router = createRouter({
   {
     path: '/projects',
     name: 'Projects',
-    component: () => import('../views/Pages/Projects.vue')
+    component: () => new Promise(resolve => resolve(defineComponent(RouterView))),
+    children: [
+      {
+          path: "",
+          name: "Projects",
+          component: () => import('../views/Pages/Projects.vue'),
+      },
+      {
+          path: ":id",
+          name: "TechnicalPage",
+          component: () => import('../views/Pages/TechnicalPage.vue'),
+      },
+  ]
   },
   {
     path: '/apartment-finder',
