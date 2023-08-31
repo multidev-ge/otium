@@ -36,7 +36,7 @@ const changeValue = (value) =>{
 
 </script>
 <template>
-  <section class="container  w-11/12 mx-auto">
+  <section class="container  w-11/12  mx-auto">
     <Splide  :options="mainOptions" :has-track="false"  @splide:moved="function (newIndex, prevIndex, destIndex){
       changeValue(newIndex.index+1)
     }" >
@@ -59,7 +59,6 @@ const changeValue = (value) =>{
                    </div>
                  </div>
                  <button class="bg-[#F0EEEC] flex items-center gap-3 px-6 py-3 justify-center  rounded-2xl mb-7 ">More About Project <right-arrow/></button>
-
                </div>
 
                <img class="md:w-2/4 md:flex hidden" alt="" :src="project.image">
@@ -69,9 +68,7 @@ const changeValue = (value) =>{
        </SplideTrack>
      </div>
 
-
-
-          <div class=" flex  max-w-md relative items-center justify-between">
+          <div class=" flex  max-w-md relative items-center  justify-between">
             <p class="text-xl mr-5 md:w-auto w-1/2">Scroll to view other projects</p>
 
             <div class="splide__arrows !flex relative  pt-24 ">
