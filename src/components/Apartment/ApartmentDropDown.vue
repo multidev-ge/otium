@@ -16,6 +16,8 @@ defineProps({
 const emit = defineEmits(['changeFloor'])
 
 const showDropDown = ref(false)
+
+const toggleDropDown = () => showDropDown.value = !showDropDown.value
 </script>
 
 <template>
@@ -29,7 +31,7 @@ const showDropDown = ref(false)
        class="py-4 pl-4 pr-1 w-full rounded-md border border-black border-opacity-40">
     <div class="scroll-container flex flex-col gap-y-4 h-60 overflow-y-scroll">
       <p class="cursor-pointer font-medium leading-6" v-for="floor in options.length" :key="options.length - floor + 1"
-         @click="emit('changeFloor', options.length - floor)">
+         @click="emit('changeFloor', options.length - floor); toggleDropDown">
         {{ options[options.length - floor] }} <span v-if="floor === 4"
                                                     class="text-[#E35553] font-medium leading-6 opacity-80">(sold)</span>
       </p>
