@@ -6,7 +6,7 @@ import MainLayout from "@/layouts/mainLayout.vue"
 </script>
 
 <template>
-  <mainLayout>
+  <main-layout>
     <div
         class="container flex flex-col gap-y-7 sm:max-2xl:gap-y-11 2xl:gap-y-16 mt-1 sm:max-2xl:mt-8 2xl:mt-14 mb-36 sm:max-2xl:mb-40 2xl:mb-44 px-4 sm:max-2xl:px-10 2xl:mx-auto">
       <h1
@@ -14,12 +14,12 @@ import MainLayout from "@/layouts/mainLayout.vue"
         Contact
       </h1>
 
-      <ContactInfo/>
+      <contact-info/>
 
       <div class="grid grid-cols-1 lg:grid-cols-2 max-lg:gap-y-20 lg:gap-x-36">
-        <ContactForm/>
-        <ContactMap/>
+        <contact-form/>
+        <contact-map/>
       </div>
     </div>
-  </mainLayout>
+  </main-layout>
 </template>

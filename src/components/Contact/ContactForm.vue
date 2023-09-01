@@ -17,7 +17,7 @@ const {contactFormData, submitContactForm} = useContact()
     <button type="submit"
             class="w-full md:w-36 flex items-center justify-center bg-black text-white px-6 py-3 rounded-2xl gap-x-1.5 lg:float-right">
       Send
-      <ContactRightArrowIcon/>
+      <contact-right-arrow-icon/>
     </button>
   </form>
 </template>

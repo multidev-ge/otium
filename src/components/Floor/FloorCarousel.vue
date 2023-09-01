@@ -1,5 +1,6 @@
 <script setup>
 import FloorCaretUpIcon from "@/assets/icons/Floor/FloorCaretUpIcon.vue";
+import {ref, onMounted, onBeforeUnmount} from 'vue';
 
 const emit = defineEmits(['previousFloor', 'nextFloor', 'changeFloor']);
 
@@ -10,6 +11,20 @@ const {floorNumber, blockLength} = defineProps({
 
 const isFeatured = (floor) => floorNumber === floorNumber + 3 - floor;
 const isValid = (floor) => floor >= 1 && floor <= blockLength;
+
+const screenWidth = ref(window.innerWidth);
+
+const updateScreenWidth = () => {
+  screenWidth.value = window.innerWidth;
+};
+
+onMounted(() => {
+  window.addEventListener('resize', updateScreenWidth);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', updateScreenWidth);
+});
 </script>
 
 <template>
@@ -23,6 +38,7 @@ const isValid = (floor) => floor >= 1 && floor <= blockLength;
           ]">
         <floor-caret-up-icon v-if="isFeatured(floor)"
                              @click="emit('nextFloor')"
+                             :fill="screenWidth < 1280 ? 'black' : undefined"
                              class="cursor-pointer"
                              :disabled="floorNumber === blockLength"/>
         <span v-text="floorNumber + 3 - floor"
@@ -32,6 +48,7 @@ const isValid = (floor) => floor >= 1 && floor <= blockLength;
               'text-3xl lg:max-xl:text-2xl xl:max-2xl:text-4xl 2xl:text-6xl text-[#88407C] px-6 xl:py-2 xl:rounded-3xl xl:border-2 xl:border-[#88407C]': isFeatured(floor)}"/>
         <floor-caret-up-icon v-if="isFeatured(floor)"
                              @click="emit('previousFloor')"
+                             :fill="screenWidth < 1280 ? 'black' : undefined"
                              class="rotate-180 cursor-pointer"
                              :disabled="floorNumber === 1"/>
       </div>
