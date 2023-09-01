@@ -1,11 +1,12 @@
 <script setup>
-import useContact from "@/composables/useContact";
-import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue";
+import useContact from "@/composables/useContact"
+import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue"
 
-const {contactFormData, submitContactForm} = useContact;
+const {contactFormData, submitContactForm} = useContact()
 </script>
 
 <template>
+  <!-- Contact From -->
   <form @submit.prevent="submitContactForm" class="space-y-6 lg:space-y-7 font-medium">
     <input v-model="contactFormData.name" name="name" type="text" placeholder="Name"
            class="block w-full pl-5 py-3 border-2 border-opacity-30 rounded-md" required>
