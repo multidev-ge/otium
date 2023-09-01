@@ -22,10 +22,10 @@ watch(floorNumber, (newFloor) => currentFloor.value = block.value[newFloor - 1])
     <!-- Floor Apartments -->
     <div class="relative">
       <img class="w-full h-full" src="../../assets/images/floor/plan.png" alt="floor plan">
-      <FloorApartment v-for="(apartment, index) in currentFloor" :apartment="apartment" :key="index"/>
+      <floor-apartment v-for="(apartment, index) in currentFloor" :apartment="apartment" :key="index"/>
     </div>
 
-    <FloorCarousel
+    <floor-carousel
         :floorNumber="floorNumber"
         :blockLength="blockLength"
         @previousFloor="floorNumber--"

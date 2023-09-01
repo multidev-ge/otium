@@ -1,10 +1,5 @@
 <script setup>
-defineProps({
-  fill: {
-    type: String,
-    default: "#88407C"
-  }
-})
+defineProps({fill: {type: String, default: "#88407C"}})
 </script>
 
 <template>
