@@ -20,6 +20,7 @@ export default function processPoints(array, planWidth, planHeight) {
         const width = `${(_width / planWidth) * 100}%`;
         const height = `${(_height / planHeight) * 100}%`;
 
+
         let points = "";
         for (let i = 0; i < coords.length; i += 2) {
             const x = coords[i], y = coords[i + 1];
@@ -31,6 +32,6 @@ export default function processPoints(array, planWidth, planHeight) {
             if (i !== coords.length - 2) points += ',';
         }
 
-        return {...room, points, top, left, width, height};
+        return {...room,coords, points, top, left, width, height};
     });
 };
