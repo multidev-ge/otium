@@ -31,7 +31,7 @@ import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.
       </div>
     </div>
     <a href="#"
-       class="max-lg:mt-12 lg:max-xl:mt-6 xl:mt-3 w-full md:w-fit bg-[#F0EEEC] flex items-center justify-center text-black px-6 py-3 rounded-2xl gap-x-1.5 font-medium whitespace-nowrap">
+       class="hover:bg-[#FCE1D3] max-lg:mt-12 lg:max-xl:mt-6 xl:mt-3 w-full md:w-fit bg-[#F0EEEC] flex items-center justify-center text-black px-6 py-3 rounded-2xl gap-x-1.5 font-medium whitespace-nowrap transition duration-100 ease-in-out">
       All Apartments
       <contact-right-arrow-icon stroke="black"/>
     </a>

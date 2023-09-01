@@ -24,7 +24,7 @@ onBeforeUnmount(() => window.removeEventListener('resize', updateScreenWidth))
   <!-- Floor Carousel -->
   <div class="flex items-center justify-end max-xl:flex-row-reverse max-xl:gap-x-6">
     <div class="xl:w-24 flex xl:flex-col xl:h-full xl:justify-between xl:items-center">
-      <div v-for="floor in 5" :key="floor" :class="[
+      <div v-for="floor in 5" :key="floor" class="hover:text-[#7b9f89] transition duration-100 ease-in-out" :class="[
             isFeatured(floor) ? 'flex flex-row-reverse xl:flex-col items-center': 'max-xl:invisible',
             {'invisible': !isValid(floorNumber + 3 - floor)}
           ]">

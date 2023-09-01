@@ -8,7 +8,7 @@ const {width, height, points, top, left} = apartment
   <!-- Floor Apartment -->
   <router-link :to="{name: 'Apartment'}">
     <div
-        class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment"
+        class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment transition duration-150 ease-in-out"
         :class="{'sold-apartment': apartment.isSold}"
         :style="{width, height, top, left, clipPath: `polygon(${points})`,
                 backgroundColor: apartment.isSold ? 'white' : 'transparent'
