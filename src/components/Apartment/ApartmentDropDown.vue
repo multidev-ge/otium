@@ -26,9 +26,14 @@ const showDropDown = ref(false)
     <expand-more-icon/>
   </div>
   <div :class="showDropDown ? 'visible' : 'invisible'"
-       class="scroll-container flex flex-col gap-y-4 h-60 overflow-y-scroll w-full py-3 pl-4 pr-3 rounded-md border border-black border-opacity-40">
-    <p class="cursor-pointer font-medium leading-6" v-for="floor in options.length" :key="options.length - floor + 1"
-       v-text="options[options.length - floor]" @changeFloor="emit('changeFloor', floor)"/>
+       class="py-4 pl-4 pr-1 w-full rounded-md border border-black border-opacity-40">
+    <div class="scroll-container flex flex-col gap-y-4 h-60 overflow-y-scroll">
+      <p class="cursor-pointer font-medium leading-6" v-for="floor in options.length" :key="options.length - floor + 1"
+         @click="emit('changeFloor', options.length - floor)">
+        {{ options[options.length - floor] }} <span v-if="floor === 4"
+                                                    class="text-[#E35553] font-medium leading-6 opacity-80">(sold)</span>
+      </p>
+    </div>
   </div>
 </template>
 

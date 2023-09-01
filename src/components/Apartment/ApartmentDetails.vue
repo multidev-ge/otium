@@ -5,7 +5,7 @@ import ApartmentDropDown from "@/components/Apartment/ApartmentDropDown.vue"
 import floorOrder from "@/helpers/floorOrder";
 import {ref} from "vue";
 
-const floors = ref(Array.from({length: 9}, (_, i) => floorOrder(i + 1)));
+const floors = ref(Array.from({length: 9}, (_, i) => floorOrder(i + 1)))
 
 const selectedFloor = ref(floors.value[5]);
 </script>
