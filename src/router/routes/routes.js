@@ -19,7 +19,6 @@ const routes = [
       },
       {
         path: '/media',
-        name: 'Media',
         component: () => new Promise(resolve => resolve(defineComponent(RouterView))),
         children: [
           {
@@ -36,7 +35,6 @@ const routes = [
       },
       {
         path: '/projects',
-        name: 'Projects',
         component: () => new Promise(resolve => resolve(defineComponent(RouterView))),
         children: [
           {
@@ -46,7 +44,6 @@ const routes = [
           },
           {
             path: ':id',
-            name: 'Project',
             component: () => new Promise(resolve => resolve(defineComponent(RouterView))),
             children: [
               {
@@ -61,7 +58,6 @@ const routes = [
               },
               {
                 path: 'floor/:fid',
-                name: 'Floor',
                 component: () => new Promise(resolve => resolve(defineComponent(RouterView))),
                 children: [
                   {
