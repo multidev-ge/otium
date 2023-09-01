@@ -5,13 +5,17 @@ const {width, height, points, top, left} = apartment
 </script>
 
 <template>
-  <!-- Floor Apartment -->
-  <router-link :to="{name: 'Apartment'}">
-    <div
-        class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment transition duration-150 ease-in-out"
-        :class="{'sold-apartment': apartment.isSold}"
-        :style="{width, height, top, left, clipPath: `polygon(${points})`,
-                backgroundColor: apartment.isSold ? 'white' : 'transparent'
+  <router-link :to="{name: 'Apartment', params:{aid: 0}}">
+  <div
+      class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment"
+      :class="{'sold-apartment': apartment.isSold}"
+      :style="{
+                width: apartment.width,
+                height: apartment.height,
+                clipPath: `polygon(${apartment.points})`,
+                backgroundColor: apartment.isSold ? 'white' : 'transparent',
+                top: apartment.top,
+                left:apartment.left
   }">
     <span v-if="apartment.isSold"
           class="max-md:hidden block lg:max-2xl:text-lg 2xl:text-xl font-bold leading-8 !opacity-100 text-[#E24A4A] rounded-2xl border-2 border-[#E24A4A] md:max-lg:px-2 lg:max-2xl:px-4 2xl:px-6 md:max-lg:py-1 lg:max-2xl:py-2 2xl:py-3 -rotate-12 sold">
