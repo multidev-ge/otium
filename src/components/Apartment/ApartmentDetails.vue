@@ -1,7 +1,13 @@
 <script setup>
 import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIcon.vue"
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue"
-import floorOrder from "@/helpers/floorOrder"
+import ApartmentDropDown from "@/components/Apartment/ApartmentDropDown.vue"
+import floorOrder from "@/helpers/floorOrder";
+import {ref} from "vue";
+
+const floors = ref(Array.from({length: 9}, (_, i) => floorOrder(i + 1)));
+
+const selectedFloor = ref(floors.value[5]);
 </script>
 
 <template>
@@ -10,10 +16,8 @@ import floorOrder from "@/helpers/floorOrder"
     <div class="flex flex-col gap-y-1.5">
       <h3 class="text-xl xl:text-xl font-medium leading-8" v-text="'Floor'"/>
 
-      <select
-          class="w-full font-medium leading-6 py-3 px-4 focus:outline-0 rounded-md border border-black border-opacity-40">
-        <option v-for="i in 9" :selected="10 - i === 6" v-text="floorOrder(10 - i)"/>
-      </select>
+      <apartment-drop-down :options="floors" @changeFloor="(floor) => selectedFloor = floors[floor]"
+                           :selected="String(selectedFloor)"/>
     </div>
 
     <div class="flex xl:flex-col max-xl:mt-10 sm:max-xl:justify-between max-xl:gap-x-10 xl:gap-y-7">

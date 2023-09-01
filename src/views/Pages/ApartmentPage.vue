@@ -3,6 +3,8 @@ import mainLayout from "@/layouts/mainLayout.vue"
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue"
 import MortgageCalculator from "@/components/Apartment/MortgageCalculator.vue"
 import ApartmentSection from "@/components/Apartment/ApartmentSection.vue"
+import FiltersPart from "@/components/apartmentFinderPage/filtersPart.vue";
+import RightPart from "@/components/apartmentFinderPage/rightPart.vue";
 </script>
 
 <template>
@@ -20,7 +22,12 @@ import ApartmentSection from "@/components/Apartment/ApartmentSection.vue"
 
       <mortgage-calculator class="mt-20 xl:mt-28"/>
 
+      <!-- should be extracted as component and rendered like below -->
       <!--      <apartment-finder class="mt-20 sm:max-2xl:mt-32 2xl:mt-40" />-->
+      <div class="flex justify-between mt-20 sm:max-2xl:mt-32 2xl:mt-40">
+        <filters-part/>
+        <right-part/>
+      </div>
     </div>
   </mainLayout>
 </template>
