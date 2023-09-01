@@ -1,11 +1,13 @@
 <script setup>
-import MainLayout from "../../layouts/mainLayout.vue";
+import MainLayout from "@/layouts/mainLayout.vue";
+import SplideForProjects from "@/components/Projects/splideForProjects.vue";
+
 </script>
 
 <template>
-<main-layout>
-    <div class="container mx-auto  px-4 md:px-0">
+  <main-layout>
+    <SplideForProjects/>
+  </main-layout>
 
-    </div>
-</main-layout>
 </template>
+

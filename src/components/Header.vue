@@ -95,7 +95,7 @@
       <DialogPanel
         class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-4 pt-5 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
       >
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between pb-3">
           <router-link to="/">
             <img :src="headerInfo[0].headercomponents.img" alt="" />
           </router-link>
@@ -108,37 +108,71 @@
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
+
+        <hr class="my-6 border-[#D9D9D9] sm:mx-auto lg:my-8" />
+
         <div class="mt-6 flow-root">
-          <div class="-my-6 divide-y divide-gray-500/10">
+          <div class="-my-6 divide-y divide-gray-500/10 justify-center grid">
             <div class="space-y-2 py-6">
+              <div class="grid justify-center gap-y-8">
               <router-link to="/otiumbrandstory">
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
-                >{{ headerInfo[0].headercomponents.title }}</a
-              >
-            </router-link>
-            <router-link to="/projects">
-              <a
-                href="#"
-                class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
-                >{{ headerInfo[0].headercomponents.title1 }}</a
-              >
-            </router-link>
+                <a
+                  href="#"
+                  class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000] "
+                  >{{ headerInfo[0].headercomponents.title }}</a
+                >
+              </router-link>
+              <router-link to="/projects">
+                <a
+                  href="#"
+                  class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
+                  >{{ headerInfo[0].headercomponents.title1 }}</a
+                >
+              </router-link>
               <router-link to="/media">
                 <a
                   href="#"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
+                  class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
                   >{{ headerInfo[0].headercomponents.title2 }}</a
                 >
               </router-link>
               <router-link to="/contact">
                 <a
                   href="#"
-                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-[#000000] hover:bg-gray-50"
+                  class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
                   >{{ headerInfo[0].headercomponents.title3 }}</a
                 >
               </router-link>
+
+              <div class="lg:flex lg:flex-1 lg:justify-end gap-1 flex justify-center">
+                <button
+                  :class="{ 'bold-button': isButton1Bold }"
+                  @click="toggleButtonStyles('button1', 'button2')"
+                >
+                  {{ headerInfo[0].headercomponents.language }}
+                </button>
+                <button disabled class="focus:outline-none">/</button>
+                <button
+                  :class="{ 'bold-button': isButton2Bold }"
+                  @click="toggleButtonStyles('button2', 'button1')"
+                >
+                  {{ headerInfo[0].headercomponents.language1 }}
+                </button>
+              </div>
+            </div>
+              <div class="pt-8">
+                <router-link to="/apartment-finder">
+                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
+                    <button class="flex text-[#554242]">
+                      {{ headerInfo[0].headercomponents.title4 }}
+                    </button>
+                    <component
+                      class="mt-1"
+                      :is="headerInfo[0].headercomponents.img1"
+                    />
+                  </div>
+                </router-link>
+              </div>
             </div>
           </div>
         </div>

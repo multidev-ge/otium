@@ -8,7 +8,7 @@ const {apartment} = defineProps({
 </script>
 
 <template>
-  <router-link :to="{name: 'Apartment'}">
+  <router-link :to="{name: 'Apartment', params:{aid: 0}}">
   <div
       class="absolute flex justify-center items-center opacity-80 cursor-pointer hover:!bg-[#7B9F89] apartment"
       :class="{'sold-apartment': apartment.isSold}"

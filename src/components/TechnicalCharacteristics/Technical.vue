@@ -1,5 +1,5 @@
 <script setup>
-import accordion from "./accordion.vue";
+import accordioncomp from "./AccordionComp.vue";
 </script>
 <template>
   <div>
@@ -16,7 +16,7 @@ import accordion from "./accordion.vue";
         <h2 class="text-[#000000] text-3xl	 md:text-4xl	 	">Technical characteristics</h2>
       </div>
       <div>
-        <accordion />
+        <accordioncomp />
         
       </div>
     </div>
