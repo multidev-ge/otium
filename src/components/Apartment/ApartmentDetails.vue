@@ -30,13 +30,13 @@ import floorOrder from "@/helpers/floorOrder"
 
     <div class="flex flex-col gap-y-5 mt-28">
       <router-link :to="{name: 'Contact'}"
-                   class="lg:w-fit whitespace-nowrap bg-[#883F7C] flex items-center gap-x-1.5 px-7 py-3 rounded-2xl text-[#FFFAFA] font-medium leading-6">
+                   class="hover:bg-[#A258A6] transition duration-100 ease-in-out lg:w-fit whitespace-nowrap bg-[#883F7C] flex items-center gap-x-1.5 px-7 py-3 rounded-2xl text-[#FFFAFA] font-medium leading-6">
         Request a Call
         <contact-right-arrow-icon/>
       </router-link>
 
       <a href="#"
-         class="lg:w-fit whitespace-nowrap bg-[#F0EEEC] flex items-center gap-x-1.5 px-6 py-3 rounded-2xl font-medium leading-6">
+         class="hover:brightness-90 transition duration-100 ease-in-out lg:w-fit whitespace-nowrap bg-[#F0EEEC] flex items-center gap-x-1.5 px-6 py-3 rounded-2xl font-medium leading-6">
         Download PDF
         <apartment-download-icon/>
       </a>
