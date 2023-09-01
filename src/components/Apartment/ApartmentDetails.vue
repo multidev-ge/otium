@@ -1,38 +1,18 @@
 <script setup>
-import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIcon.vue";
-import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue";
-
-const order = (index) => {
-  let suffix;
-
-  switch(index) {
-    case 1:
-      suffix = 'st';
-      break;
-    case 2:
-      suffix = 'nd';
-      break;
-    case 3:
-      suffix = 'rd';
-      break;
-    default:
-      suffix = 'th';
-  }
-
-  return index + suffix;
-};
+import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIcon.vue"
+import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue"
+import floorOrder from "@/helpers/floorOrder"
 </script>
 
 <template>
   <!-- Apartment Details -->
   <div class="flex sm:max-xl:w-3/5 flex-col justify-between xl:py-14">
     <div class="flex flex-col gap-y-1.5">
-
       <h3 class="text-xl xl:text-xl font-medium leading-8" v-text="'Floor'"/>
 
       <select
           class="w-full font-medium leading-6 py-3 px-4 focus:outline-0 rounded-md border border-black border-opacity-40">
-        <option v-for="i in 9" :selected="10 - i === 6" v-text="order(10 - i)"/>
+        <option v-for="i in 9" :selected="10 - i === 6" v-text="floorOrder(10 - i)"/>
       </select>
     </div>
 
@@ -58,7 +38,7 @@ const order = (index) => {
       <a href="#"
          class="lg:w-fit whitespace-nowrap bg-[#F0EEEC] flex items-center gap-x-1.5 px-6 py-3 rounded-2xl font-medium leading-6">
         Download PDF
-        <ApartmentDownloadIcon/>
+        <apartment-download-icon/>
       </a>
     </div>
 
