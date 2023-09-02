@@ -21,7 +21,6 @@ const chooseDropdownType = (param) => {
     selectProject(param)
   }
 
-  console.log(param)
 
 };
 
