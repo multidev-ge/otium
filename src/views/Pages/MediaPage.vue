@@ -14,7 +14,7 @@ const {
 </script>
 
 <template>
-
+  <MainLayout>
     <div class="px-4 md:px-0 container mx-auto">
       <h1 class="mb-12 text-5xl md:text-8xl font-medium text-[#000]">Media</h1>
 
@@ -37,7 +37,7 @@ const {
       </button>
 
     </div>
-
+  </MainLayout>
 </template>
 
 <style scoped>
