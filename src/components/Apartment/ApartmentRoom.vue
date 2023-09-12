@@ -10,5 +10,5 @@ const {width, height, points, top, left} = room
 <template>
   <!-- Apartment Room -->
   <div class="absolute bg-[#7B9F89] bg-opacity-60 cursor-pointer"
-       :style="{ display, width, height, clipPath: `polygon(${points})`, top, left }"/>
+       :style="{ display, width, height,  top, left, clipPath: `polygon(${points})` }"/>
 </template>

@@ -1,9 +1,9 @@
-import ContactPhoneIcon from "@/assets/icons/Contact/ContactPhoneIcon.vue";
-import ContactEnvelopeIcon from "@/assets/icons/Contact/ContactEnvelopeIcon.vue";
-import ContactLocationDotIcon from "@/assets/icons/Contact/ContactLocationDotIcon.vue";
-import {reactive} from "vue";
+import ContactPhoneIcon from "@/assets/icons/Contact/ContactPhoneIcon.vue"
+import ContactEnvelopeIcon from "@/assets/icons/Contact/ContactEnvelopeIcon.vue"
+import ContactLocationDotIcon from "@/assets/icons/Contact/ContactLocationDotIcon.vue"
+import {reactive} from "vue"
 
-function useForm() {
+export default function useContact() {
     const contactInfo = [
         {
             icon: ContactPhoneIcon,
@@ -20,32 +20,29 @@ function useForm() {
             label: "Address",
             text: "3 Iakob Nikoladze St. 0179, Tbilisi, Georgia"
         }
-    ];
-
+    ]
 
     const contactFormData = reactive({
         name: "",
         phoneNumber: "",
         message: ""
-    });
+    })
 
     const submitContactForm = () => {
         // submit logic
 
-        clearContactForm();
-    };
+        clearContactForm()
+    }
 
     const clearContactForm = () => {
-        contactFormData.name = "";
-        contactFormData.phoneNumber = "";
-        contactFormData.message = "";
-    };
+        contactFormData.name = ""
+        contactFormData.phoneNumber = ""
+        contactFormData.message = ""
+    }
 
     return {
         contactInfo,
         contactFormData,
         submitContactForm
-    };
+    }
 }
-
-export default useForm();

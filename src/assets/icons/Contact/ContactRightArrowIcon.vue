@@ -1,5 +1,5 @@
 <script setup>
-const {stroke} = defineProps({
+defineProps({
   stroke: {
     type: String,
     default: "white"
