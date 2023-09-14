@@ -44,12 +44,12 @@ const getContentList = (item) => {
 
 
         <div class="content text-lg">
-          {{ technicalinfo[0]?.faqs[0]?.faq[route.params.id]?.title }}
+          {{ technicalinfo[0]?.faqs[0]?.faq[0]?.title }}
         </div>
 
         <div
           v-for="(content, index) in getContentList(
-            technicalinfo[0].faqs[0].faq[route.params.id]
+            technicalinfo[0].faqs[0].faq[0]
           )"
           :key="index"
           class="mycontentstyle content text-lg gap-3 flex"
@@ -89,7 +89,7 @@ const getContentList = (item) => {
         <div
           class="content text-lg"
           v-for="(description, index) in technicalinfo[0]?.faqs[1]?.faq[
-            route.params.id
+            0
           ]"
           :key="index"
         >

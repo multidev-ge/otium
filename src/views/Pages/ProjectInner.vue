@@ -5,6 +5,8 @@ import RightPart from "@/components/apartmentFinderPage/rightPart.vue";
 import FiltersPart from "@/components/apartmentFinderPage/filtersPart.vue";
 import Offerings from "@/components/ProjectInner/Offerings.vue";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
+import { useRoute } from "vue-router";
+const route = useRoute();
 </script>
 
 <template>
@@ -30,7 +32,7 @@ import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
               <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
                 <p>Terms of Payment <right-arrow class="inline-block ml-1"/></p>
               </button>
-              <router-link to="/projects/:id/details">
+              <router-link :to="`/projects/${route.params.id}/details`">
                 <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
                   <p>Technical characteristics <right-arrow class="inline-block ml-1"/></p>
                 </button>
