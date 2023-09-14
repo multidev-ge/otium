@@ -9,7 +9,7 @@ import MortgageCalculator from "@/components/Apartment/MortgageCalculator.vue";
 </script>
 <template>
   <mainLayout>
-    <div class="mx-4 md:mx-16">
+    <div class="mx-4 md:container md:mx-auto">
       <h1 class="text-5xl md:text-9xl mb-6 md:mb-10 md: text-center font-semibold">Living the urban lifestyle</h1>
       <div class="flex flex-col lg:gap-40 gap-20">
         <ProjectBanner/>
