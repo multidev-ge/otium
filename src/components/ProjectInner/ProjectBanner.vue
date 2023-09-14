@@ -4,13 +4,14 @@ import ArrowRight from "@/assets/icons/arrow-right.vue";
 import XIcon from "@/assets/icons/xIcon.vue";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
 import {useRouter} from "vue-router";
+import MyScrollPicker from "@/components/ProjectInner/MyScrollPicker.vue";
+import floorOrder from "@/helpers/floorOrder";
 
 const router = useRouter()
 const project = useProjectBanner()
 const {data, functions} = project
-const {floors,popupIsOpen, floorHovered, currentFloor, currentFloorNum, floorNum} = data
-const {openPopup, closePopup, showTooltip, hideTooltip, getClassForFloorButtons, updateCurrFloorNum} = functions
-
+const {floors,popupIsOpen, floorHovered, currentFloor, currentFloorNum} = data
+const {openPopup, closePopup, showTooltip, hideTooltip} = functions
 
 </script>
 
@@ -19,7 +20,7 @@ const {openPopup, closePopup, showTooltip, hideTooltip, getClassForFloorButtons,
     <img class="w-full h-full rounded-xl" src="@/assets/images/projectBanner/plan.png">
     <div v-for="f in floors"
          class="pointer-events-none lg:pointer-events-auto absolute opacity-80 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
-         @click="router.push('projects/123/floor/123')"
+           @click="router.push(`/projects/123/floor/${currentFloor.floor}`)"
          @mouseover="showTooltip(f)" @mouseleave="hideTooltip"
          :style="{
                 width: f.width,
@@ -39,7 +40,7 @@ const {openPopup, closePopup, showTooltip, hideTooltip, getClassForFloorButtons,
         :class="floorHovered?'text-opacity-100':'opacity-0'"
         class="tooltip absolute  h-60 p-8  bg-[#FFFFFF] rounded-xl  duration-300">
 
-      <h3 class="pb-6 text-xl font-medium">{{ currentFloor.floor }}th floor</h3>
+      <h3 class="pb-6 text-xl font-medium">{{ floorOrder(currentFloor.floor) }} floor</h3>
       <div class="text-base font-medium grid grid-cols-2 gap-y-6">
         <div v-for="det in currentFloor.details">
           <h4 class="opacity-40">{{ det.name }}</h4>
@@ -56,20 +57,21 @@ const {openPopup, closePopup, showTooltip, hideTooltip, getClassForFloorButtons,
     <arrow-right class="inline-block ml-1"/>
   </button>
 
-  <div v-if="popupIsOpen" class="block lg:hidden fixed w-full bg-[#FFFFFF] left-0 bottom-0 z-50 rounded-t-xl p-6">
+  <div v-if="popupIsOpen" class="block  lg:hidden fixed w-full bg-[#FFFFFF] left-0 bottom-0 z-50 rounded-t-xl p-6">
     <xIcon @click="closePopup" class="absolute top-6 right-6"/>
     <div class="flex flex-col items-center">
       <p class="text-xl font-medium">choose a floor</p>
 
-      <div class="flex flex-col w-full my-7">
-        <div v-for="i in 7" class="w-full p-2 flex justify-center" :class="getClassForFloorButtons(i)">
-          <p @click="updateCurrFloorNum(i)">{{ (currentFloorNum + 4 - i + floorNum) % floorNum + 1 }} th</p>
-        </div>
-      </div>
+      <MyScrollPicker class="my-7" v-model="currentFloorNum" :options="floors.map((e)=>{
+        return {
+          name: floorOrder(e.floor),
+          value: e.floor
+        }
+      })"/>
 
       <button @click="()=>{
           closePopup()
-          router.push('projects/123/floor/123')
+          router.push(`/projects/123/floor/${currentFloorNum}`)
         }" class="w-full p-3 bg-black rounded-2xl text-[#FFFFFF]">
         Choose
         <right-arrow color="white" class="inline-block ml-1"/>

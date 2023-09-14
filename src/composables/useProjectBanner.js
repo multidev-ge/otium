@@ -153,10 +153,8 @@ export function useProjectBanner() {
 
     const popupIsOpen = ref(false)
     const floorHovered = ref(false)
-    const currentFloor = ref(1)
+    const currentFloor = ref()
     const currentFloorNum = ref(8)
-    const floorNum = floors.length
-
     function openPopup() {
         popupIsOpen.value = true
         document.body.style.overflow = 'hidden'
@@ -176,22 +174,9 @@ export function useProjectBanner() {
         floorHovered.value = false
     }
 
-    function getClassForFloorButtons(i) {
-        const dif = Math.abs(4 - i)
-        if (dif === 0) {
-            return "bg-[#F0EEEC] text-2xl rounded-xl"
-        } else if (dif === 1) {
-            return "text-xl text-[#666666]"
-        }
-        return "text-base text-[#666666]"
-    }
-
-    function updateCurrFloorNum(i) {
-        currentFloorNum.value = (currentFloorNum.value + 4 - i + floorNum) % floorNum
-    }
 
     return {
-        data: {floors, popupIsOpen, floorHovered, currentFloor, currentFloorNum, floorNum},
-        functions: {openPopup, closePopup, showTooltip, hideTooltip, getClassForFloorButtons, updateCurrFloorNum}
+        data: {floors, popupIsOpen, floorHovered, currentFloor, currentFloorNum},
+        functions: {openPopup, closePopup, showTooltip, hideTooltip}
     }
 }

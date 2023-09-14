@@ -1,4 +1,8 @@
-export default function floorOrder(index) {
-    const suffix = index === 1 ? 'st' : index === 2 ? 'nd' : index === 3 ? 'rd' : 'th'
-    return index + suffix
+export default function floorOrder(number) {
+    const suffix =
+        (number % 10 === 1 && number % 100 !== 11) ? 'st' :
+        (number % 10 === 2 && number % 100 !== 12) ? 'nd' :
+        (number % 10 === 3 && number % 100 !== 13) ? 'rd' : 'th'
+    return number + suffix
 }
+
