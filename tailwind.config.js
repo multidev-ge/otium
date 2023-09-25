@@ -15,8 +15,18 @@ module.exports = {
         md: '700px',
         lg: '930px',
         xl: '1165px',
-        '2xl': '1400px'
-      }
+        '2xl': '1400px',
+        '3xl': '1848px',
+      },
+      padding: {
+        DEFAULT: '1rem',
+        sm: '2rem',
+        md: '2.5rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
+        '3xl': '6.5rem',
+      },
     },
     extend: {
       width: {

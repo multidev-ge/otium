@@ -6,7 +6,7 @@ import MainLayout from "../../layouts/mainLayout.vue";
 
 <template>
 <main-layout>
-  <div class="flex md:flex-row flex-col container mx-auto justify-between">
+  <div class="flex md:flex-row flex-col justify-between">
     <FiltersPart/>
     <RightPart/>
   </div>

@@ -11,7 +11,7 @@ const route = useRoute();
 
 <template>
   <mainLayout>
-    <div class="mx-4 md:container md:mx-auto">
+    <div class="">
       <h1 class="text-5xl md:text-9xl mb-6 md:mb-10 md: text-center font-semibold">Project Name</h1>
       <div class="flex flex-col lg:gap-40 gap-20">
         <ProjectBanner/>
@@ -50,7 +50,7 @@ const route = useRoute();
             <a href="https://www.maps.ie/population/">Population Estimator map</a></iframe>
         </div>
 
-        <div class="flex md:flex-row flex-col container mx-auto justify-between ">
+        <div class="flex md:flex-row flex-col justify-between ">
           <FiltersPart/>
           <RightPart/>
         </div>

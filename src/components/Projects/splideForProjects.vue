@@ -36,7 +36,7 @@ const changeValue = (value) =>{
 
 </script>
 <template>
-  <section class="container  w-11/12  mx-auto">
+  <section class="">
     <Splide  :options="mainOptions" :has-track="false"  @splide:moved="function (newIndex, prevIndex, destIndex){
       changeValue(newIndex.index+1)
     }" >
