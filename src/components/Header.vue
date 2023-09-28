@@ -17,8 +17,8 @@
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
         <router-link v-for="(link, index) in menuLinks" :key="index" :to="{name: link.name}"
-                     class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                     :class="{ 'text-[#88407c]': route.name === link.name }" v-text="t('menu.Company')"/>
+                     class="uppercase -mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
+                     :class="{ 'text-[#88407c]': route.name === link.name }" v-text="t(`menu.${link.title}`)"/>
       </PopoverGroup>
 
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
@@ -53,10 +53,10 @@
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10 justify-center grid">
             <div class="space-y-2 py-6">
-              <div class="grid justify-center gap-y-8">
+              <div class="grid justify-center gap-y-4">
                 <router-link v-for="(link, index) in menuLinks" :key="index" :to="{name: link.name}"
                              class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                             :class="{ 'text-[#88407c]': route.name === link.name }" v-text="t('menu.Company')"/>
+                             :class="{ 'text-[#88407c]': route.name === link.name }" v-text="t(`menu.${link.title}`)"/>
                 <LangSwitcher/>
               </div>
               <div class="pt-8">
