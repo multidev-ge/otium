@@ -9,7 +9,6 @@ export default (function useHeader() {
             headercomponents: {
                 img: logo,
                 img1: markRaw(arrowRight),
-                title4: "Find your apartment",
             },
         }
     ]);

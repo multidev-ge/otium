@@ -26,9 +26,7 @@
 
         <router-link to="/apartment-finder">
           <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
-            <button class="flex text-[#554242]">
-              {{ headerInfo[0].headercomponents.title4 }}
-            </button>
+            <button class="flex text-[#554242]" v-text="t('menu.FYA')"/>
             <component class="mt-1" :is="headerInfo[0].headercomponents.img1"/>
           </div>
         </router-link>
@@ -62,9 +60,7 @@
               <div class="pt-8">
                 <router-link to="/apartment-finder">
                   <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
-                    <button class="flex text-[#554242]">
-                      {{ headerInfo[0].headercomponents.title4 }}
-                    </button>
+                    <button class="flex text-[#554242]" v-text="t('menu.FYA')"/>
                     <component class="mt-1" :is="headerInfo[0].headercomponents.img1"
                     />
                   </div>
