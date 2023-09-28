@@ -1,32 +1,13 @@
 {
   "languages": {
-    "en": "ENG",
-    "ka": "GEO"
-  },
-  "system": {
-    "loading": "Loading ...",
-    "all_rights_reserved": "all rights reserved",
-    "social": {
-      "follow_us": "follow us"
-    }
+    "en": "En",
+    "ka": "Ge"
   },
   "menu": {
-    "Brands": "Brands",
-    "Events": "Events",
-    "News": "News",
+    "Company": "Company",
+    "Projects": "Projects",
+    "Media": "Media",
     "About": "About",
-    "Employment": "Employment",
     "Contact": "Contact"
-  },
-  "buttons": {
-    "load_more": "more",
-    "read_more": "read more",
-    "discover_events": "discover events",
-    "event_details": "view details",
-    "event_book_now": "book now",
-    "event_book": "book",
-    "employment_details": "view details",
-    "menu": "menu",
-    "go_to_website": "go to website"
   }
 }

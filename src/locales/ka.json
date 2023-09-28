@@ -1,32 +1,13 @@
 {
   "languages": {
-    "en": "ENG",
-    "ka": "GEO"
-  },
-  "system": {
-    "loading": "ჩატვირთვა ...",
-    "all_rights_reserved": "ყველა უფლება დაცულია",
-    "social": {
-      "follow_us": "გამოგვყევით"
-    }
+    "en": "En",
+    "ka": "Ge"
   },
   "menu": {
-    "Brands": "ბრენდები",
-    "Events": "ღონისძებები",
-    "News": "სიახლეები",
-    "About": "ჩვენს შესახებ",
-    "Employment": "დასაქმება",
+    "Company": "კომპანია",
+    "Projects": "პროექტები",
+    "Media": "მედია",
+    "About": "შესახებ",
     "Contact": "კონტაქტი"
-  },
-  "buttons": {
-    "load_more": "მეტი",
-    "read_more": "დეტალურად",
-    "discover_events": "მოძებნე ღონისძებები",
-    "event_details": "დეტალები",
-    "event_book_now": "დაჯავშნა",
-    "event_book": "ჯავშანი",
-    "employment_details": "დეტალები",
-    "menu": "მენიუ",
-    "go_to_website": "ვებგვერდი"
   }
 }
