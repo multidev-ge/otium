@@ -1,41 +1,24 @@
 <template>
   <header class="bg-white">
-    <nav
-        class="container mx-auto flex items-center justify-between pb-8  md:pb-20 pt-5"
-        aria-label="Global"
-    >
+    <nav class="container mx-auto flex items-center justify-between pb-8  md:pb-20 pt-5"
+         aria-label="Global">
       <div class="flex lg:flex-1">
         <router-link to="/">
           <img :src="headerInfo[0].headercomponents.img" alt=""/>
         </router-link>
       </div>
       <div class="flex lg:hidden">
-        <button
-            type="button"
-            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-            @click="mobileMenuOpen = true"
-        >
+        <button type="button"
+                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                @click="mobileMenuOpen = true">
           <span class="sr-only">Open main menu</span>
           <Bars3Icon class="h-6 w-6" aria-hidden="true"/>
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-        <router-link to="/otiumbrandstory"
-                     class="text-lg font-medium leading-6"
-                     :class="{ 'text-[#88407c]': route.path === '/otiumbrandstory' }"
-                     v-text="t('menu.Company')"/>
-        <router-link to="/projects"
-                     class="text-lg font-medium leading-6"
-                     :class="{ 'text-[#88407c]': route.path === '/projects' }"
-                     v-text="t('menu.Projects')"/>
-        <router-link to="/media"
-                     class="text-lg font-medium leading-6"
-                     :class="{ 'text-[#88407c]': route.path === '/media' }"
-                     v-text="t('menu.Media')"/>
-        <router-link to="/contact"
-                     class="text-lg font-medium leading-6"
-                     :class="{ 'text-[#88407c]': route.path === '/contact' }"
-                     v-text="t('menu.Contact')"/>
+        <router-link v-for="(link, index) in menuLinks" :key="index" :to="{name: link.name}"
+                     class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
+                     :class="{ 'text-[#88407c]': route.name === link.name }" v-text="t('menu.Company')"/>
       </PopoverGroup>
 
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
@@ -51,25 +34,15 @@
         </router-link>
       </div>
     </nav>
-    <Dialog
-        as="div"
-        class="lg:hidden"
-        @close="mobileMenuOpen = false"
-        :open="mobileMenuOpen"
-    >
+    <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
       <div class="fixed inset-0 z-10"/>
       <DialogPanel
-          class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-4 pt-5 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
-      >
+          class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-4 pt-5 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div class="flex items-center justify-between pb-3">
           <router-link to="/">
             <img :src="headerInfo[0].headercomponents.img" alt=""/>
           </router-link>
-          <button
-              type="button"
-              class="-m-2.5 rounded-md p-2.5 text-gray-700"
-              @click="mobileMenuOpen = false"
-          >
+          <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
             <span class="sr-only">Close menu</span>
             <XMarkIcon class="h-6 w-6" aria-hidden="true"/>
           </button>
@@ -81,22 +54,9 @@
           <div class="-my-6 divide-y divide-gray-500/10 justify-center grid">
             <div class="space-y-2 py-6">
               <div class="grid justify-center gap-y-8">
-                <router-link to="/otiumbrandstory"
+                <router-link v-for="(link, index) in menuLinks" :key="index" :to="{name: link.name}"
                              class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                             :class="{ 'text-[#88407c]': route.path === '/otiumbrandstory' }"
-                             v-text="t('menu.Company')"/>
-                <router-link to="/projects"
-                             class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                             :class="{ 'text-[#88407c]': route.path === '/projects' }"
-                             v-text="t('menu.Projects')"/>
-                <router-link to="/media"
-                             class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                             :class="{ 'text-[#88407c]': route.path === '/media' }"
-                             v-text="t('menu.Media')"/>
-                <router-link to="/contact"
-                             class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                             :class="{ 'text-[#88407c]': route.path === '/contact' }"
-                             v-text="t('menu.Contact')"/>
+                             :class="{ 'text-[#88407c]': route.name === link.name }" v-text="t('menu.Company')"/>
                 <LangSwitcher/>
               </div>
               <div class="pt-8">
@@ -105,9 +65,7 @@
                     <button class="flex text-[#554242]">
                       {{ headerInfo[0].headercomponents.title4 }}
                     </button>
-                    <component
-                        class="mt-1"
-                        :is="headerInfo[0].headercomponents.img1"
+                    <component class="mt-1" :is="headerInfo[0].headercomponents.img1"
                     />
                   </div>
                 </router-link>
@@ -122,25 +80,17 @@
 
 <script setup>
 import {ref} from "vue";
+import useNavigation from "@/composables/useNavigation";
 import useHeader from "@/composables/useHeader";
 import LangSwitcher from "@/components/LangSwitcher.vue";
 import {useI18n} from 'vue-i18n'
 import {useRoute} from "vue-router";
+import {Dialog, DialogPanel, PopoverGroup,} from "@headlessui/vue";
+import {Bars3Icon, XMarkIcon,} from "@heroicons/vue/24/outline";
 
 const {t} = useI18n({useScope: 'global'})
 const route = useRoute();
-
+const menuLinks = useNavigation();
 const {headerInfo} = useHeader();
-
-import {
-  Dialog,
-  DialogPanel,
-  PopoverGroup,
-} from "@headlessui/vue";
-import {
-  Bars3Icon,
-  XMarkIcon,
-} from "@heroicons/vue/24/outline";
-
 const mobileMenuOpen = ref(false);
 </script>
