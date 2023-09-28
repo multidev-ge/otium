@@ -20,42 +20,22 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-        <router-link to="/otiumbrandstory">
-          <a
-              href="#"
-              class="text-lg font-medium leading-6"
-              :class="{ 'active-link': $route.path === '/otiumbrandstory' }"
-          >
-            {{ $t('menu.Company') }}
-          </a>
-        </router-link>
-        <router-link to="/projects">
-          <a
-              href="#"
-              class="text-lg font-medium leading-6"
-              :class="{ 'active-link': $route.path === '/projects' }"
-          >
-            {{ $t('menu.Projects') }}
-          </a>
-        </router-link>
-        <router-link to="/media">
-          <a
-              href="#"
-              class="text-lg font-medium leading-6"
-              :class="{ 'active-link': $route.path === '/media' }"
-          >
-            {{ $t('menu.Media') }}
-          </a>
-        </router-link>
-        <router-link to="/contact">
-          <a
-              href="#"
-              class="text-lg font-medium leading-6"
-              :class="{ 'active-link': $route.path === '/contact' }"
-          >
-            {{ $t('menu.Contact') }}
-          </a>
-        </router-link>
+        <router-link to="/otiumbrandstory"
+                     class="text-lg font-medium leading-6"
+                     :class="{ 'text-[#88407c]': route.path === '/otiumbrandstory' }"
+                     v-text="t('menu.Company')"/>
+        <router-link to="/projects"
+                     class="text-lg font-medium leading-6"
+                     :class="{ 'text-[#88407c]': route.path === '/projects' }"
+                     v-text="t('menu.Projects')"/>
+        <router-link to="/media"
+                     class="text-lg font-medium leading-6"
+                     :class="{ 'text-[#88407c]': route.path === '/media' }"
+                     v-text="t('menu.Media')"/>
+        <router-link to="/contact"
+                     class="text-lg font-medium leading-6"
+                     :class="{ 'text-[#88407c]': route.path === '/contact' }"
+                     v-text="t('menu.Contact')"/>
       </PopoverGroup>
 
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
@@ -101,35 +81,22 @@
           <div class="-my-6 divide-y divide-gray-500/10 justify-center grid">
             <div class="space-y-2 py-6">
               <div class="grid justify-center gap-y-8">
-                <router-link to="/otiumbrandstory">
-                  <a
-                      href="#"
-                      class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000] "
-                  >{{ $t('menu.Company') }}</a
-                  >
-                </router-link>
-                <router-link to="/projects">
-                  <a
-                      href="#"
-                      class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                  >{{ $t('menu.Projects') }}</a
-                  >
-                </router-link>
-                <router-link to="/media">
-                  <a
-                      href="#"
-                      class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                  >{{ $t('menu.Media') }}</a
-                  >
-                </router-link>
-                <router-link to="/contact">
-                  <a
-                      href="#"
-                      class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                  >{{ $t('menu.Contact') }}</a
-                  >
-                </router-link>
-
+                <router-link to="/otiumbrandstory"
+                             class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
+                             :class="{ 'text-[#88407c]': route.path === '/otiumbrandstory' }"
+                             v-text="t('menu.Company')"/>
+                <router-link to="/projects"
+                             class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
+                             :class="{ 'text-[#88407c]': route.path === '/projects' }"
+                             v-text="t('menu.Projects')"/>
+                <router-link to="/media"
+                             class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
+                             :class="{ 'text-[#88407c]': route.path === '/media' }"
+                             v-text="t('menu.Media')"/>
+                <router-link to="/contact"
+                             class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
+                             :class="{ 'text-[#88407c]': route.path === '/contact' }"
+                             v-text="t('menu.Contact')"/>
                 <LangSwitcher/>
               </div>
               <div class="pt-8">
@@ -156,6 +123,11 @@
 <script setup>
 import {ref} from "vue";
 import useHeader from "@/composables/useHeader";
+import {useI18n} from 'vue-i18n'
+import {useRoute} from "vue-router";
+
+const {locale, t} = useI18n({useScope: 'global'})
+const route = useRoute();
 
 const {headerInfo} = useHeader();
 const isButton1Bold = ref(true);
@@ -200,13 +172,3 @@ const callsToAction = [
 
 const mobileMenuOpen = ref(false);
 </script>
-
-<style scoped>
-.bold-button {
-  font-weight: bold;
-}
-
-.active-link {
-  color: #88407c; /* You can replace 'red' with your desired shade of red */
-}
-</style>
