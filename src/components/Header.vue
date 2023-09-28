@@ -123,52 +123,24 @@
 <script setup>
 import {ref} from "vue";
 import useHeader from "@/composables/useHeader";
+import LangSwitcher from "@/components/LangSwitcher.vue";
 import {useI18n} from 'vue-i18n'
 import {useRoute} from "vue-router";
 
-const {locale, t} = useI18n({useScope: 'global'})
+const {t} = useI18n({useScope: 'global'})
 const route = useRoute();
 
 const {headerInfo} = useHeader();
-const isButton1Bold = ref(true);
-const isButton2Bold = ref(false);
-
-const toggleButtonStyles = (buttonToBold, buttonToLight) => {
-  isButton1Bold.value = buttonToBold === "button1";
-  isButton2Bold.value = buttonToBold === "button2";
-};
 
 import {
   Dialog,
   DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Popover,
-  PopoverButton,
   PopoverGroup,
-  PopoverPanel,
 } from "@headlessui/vue";
 import {
-  ArrowPathIcon,
   Bars3Icon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
   XMarkIcon,
 } from "@heroicons/vue/24/outline";
-import {
-  ChevronDownIcon,
-  PhoneIcon,
-  PlayCircleIcon,
-} from "@heroicons/vue/20/solid";
-import LangSwitcher from "@/components/LangSwitcher.vue";
-
-const callsToAction = [
-  {name: "Watch demo", href: "#", icon: PlayCircleIcon},
-  {name: "Contact sales", href: "#", icon: PhoneIcon},
-];
 
 const mobileMenuOpen = ref(false);
 </script>

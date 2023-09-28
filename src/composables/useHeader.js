@@ -9,12 +9,24 @@ export default (function useHeader() {
             headercomponents: {
                 img: logo,
                 img1: markRaw(arrowRight),
-                language: "En",
-                language1: "Ge ",
-                title: "Company",
-                title1: "Projects",
-                title2: "Media",
-                title3: "Contact",
+                menu: [
+                    {
+                        title: 'Company',
+                        name: 'OtiumBrandStory',
+                    },
+                    {
+                        title: 'Projects',
+                        name: 'Projects',
+                    },
+                    {
+                        title: 'Media',
+                        name: 'Media',
+                    },
+                    {
+                        title: 'Contact',
+                        name: 'Contact',
+                    }
+                ],
                 title4: "Find your apartment",
             },
         }
