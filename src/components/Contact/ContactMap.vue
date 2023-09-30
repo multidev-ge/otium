@@ -1,9 +1,230 @@
 <template>
   <!-- Contact Map -->
-  <iframe
-      class="rounded-xl w-full h-56 sm:max-md:h-64 md:max-lg:h-80 lg:h-full"
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.4503977225786!2d44.78042197651398!3d41.71079897587169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd46d8982b3%3A0x47629d818dd2c2ef!2zMyDhg5jhg5Dhg5nhg53hg5Eg4YOc4YOY4YOZ4YOd4YOa4YOQ4YOr4YOY4YOhIOGDpeGDo-GDqeGDkCwg4YOX4YOR4YOY4YOa4YOY4YOh4YOY!5e0!3m2!1ska!2sge!4v1690974182755!5m2!1ska!2sge"
-      style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
+  <div id="map" class="rounded-xl w-full h-56 sm:max-md:h-64 md:max-lg:h-80 lg:h-full"/>
 </template>
+
+<script setup>
+import {ref, onMounted} from "vue";
+import {Loader} from "@googlemaps/js-api-loader";
+
+const map = ref(null);
+
+onMounted(() => {
+  const loader = new Loader({
+    apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    version: "weekly",
+    // ...additionalOptions,
+  });
+
+  loader.load().then(async () => {
+    const {Map} = await google.maps.importLibrary("maps");
+
+    map.value = new Map(document.getElementById("map"), {
+      center: {lat: 41.7721719, lng: 44.7795627},
+      disableDefaultUI: true,
+      zoom: 10,
+      styles: [
+        {
+          "featureType": "all",
+          "elementType": "labels.text.fill",
+          "stylers": [
+            {
+              "saturation": 36
+            },
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 40
+            }
+          ]
+        },
+        {
+          "featureType": "all",
+          "elementType": "labels.text.stroke",
+          "stylers": [
+            {
+              "visibility": "on"
+            },
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 16
+            }
+          ]
+        },
+        {
+          "featureType": "all",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
+        {
+          "featureType": "administrative",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 20
+            }
+          ]
+        },
+        {
+          "featureType": "administrative",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 17
+            },
+            {
+              "weight": 1.2
+            }
+          ]
+        },
+        {
+          "featureType": "landscape",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 20
+            }
+          ]
+        },
+        {
+          "featureType": "poi",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 21
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.fill",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 17
+            }
+          ]
+        },
+        {
+          "featureType": "road.highway",
+          "elementType": "geometry.stroke",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 29
+            },
+            {
+              "weight": 0.2
+            }
+          ]
+        },
+        {
+          "featureType": "road.arterial",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 18
+            }
+          ]
+        },
+        {
+          "featureType": "road.local",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 16
+            }
+          ]
+        },
+        {
+          "featureType": "transit",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 19
+            }
+          ]
+        },
+        {
+          "featureType": "water",
+          "elementType": "geometry",
+          "stylers": [
+            {
+              "color": "#000000"
+            },
+            {
+              "lightness": 17
+            }
+          ]
+        }
+      ]
+    });
+
+    const background = new google.maps.Marker({
+      position: { lat: 41.7721719, lng: 44.7795627 },
+      map: map.value,
+      icon: {
+        url: 'src/assets/logos/Map/background.png', // Path to your SVG image
+        anchor: new google.maps.Point(24, 24), // Adjust anchor to center the icon
+        size: new google.maps.Size(48, 48), // Size of the marker
+      },
+    });
+    console.log(background)
+
+    const logo = new google.maps.Marker({
+      position: { lat: 41.7721719, lng: 44.7795627 },
+      map: map.value,
+      icon: {
+        url: 'src/assets/logos/Map/logo.png', // Path to your SVG image
+        anchor: new google.maps.Point(12, 12), // Adjust anchor to center the icon
+        size: new google.maps.Size(24, 24), // Size of the marker
+      },
+    });
+  });
+});
+</script>
+
+
+<style>
+a[href^="http://maps.google.com/maps"]{display:none !important}
+a[href^="https://maps.google.com/maps"]{display:none !important}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+  display:none;
+}
+.gmnoprint div {
+  background:none !important;
+}
+</style>
