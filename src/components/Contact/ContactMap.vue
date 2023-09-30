@@ -1,23 +1,102 @@
 <template>
   <!-- Contact Map -->
-  <div id="map" class="rounded-xl relative">
-    <slot/>
+  <div>
+    <div id="map" class="w-full h-full rounded-xl"></div>
+    <div v-if="withFilter"
+         class="flex flex-col justify-between p-10 absolute top-4 max-lg:left-4 lg:right-4 bg-white w-[464px] h-[608px] rounded-xl">
+      <h3 class="font-medium text-3xl">
+        Some nice things around the building
+      </h3>
+      <div class="flex flex-wrap items-start gap-4">
+        <div @click="selected = index" v-for="(label, index) in labels" :key="index"
+             :class="{'bg-black text-white': index === selected}"
+             class="cursor-pointer flex items-center gap-x-1.5 border border-black p-3 rounded-2xl">
+          <img :src="label.icon" :alt="label.title + ' icon'">
+          <p v-text="label.title" class="font-medium text-xl"/>
+        </div>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="flex gap-x-1">
+          <img src="@/assets/icons/Map/near.svg" alt="near icon"/>
+          <span>Near: </span>
+          <span class="underline">400m</span>
+        </div>
+        <div class="flex gap-x-1">
+          <img src="@/assets/icons/Map/accessibility.svg" alt="accessibility icon"/>
+          <span>Accessibility: </span>
+          <span class="underline">Yes</span>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup>
-import {ref, onMounted} from "vue";
+import {ref, onMounted, watch} from "vue";
 import {Loader} from "@googlemaps/js-api-loader";
 import background from "@/assets/logos/Map/background.png";
 import logo from "@/assets/logos/Map/logo.png";
+import super_markets from "@/assets/icons/Map/super_markets.svg";
+import schools from "@/assets/icons/Map/schools.svg";
+import transport from "@/assets/icons/Map/transport.svg";
+import kindergarten from "@/assets/icons/Map/kindergarten.svg";
+import restaurants from "@/assets/icons/Map/restaurants.svg";
+import park from "@/assets/icons/Map/park.svg";
+
+const {withFilter} = defineProps({
+  withFilter: {
+    type: Boolean,
+    default: false
+  }
+})
+
+const labels = [
+  {
+    title: 'Super markets',
+    icon: super_markets,
+  },
+  {
+    title: 'Schools',
+    icon: schools,
+  },
+  {
+    title: 'Transport',
+    icon: transport,
+  },
+  {
+    title: 'Kindergarten',
+    icon: kindergarten,
+  },
+  {
+    title: 'Restaurants',
+    icon: restaurants,
+  },
+  {
+    title: 'Park',
+    icon: park,
+  }
+];
 
 const map = ref(null);
+const markers = ref([]);
+const selected = ref(0);
+
+watch(selected, (value, oldValue) => {
+  for (let j = 0; j < markers.value.length; j++) {
+    if (labels[oldValue].title.toLowerCase() === markers.value[j].title.toLowerCase()) {
+      markers.value[j].setVisible(false);
+    }
+
+    if (labels[value].title.toLowerCase() === markers.value[j].title.toLowerCase()) {
+      markers.value[j].setVisible(true);
+    }
+  }
+});
 
 onMounted(() => {
   const loader = new Loader({
     apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     version: "weekly",
-    // ...additionalOptions,
   });
 
   loader.load().then(async () => {
@@ -196,6 +275,7 @@ onMounted(() => {
       ]
     });
 
+    // Add a background for the logo.
     new google.maps.Marker({
       position: {lat: 41.7721719, lng: 44.7795627},
       map: map.value,
@@ -206,6 +286,7 @@ onMounted(() => {
       },
     });
 
+    // Add a logo to the map.
     new google.maps.Marker({
       position: {lat: 41.7721719, lng: 44.7795627},
       map: map.value,
@@ -215,6 +296,28 @@ onMounted(() => {
         size: new google.maps.Size(24, 24),
       },
     });
+
+    if (withFilter) {
+      // Generate random 100 markers for each category.
+      const centerCoordinates = {lat: 41.7721719, lng: 44.7795627};
+
+      labels.forEach((label, i) => {
+        for (let j = 0; j < 100; j++) {
+          const randomLat = centerCoordinates.lat + (Math.random() - 0.5);
+          const randomLng = centerCoordinates.lng + (Math.random() - 0.5);
+
+          const marker = new google.maps.Marker({
+            position: {lat: randomLat, lng: randomLng},
+            map: map.value,
+            visible: false,
+            title: label.title,
+            icon: label.icon,
+          });
+
+          markers.value.push(marker);
+        }
+      });
+    }
   });
 });
 </script>

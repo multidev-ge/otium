@@ -7,45 +7,9 @@ import Offerings from "@/components/ProjectInner/Offerings.vue";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
 import {useRoute} from "vue-router";
 import ContactMap from "@/components/Contact/ContactMap.vue";
-
-import super_markets from "@/assets/icons/Map/super_markets.svg";
-import schools from "@/assets/icons/Map/schools.svg";
-import transport from "@/assets/icons/Map/transport.svg";
-import kindergarten from "@/assets/icons/Map/kindergarten.svg";
-import restaurants from "@/assets/icons/Map/restaurants.svg";
-import park from "@/assets/icons/Map/park.svg";
 import {ref} from "vue";
 
-// Must be extracted to specific composable
-const labels = [
-  {
-    title: 'Super markets',
-    icon: super_markets,
-  },
-  {
-    title: 'Schools',
-    icon: schools,
-  },
-  {
-    title: 'Transport',
-    icon: transport,
-  },
-  {
-    title: 'Kindergarten',
-    icon: kindergarten,
-  },
-  {
-    title: 'Restaurants',
-    icon: restaurants,
-  },
-  {
-    title: 'Park',
-    icon: park,
-  }
-]
-
 const route = useRoute();
-const selected = ref(0);
 </script>
 
 <template>
@@ -87,34 +51,7 @@ const selected = ref(0);
 
         <Offerings/>
 
-        <contact-map class="h-[640px]">
-          <div
-              class="z-50 flex flex-col justify-between p-10 absolute top-4 max-lg:left-4 lg:right-4 bg-white w-[464px] h-[608px] rounded-xl">
-            <h3 class="font-medium text-3xl">
-              Some nice things around the building
-            </h3>
-            <div class="flex flex-wrap items-start gap-4">
-              <div @click="selected = index" v-for="(label, index) in labels" :key="index"
-                   :class="{'bg-black text-white': index === selected}"
-                   class="cursor-pointer flex items-center gap-x-1.5 border border-black p-3 rounded-2xl">
-                <img :src="label.icon" :alt="label.title + ' icon'">
-                <p v-text="label.title" class="font-medium text-xl"/>
-              </div>
-            </div>
-            <div class="grid grid-cols-2">
-              <div class="flex gap-x-1">
-                <img src="@/assets/icons/Map/near.svg" alt="near icon"/>
-                <span>Near: </span>
-                <span class="underline">400m</span>
-              </div>
-              <div class="flex gap-x-1">
-                <img src="@/assets/icons/Map/accessibility.svg" alt="accessibility icon"/>
-                <span>Accessibility: </span>
-                <span class="underline">Yes</span>
-              </div>
-            </div>
-          </div>
-        </contact-map>
+        <contact-map class="h-[640px] relative" :with-filter="true"/>
 
         <div class="flex md:flex-row flex-col justify-between ">
           <FiltersPart/>
