@@ -22,7 +22,7 @@ onMounted(() => {
     map.value = new Map(document.getElementById("map"), {
       center: {lat: 41.7721719, lng: 44.7795627},
       disableDefaultUI: true,
-      zoom: 10,
+      zoom: 12,
       styles: [
         {
           "featureType": "all",
@@ -192,39 +192,43 @@ onMounted(() => {
       ]
     });
 
-    const background = new google.maps.Marker({
-      position: { lat: 41.7721719, lng: 44.7795627 },
+    new google.maps.Marker({
+      position: {lat: 41.7721719, lng: 44.7795627},
       map: map.value,
       icon: {
-        url: 'src/assets/logos/Map/background.png', // Path to your SVG image
-        anchor: new google.maps.Point(24, 24), // Adjust anchor to center the icon
-        size: new google.maps.Size(48, 48), // Size of the marker
+        url: 'src/assets/logos/Map/background.png',
+        anchor: new google.maps.Point(24, 24),
+        size: new google.maps.Size(48, 48),
       },
     });
-    console.log(background)
 
-    const logo = new google.maps.Marker({
-      position: { lat: 41.7721719, lng: 44.7795627 },
+    new google.maps.Marker({
+      position: {lat: 41.7721719, lng: 44.7795627},
       map: map.value,
       icon: {
-        url: 'src/assets/logos/Map/logo.png', // Path to your SVG image
-        anchor: new google.maps.Point(12, 12), // Adjust anchor to center the icon
-        size: new google.maps.Size(24, 24), // Size of the marker
+        url: 'src/assets/logos/Map/logo.png',
+        anchor: new google.maps.Point(12, 12),
+        size: new google.maps.Size(24, 24),
       },
     });
   });
 });
 </script>
 
-
 <style>
-a[href^="http://maps.google.com/maps"]{display:none !important}
-a[href^="https://maps.google.com/maps"]{display:none !important}
+a[href^="http://maps.google.com/maps"] {
+  display: none !important
+}
+
+a[href^="https://maps.google.com/maps"] {
+  display: none !important
+}
 
 .gmnoprint a, .gmnoprint span, .gm-style-cc {
-  display:none;
+  display: none;
 }
+
 .gmnoprint div {
-  background:none !important;
+  background: none !important;
 }
 </style>

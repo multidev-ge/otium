@@ -9,7 +9,7 @@ import MainLayout from "@/layouts/mainLayout.vue"
   <main-layout>
     <!-- Contact Page -->
     <div
-        class="flex flex-col space-y-6">
+        class="flex flex-col gap-y-8 lg:gap-y-16">
       <h1
           class="font-medium text-5xl sm:max-2xl:text-6.5xl 2xl:text-8xl leading-normal">
         Contact
