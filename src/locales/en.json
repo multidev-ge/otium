@@ -1,0 +1,13 @@
+{
+  "languages": {
+    "en": "En",
+    "ka": "Ge"
+  },
+  "menu": {
+    "Company": "Company",
+    "Projects": "Projects",
+    "Media": "Media",
+    "Contact": "Contact",
+    "FYA": "Find your apartment"
+  }
+}
