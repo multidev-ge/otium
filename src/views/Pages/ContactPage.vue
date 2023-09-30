@@ -19,7 +19,7 @@ import MainLayout from "@/layouts/mainLayout.vue"
 
       <div class="grid grid-cols-1 lg:grid-cols-2 max-lg:gap-y-20 lg:gap-x-36">
         <contact-form/>
-        <contact-map/>
+        <contact-map class="h-56 sm:max-md:h-64 md:max-lg:h-80 lg:h-full"/>
       </div>
     </div>
   </main-layout>

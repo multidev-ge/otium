@@ -1,6 +1,6 @@
 <template>
   <!-- Contact Map -->
-  <div id="map" class="rounded-xl w-full h-56 sm:max-md:h-64 md:max-lg:h-80 lg:h-full"/>
+  <div id="map" class="rounded-xl"/>
 </template>
 
 <script setup>
