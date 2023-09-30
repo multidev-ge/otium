@@ -1,11 +1,15 @@
 <template>
   <!-- Contact Map -->
-  <div id="map" class="rounded-xl"/>
+  <div id="map" class="rounded-xl relative">
+    <slot/>
+  </div>
 </template>
 
 <script setup>
 import {ref, onMounted} from "vue";
 import {Loader} from "@googlemaps/js-api-loader";
+import background from "@/assets/logos/Map/background.png";
+import logo from "@/assets/logos/Map/logo.png";
 
 const map = ref(null);
 
@@ -24,6 +28,15 @@ onMounted(() => {
       disableDefaultUI: true,
       zoom: 12,
       styles: [
+        {
+          "featureType": "all",
+          "elementType": "labels.icon",
+          "stylers": [
+            {
+              "visibility": "off"
+            }
+          ]
+        },
         {
           "featureType": "all",
           "elementType": "labels.text.fill",
@@ -51,15 +64,6 @@ onMounted(() => {
             },
             {
               "lightness": 16
-            }
-          ]
-        },
-        {
-          "featureType": "all",
-          "elementType": "labels.icon",
-          "stylers": [
-            {
-              "visibility": "off"
             }
           ]
         },
@@ -188,7 +192,7 @@ onMounted(() => {
               "lightness": 17
             }
           ]
-        }
+        },
       ]
     });
 
@@ -196,7 +200,7 @@ onMounted(() => {
       position: {lat: 41.7721719, lng: 44.7795627},
       map: map.value,
       icon: {
-        url: 'src/assets/logos/Map/background.png',
+        url: background,
         anchor: new google.maps.Point(24, 24),
         size: new google.maps.Size(48, 48),
       },
@@ -206,7 +210,7 @@ onMounted(() => {
       position: {lat: 41.7721719, lng: 44.7795627},
       map: map.value,
       icon: {
-        url: 'src/assets/logos/Map/logo.png',
+        url: logo,
         anchor: new google.maps.Point(12, 12),
         size: new google.maps.Size(24, 24),
       },
