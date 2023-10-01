@@ -3,28 +3,29 @@
   <div>
     <div id="map" class="w-full h-full rounded-xl"></div>
     <div v-if="withFilter"
-         class="flex flex-col justify-between p-10 absolute top-4 max-lg:left-4 lg:right-4 bg-white w-[464px] h-[608px] rounded-xl">
-      <h3 class="font-medium text-3xl">
+         class="flex flex-col max-lg:gap-y-6 lg:justify-between p-6 lg:p-10 absolute top-4 max-lg:left-4 lg:right-4 bg-white w-80  lg:w-[464px]
+         h-fit lg:h-[608px] rounded-xl">
+      <h3 class="font-medium text-2xl lg:text-3xl">
         Some nice things around the building
       </h3>
-      <div class="flex flex-wrap items-start gap-4">
+      <div class="flex flex-wrap items-start gap-3 lg:gap-4">
         <div @click="selected = index" v-for="(label, index) in labels" :key="index"
              :class="{'bg-black text-white': index === selected}"
-             class="cursor-pointer flex items-center gap-x-1.5 border border-black p-3 rounded-2xl">
-          <img :src="label.icon" :alt="label.title + ' icon'">
-          <p v-text="label.title" class="font-medium text-xl"/>
+             class="cursor-pointer flex items-center gap-x-1.5 border border-black px-6 py-3 rounded-lg lg:rounded-2xl">
+          <img class="w-3.5 h-3.5" :src="label.icon" :alt="label.title + ' icon'">
+          <p v-text="label.title" class="font-medium lg:text-xl"/>
         </div>
       </div>
-      <div class="grid grid-cols-2">
-        <div class="flex gap-x-1">
-          <img src="@/assets/icons/Map/near.svg" alt="near icon"/>
-          <span>Near: </span>
-          <span class="underline">400m</span>
+      <div class="flex max-lg:flex-col max-lg:gap-y-3 lg:items-center lg:justify-between">
+        <div class="flex items-center gap-x-1">
+          <img class="w-6 h-6" src="@/assets/icons/Map/near.svg" alt="near icon"/>
+          <span class="opacity-40 font-medium text-xl">Near: </span>
+          <span class="underline font-medium text-xl">400m</span>
         </div>
-        <div class="flex gap-x-1">
-          <img src="@/assets/icons/Map/accessibility.svg" alt="accessibility icon"/>
-          <span>Accessibility: </span>
-          <span class="underline">Yes</span>
+        <div class="flex items-center gap-x-1">
+          <img class="w-6 h-6" src="@/assets/icons/Map/accessibility.svg" alt="accessibility icon"/>
+          <span class="opacity-40 font-medium text-xl">Accessibility: </span>
+          <span class="underline font-medium text-xl">Yes</span>
         </div>
       </div>
     </div>
@@ -284,6 +285,13 @@ onMounted(() => {
         anchor: new google.maps.Point(24, 24),
         size: new google.maps.Size(48, 48),
       },
+      // labelOrigin: new google.maps.Point(-5, -4),
+      // label: {
+      //   text: 'Otium',
+      //   fontWeight: 'medium',
+      //   fontSize: '16px',
+      //   color: '#fff',
+      // },
     });
 
     // Add a logo to the map.
