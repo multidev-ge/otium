@@ -5,7 +5,7 @@ const { BrandStory } = useOtiumBrandStory();
 </script>
 <template>
   <div class="xl:pb-28 pb-7">
-    <div class="xl:flex gap-20 pb-12 xl:pb-20 ">
+    <div class="xl:flex gap-[84px] pb-12 xl:pb-20 ">
       <div class="pb-5 xl:pb-0">
         <h2 class="text-2xl text-[#000000] font-ppNeueMontrealMedium">
           {{ BrandStory[0].BrandStoryName.title3 }}
