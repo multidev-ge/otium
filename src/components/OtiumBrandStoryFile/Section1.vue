@@ -16,9 +16,9 @@ const { BrandStory } = useOtiumBrandStory();
     </div>
   </div>
   <div class="lg:flex lg:gap-8 pb-7 md:pb-12">
-    <div class="bg-[#D9D9D9] w-full h-[186px] md:h-[464px] mb-7  rounded-lg	">
+    <div class="bg-[#D9D9D9] w-full h-[186px] md:h-[464px] xl:w-[864px]  mb-7  rounded-lg	">
     </div>
-    <div class="bg-[#D9D9D9] w-full md:w-3/5					h-[384px]	 md:h-[464px] rounded-lg	">
+    <div class="bg-[#D9D9D9] w-full md:w-3/5		xl:w[416px]			h-[384px]	 md:h-[464px] rounded-lg	">
     </div>
 </div>
 
