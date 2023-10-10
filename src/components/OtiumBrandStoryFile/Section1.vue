@@ -10,7 +10,7 @@ const { BrandStory } = useOtiumBrandStory();
 
     </div>
     <div class="xl:w-[415px]">
-      <h3 class="text-2xl	 md:text-[28px]	font-medium	   font-ppNeueMontrealMedium leading-[28px]">
+      <h3 class="text-2xl	 md:text-[28px]	font-medium	   font-ppNeueMontrealMedium leading-[36px]">
         {{ BrandStory[0].BrandStoryDescription.description5 }}
       </h3>
     </div>
