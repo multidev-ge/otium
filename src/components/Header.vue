@@ -6,7 +6,7 @@
     >
       <div class="flex lg:flex-1">
         <router-link to="/">
-          <img :src="headerInfo[0].headercomponents.img" alt="" />
+          <img class="xl:w-auto xl:h-auto w-[90px] h-[22px]" :src="headerInfo[0].headercomponents.img" alt="" />
         </router-link>
       </div>
       <div class="flex lg:hidden">
