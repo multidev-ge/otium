@@ -222,7 +222,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
           class="flex mt-4 justify-center space-x-5 sm:justify-center sm:mt-0"
         >
           <h2 class="text-[#FFFFFF] text-lg">POWERED BY</h2>
-          <h2 class="text-[#61C5E2] text-lg">GROWTH HUNTERS</h2>
+          <h2 class="text-[#61C5E2] text-lg font-bold	">GROWTH HUNTERS</h2>
         </div>
         <div class="justify-center flex pt-7">
           <h2 class="text-[#FFFFFF] text-lg md:pl-36">ALL RIGHTS RESERVED</h2>
