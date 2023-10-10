@@ -6,7 +6,11 @@
     >
       <div class="flex lg:flex-1">
         <router-link to="/">
-          <img class="xl:w-auto xl:h-auto w-[90px] h-[22px]" :src="headerInfo[0].headercomponents.img" alt="" />
+          <img
+            class="xl:w-auto xl:h-auto w-[90px] h-[22px]"
+            :src="headerInfo[0].headercomponents.img"
+            alt=""
+          />
         </router-link>
       </div>
       <div class="flex lg:hidden">
@@ -23,7 +27,7 @@
         <router-link to="/otiumbrandstory">
           <a
             href="#"
-            class="text-lg font-medium leading-6"
+            class="text-lg font-medium leading-[26px]"
             :class="{ 'active-link': $route.path === '/otiumbrandstory' }"
           >
             {{ headerInfo[0].headercomponents.title }}
@@ -32,7 +36,7 @@
         <router-link to="/projects">
           <a
             href="#"
-            class="text-lg font-medium leading-6"
+            class="text-lg font-medium leading-[26px]"
             :class="{ 'active-link': $route.path === '/projects' }"
           >
             {{ headerInfo[0].headercomponents.title1 }}
@@ -41,7 +45,7 @@
         <router-link to="/media">
           <a
             href="#"
-            class="text-lg font-medium leading-6"
+            class="text-lg font-medium leading-[26px]"
             :class="{ 'active-link': $route.path === '/media' }"
           >
             {{ headerInfo[0].headercomponents.title2 }}
@@ -50,7 +54,7 @@
         <router-link to="/contact">
           <a
             href="#"
-            class="text-lg font-medium leading-6"
+            class="text-lg font-medium leading-[26px]"
             :class="{ 'active-link': $route.path === '/contact' }"
           >
             {{ headerInfo[0].headercomponents.title3 }}
@@ -61,14 +65,20 @@
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
         <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-1">
           <button
-            :class="{ 'bold-button': isButton1Bold }"
+            :class="{
+              'bold-button': isButton1Bold,
+              'inactive-button': !isButton1Bold,
+            }"
             @click="toggleButtonStyles('button1', 'button2')"
           >
             {{ headerInfo[0].headercomponents.language }}
           </button>
           <button disabled class="focus:outline-none">/</button>
           <button
-            :class="{ 'bold-button': isButton2Bold }"
+            :class="{
+              'bold-button': isButton2Bold,
+              'inactive-button': !isButton2Bold,
+            }"
             @click="toggleButtonStyles('button2', 'button1')"
           >
             {{ headerInfo[0].headercomponents.language1 }}
@@ -115,51 +125,59 @@
           <div class="-my-6 divide-y divide-gray-500/10 justify-center grid">
             <div class="space-y-2 py-6">
               <div class="grid justify-center gap-y-8">
-              <router-link to="/otiumbrandstory">
-                <a
-                  href="#"
-                  class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000] "
-                  >{{ headerInfo[0].headercomponents.title }}</a
-                >
-              </router-link>
-              <router-link to="/projects">
-                <a
-                  href="#"
-                  class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                  >{{ headerInfo[0].headercomponents.title1 }}</a
-                >
-              </router-link>
-              <router-link to="/media">
-                <a
-                  href="#"
-                  class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                  >{{ headerInfo[0].headercomponents.title2 }}</a
-                >
-              </router-link>
-              <router-link to="/contact">
-                <a
-                  href="#"
-                  class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                  >{{ headerInfo[0].headercomponents.title3 }}</a
-                >
-              </router-link>
+                <router-link to="/otiumbrandstory">
+                  <a
+                    href="#"
+                    class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-[26px] text-[#000000]"
+                    >{{ headerInfo[0].headercomponents.title }}</a
+                  >
+                </router-link>
+                <router-link to="/projects">
+                  <a
+                    href="#"
+                    class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-[26px] text-[#000000]"
+                    >{{ headerInfo[0].headercomponents.title1 }}</a
+                  >
+                </router-link>
+                <router-link to="/media">
+                  <a
+                    href="#"
+                    class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-[26px] text-[#000000]"
+                    >{{ headerInfo[0].headercomponents.title2 }}</a
+                  >
+                </router-link>
+                <router-link to="/contact">
+                  <a
+                    href="#"
+                    class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-[26px] text-[#000000]"
+                    >{{ headerInfo[0].headercomponents.title3 }}</a
+                  >
+                </router-link>
 
-              <div class="lg:flex lg:flex-1 lg:justify-end gap-1 flex justify-center">
-                <button
-                  :class="{ 'bold-button': isButton1Bold }"
-                  @click="toggleButtonStyles('button1', 'button2')"
+                <div
+                  class="lg:flex lg:flex-1 lg:justify-end gap-1 flex justify-center"
                 >
-                  {{ headerInfo[0].headercomponents.language }}
-                </button>
-                <button disabled class="focus:outline-none">/</button>
                 <button
-                  :class="{ 'bold-button': isButton2Bold }"
-                  @click="toggleButtonStyles('button2', 'button1')"
-                >
-                  {{ headerInfo[0].headercomponents.language1 }}
-                </button>
+            :class="{
+              'bold-button': isButton1Bold,
+              'inactive-button': !isButton1Bold,
+            }"
+            @click="toggleButtonStyles('button1', 'button2')"
+          >
+            {{ headerInfo[0].headercomponents.language }}
+          </button>
+          <button disabled class="focus:outline-none">/</button>
+          <button
+            :class="{
+              'bold-button': isButton2Bold,
+              'inactive-button': !isButton2Bold,
+            }"
+            @click="toggleButtonStyles('button2', 'button1')"
+          >
+            {{ headerInfo[0].headercomponents.language1 }}
+          </button>
+                </div>
               </div>
-            </div>
               <div class="pt-8">
                 <router-link to="/apartment-finder">
                   <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
@@ -230,7 +248,13 @@ const mobileMenuOpen = ref(false);
 
 <style scoped>
 .bold-button {
-  font-weight: bold;
+  color: #000000 !important;
+  font-weight: normal;
+}
+
+.inactive-button {
+  color: #00000066 !important;
+  font-weight: normal;
 }
 .active-link {
   color: #88407c; /* You can replace 'red' with your desired shade of red */
