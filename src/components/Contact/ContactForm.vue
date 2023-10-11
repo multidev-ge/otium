@@ -15,7 +15,7 @@ const {contactFormData, submitContactForm} = useContact()
     <textarea v-model="contactFormData.message" name="message" placeholder="Message"
               class="h-36 block w-full pl-5 pt-3 leading-6 border-2 border-opacity-30 resize-none rounded-md" required/>
     <button type="submit"
-            class="w-full md:w-36 flex items-center justify-center bg-black hover:bg-[#883F7C] text-white px-6 py-3 rounded-2xl gap-x-1.5 lg:float-right transition duration-100 ease-in-out">
+            class="w-full md:w-48 flex items-center justify-center bg-black hover:bg-[#883F7C] text-white px-6 py-3 rounded-2xl gap-x-1.5 lg:float-right transition duration-100 ease-in-out">
       Send
       <contact-right-arrow-icon/>
     </button>
