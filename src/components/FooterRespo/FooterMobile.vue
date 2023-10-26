@@ -10,7 +10,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
     <div class="mx-auto  justify-between w-full  py-20 container">
       <div class="md:flex gap-8">
         <div class="mb-6 md:mb-0 w-[45%] px-4">
-          <h2 class="text-[#FFFFFF] text-3xl">
+          <h2 class="text-[#FFFFFF] text-[32px] font-medium	leading-10	">
             {{ FooterInfo[0].Footercomponents.title }}
           </h2>
         </div>
@@ -73,7 +73,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   {{ FooterInfo[0].Footercomponents.title1 }}
                 </p>
               </div>
-              <p class="text-sm text-[#FFFFFF99] pt-3 md:w-44 mb-7 md:mb-0">
+              <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 md:w-44 mb-7 md:mb-0">
                 {{ FooterInfo[0].Footercomponents.address }}
               </p>
             </div>
@@ -88,7 +88,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                     {{ FooterInfo[0].Footercomponents.title2 }}
                   </p>
                 </div>
-                <p class="text-sm text-[#FFFFFF99] pt-3 w-44">
+                <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 w-44">
                   {{ FooterInfo[0].Footercomponents.number }}
                 </p>
               </div>
@@ -102,14 +102,14 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                     {{ FooterInfo[0].Footercomponents.title3 }}
                   </p>
                 </div>
-                <p class="text-sm text-[#FFFFFF99] pt-3 w-44">
+                <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 w-44">
                   {{ FooterInfo[0].Footercomponents.mail }}
                 </p>
               </div>
             </div>
           </div>
           <div class="">
-            <h2 class="text-[#FFFFFF99] px-4">
+            <h2 class="text-[#FFFFFF99] px-4 text-[14px] leading-[18px] font-medium	">
               {{ FooterInfo[0].Footercomponents.media }}
             </h2>
             <div class="flex gap-3 pt-3 px-4">
@@ -222,7 +222,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
           class="flex mt-4 justify-center space-x-5 sm:justify-center sm:mt-0"
         >
           <h2 class="text-[#FFFFFF] text-lg">POWERED BY</h2>
-          <h2 class="text-[#61C5E2] text-lg">GROWTH HUNTERS</h2>
+          <h2 class="text-[#61C5E2] text-lg font-bold	">GROWTH HUNTERS</h2>
         </div>
         <div class="justify-center flex pt-7">
           <h2 class="text-[#FFFFFF] text-lg md:pl-36">ALL RIGHTS RESERVED</h2>
