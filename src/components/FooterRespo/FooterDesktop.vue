@@ -1,14 +1,16 @@
 <script setup>
-import useFooter from "@/composables/useFooter";
-import useHeader from "@/composables/useHeader";
+import useFooter from "@/composables/useFooter"
+import useHeader from "@/composables/useHeader"
 
 const { headerInfo } = useHeader();
 const { FooterInfo, contactFormData, submitContactForm } = useFooter();
 </script>
 <template>
-  <footer class="bg-[#000000] mt-12 ">
-    <div class="mx-auto container  justify-between w-full py-20">
+  <footer class="bg-[#000000] w-full mt-12">
+    <div class="container mx-auto justify-between py-20">
       <div class="block md:block xl:flex gap-8">
+        <div class="mb-6 md:mb-0 ">
+          <h2 class="text-[#FFFFFF] text-3xl">
         <div class="mb-6 md:mb-0 w-[45%]">
           <h2 class="text-[#FFFFFF] text-[32px] leading-[40px]	">
             {{ FooterInfo[0].Footercomponents.title }}
@@ -19,18 +21,13 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
             alt=""
           />
         </div>
-
         <div class="md:px-4 w-[100%]">
           <form
             @submit.prevent="submitContactForm"
             class="md:flex md:gap-8 justify-between gap-4"
           >
             <div class="md:w-1/3 mb-7 md:mb-0">
-              <label
-                for="text"
-                class="block text-base font-medium text-[#FFFFFF99]"
-                >Your Name</label
-              >
+              <label for="text" class="block text-base font-medium text-[#FFFFFF99]">Your Name</label>
               <input
                 v-model="contactFormData.name"
                 id="text"
@@ -41,11 +38,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
               />
             </div>
             <div class="md:w-1/3 mb-12 md:mb-0">
-              <label
-                for="tel"
-                class="block text-base font-medium text-[#FFFFFF99]"
-                >Phone Number</label
-              >
+              <label for="tel" class="block text-base font-medium text-[#FFFFFF99]">Phone Number</label>
               <input
                 v-model="contactFormData.phoneNumber"
                 id="tel"

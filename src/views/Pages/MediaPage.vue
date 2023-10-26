@@ -15,7 +15,7 @@ const {
 
 <template>
   <MainLayout>
-    <div class="px-4 md:px-0 container mx-auto">
+    <div class="">
       <h1 class="mb-12 text-5xl md:text-8xl font-medium text-[#000]">Media</h1>
 
       <div class="overflow-scroll md:overflow-hidden flex gap-2.5 md:gap-4 mb-8 w-full">

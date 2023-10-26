@@ -5,13 +5,16 @@ import RightPart from "@/components/apartmentFinderPage/rightPart.vue";
 import FiltersPart from "@/components/apartmentFinderPage/filtersPart.vue";
 import Offerings from "@/components/ProjectInner/Offerings.vue";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
-import { useRoute } from "vue-router";
+import {useRoute} from "vue-router";
+import ContactMap from "@/components/Contact/ContactMap.vue";
+import {ref} from "vue";
+
 const route = useRoute();
 </script>
 
 <template>
   <mainLayout>
-    <div class="mx-4 md:container md:mx-auto">
+    <div class="">
       <h1 class="text-5xl md:text-9xl mb-6 md:mb-10 md: text-center font-semibold">Project Name</h1>
       <div class="flex flex-col lg:gap-40 gap-20">
         <ProjectBanner/>
@@ -30,11 +33,15 @@ const route = useRoute();
             </div>
             <div class="flex flex-col gap-5">
               <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
-                <p>Terms of Payment <right-arrow class="inline-block ml-1"/></p>
+                <p>Terms of Payment
+                  <right-arrow class="inline-block ml-1"/>
+                </p>
               </button>
               <router-link :to="`/projects/${route.params.id}/details`">
                 <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
-                  <p>Technical characteristics <right-arrow class="inline-block ml-1"/></p>
+                  <p>Technical characteristics
+                    <right-arrow class="inline-block ml-1"/>
+                  </p>
                 </button>
               </router-link>
 
@@ -44,13 +51,9 @@ const route = useRoute();
 
         <Offerings/>
 
-        <div style="width: 100%">
-          <iframe width="100%" height="600" class="rounded-xl "
-                  src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%203%20Iakob%20Nikoladze%20St.%200179,%20Tbilisi,%20GeorgiaStreet,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-            <a href="https://www.maps.ie/population/">Population Estimator map</a></iframe>
-        </div>
+        <contact-map class="h-[640px] relative" :with-filter="true"/>
 
-        <div class="flex md:flex-row flex-col container mx-auto justify-between ">
+        <div class="flex md:flex-row flex-col justify-between ">
           <FiltersPart/>
           <RightPart/>
         </div>

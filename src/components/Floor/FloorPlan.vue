@@ -14,13 +14,13 @@ watch(floorNumber, (newFloor) => currentFloor.value = block.value[newFloor - 1])
 
 <template>
   <!-- Floor Plan -->
-  <div class="flex items-stretch xl:gap-x-10 max-xl:gap-y-7 max-xl:flex-col justify-center">
+  <div class="flex flex-1 items-stretch xl:gap-x-10 max-xl:gap-y-7 max-xl:flex-col justify-center">
     <h1 class="text-3xl xl:text-4xl font-medium leading-normal xl:hidden">
       6th floor
     </h1>
 
     <!-- Floor Apartments -->
-    <div class="relative">
+    <div class="relative flex-1">
       <img class="w-full h-full" src="../../assets/images/floor/plan.png" alt="floor plan">
       <floor-apartment v-for="(apartment, index) in currentFloor" :apartment="apartment" :key="index"/>
     </div>
