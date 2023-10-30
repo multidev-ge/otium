@@ -15,7 +15,7 @@ watch(floorNumber, (newFloor) => currentFloor.value = block.value[newFloor - 1])
 <template>
   <!-- Floor Plan -->
   <div class="flex flex-1 items-stretch xl:gap-x-10 max-xl:gap-y-7 max-xl:flex-col justify-center">
-    <h1 class="text-3xl xl:text-4xl font-medium leading-normal xl:hidden">
+    <h1 class="text-[32px] xl:text-4xl font-medium leading-normal xl:hidden">
       6th floor
     </h1>
 
