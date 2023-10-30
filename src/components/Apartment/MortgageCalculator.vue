@@ -49,7 +49,7 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
         </p>
       </div>
 
-      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 text-xl leading-8 font-medium">
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 text-xl leading-8 font-medium overflow-hidden">
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
           <span class="block text-sm font-medium !leading-6 opacity-40">Total property price</span>
           $<input type="text" value="80 000" class="border-0 outline-0">
