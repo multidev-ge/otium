@@ -21,7 +21,7 @@ watch(floorNumber, (newFloor) => currentFloor.value = block.value[newFloor - 1])
 
     <!-- Floor Apartments -->
     <div class="relative flex-1">
-      <img class="w-full h-full" src="../../assets/images/floor/plan.png" alt="floor plan">
+      <img class="w-full max-sm:h-[152px] h-full" src="../../assets/images/floor/plan.png" alt="floor plan">
       <floor-apartment v-for="(apartment, index) in currentFloor" :apartment="apartment" :key="index"/>
     </div>
 
