@@ -7,7 +7,7 @@ const {contactFormData, submitContactForm} = useContact()
 
 <template>
   <!-- Contact From -->
-  <form @submit.prevent="submitContactForm" class="font-medium space-y-7">
+  <form @submit.prevent="submitContactForm" class="font-medium space-y-7 w-full lg:w-[528px]">
     <input v-model="contactFormData.name" name="name" type="text" placeholder="Name"
            class="block w-full rounded-md border border-opacity-30 leading-6 pt-[11px] pb-[13px] pl-[22px]" required>
     <input v-model="contactFormData.phoneNumber" name="phone-number" type="tel" placeholder="Phone Number"

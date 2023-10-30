@@ -17,9 +17,9 @@ import MainLayout from "@/layouts/mainLayout.vue"
 
       <contact-info/>
 
-      <div class="grid grid-cols-1 items-center max-lg:gap-y-20 lg:grid-cols-2 lg:gap-x-36">
+      <div class="flex max-lg:flex-col items-center max-lg:gap-y-20 lg:gap-x-36">
         <contact-form/>
-        <contact-map class="sm:max-md:h-[198px] md:max-lg:h-80 lg:h-[370px]"/>
+        <contact-map class="w-full lg:w-[640px] max-md:h-[198px] md:max-lg:h-80 lg:h-[370px]"/>
       </div>
     </div>
   </main-layout>
