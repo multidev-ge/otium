@@ -4,7 +4,11 @@
          aria-label="Global">
       <div class="flex lg:flex-1">
         <router-link to="/">
-          <img :src="headerInfo[0].headercomponents.img" alt=""/>
+          <img
+            class="xl:w-auto xl:h-auto w-[90px] h-[22px]"
+            :src="headerInfo[0].headercomponents.img"
+            alt=""
+          />
         </router-link>
       </div>
       <div class="flex lg:hidden">
@@ -16,13 +20,60 @@
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-        <router-link v-for="(link, index) in menuLinks" :key="index" :to="{name: link.name}"
-                     class="uppercase -mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                     :class="{ 'text-[#88407c]': route.name === link.name }" v-text="t(`menu.${link.title}`)"/>
+        <router-link to="/otiumbrandstory">
+          <a
+            href="#"
+            class="text-lg font-medium leading-6"
+            :class="{ 'active-link': $route.path === '/otiumbrandstory' }"
+          >
+            {{ headerInfo[0].headercomponents.title }}
+          </a>
+        </router-link>
+        <router-link to="/projects">
+          <a
+            href="#"
+            class="text-lg font-medium leading-6"
+            :class="{ 'active-link': $route.path === '/projects' }"
+          >
+            {{ headerInfo[0].headercomponents.title1 }}
+          </a>
+        </router-link>
+        <router-link to="/media">
+          <a
+            href="#"
+            class="text-lg font-medium leading-6"
+            :class="{ 'active-link': $route.path === '/media' }"
+          >
+            {{ headerInfo[0].headercomponents.title2 }}
+          </a>
+        </router-link>
+        <router-link to="/contact">
+          <a
+            href="#"
+            class="text-lg font-medium leading-6"
+            :class="{ 'active-link': $route.path === '/contact' }"
+          >
+            {{ headerInfo[0].headercomponents.title3 }}
+          </a>
+        </router-link>
       </PopoverGroup>
 
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
-        <LangSwitcher/>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-1">
+          <button
+            :class="{ 'bold-button': isButton1Bold }"
+            @click="toggleButtonStyles('button1', 'button2')"
+          >
+            {{ headerInfo[0].headercomponents.language }}
+          </button>
+          <button disabled class="focus:outline-none">/</button>
+          <button
+            :class="{ 'bold-button': isButton2Bold }"
+            @click="toggleButtonStyles('button2', 'button1')"
+          >
+            {{ headerInfo[0].headercomponents.language1 }}
+          </button>
+        </div>
 
         <router-link to="/apartment-finder">
           <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
@@ -90,3 +141,12 @@ const menuLinks = useNavigation();
 const {headerInfo} = useHeader();
 const mobileMenuOpen = ref(false);
 </script>
+
+<style scoped>
+.bold-button {
+  font-weight: bold;
+}
+.active-link {
+  color: #88407c; /* You can replace 'red' with your desired shade of red */
+}
+</style>
