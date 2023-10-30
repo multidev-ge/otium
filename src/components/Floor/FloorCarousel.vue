@@ -25,9 +25,9 @@ onBeforeUnmount(() => window.removeEventListener('resize', updateScreenWidth))
           :fill="screenWidth < 1280 ? 'black' : undefined" class="cursor-pointer"
           :disabled="floorNumber === blockLength" />
         <span v-text="floorNumber + 3 - floor" @click="emit('changeFloor', floorNumber + 3 - floor)"
-          class="cursor-pointer font-medium lg:max-xl:text-xl xl:max-2xl:text-[42px] xl:max-2xl:leading-[50.4px] 2xl:text-5xl"
+          class="cursor-pointer font-medium lg:max-xl:text-xl xl:max-3xl:text-[42px] xl:max-3xl:leading-[50.4px] 3xl:text-5xl"
           :class="{
-            'text-3xl lg:max-xl:text-2xl xl:max-2xl:text-[64px] xl:max-2xl:leading-[76.8px] 2xl:text-6xl text-[#88407C] px-6 xl:py-2 xl:rounded-3xl xl:border-2 xl:border-[#88407C]': isFeatured(floor)
+            'text-3xl lg:max-xl:text-2xl xl:max-3xl:text-[64px] xl:max-3xl:leading-[76.8px] 3xl:text-6xl text-[#88407C] px-6 xl:py-2 xl:rounded-3xl xl:border-2 xl:border-[#88407C]': isFeatured(floor)
           }" />
         <floor-caret-up-icon v-if="isFeatured(floor)" @click="emit('previousFloor')"
           :fill="screenWidth < 1280 ? 'black' : undefined" class="rotate-180 cursor-pointer"
