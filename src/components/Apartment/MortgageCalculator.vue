@@ -49,14 +49,14 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
         </p>
       </div>
 
-      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 text-xl leading-8 font-medium">
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
-          <span class="block text-sm font-medium leading-6 opacity-40">Total property price</span>
+          <span class="block text-sm font-medium !leading-6 opacity-40">Total property price</span>
           $<input type="text" value="80 000" class="border-0 outline-0">
         </div>
 
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
-          <label for="paymentYears" class="block text-sm font-medium leading-6 opacity-40">Split payment in
+          <label for="paymentYears" class="block text-sm font-medium !leading-6 opacity-40">Split payment in
             years</label>
           <select id="paymentYears" class="border-0 outline-0">
             <option v-for="years in 9" :value="11 + years" v-text="11 + years"/>
@@ -64,12 +64,12 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
         </div>
 
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
-          <span class="block text-sm font-medium leading-6 opacity-40">Percentage</span>
+          <span class="block text-sm font-medium !leading-6 opacity-40">Percentage</span>
           %<input type="text" value="6" class="border-0 outline-0">
         </div>
 
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md  whitespace-nowrap">
-          <span class="block text-sm font-medium leading-6 opacity-40">Pre payment</span>
+          <span class="block text-sm font-medium !leading-6 opacity-40">Pre payment</span>
           $<input type="text" value="0" class="border-0 outline-0">
         </div>
       </div>
