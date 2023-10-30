@@ -7,7 +7,7 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
 <template>
   <div class="flex max-xl:flex-col xl:grid xl:grid-cols-2 xl:grid-rows-2 bg-black rounded-xl">
     <div class="order-1 flex flex-col gap-y-4 p-4 xl:p-16">
-      <h2 class="text-white font-medium text-4.5xl">Calculator</h2>
+      <h2 class="text-white font-medium text-[32px] leading-[38.4px] lg:text-[40px] lg:leading-normal">Calculator</h2>
       <p class="text-white text-xl font-medium leading-8 opacity-60">
         Fusce volutpat lectus nisl consectetur finibus scelerisque augue varius eros sapien diam, euismod pretium
         id, volutpat tortor. In vulputate lorem quis
