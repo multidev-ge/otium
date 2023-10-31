@@ -6,7 +6,7 @@ import Technical from "../../components/TechnicalCharacteristics/Technical.vue";
 
 <template>
   <main-layout>
-    <div class="container mx-auto  px-4 md:px-0">
+    <div class="">
         <Technical />
     </div>
   </main-layout>

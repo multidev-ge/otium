@@ -9,13 +9,6 @@ export default (function useHeader() {
             headercomponents: {
                 img: logo,
                 img1: markRaw(arrowRight),
-                language: "En",
-                language1: "Ge ",
-                title: "Company",
-                title1: "Projects",
-                title2: "Media",
-                title3: "Contact",
-                title4: "Find your apartment",
             },
         }
     ]);

@@ -6,7 +6,7 @@ import MainLayout from "@/layouts/mainLayout.vue";
 
 <template>
   <main-layout>
-    <div class="flex container md:flex-row w-full flex-col mx-auto justify-between">
+    <div class="flex md:flex-row w-full gap-[78px] flex-col justify-between">
       <left-side/>
       <right-part/>
     </div>

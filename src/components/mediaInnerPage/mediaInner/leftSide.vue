@@ -7,7 +7,7 @@ const {currentPageInfo} = mediaInner()
 </script>
 
 <template>
-    <section class="md:w-8/12 w-11/12 md:mx-0 mx-auto	">
+    <section class="md:w-8/12  md:mx-0 mx-auto	">
       <div class="flex gap-5 flex-col">
         <img class="rounded-lg" :src="currentPageInfo.images[0]" alt="">
         <p class="text-[#00000099] font-medium text-xl">{{currentPageInfo.mainPart.type}} // {{currentPageInfo.mainPart.date}}</p>
