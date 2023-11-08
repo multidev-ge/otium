@@ -7,7 +7,7 @@ import FloorDetails from "@/components/Floor/FloorDetails.vue"
   <main-layout>
     <!-- Floor Page -->
     <div
-        class="flex max-xl:flex-col-reverse xl:gap-x-14 max-xl:gap-y-7 max-md:px-4 md:mx-auto mt-1 sm:max-2xl:mt-20 2xl:mt-40 mb-40 sm:max-2xl:mb-52 2xl:mb-60">
+        class="flex max-xl:flex-col-reverse xl:gap-x-14 max-xl:gap-y-7 md:mx-auto mt-1 sm:max-2xl:mt-20 2xl:mt-40 mb-40 sm:max-2xl:mb-52 2xl:mb-60">
       <floor-details />
       <floor-plan />
     </div>

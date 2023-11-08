@@ -7,7 +7,7 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
 <template>
   <div class="flex max-xl:flex-col xl:grid xl:grid-cols-2 xl:grid-rows-2 bg-black rounded-xl">
     <div class="order-1 flex flex-col gap-y-4 p-4 xl:p-16">
-      <h2 class="text-white font-medium text-4.5xl">Calculator</h2>
+      <h2 class="text-white font-medium text-[32px] leading-[38.4px] lg:text-[40px] lg:leading-normal">Calculator</h2>
       <p class="text-white text-xl font-medium leading-8 opacity-60">
         Fusce volutpat lectus nisl consectetur finibus scelerisque augue varius eros sapien diam, euismod pretium
         id, volutpat tortor. In vulputate lorem quis
@@ -49,32 +49,32 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
         </p>
       </div>
 
-      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
-        <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
-          <span class="block text-sm font-medium leading-6 opacity-40">Total property price</span>
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 text-xl leading-8 font-medium overflow-hidden">
+        <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
+          <span class="block text-sm font-medium !leading-6 opacity-40">Total property price</span>
           $<input type="text" value="80 000" class="border-0 outline-0">
         </div>
 
-        <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
-          <label for="paymentYears" class="block text-sm font-medium leading-6 opacity-40">Split payment in
+        <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
+          <label for="paymentYears" class="block text-sm font-medium !leading-6 opacity-40">Split payment in
             years</label>
           <select id="paymentYears" class="border-0 outline-0">
             <option v-for="years in 9" :value="11 + years" v-text="11 + years"/>
           </select>
         </div>
 
-        <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
-          <span class="block text-sm font-medium leading-6 opacity-40">Percentage</span>
+        <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
+          <span class="block text-sm font-medium !leading-6 opacity-40">Percentage</span>
           %<input type="text" value="6" class="border-0 outline-0">
         </div>
 
-        <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md">
-          <span class="block text-sm font-medium leading-6 opacity-40">Pre payment</span>
+        <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md  whitespace-nowrap">
+          <span class="block text-sm font-medium !leading-6 opacity-40">Pre payment</span>
           $<input type="text" value="0" class="border-0 outline-0">
         </div>
       </div>
 
-      <div class="flex items-center justify-between">
+      <div class="flex max-lg:flex-col lg:items-center justify-between">
         <p class="text-xl font-medium leading-8 opacity-40">Your monthly payment</p>
         <p class="text-2xl font-medium leading-8">$540</p>
       </div>

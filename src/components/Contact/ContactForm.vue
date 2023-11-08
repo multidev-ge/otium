@@ -7,15 +7,15 @@ const {contactFormData, submitContactForm} = useContact()
 
 <template>
   <!-- Contact From -->
-  <form @submit.prevent="submitContactForm" class="space-y-6 lg:space-y-7 font-medium">
+  <form @submit.prevent="submitContactForm" class="font-medium space-y-7 w-full lg:w-[528px]">
     <input v-model="contactFormData.name" name="name" type="text" placeholder="Name"
-           class="block w-full pl-5 py-3 border-2 border-opacity-30 rounded-md" required>
+           class="block w-full rounded-md border border-opacity-30 leading-6 pt-[11px] pb-[13px] pl-[22px]" required>
     <input v-model="contactFormData.phoneNumber" name="phone-number" type="tel" placeholder="Phone Number"
-           class="block w-full pl-5 py-3 border-2 border-opacity-30 rounded-md" required>
+           class="block w-full rounded-md border border-opacity-30 leading-6 pt-[11px] pb-[13px] pl-[22px]" required>
     <textarea v-model="contactFormData.message" name="message" placeholder="Message"
-              class="h-36 block w-full pl-5 pt-3 leading-6 border-2 border-opacity-30 resize-none rounded-md" required/>
+              class="block w-full resize-none rounded-md border border-opacity-30 leading-6 h-[142px] pt-[11px] pl-[22px]" required/>
     <button type="submit"
-            class="w-full md:w-36 flex items-center justify-center bg-black hover:bg-[#883F7C] text-white px-6 py-3 rounded-2xl gap-x-1.5 lg:float-right transition duration-100 ease-in-out">
+            class="max-md:!mt-[25px] w-full md:w-48 flex items-center justify-center bg-black hover:bg-[#883F7C] text-white px-6 py-3 rounded-2xl gap-x-1.5 lg:float-right transition duration-100 ease-in-out">
       Send
       <contact-right-arrow-icon/>
     </button>
