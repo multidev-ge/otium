@@ -1,7 +1,7 @@
 <script setup>
 import mediaInner from "@/composables/forMediaInner/mediaInner";
 defineProps(['content'])
-const {similarNews} = mediaInner()
+
 </script>
 
 <template>
@@ -11,7 +11,7 @@ const {similarNews} = mediaInner()
           <img class=" h-40  rounded-lg" :src="news.image_url" alt="">
           <div class="flex gap-2 flex-col ">
               <p class="text-lg text-[#00000099]">{{news?.category?.title}} // {{news?.date}}</p>
-              <p class="text-2xl pb-5 leading-9">{{news?.description}}</p>
+              <p class="text-2xl pb-5 leading-9">{{ news?.description }}</p>
           </div>
       </div>
   </section>
