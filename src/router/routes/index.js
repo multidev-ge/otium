@@ -50,6 +50,7 @@ const routes = [
               {
                 path: "",
                 name: "project",
+                props: true,
                 component: () => import('../../views/Pages/ProjectInner.vue'),
               },
               {
