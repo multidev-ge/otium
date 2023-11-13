@@ -1,8 +1,6 @@
 <script setup>
 import { ref, onMounted, watch } from "vue";
-import useNavigation from "@/composables/useNavigation";
 import useHeader from "@/composables/useHeader";
-import LangSwitcher from "@/components/LangSwitcher.vue";
 import { useI18n } from 'vue-i18n'
 import { SUPPORT_LOCALES as supportLocales, setI18nLanguage } from '../i18n'
 import { useRoute } from "vue-router";
@@ -10,13 +8,9 @@ import { Dialog, DialogPanel, PopoverGroup, } from "@headlessui/vue";
 import { Bars3Icon, XMarkIcon, } from "@heroicons/vue/24/outline";
 
 const { t, locale } = useI18n({ useScope: 'global' })
-
 const route = useRoute();
-
-const menuLinks = useNavigation();
 const { headerInfo, getMenu, mainMenuLinks } = useHeader();
 const mobileMenuOpen = ref(false);
-
 const setLocale = (val) => {
   locale.value = val
 }
@@ -29,7 +23,6 @@ watch(locale, (val) => {
 onMounted(() => {
   getMenu()
 })
-
 </script>
 <template>
   <header class="bg-white">
@@ -47,43 +40,22 @@ onMounted(() => {
         </button>
       </div>
       <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-
         <router-link v-for="item in mainMenuLinks" :to="item.url">
           <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === item.url }">
             {{ item.title }}
           </a>
         </router-link>
-        <!-- <router-link to="/projects">
-          <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/projects' }">
-            {{ headerInfo[0].headercomponents.title1 }}
-          </a>
-        </router-link>
-        <router-link to="/media">
-          <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/media' }">
-            {{ headerInfo[0].headercomponents.title2 }}
-          </a>
-        </router-link>
-        <router-link to="/contact">
-          <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/contact' }">
-            {{ headerInfo[0].headercomponents.title3 }}
-          </a>
-        </router-link> -->
-
       </PopoverGroup>
-
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
-
         <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-1">
           <button class="capitalize" :class="{ 'bold-button': locale === 'en' }" @click="setLocale('en')">
-            en
+            {{ t("languages.en") }}
           </button>
           <button disabled class="focus:outline-none">/</button>
           <button class="capitalize" :class="{ 'bold-button': locale === 'ka' }" @click="setLocale('ka')">
-            ka
+            {{ t("languages.ka") }}
           </button>
-
         </div>
-
         <router-link to="/apartment-finder">
           <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
             <button class="flex text-[#554242]" v-text="t('menu.FYA')" />
@@ -105,9 +77,7 @@ onMounted(() => {
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-
         <hr class="my-6 border-[#D9D9D9] sm:mx-auto lg:my-8" />
-
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10 justify-center grid">
             <div class="space-y-2 py-6">
@@ -117,13 +87,12 @@ onMounted(() => {
                   :class="{ 'text-[#88407c]': route.path === link.url }" v-text="t(`menu.${link.title}`)" />
                 <div class="flex w-full lg:hidden lg:flex-1 justify-around items-center">
                   <button class="capitalize" :class="{ 'bold-button': locale === 'en' }" @click="setLocale('en')">
-                    en
+                    {{ t("languages.en") }}
                   </button>
                   <button disabled class="focus:outline-none">/</button>
                   <button class="capitalize" :class="{ 'bold-button': locale === 'ka' }" @click="setLocale('ka')">
-                    ka
+                    {{ t("languages.ka") }}
                   </button>
-
                 </div>
                 <!-- <LangSwitcher /> -->
               </div>
@@ -142,9 +111,6 @@ onMounted(() => {
     </Dialog>
   </header>
 </template>
-
-
-
 <style scoped>
 .bold-button {
   font-weight: bold;

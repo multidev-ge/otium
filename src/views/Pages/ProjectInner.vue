@@ -9,7 +9,7 @@ import Offerings from "@/components/ProjectInner/Offerings.vue";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
 import ContactMap from "@/components/Contact/ContactMap.vue";
 import WhatWeOffer from "../../components/Blocks/WhatWeOffer.vue";
-
+import { useI18n } from 'vue-i18n'
 export default {
   props: ['id'],
   components: {
@@ -22,10 +22,10 @@ export default {
     ContactMap,
     WhatWeOffer,
   },
-  // setup() {
-  //   const route = useRoute();
-  //   return { route }
-  // },
+  setup() {
+    const { t } = useI18n({ useScope: 'global' })
+    return { t }
+  },
   computed: {
     ...mapGetters('projects', ['project'])
   },
@@ -67,19 +67,19 @@ export default {
 
               <router-link :to="`/projects/${project?.id}/details`">
                 <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
-                  <p>Terms of Payment
+                  <p>{{ t('buttons.termsOfDelivery') }}
                     <right-arrow class="inline-block ml-1" />
                   </p>
                 </button>
               </router-link>
-
+<!-- 
               <router-link :to="`/projects/${project?.id}/details`">
                 <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
                   <p>Technical characteristics
                     <right-arrow class="inline-block ml-1" />
                   </p>
                 </button>
-              </router-link>
+              </router-link> -->
 
             </div>
           </div>

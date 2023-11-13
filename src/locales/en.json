@@ -9,5 +9,8 @@
     "Media": "Media",
     "Contact": "Contact",
     "FYA": "Find your apartment"
+  },
+  "buttons": {
+    "termsOfDelivery": "Terms of delivery"
   }
 }

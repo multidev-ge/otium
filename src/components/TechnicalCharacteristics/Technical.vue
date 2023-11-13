@@ -1,5 +1,6 @@
 <script setup>
 import accordioncomp from "./AccordionComp.vue";
+defineProps(['title', 'blocks'])
 </script>
 <template>
   <div>
@@ -13,11 +14,10 @@ import accordioncomp from "./AccordionComp.vue";
     </div>
     <div class="md:flex ">
       <div class="md:w-1/3	w-6/12		">
-        <h2 class="text-[#000000] text-3xl	 md:text-4xl	 	">Technical characteristics</h2>
+        <h2 class="text-[#000000] text-3xl	 md:text-4xl">{{ title }}</h2>
       </div>
       <div>
-        <accordioncomp />
-        
+        <accordioncomp :content="blocks" />
       </div>
     </div>
   </div>
