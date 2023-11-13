@@ -1,16 +1,46 @@
-<script setup>
+<script>
+import { mapActions } from "vuex"
 import useFooter from "@/composables/useFooter"
 import useHeader from "@/composables/useHeader"
 
-const { headerInfo } = useHeader();
-const { FooterInfo, contactFormData, submitContactForm } = useFooter();
+export default {
+  computed: {
+    name: {
+      get() {
+        return this.$store.state.contact.name
+      },
+      set(value) {
+        this.$store.commit('contact/SET_NAME', value)
+      }
+    },
+    phone: {
+      get() {
+        return this.$store.state.contact.phone
+      },
+      set(value) {
+        this.$store.commit('contact/SET_PHONE', value)
+      }
+    }
+  },
+  methods: {
+    ...mapActions('contact', ['submitContact'])
+  },
+  setup(){
+    const { headerInfo } = useHeader();
+    const { FooterInfo } = useFooter();
+    return {
+      headerInfo,
+      FooterInfo,
+    }
+  },
+}
 </script>
 <template>
   <footer class="bg-[#000000] w-full mt-12">
     <div class="container mx-auto justify-between py-20">
       <div class="block md:block xl:flex gap-8">
         <div class="mb-6 md:mb-0 ">
-          <h2 class="text-[#FFFFFF] text-3xl">
+          <!-- <h2 class="text-[#FFFFFF] text-3xl"></h2> -->
         <div class="mb-6 md:mb-0 w-[45%]">
           <h2 class="text-[#FFFFFF] text-[32px] leading-[40px]	">
             {{ FooterInfo[0].Footercomponents.title }}
@@ -23,13 +53,13 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
         </div>
         <div class="md:px-4 w-[100%]">
           <form
-            @submit.prevent="submitContactForm"
+            @submit.prevent="submitContact"
             class="md:flex md:gap-8 justify-between gap-4"
           >
             <div class="md:w-1/3 mb-7 md:mb-0">
               <label for="text" class="block text-base font-medium text-[#FFFFFF99]">Your Name</label>
               <input
-                v-model="contactFormData.name"
+                v-model="name"
                 id="text"
                 type="text"
                 class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg"
@@ -40,7 +70,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
             <div class="md:w-1/3 mb-12 md:mb-0">
               <label for="tel" class="block text-base font-medium text-[#FFFFFF99]">Phone Number</label>
               <input
-                v-model="contactFormData.phoneNumber"
+                v-model="phone"
                 id="tel"
                 type="tel"
                 class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg"
@@ -204,6 +234,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
           <h2 class="text-[#61C5E2] text-lg font-bold	 leading-[32px]">GROWTH HUNTERS</h2>
         </div>
       </div>
+    </div>
     </div>
   </footer>
 </template>

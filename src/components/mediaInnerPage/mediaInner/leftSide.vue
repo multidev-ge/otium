@@ -2,6 +2,9 @@
 import mediaInner from "@/composables/forMediaInner/mediaInner";
 import DoubleText from "@/components/mediaInnerPage/universalComponents/doubleText.vue";
 import SplidePart from "@/components/mediaInnerPage/mediaInner/splidePart.vue";
+
+defineProps(['content'])
+
 const {currentPageInfo} = mediaInner()
 
 </script>
@@ -9,8 +12,8 @@ const {currentPageInfo} = mediaInner()
 <template>
     <section class="md:w-8/12 w-11/12 md:mx-0 mx-auto	">
       <div class="flex gap-5 flex-col">
-        <img class="rounded-lg" :src="currentPageInfo.images[0]" alt="">
-        <p class="text-[#00000099] font-medium text-xl">{{currentPageInfo.mainPart.type}} // {{currentPageInfo.mainPart.date}}</p>
+        <img class="rounded-lg" :src="content.image_url" alt="">
+        <p class="text-[#00000099] font-medium text-xl">{{content?.category?.title }} // {{content?.date }}</p>
 
         <div class="flex flex-col md:gap-10 gap-5">
           <p class="font-medium md:text-6.5xl text-2xl leading-6.5xl ">{{currentPageInfo.mainPart.title}}</p>

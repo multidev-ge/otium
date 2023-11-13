@@ -7,7 +7,7 @@ import SectionLeadShip from "../../components/OtiumBrandStoryFile/SectionLeadShi
 </script>
 <template>
   <mainLayout>
-    <div class="container mx-auto  px-4 md:px-0">
+    <div class="">
       <Section1 />
       <Section2 />
       <SectionLeadShip />

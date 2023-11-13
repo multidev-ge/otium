@@ -16,7 +16,7 @@ const pageTitle = ref('Living the urban lifestyle')
   <MainLayout>
     <HomePageTitle :title="pageTitle"/>
     <div class="flex flex-col fa-1xlg:gap-40 gap-20">
-      <ProjectBanner/>
+      <ProjectBanner />
       <Offerings/>
       <div class="w-full">
         <contact-map class="h-[640px] relative" :with-filter="true"/>
