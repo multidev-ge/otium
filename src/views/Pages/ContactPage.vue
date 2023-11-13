@@ -22,7 +22,7 @@ export default {
     ...mapActions('pages', [ 'getPage' ])
   },
   mounted() {
-    this.getPage()
+    this.getPage(1)
   }
 }
 </script>

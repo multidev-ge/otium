@@ -3,7 +3,8 @@ import '@splidejs/vue-splide/css';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
 import SplideArrow from "@/assets/icons/mediaInnerPage/splideArrow.vue";
 import mediaInner from "@/composables/forMediaInner/mediaInner";
-const {currentPageInfo} = mediaInner()
+defineProps(['content'])
+const { currentPageInfo } = mediaInner()
 const mainOptions = {
   type: 'slide',
   perPage: 1,
@@ -12,24 +13,24 @@ const mainOptions = {
   gap: '1rem',
   arrows: true,
   rewind: true,
-  autoplay:true,
+  autoplay: true,
 
 };
 </script>
 <template>
   <section class="">
     <Splide class="w-full" :options="mainOptions" :has-track="false" aria-label="My Favorite Images">
-          <SplideTrack>
-            <SplideSlide v-for="img in currentPageInfo.images">
-              <img class="rounded-lg" :src="img" alt="">
-            </SplideSlide>
-          </SplideTrack>
-            <div class="flex">
-              <div class="splide__arrows">
-                <button class="splide__arrow splide__arrow--prev "><splide-arrow /></button>
-                <button class="splide__arrow splide__arrow--next "><splide-arrow /></button>
-              </div>
-            </div>
+      <SplideTrack>
+        <SplideSlide v-for="img in content.images">
+          <img class="rounded-lg" :src="`https://dashboard.otium.ge/uploads/${img}`" alt="">
+        </SplideSlide>
+      </SplideTrack>
+      <div class="flex">
+        <div class="splide__arrows">
+          <button class="splide__arrow splide__arrow--prev"><splide-arrow /></button>
+          <button class="splide__arrow splide__arrow--next"><splide-arrow /></button>
+        </div>
+      </div>
     </Splide>
   </section>
 </template>
