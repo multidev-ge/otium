@@ -1,8 +1,6 @@
 
 import axios from "../../interceptors/axios"
 
-const ID = 1
-
 const pagesModule = {
     namespaced: true,
     state(){
@@ -26,8 +24,8 @@ const pagesModule = {
         "SET_BLOCKS": (state, payload) => state.blocks = payload,
     },
     actions: {
-        async getPage({commit}){
-            const { data: { data } } = await axios.get(`pages/${ID}`)
+        async getPage({commit}, id){
+            const { data: { data } } = await axios.get(`pages/${id}`)
             commit("SET_ID", data.id)
             commit("SET_TITLE", data.title)
             commit("SET_SLUG", data.slug)
