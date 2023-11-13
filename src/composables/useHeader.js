@@ -1,3 +1,4 @@
+import axios from "../interceptors/axios"
 import { ref } from "vue";
 import { markRaw } from 'vue';
 import arrowRight from "../assets/icons/arrow-right.vue"
@@ -10,11 +11,18 @@ export default (function useHeader() {
                 img: logo,
                 img1: markRaw(arrowRight),
             },
-        }
+        },
+        
     ]);
 
+    const mainMenuLinks = ref([])
 
-    let instance = { headerInfo  };
+    const getMenu = async () => {
+        const { data } = await axios.get('menus')
+        mainMenuLinks.value = data
+    }
+
+    let instance = { headerInfo, getMenu, mainMenuLinks };
 
     return () => {
         return instance;

@@ -1,9 +1,11 @@
 import ContactPhoneIcon from "@/assets/icons/Contact/ContactPhoneIcon.vue"
 import ContactEnvelopeIcon from "@/assets/icons/Contact/ContactEnvelopeIcon.vue"
 import ContactLocationDotIcon from "@/assets/icons/Contact/ContactLocationDotIcon.vue"
-import {reactive} from "vue"
+import { reactive } from "vue"
+import axios from "../interceptors/axios"
 
 export default function useContact() {
+    
     const contactInfo = [
         {
             icon: ContactPhoneIcon,
@@ -24,19 +26,24 @@ export default function useContact() {
 
     const contactFormData = reactive({
         name: "",
-        phoneNumber: "",
+        phone: "",
         message: ""
     })
 
-    const submitContactForm = () => {
+    const submitContactForm = async () => {
         // submit logic
+        console.log(contactFormData)
 
+        const response = await axios.post('contact', {...contactFormData})
+
+        console.log(response)
+        
         clearContactForm()
     }
 
     const clearContactForm = () => {
         contactFormData.name = ""
-        contactFormData.phoneNumber = ""
+        contactFormData.phone = ""
         contactFormData.message = ""
     }
 

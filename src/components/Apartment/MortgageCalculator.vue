@@ -1,7 +1,45 @@
 <script setup>
-import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue";
-import BOGLogo from "../../assets/logos/apartment/BOGLogo.png";
-import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
+import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue"
+import BOGLogo from "../../assets/logos/apartment/BOGLogo.png"
+import TBCLogo from "../../assets/logos/apartment/TBCLogo.png"
+import { ref, computed, onMounted } from "vue"
+import axios from "axios";
+
+const price = ref(80000)
+const payments = ref(5)
+const rate = ref(2)
+const prepayment = ref(10000)
+
+const annuitet = ref('calculating ...')
+
+const calculate = async () => {
+
+  annuitet.value = 'calculating ...'
+
+  setTimeout(async () => {
+    
+    const { data } = await axios.get('calculator', {
+      params: {
+        total_property_price: price.value,
+        years: payments.value,
+        percentage: rate.value,
+        pre_payment: prepayment.value,
+      }
+    })
+
+    annuitet.value = Math.round(data?.monthly_payment)
+  }, 1000);
+
+
+}
+
+const currentYear = (new Date()).getFullYear();
+const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + (i * step));
+// console.log(range(currentYear, currentYear - 50, -1)); 
+
+onMounted(() => {
+  calculate()
+})
 </script>
 
 <template>
@@ -16,24 +54,24 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
 
     <div class="order-3 p-4 xl:p-16 flex max-xl:flex-col max-xl:gap-y-5 items-center gap-x-6 max-xl:mt-7">
       <a class="max-sm:w-full cursor-pointer transition duration-100 ease-in-out hover:brightness-90" target="_blank"
-         href="https://bankofgeorgia.ge/ka/retail/loans/mortgage/mortgage-application">
+        href="https://bankofgeorgia.ge/ka/retail/loans/mortgage/mortgage-application">
         <div class="xl:relative flex items-center py-4 xl:py-8 pl-10 xl:pl-6 pr-20 xl:pr-12 bg-[#FCE1D3] rounded-xl">
           <div class="flex gap-x-4 items-center">
             <img :src="BOGLogo" alt="BOG logo">
             <span class="text-xl font-medium leading-8 whitespace-nowrap">Start applying</span>
           </div>
-          <contact-right-arrow-icon stroke="black" class="-rotate-45 max-xl:ml-6 xl:absolute xl:top-3 xl:right-3"/>
+          <contact-right-arrow-icon stroke="black" class="-rotate-45 max-xl:ml-6 xl:absolute xl:top-3 xl:right-3" />
         </div>
       </a>
 
       <a class="max-sm:w-full cursor-pointer transition duration-100 ease-in-out hover:brightness-90" target="_blank"
-         href="https://tbcmortgage.ge/?utm_source=google&utm_medium=search_keyword&utm_campaign=tbcmortgage_general&utm_content=mainkeywords&gad=1&gclid=Cj0KCQjwi7GnBhDXARIsAFLvH4mgkdxtROzPQkwxdd07hEBVsQJBPCsAL5xW9bHiCyBuNCK9gf8j-9UaAuc1EALw_wcB">
+        href="https://tbcmortgage.ge/?utm_source=google&utm_medium=search_keyword&utm_campaign=tbcmortgage_general&utm_content=mainkeywords&gad=1&gclid=Cj0KCQjwi7GnBhDXARIsAFLvH4mgkdxtROzPQkwxdd07hEBVsQJBPCsAL5xW9bHiCyBuNCK9gf8j-9UaAuc1EALw_wcB">
         <div class="xl:relative flex  items-center py-4 xl:py-8 pl-10 xl:pl-6 pr-20 xl:pr-12 bg-[#E5F7FD] rounded-xl">
           <div class="flex gap-x-4 items-center">
             <img :src="TBCLogo" alt="TBC logo">
             <span class="text-xl font-medium leading-8 whitespace-nowrap">Start applying</span>
           </div>
-          <contact-right-arrow-icon stroke="black" class="-rotate-45 max-xl:ml-6 xl:absolute xl:top-3 xl:right-3"/>
+          <contact-right-arrow-icon stroke="black" class="-rotate-45 max-xl:ml-6 xl:absolute xl:top-3 xl:right-3" />
         </div>
       </a>
     </div>
@@ -52,31 +90,31 @@ import TBCLogo from "../../assets/logos/apartment/TBCLogo.png";
       <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 text-xl leading-8 font-medium overflow-hidden">
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
           <span class="block text-sm font-medium !leading-6 opacity-40">Total property price</span>
-          $<input type="text" value="80 000" class="border-0 outline-0">
+          $<input type="text" class="border-0 outline-0" v-model="price" @change="calculate">
         </div>
 
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
           <label for="paymentYears" class="block text-sm font-medium !leading-6 opacity-40">Split payment in
             years</label>
-          <select id="paymentYears" class="border-0 outline-0">
-            <option v-for="years in 9" :value="11 + years" v-text="11 + years"/>
+          <select id="paymentYears" class="border-0 outline-0" v-model="payments" @change="calculate">
+            <option v-for="year in range(1, 1 + 36, +1)" :value="year" v-text="year" />
           </select>
         </div>
 
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
           <span class="block text-sm font-medium !leading-6 opacity-40">Percentage</span>
-          %<input type="text" value="6" class="border-0 outline-0">
+          %<input type="text" class="border-0 outline-0" v-model="rate" @change="calculate">
         </div>
 
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md  whitespace-nowrap">
           <span class="block text-sm font-medium !leading-6 opacity-40">Pre payment</span>
-          $<input type="text" value="0" class="border-0 outline-0">
+          $<input type="text" class="border-0 outline-0" v-model="prepayment" @change="calculate">
         </div>
       </div>
 
       <div class="flex max-lg:flex-col lg:items-center justify-between">
         <p class="text-xl font-medium leading-8 opacity-40">Your monthly payment</p>
-        <p class="text-2xl font-medium leading-8">$540</p>
+        <p class="text-2xl font-medium leading-8">${{ annuitet }}</p>
       </div>
     </div>
   </div>

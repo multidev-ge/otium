@@ -8,7 +8,7 @@ const routes = [
         component: () => import("../../views/Pages/Homepage.vue")
       },
       {
-        path: '/otiumbrandstory',
+        path: '/company',
         name: 'OtiumBrandStory',
         component: () => import('../../views/Pages/OtiumBrandStory.vue')
       },
@@ -30,6 +30,7 @@ const routes = [
             path: ":id",
             name: "MediaInner",
             component: () => import('../../views/Pages/mediaInner.vue'),
+            props: true,
           },
         ]
       },

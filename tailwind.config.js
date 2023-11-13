@@ -44,16 +44,16 @@ module.exports = {
     },
     extend: {
       width: {
-        // '28/100': '28%',
+        '28/100': '28%',
       },
       fontSize: {
-        // '125': '125px'
-        // '6.5xl': '4rem',
-        // '4.5xl': '40px',
-        // '3.5xl': '32px',
+        '125': '125px',
+        '6.5xl': '4rem',
+        '4.5xl': '40px',
+        '3.5xl': '32px',
       },
       lineHeight: {
-        // '6.5xl': '1.1',
+        '6.5xl': '1.1',
       },
       fontFamily: {
         sans: ['PP Neue Montreal', "sans-serif"]
