@@ -1,30 +1,65 @@
-<script setup>
+<script>
+import { mapActions } from "vuex"
 import useFooter from "@/composables/useFooter"
 import useHeader from "@/composables/useHeader"
 
-const { headerInfo } = useHeader();
-const { FooterInfo, contactFormData, submitContactForm } = useFooter();
+export default {
+  computed: {
+    name: {
+      get() {
+        return this.$store.state.contact.name
+      },
+      set(value) {
+        this.$store.commit('contact/SET_NAME', value)
+      }
+    },
+    phone: {
+      get() {
+        return this.$store.state.contact.phone
+      },
+      set(value) {
+        this.$store.commit('contact/SET_PHONE', value)
+      }
+    }
+  },
+  methods: {
+    ...mapActions('contact', ['submitContact'])
+  },
+  setup(){
+    const { headerInfo } = useHeader();
+    const { FooterInfo } = useFooter();
+    return {
+      headerInfo,
+      FooterInfo,
+    }
+  },
+}
 </script>
 <template>
   <footer class="bg-[#000000] w-full mt-12">
     <div class="container mx-auto justify-between py-20">
       <div class="block md:block xl:flex gap-8">
         <div class="mb-6 md:mb-0 ">
-          <h2 class="text-[#FFFFFF] text-3xl">
+          <!-- <h2 class="text-[#FFFFFF] text-3xl"></h2> -->
+        <div class="mb-6 md:mb-0 w-[45%]">
+          <h2 class="text-[#FFFFFF] text-[32px] leading-[40px]	">
             {{ FooterInfo[0].Footercomponents.title }}
           </h2>
           <img
-            class="hidden md:block"
+            class="hidden md:block w-[415px] h-[251px]"
             :src="FooterInfo[0].Footercomponents.img"
             alt=""
           />
         </div>
         <div class="md:px-4 w-[100%]">
-          <form @submit.prevent="submitContactForm" class="md:flex md:gap-14 justify-between gap-4">
+          <form
+            @submit.prevent="submitContact"
+            class="md:flex md:gap-8 justify-between gap-4"
+          >
             <div class="md:w-1/3 mb-7 md:mb-0">
               <label for="text" class="block text-base font-medium text-[#FFFFFF99]">Your Name</label>
               <input
-                v-model="contactFormData.name"
+                v-model="name"
                 id="text"
                 type="text"
                 class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg"
@@ -35,7 +70,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
             <div class="md:w-1/3 mb-12 md:mb-0">
               <label for="tel" class="block text-base font-medium text-[#FFFFFF99]">Phone Number</label>
               <input
-                v-model="contactFormData.phoneNumber"
+                v-model="phone"
                 id="tel"
                 type="tel"
                 class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg"
@@ -62,12 +97,12 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   class=""
                   :is="FooterInfo[0].Footercomponents.icon3"
                 />
-                <p class="text-sm text-[#FFFFFF99]">
+                <p class="text-sm leading-[18px] text-[#FFFFFF99]">
                   {{ FooterInfo[0].Footercomponents.title1 }}
                 </p>
               </div>
               <p
-                class="text-sm text-[#FFFFFF99] pt-3 md:w-44 w-[344px] mb-7 md:mb-0"
+                class="text-[16px] leading-[24px] text-[#FFFFFF99] pt-3 md:w-44 w-[344px] mb-7 md:mb-0"
               >
                 {{ FooterInfo[0].Footercomponents.address }}
               </p>
@@ -78,11 +113,11 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   class=""
                   :is="FooterInfo[0].Footercomponents.icon2"
                 />
-                <p class="text-sm text-[#FFFFFF99]">
+                <p class="text-sm leading-[18px] text-[#FFFFFF99]">
                   {{ FooterInfo[0].Footercomponents.title2 }}
                 </p>
               </div>
-              <p class="text-sm text-[#FFFFFF99] pt-3 w-44">
+              <p class="text-[16px] leading-[24px] text-[#FFFFFF99] pt-3 w-44">
                 {{ FooterInfo[0].Footercomponents.number }}
               </p>
             </div>
@@ -92,17 +127,17 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   class=""
                   :is="FooterInfo[0].Footercomponents.icon1"
                 />
-                <p class="text-sm text-[#FFFFFF99]">
+                <p class="text-sm leading-[18px] text-[#FFFFFF99]">
                   {{ FooterInfo[0].Footercomponents.title3 }}
                 </p>
               </div>
-              <p class="text-sm text-[#FFFFFF99] pt-3 w-44">
+              <p class="text-[16px] leading-[24px] text-[#FFFFFF99] pt-3 w-44">
                 {{ FooterInfo[0].Footercomponents.mail }}
               </p>
             </div>
           </div>
           <div>
-            <h2 class="text-[#FFFFFF99]">
+            <h2 class="text-[#FFFFFF99] text-[14px] leading-[18px] font-medium	">
               {{ FooterInfo[0].Footercomponents.media }}
             </h2>
             <div class="flex gap-3 pt-3">
@@ -146,7 +181,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   />
                 </div>
               </a>
-              <div class="flex gap-[76px] lg:gap-[76px] md:pl-20 lg:pl-28 md:gap-10 ">
+              <div class="flex gap-[71px] lg:gap-[71px] md:pl-20 lg:pl-28 md:gap-10 ">
                 <router-link to="/otiumbrandstory">
                   <a
                     href="#"
@@ -192,13 +227,14 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
           <component class="" :is="FooterInfo[0].Footercomponents.logo" />
         </router-link>
         <div>
-          <h2 class="text-[#FFFFFF] text-lg md:pl-36">ALL RIGHTS RESERVED</h2>
+          <h2 class="text-[#FFFFFF] text-lg md:pl-36 leading-[32px] font-medium	">ALL RIGHTS RESERVED</h2>
         </div>
         <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">
-          <h2 class="text-[#FFFFFF] text-lg">POWERED BY</h2>
-          <h2 class="text-[#61C5E2] text-lg">GROWTH HUNTERS</h2>
+          <h2 class="text-[#FFFFFF] text-lg leading-[32px] font-medium	">POWERED BY</h2>
+          <h2 class="text-[#61C5E2] text-lg font-bold	 leading-[32px]">GROWTH HUNTERS</h2>
         </div>
       </div>
+    </div>
     </div>
   </footer>
 </template>

@@ -1,6 +1,7 @@
-import {ref} from "vue";
+import { ref } from "vue"
 
 export default function useNavigation() {
+
     return ref([
         {
             title: 'Company',

@@ -1,10 +1,11 @@
 <script setup>
 import mediaInner from "@/composables/forMediaInner/mediaInner";
+defineProps(['content'])
 const {similarNews} = mediaInner()
 </script>
 
 <template>
-  <section class="h-fit flex flex-col gap-8 md:w-28/100	bg-[#F2F2F2] rounded-lg py-8 px-6  font-medium text-3xl">
+  <section class="h-fit flex flex-col gap-8 md:w-28/100 bg-[#F2F2F2] rounded-lg py-8 px-6 font-medium text-3xl">
       <p class="font-medium text-3xl">Similar news</p>
       <div :class="['flex flex-col gap-5   border-[#D9D9D9]', index!==similarNews.length-1 ? 'border-b' : '']" v-for="(news,index) in similarNews">
           <img class=" h-40  rounded-lg" :src="news.img" alt="">

@@ -40,19 +40,22 @@ export default (function useFooter() {
   ]);
   const contactFormData = reactive({
     name: "",
-    phoneNumber: "",
+    phone: "",
     message: "",
   });
 
-  const submitContactForm = () => {
+  const submitContactForm = async () => {
     // submit logic
+    console.log(contactFormData)
+    const response = await axios.post('contact', {...contactFormData})
+    console.log(response)
 
     clearContactForm();
   };
 
   const clearContactForm = () => {
     contactFormData.name = "";
-    contactFormData.phoneNumber = "";
+    contactFormData.phone = "";
     contactFormData.message = "";
   };
 

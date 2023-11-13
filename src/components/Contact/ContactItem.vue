@@ -9,6 +9,6 @@ defineProps({data: {type: Object, required: true}})
 
   <div>
     <span v-text="data.label" class="text-base lg:text-lg font-medium lg:leading-8 opacity-60"/>
-    <p v-text="data.text" class="text-lg lg:text-2xl font-medium"/>
+    <p v-text="data.text" class="text-lg lg:text-2xl font-medium" />
   </div>
 </template>
