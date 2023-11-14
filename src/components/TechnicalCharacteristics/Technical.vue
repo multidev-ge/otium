@@ -1,14 +1,18 @@
 <script setup>
 import accordioncomp from "./AccordionComp.vue";
+import { useRoute } from "vue-router"
+import { useI18n } from "vue-i18n"
 defineProps(['title', 'blocks'])
+const route = useRoute()
+const { t } = useI18n({ useScope: "global" })
 </script>
 <template>
   <div>
     <div class="pb-8">
-      <router-link class="inline-block" to="/projects">
+      <router-link class="inline-block" :to="{ name: 'project', params: { id: route.params?.id } }">
         <button class="text-base text-[#000000] flex gap-3">
           <img class="mt-1" src="../../assets/icons/arrow-left.svg" alt="" />
-          Back to Project
+          {{ t("technical.backToProject") }}
         </button>
       </router-link>
     </div>

@@ -133,7 +133,7 @@ export default {
                   </div>
                 </a>
                 <div class="flex gap-[71px] lg:gap-[71px] md:pl-20 lg:pl-28 md:gap-10 ">
-                  <router-link to="/otiumbrandstory">
+                  <router-link to="/company">
                     <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
                       {{ headerInfo[0].headercomponents.title }}
                     </a>

@@ -83,5 +83,8 @@
   },
   "apartment": {
     "backToFloor": "Back to floor"
+  },
+  "technical": {
+    "backToProject": "Back to Project"
   }
 }
