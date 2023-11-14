@@ -1,9 +1,12 @@
 <script setup>
+import { useI18n } from "vue-i18n"
+import { mapActions } from "vuex"
 import useFooter from "@/composables/useFooter";
 import useHeader from "@/composables/useHeader";
 
 const { headerInfo } = useHeader();
 const { FooterInfo, contactFormData, submitContactForm } = useFooter();
+const { t } = useI18n({ useScope: 'global' })
 </script>
 <template>
   <footer class="bg-[#000000] mt-12">
@@ -24,7 +27,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
               <label
                 for="text"
                 class="block text-base font-medium text-[#FFFFFF99]"
-                >Your Name</label
+                >{{ t("formLabels.name") }}</label
               >
               <input
                 v-model="contactFormData.name"
@@ -39,7 +42,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
               <label
                 for="tel"
                 class="block text-base font-medium text-[#FFFFFF99]"
-                >Phone Number</label
+                >{{ t("formLabels.phone") }}</label
               >
               <input
                 v-model="contactFormData.phoneNumber"
