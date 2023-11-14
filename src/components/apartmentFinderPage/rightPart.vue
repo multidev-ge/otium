@@ -3,7 +3,7 @@ import { mapGetters, mapActions } from "vuex";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
 import apartmentFinder from "@/composables/forApartmentFinder/apartmentFinder";
 import CardsForMobile from "@/components/apartmentFinderPage/universalComponents/Cards.vue";
-
+import { useI18n } from "vue-i18n";
 
 export default {
   components: {
@@ -11,10 +11,11 @@ export default {
     CardsForMobile,
   },
   setup(){
+    const { t } = useI18n({ useScope: "global" })
     const apartments = apartmentFinder
     const {filterApartments, maxFloors, apartmentComponents,prefix} = apartments()
 
-    return { filterApartments, maxFloors, apartmentComponents, prefix }
+    return { t, filterApartments, maxFloors, apartmentComponents, prefix }
   },
   computed: {
     ...mapGetters('flats', ['flats'])
@@ -31,7 +32,11 @@ export default {
           <table class="min-w-full text-left ">
             <thead class="">
             <tr class="text-xl opacity-40 md:visible invisible">
-              <th v-for="component in apartmentComponents" scope="col" class="">{{component}}</th>
+              <th scope="col" class="">{{ t("apartmentsList.apartment") }}</th>
+              <th scope="col" class="">{{ t("apartmentsList.floor") }}</th>
+              <th scope="col" class="">{{ t("apartmentsList.rooms") }}</th>
+              <th scope="col" class="">{{ t("apartmentsList.area") }}</th>
+              <th scope="col" class="">{{ t("apartmentsList.price") }}</th>
             </tr>
             </thead>
 

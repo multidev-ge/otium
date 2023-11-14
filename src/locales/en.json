@@ -16,5 +16,38 @@
   "formLabels": {
     "name": "Your Name",
     "phone": "Phone Number"
+  },
+  "home": {
+    "title": "Living the urban lifestyle"
+  },
+  "filters": {
+    "title": "Find your apartment",
+    "project": "Project",
+    "block": "Block",
+    "rooms": "Rooms",
+    "area": "Area, m2",
+    "price": "Price",
+    "sold": "Sold Apartments",
+    "show": "Show",
+    "hide": "Hide",
+    "clear": "Clear Filter"
+  },
+  "apartmentsList": {
+    "apartment": "Apartment",
+    "floor": "Floor",
+    "rooms": "Rooms",
+    "area": "Area, m2",
+    "price": "Price"
+  },
+  "footer": {
+    "contact": "Contact",
+    "submit": "Submit",
+    "rights": "ALL RIGHTS RESERVED",
+    "powered": "POWERED BY",
+    "growth_hunters": "GROWTH HUNTERS",
+    "media": "Media",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address"
   }
 }
