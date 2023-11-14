@@ -45,9 +45,19 @@
     "rights": "ALL RIGHTS RESERVED",
     "powered": "POWERED BY",
     "growth_hunters": "GROWTH HUNTERS",
-    "media": "Media",
+    "social": "Socials",
     "email": "Email",
     "phone": "Phone",
     "address": "Address"
+  },
+  "projects": {
+    "title": "Projects",
+    "address": "Address",
+    "sale": "Apartments for sale",
+    "left": "apartments left",
+    "status": "Status",
+    "more": "More about project",
+    "next": "Scroll to view other projects",
+    "prev": "Prev"
   }
 }

@@ -109,7 +109,7 @@ export default {
             </div>
             <div>
               <h2 class="text-[#FFFFFF99] text-[14px] leading-[18px] font-medium	">
-                {{ t("footer.media") }}
+                {{ t("footer.social") }}
               </h2>
               <div class="flex gap-3 pt-3">
                 <a href="#">
