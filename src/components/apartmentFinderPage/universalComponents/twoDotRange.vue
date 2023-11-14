@@ -33,7 +33,7 @@ const format = ref({
 
 //   <!-- @end="updateValues(value[0], value[1], props.name)" -->
 const emit = defineEmits(['onChange'])
-watch(value, emit('onChange', value))
+// watch(value, emit('onChange', value))
 </script>
 <template>
   <div class="">
