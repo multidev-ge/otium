@@ -14,9 +14,11 @@ const flatsModule = {
             min_price: null,
             max_price: null,
             sold: false,
-
+            
             blocks: [],
             flats: [],
+            meta:{},
+            links:{},
             per_page: 15,
         }
     },
@@ -32,6 +34,8 @@ const flatsModule = {
         sold: ({sold}) => sold,
         blocks: ({blocks}) => blocks,
         flats: ({flats}) => flats,
+        meta: ({meta}) => meta,
+        links: ({links}) => links,
         per_page: ({per_page}) => per_page,
         requestFilters: (state) => {
             const options = {}
@@ -77,13 +81,17 @@ const flatsModule = {
         "SET_MAX_PRICE": (state, payload) => state.max_price = payload,
         "SET_SOLD": (state, payload) => state.sold = payload,
         "SET_FLATS": (state, payload) => state.flats = payload,
+        "SET_META": (state, payload) => state.meta = payload,
+        "SET_LINKS": (state, payload) => state.links = payload,
         "SET_PER_PAGE": (state, payload) => state.per_page = payload,
     },
     actions: {
         async getFlats({ commit, getters }){
             const params = { per_page: getters.per_page }
-            const { data: { data } } = await axios.get('flats', { params: {...params, ...getters.requestFilters} })
+            const { data: { data, meta, links } } = await axios.get('flats', { params: {...params, ...getters.requestFilters} })
             commit("SET_FLATS", data)
+            commit("SET_META", meta)
+            commit("SET_LINKS", links)
         },
         async getBlocks({ commit, getters }){
 

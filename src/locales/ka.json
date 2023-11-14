@@ -20,6 +20,12 @@
   "home": {
     "title": "Living the urban lifestyle"
   },
+  "defaults": {
+    "pagination": {
+      "showing": "შერჩეული აპარტამენტები:",
+      "out": "სულ აპარტამენტები:"
+    }
+  },
   "filters": {
     "title": "იპოვე შენი სახლი",
     "project": "პროექტი",
@@ -36,8 +42,9 @@
     "apartment": "აპარტამენტი",
     "floor": "სართული",
     "rooms": "ოთახები",
-    "area": "ფართობი, მ2",
-    "price": "ფასი"
+    "area": "ფართ. მ2",
+    "price": "ფასი",
+    "more": "მეტი"
   },
   "footer": {
     "contact": "კონტაქტი",
@@ -59,5 +66,22 @@
     "more": "პროექტის შესახებ",
     "next": "იხილეთ სხვა პროექტები",
     "prev": "წინა"
+  },
+  "media": {
+    "title": "მედია"
+  },
+  "contact": {
+    "phone": "ტელეფონი",
+    "email": "ელ. ფოსტა",
+    "address": "მისამართი",
+    "placeholders": {
+      "name": "სახელი",
+      "phone": "ტელეფონი",
+      "message": "შეტყობინება"
+    },
+    "send": "გაგზავნა"
+  },
+  "apartment": {
+    "backToFloor": "სართულზე დაბრუნება"
   }
 }

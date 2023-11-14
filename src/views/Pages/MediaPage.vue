@@ -4,6 +4,7 @@ import MainLayout from "@/layouts/mainLayout.vue";
 import ArrowDownIcon from "@/assets/icons/MediaPage/ArrowDownIcon.vue";
 // import {useMedia} from "@/composables/useMedia";
 import MediaCard from "@/components/MediaPage/MediaCard.vue";
+import { useI18n } from "vue-i18n";
 
 // const {
 //   categories,
@@ -17,13 +18,18 @@ export default {
   computed: {
     ...mapGetters('media', ['categories', 'active', 'filteredMedias', 'next_page'])
   },
+  setup() {
+    const { t } = useI18n({ useScope: "global" })
+
+    return { t }
+  },
   methods: {
     ...mapActions('media', ['getCategories', 'getMedias', 'setActive'])
   },
   mounted() {
     this.getCategories()
     this.getMedias()
-  },
+  }
 }
 
 </script>
@@ -31,7 +37,7 @@ export default {
 <template>
   <MainLayout>
     <div class="">
-      <h1 class="mb-12 text-5xl md:text-8xl font-medium text-[#000]">Media</h1>
+      <h1 class="mb-12 text-5xl md:text-8xl font-medium text-[#000]">{{ t("media.title") }}</h1>
       <div class="overflow-scroll md:overflow-hidden flex gap-2.5 md:gap-4 mb-8 w-full">
         <button v-for="category in categories" @click="setActive(category.id)"
           :class="active === category.id ? 'bg-[#000] text-white' : ''" class="flex-none px-6 py-3 rounded-2xl text-base md:text-xl font-medium transition-all duration-250
@@ -44,7 +50,8 @@ export default {
         <MediaCard v-for="data in filteredMedias" :data="data" />
       </div>
 
-      <button v-if="next_page" class="flex gap-1.5  mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl" @click.prevent="getMedias(true)">
+      <button v-if="next_page" class="flex gap-1.5  mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl"
+        @click.prevent="getMedias(true)">
         More
         <ArrowDownIcon />
       </button>

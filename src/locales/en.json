@@ -20,6 +20,12 @@
   "home": {
     "title": "Living the urban lifestyle"
   },
+  "defaults": {
+    "pagination": {
+      "showing": "You have seen",
+      "out": "apartments out of"
+    }
+  },
   "filters": {
     "title": "Find your apartment",
     "project": "Project",
@@ -37,7 +43,8 @@
     "floor": "Floor",
     "rooms": "Rooms",
     "area": "Area, m2",
-    "price": "Price"
+    "price": "Price",
+    "more": "Loader more"
   },
   "footer": {
     "contact": "Contact",
@@ -59,5 +66,22 @@
     "more": "More about project",
     "next": "Scroll to view other projects",
     "prev": "Prev"
+  },
+  "media": {
+    "title": "Media"
+  },
+  "contact": {
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "placeholders": {
+      "name": "Name",
+      "phone": "Phone Number",
+      "message": "Message"
+    },
+    "send": "Send"
+  },
+  "apartment": {
+    "backToFloor": "Back to floor"
   }
 }

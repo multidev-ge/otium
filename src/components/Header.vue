@@ -75,7 +75,7 @@ onMounted(() => {
                   :key="index"
                   :to="link.url"
                   class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                  :class="{ 'text-[#88407c]': route.path === link.url }" v-text="t(`menu.${link.title}`)" />
+                  :class="{ 'text-[#88407c]': route.path === link.url }" v-text="link.title" />
                 <LanguageSwitcher class="flex w-full lg:hidden lg:flex-1 justify-center" />
               </div>
               <div class="pt-8">
