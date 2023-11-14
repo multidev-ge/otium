@@ -12,5 +12,9 @@
   },
   "buttons": {
     "termsOfDelivery": "Terms of delivery"
+  },
+  "formLabels": {
+    "name": "Your Name",
+    "phone": "Phone Number"
   }
 }

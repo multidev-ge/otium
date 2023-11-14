@@ -12,5 +12,9 @@
   },
   "buttons": {
     "termsOfDelivery": "პროექტის ჩაბარების პირობები"
+  },
+  "formLabels": {
+    "name": "სახელი",
+    "phone": "ტელეფონი"
   }
 }

@@ -1,4 +1,5 @@
 <script>
+import { useI18n } from "vue-i18n"
 import { mapActions } from "vuex"
 import useFooter from "@/composables/useFooter"
 import useHeader from "@/composables/useHeader"
@@ -26,9 +27,12 @@ export default {
     ...mapActions('contact', ['submitContact'])
   },
   setup(){
+
     const { headerInfo } = useHeader();
     const { FooterInfo } = useFooter();
+    const { t } = useI18n({ useScope: 'global' })
     return {
+      t,
       headerInfo,
       FooterInfo,
     }
@@ -57,7 +61,7 @@ export default {
             class="md:flex md:gap-8 justify-between gap-4"
           >
             <div class="md:w-1/3 mb-7 md:mb-0">
-              <label for="text" class="block text-base font-medium text-[#FFFFFF99]">Your Name</label>
+              <label for="text" class="block text-base font-medium text-[#FFFFFF99]">{{ t("formLabels.name") }}</label>
               <input
                 v-model="name"
                 id="text"
@@ -68,7 +72,7 @@ export default {
               />
             </div>
             <div class="md:w-1/3 mb-12 md:mb-0">
-              <label for="tel" class="block text-base font-medium text-[#FFFFFF99]">Phone Number</label>
+              <label for="tel" class="block text-base font-medium text-[#FFFFFF99]">{{ t("formLabels.phone") }}</label>
               <input
                 v-model="phone"
                 id="tel"

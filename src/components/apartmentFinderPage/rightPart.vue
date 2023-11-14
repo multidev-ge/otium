@@ -1,15 +1,29 @@
-<script setup>
+<script>
+import { mapGetters, mapActions } from "vuex";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
 import apartmentFinder from "@/composables/forApartmentFinder/apartmentFinder";
 import CardsForMobile from "@/components/apartmentFinderPage/universalComponents/Cards.vue";
-const apartments = apartmentFinder
-const {filterApartments, maxFloors, apartmentComponents,prefix} = apartments()
+
+
+export default {
+  components: {
+    RightArrow,
+    CardsForMobile,
+  },
+  setup(){
+    const apartments = apartmentFinder
+    const {filterApartments, maxFloors, apartmentComponents,prefix} = apartments()
+
+    return { filterApartments, maxFloors, apartmentComponents, prefix }
+  },
+  computed: {
+    ...mapGetters('flats', ['flats'])
+  },
+}
+
 </script>
 
 <template>
-
-
-
   <div class=" hidden md:flex flex-col w-3/5 	font-medium">
     <div class="overflow-x-auto ">
       <div class="inline-block min-w-full ">
@@ -22,11 +36,11 @@ const {filterApartments, maxFloors, apartmentComponents,prefix} = apartments()
             </thead>
 
             <tbody>
-            <tr class="text-xl " v-for="apartment in filterApartments">
-              <td class="whitespace-nowrap w-1/4 py-4"><img class="rounded-lg w-28" :src="apartment.img" alt=""></td>
+            <tr class="text-xl " v-for="apartment in flats">
+              <td class="whitespace-nowrap w-1/4 py-4"><img class="rounded-lg w-28" :src="apartment.image_url" alt=""></td>
               <td class="whitespace-nowrap w-1/4 py-4"><span>{{apartment.floor}}</span><span class="opacity-30"> / </span><span class="opacity-30">{{maxFloors}}</span></td>
               <td class="whitespace-nowrap w-1/4 py-4">{{apartment.rooms}}</td>
-              <td class="whitespace-nowrap w-1/4 py-4">{{apartment.area.toFixed(1)}}</td>
+              <td class="whitespace-nowrap w-1/4 py-4">{{ apartment.area }}</td>
               <td class="whitespace-nowrap w-1/4 py-4">{{prefix}} {{apartment.price.toLocaleString()}}</td>
               <td class="whitespace-nowrap px-6 w-1/4 py-4"><RightArrow class="cursor-pointer"/></td>
             </tr>
