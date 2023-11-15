@@ -4,8 +4,8 @@ import useOtiumBrandStory from "@/composables/useOtiumBrandStory";
 const { BrandStory } = useOtiumBrandStory();
 </script>
 <template>
-  <div class="xl:flex xl:pb-14 pb-[27px] ">
-    <div class="pb-6 xl:pt-0 xl:w-[63%] ">
+  <div class="xl:flex xl:pb-14 pb-[27px] xl:mt-24">
+    <div class="pb-6 xl:pt-0 xl:w-[63%]">
       <h2
         class="xl:text-[100px] font-medium	xl:leading-[120px] leading-[57px]  text-5xl xl:gap-8  text-[#000000] font-ppNeueMontrealMedium md:pr-0 pr-[16%] ">
         {{ BrandStory[0].BrandStoryName.title }}

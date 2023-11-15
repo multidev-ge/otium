@@ -42,8 +42,8 @@ export default {
 <template>
   <footer class="bg-[#000000] w-full mt-12">
     <div class="container mx-auto justify-between py-20">
-      <div class="block md:block xl:flex gap-8">
-        <div class="mb-6 md:mb-0 ">
+      <div class="block md:block xl:block gap-8">
+        <div class="mb-6 md:mb-0 flex">
           <!-- <h2 class="text-[#FFFFFF] text-3xl"></h2> -->
           <div class="mb-6 md:mb-0 w-[45%]">
             <h2 class="text-[#FFFFFF] text-[32px] leading-[40px]	">
@@ -164,7 +164,8 @@ export default {
             <component class="" :is="FooterInfo[0].Footercomponents.logo" />
           </router-link>
           <div class="flex">
-            <h2 class="text-[#FFFFFF] text-lg md:pl-36 leading-[32px] font-medium whitespace-nowrap">{{ t("footer.rights") }}</h2>
+            <h2 class="text-[#FFFFFF] text-lg md:pl-36 leading-[32px] font-medium whitespace-nowrap">{{ t("footer.rights")
+            }}</h2>
             <div class="w-full"></div>
           </div>
           <div class="flex mt-4 space-x-5 sm:justify-center sm:mt-0">

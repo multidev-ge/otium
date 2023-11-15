@@ -55,7 +55,8 @@ export default {
     <div class="flex justify-between">
       <p class="text-[#00000066]">{{ t("defaults.pagination.showing") }} <span class="text-black">{{ flats.length
       }}</span> {{ t("defaults.pagination.out") }} <span class="text-black">{{ meta.total }}</span></p>
-      <button class="bg-black text-white px-12 py-2 rounded-2xl">{{ t("apartmentsList.more") }}</button>
+      <button class="bg-black text-white px-6 py-3 rounded-2xl flex items-center space-x-2">
+        <span>{{ t("apartmentsList.more") }}</span> <RightArrow class="invert"/> </button>
     </div>
   </div>
 

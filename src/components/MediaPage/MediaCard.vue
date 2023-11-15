@@ -9,9 +9,11 @@ defineProps({
 
 <template>
   <div class="w-full">
-    <div class="h-36 md:h-44 w-full rounded-lg mb-2 md:mb-7">
-      <img alt="media img" :src="data.image_url" class="rounded-lg w-full h-full object-cover">
-    </div>
+    <RouterLink :to="`/media/${data.id}`">
+      <div class="h-36 md:h-44 w-full rounded-lg mb-2 md:mb-7">
+        <img alt="media img" :src="data.image_url" class="rounded-lg w-full h-full object-cover">
+      </div>
+    </RouterLink>
     <p class="text-lg font-medium text-[#626262] md:mb-2">
       {{ data.category.title }}, {{ data.date }}
     </p>
