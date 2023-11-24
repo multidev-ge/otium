@@ -21,7 +21,7 @@ function goTo(floor){
 
 <template>
   <div class="relative">
-    <img class="w-full h-full rounded-xl" src="@/assets/images/projectBanner/plan.png">
+    <img class="w-full h-full rounded-xl" src="../../assets/images/01_00001.jpg">
     <div v-for="f in floors"
       class="pointer-events-none lg:pointer-events-auto absolute opacity-80 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
       @click="goTo(currentFloor.floor)" @mouseover="showTooltip(f)"
@@ -33,9 +33,16 @@ function goTo(floor){
         left: f.left
       }">
     </div>
-    <div v-if="floorHovered" :style="{ top: currentFloor.tooltip_pos.top, left: currentFloor.tooltip_pos.left }"
+    <div v-if="floorHovered" :style="{ 
+        top: currentFloor.tooltip_pos.top, 
+        left: (currentFloor.pos === 'left') ? currentFloor.tooltip_pos.left : 'auto',
+        right: (currentFloor.pos === 'right') ? currentFloor.tooltip_pos.right : 'auto',
+      }"
       class="tooltip absolute h-60 p-8 bg-[#FFFFFF] rounded-xl duration-300"
-      :class="floorHovered ? 'text-opacity-100' : 'opacity-0'">
+      :class="[
+        floorHovered ? 'text-opacity-100' : 'opacity-0',
+        (currentFloor.pos === 'right') ? 'rightTooltip' : 'leftTooltip'
+        ]">
 
       <h3 class="pb-6 text-xl font-medium">{{ floorOrder(currentFloor.floor) }} floor</h3>
       <div class="text-base font-medium grid grid-cols-2 gap-y-6">
@@ -79,7 +86,7 @@ function goTo(floor){
   transform: translateX(18px) translateY(-50%);
 }
 
-.tooltip::after {
+.leftTooltip::after {
   content: " ";
   position: absolute;
   top: 50%;
@@ -89,5 +96,16 @@ function goTo(floor){
   border-style: solid;
   border-color: transparent white transparent transparent;
   transform: translateX(1px);
+}
+.rightTooltip::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  margin-top: -12px;
+  border-width: 12px;
+  border-style: solid;
+  border-color: transparent white transparent transparent;
+  transform: scaleX(-1);
 }
 </style>

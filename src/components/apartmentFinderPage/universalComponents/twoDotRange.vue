@@ -1,6 +1,6 @@
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import Slider from '@vueform/slider';
 import apartmentFinder from "@/composables/forApartmentFinder/apartmentFinder";
 const apartments = apartmentFinder
@@ -31,12 +31,17 @@ const format = ref({
   thousand: props.thousand
 })
 
+//   <!-- @end="updateValues(value[0], value[1], props.name)" -->
+const emit = defineEmits(['onChange'])
+// watch(value, emit('onChange', value))
 </script>
 <template>
   <div class="">
     <p class="text-xl mb-14 font-normal">{{ props.displayName }}</p>
     <Slider v-model="value" :max="max" :format="format" :merge="merge" :lazy="true"
-      @end="updateValues(value[0], value[1], props.name)" :classes="{
+    
+      @end="$emit('onChange', value[0], value[1], props.name)"
+      :classes="{
         textDirectionRtl: 'slider-txt-rtl',
         textDirectionLtr: 'slider-txt-ltr',
         base: 'w-full h-full relative z-1 bg-gray-300 rounded',

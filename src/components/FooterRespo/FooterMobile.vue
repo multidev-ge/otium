@@ -1,21 +1,24 @@
 <script setup>
+import { useI18n } from "vue-i18n"
+import { mapActions } from "vuex"
 import useFooter from "@/composables/useFooter";
 import useHeader from "@/composables/useHeader";
 
 const { headerInfo } = useHeader();
 const { FooterInfo, contactFormData, submitContactForm } = useFooter();
+const { t } = useI18n({ useScope: 'global' })
 </script>
 <template>
   <footer class="bg-[#000000] mt-12">
-    <div class="mx-auto  justify-between w-full  py-20 container">
+    <div class="mx-auto justify-between w-full py-20 container">
       <div class="md:flex gap-8">
         <div class="mb-6 md:mb-0 w-[45%] px-4">
-          <h2 class="text-[#FFFFFF] text-[32px] font-medium	leading-10	">
-            {{ FooterInfo[0].Footercomponents.title }}
+          <h2 class="text-[#FFFFFF] text-[32px] font-medium leading-10	">
+            {{ t("footer.contact") }}
           </h2>
         </div>
 
-        <div class="md:px-4 w-[100%]">
+        <div class="md:px-4 w-full">
           <form
             @submit.prevent="submitContactForm"
             class="md:flex md:gap-14 justify-between gap-4 px-4"
@@ -24,7 +27,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
               <label
                 for="text"
                 class="block text-base font-medium text-[#FFFFFF99]"
-                >Your Name</label
+                >{{ t("formLabels.name") }}</label
               >
               <input
                 v-model="contactFormData.name"
@@ -39,7 +42,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
               <label
                 for="tel"
                 class="block text-base font-medium text-[#FFFFFF99]"
-                >Phone Number</label
+                >{{ t("footer.phone") }}</label
               >
               <input
                 v-model="contactFormData.phoneNumber"
@@ -55,7 +58,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
               type="submit"
               class="flex gap-2 sm:w-full md:pt-3 px-6 py-3 w-full justify-center md:mt-1 md:px-14 text-base font-medium text-center text-[#221C32] rounded-xl bg-white hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
-              Submit
+            {{ t("footer.submit") }}
               <component
                 class="mt-1"
                 :is="FooterInfo[0].Footercomponents.icon"
@@ -70,7 +73,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                   :is="FooterInfo[0].Footercomponents.icon3"
                 />
                 <p class="text-sm text-[#FFFFFF99]">
-                  {{ FooterInfo[0].Footercomponents.title1 }}
+                  {{ t("footer.address") }}
                 </p>
               </div>
               <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 md:w-44 mb-7 md:mb-0">
@@ -85,7 +88,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                     :is="FooterInfo[0].Footercomponents.icon2"
                   />
                   <p class="text-sm text-[#FFFFFF99]">
-                    {{ FooterInfo[0].Footercomponents.title2 }}
+                    {{ t("footer.phone") }}
                   </p>
                 </div>
                 <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 w-44">
@@ -98,8 +101,8 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
                     class=""
                     :is="FooterInfo[0].Footercomponents.icon1"
                   />
-                  <p class="text-sm text-[#FFFFFF99]">
-                    {{ FooterInfo[0].Footercomponents.title3 }}
+                  <p class="text-sm text-[#FFFFFF99] whitespace-nowrap">
+                    {{ t("footer.email") }}
                   </p>
                 </div>
                 <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 w-44">
@@ -110,7 +113,7 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
           </div>
           <div class="">
             <h2 class="text-[#FFFFFF99] px-4 text-[14px] leading-[18px] font-medium	">
-              {{ FooterInfo[0].Footercomponents.media }}
+              {{ t("footer.social") }}
             </h2>
             <div class="flex gap-3 pt-3 px-4">
               <a href="#">
@@ -221,11 +224,11 @@ const { FooterInfo, contactFormData, submitContactForm } = useFooter();
         <div
           class="flex mt-4 justify-center space-x-5 sm:justify-center sm:mt-0"
         >
-          <h2 class="text-[#FFFFFF] text-lg">POWERED BY</h2>
-          <h2 class="text-[#61C5E2] text-lg font-bold	">GROWTH HUNTERS</h2>
+          <h2 class="text-[#FFFFFF] text-lg">{{ t("footer.powered") }}</h2>
+          <h2 class="text-[#61C5E2] text-lg font-bold	">{{ t("footer.growth_hunters") }}</h2>
         </div>
         <div class="justify-center flex pt-7">
-          <h2 class="text-[#FFFFFF] text-lg md:pl-36">ALL RIGHTS RESERVED</h2>
+          <h2 class="text-[#FFFFFF] text-lg md:pl-36">{{ t("footer.rights") }}</h2>
         </div>
       </div>
     </div>

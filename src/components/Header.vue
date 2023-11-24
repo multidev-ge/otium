@@ -1,42 +1,34 @@
 <script setup>
-import { ref, onMounted, watch } from "vue";
-import useNavigation from "@/composables/useNavigation";
-import useHeader from "@/composables/useHeader";
-import LangSwitcher from "@/components/LangSwitcher.vue";
+import { ref, onMounted, watch } from "vue"
 import { useI18n } from 'vue-i18n'
-import { SUPPORT_LOCALES as supportLocales, setI18nLanguage } from '../i18n'
-import { useRoute } from "vue-router";
-import { Dialog, DialogPanel, PopoverGroup, } from "@headlessui/vue";
-import { Bars3Icon, XMarkIcon, } from "@heroicons/vue/24/outline";
+import useHeader from "@/composables/useHeader"
+import arrowRight from "@/assets/icons/arrow-right.vue"
+import logo from "../assets/images/Logo.png"
+import { useRoute } from "vue-router"
+import { Dialog, DialogPanel } from "@headlessui/vue"
+import { Bars3Icon, XMarkIcon, } from "@heroicons/vue/24/outline"
+import LanguageSwitcher from "./Head/LanguageSwitcher.vue"
 
-const { t, locale } = useI18n({ useScope: 'global' })
+const route = useRoute()
+const { headerInfo, getMenu, mainMenuLinks } = useHeader()
+const mobileMenuOpen = ref(false)
+const { t } = useI18n({ useScope: 'global' })
 
-const route = useRoute();
-
-const menuLinks = useNavigation();
-const { headerInfo, getMenu, mainMenuLinks } = useHeader();
-const mobileMenuOpen = ref(false);
-
-const setLocale = (val) => {
-  locale.value = val
+function onHover(e){
+  const children = 
+  console.log(`entered ${{...children}}`)
 }
-
-watch(locale, (val) => {
-  setI18nLanguage(val)
-  window.location.reload()
-});
 
 onMounted(() => {
   getMenu()
 })
-
 </script>
 <template>
   <header class="bg-white">
-    <nav class="container mx-auto flex items-center justify-between pb-8  md:pb-20 pt-5" aria-label="Global">
+    <nav class="container mx-auto flex items-center justify-between pb-8 md:pb-20 pt-5" aria-label="Global">
       <div class="flex lg:flex-1">
         <router-link to="/">
-          <img class="xl:w-auto xl:h-auto w-[90px] h-[22px]" :src="headerInfo[0].headercomponents.img" alt="" />
+          <img class="xl:w-auto xl:h-auto w-[90px] h-[22px]" :src="logo" alt="" />
         </router-link>
       </div>
       <div class="flex lg:hidden">
@@ -46,48 +38,23 @@ onMounted(() => {
           <Bars3Icon class="h-6 w-6" aria-hidden="true" />
         </button>
       </div>
-      <PopoverGroup class="hidden lg:flex lg:gap-x-3">
-
-        <router-link v-for="item in mainMenuLinks" :to="item.url">
-          <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === item.url }">
-            {{ item.title }}
-          </a>
+      <div class="hidden lg:flex lg:gap-x-3">
+        <router-link v-for="item in mainMenuLinks" class="hover:text-[#883F7C] transition-colors"
+          :to="item.url"
+          :class="[
+            'text-lg font-medium leading-6',
+            { 'active-link': $route.path === item.url }
+          ]"
+          v-text="item?.title">
         </router-link>
-        <!-- <router-link to="/projects">
-          <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/projects' }">
-            {{ headerInfo[0].headercomponents.title1 }}
-          </a>
-        </router-link>
-        <router-link to="/media">
-          <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/media' }">
-            {{ headerInfo[0].headercomponents.title2 }}
-          </a>
-        </router-link>
-        <router-link to="/contact">
-          <a href="#" class="text-lg font-medium leading-6" :class="{ 'active-link': $route.path === '/contact' }">
-            {{ headerInfo[0].headercomponents.title3 }}
-          </a>
-        </router-link> -->
-
-      </PopoverGroup>
-
+      </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
-
-        <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-1">
-          <button class="capitalize" :class="{ 'bold-button': locale === 'en' }" @click="setLocale('en')">
-            en
-          </button>
-          <button disabled class="focus:outline-none">/</button>
-          <button class="capitalize" :class="{ 'bold-button': locale === 'ka' }" @click="setLocale('ka')">
-            ka
-          </button>
-
-        </div>
-
+        <LanguageSwitcher class="hidden lg:flex lg:flex-1 lg:justify-end"/>
         <router-link to="/apartment-finder">
-          <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
-            <button class="flex text-[#554242]" v-text="t('menu.FYA')" />
-            <component class="mt-1" :is="headerInfo[0].headercomponents.img1" />
+          <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center hover:bg-black hover:text-white transition-colors" @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`,`invert`)" @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`,`invert-0`)">
+            <button class="flex" v-text="t('menu.FYA')" />
+            <!-- <img src="@/assets/icons/arrow-right.svg" class="stroke-white" alt=""> -->
+            <arrowRight />
           </div>
         </router-link>
       </div>
@@ -105,33 +72,23 @@ onMounted(() => {
             <XMarkIcon class="h-6 w-6" aria-hidden="true" />
           </button>
         </div>
-
         <hr class="my-6 border-[#D9D9D9] sm:mx-auto lg:my-8" />
-
         <div class="mt-6 flow-root">
           <div class="-my-6 divide-y divide-gray-500/10 justify-center grid">
             <div class="space-y-2 py-6">
               <div class="grid justify-center gap-y-4">
-                <router-link v-for="(link, index) in mainMenuLinks" :key="index" :to="link.url"
+                <router-link v-for="(link, index) in mainMenuLinks"
+                  :key="index"
+                  :to="link.url"
                   class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
-                  :class="{ 'text-[#88407c]': route.path === link.url }" v-text="t(`menu.${link.title}`)" />
-                <div class="flex w-full lg:hidden lg:flex-1 justify-around items-center">
-                  <button class="capitalize" :class="{ 'bold-button': locale === 'en' }" @click="setLocale('en')">
-                    en
-                  </button>
-                  <button disabled class="focus:outline-none">/</button>
-                  <button class="capitalize" :class="{ 'bold-button': locale === 'ka' }" @click="setLocale('ka')">
-                    ka
-                  </button>
-
-                </div>
-                <!-- <LangSwitcher /> -->
+                  :class="{ 'text-[#88407c]': route.path === link.url }" v-text="link.title" />
+                <LanguageSwitcher class="flex w-full lg:hidden lg:flex-1 justify-center " />
               </div>
               <div class="pt-8">
                 <router-link to="/apartment-finder">
-                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl">
+                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-centerhover:bg-black hover:text-white" @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`,`invert`)" @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`,`invert-0`)">
                     <button class="flex text-[#554242]" v-text="t('menu.FYA')" />
-                    <component class="mt-1" :is="headerInfo[0].headercomponents.img1" />
+                    <arrowRight />
                   </div>
                 </router-link>
               </div>
@@ -142,14 +99,10 @@ onMounted(() => {
     </Dialog>
   </header>
 </template>
-
-
-
 <style scoped>
-.bold-button {
-  font-weight: bold;
+.hovered {
+  background: black;
 }
-
 .active-link {
   color: #88407c;
   /* You can replace 'red' with your desired shade of red */

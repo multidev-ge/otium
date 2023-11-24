@@ -1,23 +1,50 @@
-<script setup>
+<script>
+import { mapGetters, mapActions } from "vuex";
+import { useRoute } from "vue-router";
 import MainLayout from "../../layouts/mainLayout.vue";
 import ProjectBanner from "@/components/ProjectInner/ProjectBanner.vue";
 import RightPart from "@/components/apartmentFinderPage/rightPart.vue";
 import FiltersPart from "@/components/apartmentFinderPage/filtersPart.vue";
 import Offerings from "@/components/ProjectInner/Offerings.vue";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
-import {useRoute} from "vue-router";
 import ContactMap from "@/components/Contact/ContactMap.vue";
-import {ref} from "vue";
-
-const route = useRoute();
+import WhatWeOffer from "../../components/Blocks/WhatWeOffer.vue";
+import { useI18n } from 'vue-i18n'
+export default {
+  props: ['id'],
+  components: {
+    MainLayout,
+    ProjectBanner,
+    RightPart,
+    FiltersPart,
+    Offerings,
+    RightArrow,
+    ContactMap,
+    WhatWeOffer,
+  },
+  setup() {
+    const { t } = useI18n({ useScope: 'global' })
+    return { t }
+  },
+  computed: {
+    ...mapGetters('projects', ['project'])
+  },
+  methods: {
+    ...mapActions('projects', ['getProject'])
+  },
+  mounted() {
+    this.getProject(this.$props.id)
+  },
+}
 </script>
 
 <template>
   <mainLayout>
     <div class="">
-      <h1 class="text-5xl md:text-9xl mb-6 md:mb-10 md: text-center font-semibold">Project Name</h1>
+      <!-- {{ project }} -->
+      <h1 class="text-5xl md:text-9xl mb-6 md:mb-10 md: text-center font-semibold">{{ project?.title }}</h1>
       <div class="flex flex-col lg:gap-40 gap-20">
-        <ProjectBanner/>
+        <ProjectBanner />
 
         <div class="w-full flex flex-col lg:flex-row">
 
@@ -32,30 +59,43 @@ const route = useRoute();
               For more information, see
             </div>
             <div class="flex flex-col gap-5">
-              <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
+              <!-- <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
                 <p>Terms of Payment
-                  <right-arrow class="inline-block ml-1"/>
+                  <right-arrow class="inline-block ml-1" />
                 </p>
-              </button>
-              <router-link :to="`/projects/${route.params.id}/details`">
+              </button> -->
+
+              <router-link :to="`/projects/${project?.id}/details`">
                 <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
-                  <p>Technical characteristics
-                    <right-arrow class="inline-block ml-1"/>
+                  <p>{{ t('buttons.termsOfDelivery') }}
+                    <right-arrow class="inline-block ml-1" />
                   </p>
                 </button>
               </router-link>
+<!-- 
+              <router-link :to="`/projects/${project?.id}/details`">
+                <button class="lg:w-60 w-full bg-[#F0EEEC] rounded-2xl p-3">
+                  <p>Technical characteristics
+                    <right-arrow class="inline-block ml-1" />
+                  </p>
+                </button>
+              </router-link> -->
 
             </div>
           </div>
         </div>
 
-        <Offerings/>
+          <component v-for="{data, type} in project?.page_data?.blocks" :is="type" :content="data"></component>
+    
 
-        <contact-map class="h-[640px] relative" :with-filter="true"/>
+
+        <!-- <Offerings /> -->
+
+        <contact-map class="h-[640px] relative" :with-filter="true" />
 
         <div class="flex md:flex-row flex-col justify-between ">
-          <FiltersPart/>
-          <RightPart/>
+          <FiltersPart />
+          <RightPart />
         </div>
       </div>
     </div>

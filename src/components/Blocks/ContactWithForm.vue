@@ -2,6 +2,7 @@
 import ContactPhoneIcon from "@/assets/icons/Contact/ContactPhoneIcon.vue"
 import ContactEnvelopeIcon from "@/assets/icons/Contact/ContactEnvelopeIcon.vue"
 import ContactLocationDotIcon from "@/assets/icons/Contact/ContactLocationDotIcon.vue"
+import { useI18n } from "vue-i18n";
 defineProps(['data'])
 
 const getIcon = (key) => {
@@ -13,6 +14,7 @@ const getIcon = (key) => {
 
     return icons[key]
 }
+const {t} = useI18n({useScope:"global"})
 </script>
 <template>
     <div>
@@ -24,7 +26,7 @@ const getIcon = (key) => {
                 </div>
                 <div class="flex flex-col justify-between">
                     <div class="text-base lg:text-lg font-medium lg:leading-8 opacity-60 capitalize">
-                        {{ key }}
+                        {{ t(`contact.${key}`) }}
                     </div>
                     <div class="text-lg lg:text-2xl font-medium">
                         {{ data[key] }}

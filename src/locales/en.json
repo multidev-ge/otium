@@ -9,5 +9,82 @@
     "Media": "Media",
     "Contact": "Contact",
     "FYA": "Find your apartment"
+  },
+  "buttons": {
+    "termsOfDelivery": "Terms of delivery"
+  },
+  "formLabels": {
+    "name": "Your Name",
+    "phone": "Phone Number"
+  },
+  "home": {
+    "title": "Living the urban lifestyle"
+  },
+  "defaults": {
+    "pagination": {
+      "showing": "You have seen",
+      "out": "apartments out of"
+    }
+  },
+  "filters": {
+    "title": "Find your apartment",
+    "project": "Project",
+    "block": "Block",
+    "rooms": "Rooms",
+    "area": "Area, m2",
+    "price": "Price",
+    "sold": "Sold Apartments",
+    "show": "Show",
+    "hide": "Hide",
+    "clear": "Clear Filter"
+  },
+  "flatsList": {
+    "flat": "Apartment",
+    "floor": "Floor",
+    "rooms": "Rooms",
+    "area": "Area, m2",
+    "price": "Price",
+    "more": "Explore more"
+  },
+  "footer": {
+    "contact": "Contact",
+    "submit": "Submit",
+    "rights": "ALL RIGHTS RESERVED",
+    "powered": "POWERED BY",
+    "growth_hunters": "GROWTH HUNTERS",
+    "social": "Socials",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address"
+  },
+  "projects": {
+    "title": "Projects",
+    "address": "Address",
+    "sale": "Apartments for sale",
+    "left": "apartments left",
+    "status": "Status",
+    "more": "More about project",
+    "next": "Scroll to view other projects",
+    "prev": "Prev"
+  },
+  "media": {
+    "title": "Media"
+  },
+  "contact": {
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "placeholders": {
+      "name": "Name",
+      "phone": "Phone Number",
+      "message": "Message"
+    },
+    "send": "Send"
+  },
+  "apartment": {
+    "backToFloor": "Back to floor"
+  },
+  "technical": {
+    "backToProject": "Back to Project"
   }
 }

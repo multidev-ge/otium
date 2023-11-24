@@ -2,7 +2,7 @@
 defineProps(['content'])
 </script>
 <template>
-    <div class="xl:flex xl:gap-8">
+    <div class="xl:flex xl:gap-8 xl:mb-8">
     <p class="xl:w-full pb-8 xl:pb-0 text-[22px] font-ppNeueMontrealMedium leading-8 pr-10 text-[#00000099]">
       {{ content?.columns[0]?.column }}
     </p>
