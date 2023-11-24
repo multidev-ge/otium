@@ -23,16 +23,16 @@ const mainOptions = {
   gap: '1rem',
   arrows: true,
   rewind: true,
-  breakpoints: {
-    768: {
-      heightRatio: 2.1,
-      direction: 'ttb',
-    }
-  },
-  dragMinThreshold: {
-    mouse: 0,
-    touch: 10,
-  },
+  // breakpoints: {
+    // 768: {
+      // heightRatio: 2.1,
+      // direction: 'ttb',
+    // }
+  // },
+  // dragMinThreshold: {
+    // mouse: 0,
+    // touch: 10,
+  // },
 };
 const currentValue = ref(1)
 const changeValue = (value) => {
