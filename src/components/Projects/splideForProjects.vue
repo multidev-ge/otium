@@ -28,7 +28,11 @@ const mainOptions = {
       heightRatio: 2.1,
       direction: 'ttb',
     }
-  }
+  },
+  dragMinThreshold: {
+    mouse: 0,
+    touch: 10,
+  },
 };
 const currentValue = ref(1)
 const changeValue = (value) => {
@@ -42,7 +46,7 @@ const { t } = useI18n({ useScope: "global" })
     <Splide :options="mainOptions" :has-track="false" @splide:moved="function (newIndex, prevIndex, destIndex) {
       changeValue(newIndex.index + 1)
     }">
-      <div class="custom-wrapper  flex flex-col">
+      <div class="custom-wrapper flex flex-col">
         <div>
           <SplideTrack>
             <SplideSlide v-for="(project) in content">
