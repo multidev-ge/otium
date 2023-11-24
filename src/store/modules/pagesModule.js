@@ -1,35 +1,36 @@
-
-import axios from "../../interceptors/axios"
+import axios from "@/interceptors/axios"
 
 const pagesModule = {
     namespaced: true,
-    state(){
+    state() {
         return {
-            id: null,
-            title: null,
-            slug: null,
+            page_id: null,
+            pages: [],
             blocks: [],
+            slug: [],
+            title: [],
         }
     },
     getters: {
-        id: ({ id }) => id,
-        title: ({ title }) => title,
-        slug: ({ slug }) => slug,
+        page: ({ page }) => page,
+        page_id: ({ page_id }) => page_id,
         blocks: ({ blocks }) => blocks,
     },
     mutations: {
-        "SET_ID": (state, payload) => state.id = payload,
-        "SET_TITLE": (state, payload) => state.title = payload,
-        "SET_SLUG": (state, payload) => state.slug = payload,
-        "SET_BLOCKS": (state, payload) => state.blocks = payload,
+        "SET_STATE": (state, { key, value }) => state[key] = value,
     },
     actions: {
-        async getPage({commit}, id){
+        async getPage({ commit }, id) {
             const { data: { data } } = await axios.get(`pages/${id}`)
-            commit("SET_ID", data.id)
-            commit("SET_TITLE", data.title)
-            commit("SET_SLUG", data.slug)
-            commit("SET_BLOCKS", data.blocks)
+            
+            commit("SET_STATE", { key: "page_id", value: data?.id })
+            commit("SET_STATE", { key: "blocks", value: data?.blocks })
+            commit("SET_STATE", { key: "slug", value: data?.slug })
+            commit("SET_STATE", { key: "title", value: data?.title })
+        },
+        async getPages({ commit }){
+            const { data } = await axios.get('pages')
+            commit("SET_STATE", { key: "pages", value: data })
         }
     }
 }

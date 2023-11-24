@@ -14,6 +14,11 @@ const { headerInfo, getMenu, mainMenuLinks } = useHeader()
 const mobileMenuOpen = ref(false)
 const { t } = useI18n({ useScope: 'global' })
 
+function onHover(e){
+  const children = 
+  console.log(`entered ${{...children}}`)
+}
+
 onMounted(() => {
   getMenu()
 })
@@ -34,7 +39,7 @@ onMounted(() => {
         </button>
       </div>
       <div class="hidden lg:flex lg:gap-x-3">
-        <router-link v-for="item in mainMenuLinks"
+        <router-link v-for="item in mainMenuLinks" class="hover:text-[#883F7C] transition-colors"
           :to="item.url"
           :class="[
             'text-lg font-medium leading-6',
@@ -46,8 +51,9 @@ onMounted(() => {
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
         <LanguageSwitcher class="hidden lg:flex lg:flex-1 lg:justify-end"/>
         <router-link to="/apartment-finder">
-          <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl flex items-center">
-            <button class="flex text-[#554242]" v-text="t('menu.FYA')" />
+          <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center hover:bg-black hover:text-white transition-colors" @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`,`invert`)" @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`,`invert-0`)">
+            <button class="flex" v-text="t('menu.FYA')" />
+            <!-- <img src="@/assets/icons/arrow-right.svg" class="stroke-white" alt=""> -->
             <arrowRight />
           </div>
         </router-link>
@@ -76,11 +82,11 @@ onMounted(() => {
                   :to="link.url"
                   class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
                   :class="{ 'text-[#88407c]': route.path === link.url }" v-text="link.title" />
-                <LanguageSwitcher class="flex w-full lg:hidden lg:flex-1 justify-center" />
+                <LanguageSwitcher class="flex w-full lg:hidden lg:flex-1 justify-center " />
               </div>
               <div class="pt-8">
                 <router-link to="/apartment-finder">
-                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center">
+                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-centerhover:bg-black hover:text-white" @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`,`invert`)" @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`,`invert-0`)">
                     <button class="flex text-[#554242]" v-text="t('menu.FYA')" />
                     <arrowRight />
                   </div>
@@ -94,6 +100,9 @@ onMounted(() => {
   </header>
 </template>
 <style scoped>
+.hovered {
+  background: black;
+}
 .active-link {
   color: #88407c;
   /* You can replace 'red' with your desired shade of red */

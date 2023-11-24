@@ -1,10 +1,10 @@
-
 import axios from "../../interceptors/axios"
 
 const flatsModule = {
     namespaced: true,
-    state(){
+    state() {
         return {
+            // flats params
             project_id: null,
             floor: null,
             rooms: null,
@@ -14,93 +14,95 @@ const flatsModule = {
             min_price: null,
             max_price: null,
             sold: false,
-            
+            // flats response
+            flats: {},
+            // flats/{id} as param in url
+            flat: {},
+
+            // page thing
+            page_id: 3,
             blocks: [],
-            flats: [],
-            meta:{},
-            links:{},
-            per_page: 15,
         }
     },
     getters: {
-        project_id: ({project_id}) => project_id,
-        floor: ({floor}) => floor,
-        rooms: ({rooms}) => rooms,
-        min_area: ({min_area}) => min_area,
-        max_area: ({max_area}) => max_area,
-        block: ({block}) => block,
-        min_price: ({min_price}) => min_price,
-        max_price: ({max_price}) => max_price,
-        sold: ({sold}) => sold,
-        blocks: ({blocks}) => blocks,
-        flats: ({flats}) => flats,
-        meta: ({meta}) => meta,
-        links: ({links}) => links,
-        per_page: ({per_page}) => per_page,
-        requestFilters: (state) => {
+        // project_id: ({ project_id }) => project_id,
+        // floor: ({ floor }) => floor,
+        // rooms: ({ rooms }) => rooms,
+        // min_area: ({ min_area }) => min_area,
+        // max_area: ({ max_area }) => max_area,
+        // block: ({ block }) => block,
+        // min_price: ({ min_price }) => min_price,
+        // max_price: ({ max_price }) => max_price,
+        // sold: ({ sold }) => sold,
+        // per_page: ({ per_page }) => per_page,
+        activeRequestFilters: ({flats}) => {
             const options = {}
-            if(state.project_id){
-                options.project_id = state.project_id
-            }
-            if(state.floor){
-                options.floor = state.floor
-            }
-            if(state.rooms){
-                options.rooms = state.rooms
-            }
-            if(state.min_area){
-                options.min_area = state.min_area
-            }
-            if(state.max_area){
-                options.max_area = state.max_area
-            }
-            if(state.block){
-                options.block = state.block
-            }
-            if(state.min_price){
-                options.min_price = state.min_price
-            }
-            if(state.max_price){
-                options.max_price = state.max_price
-            }
-            if(state.sold){
-                options.sold = state.sold
-            }
+            const filters = [
+                "project_id",
+                "floor",
+                "rooms",
+                "min_area",
+                "max_area",
+                "block",
+                "min_price",
+                "max_price",
+                "sold",
+            ]
+            filters.forEach((param) => { if (flats[param]) { options[project_id] = flats[param] } })
             return options
-        }
+        },
+
+        blocks: ({ blocks }) => blocks,
+
+        flats: ({ flats }) => flats,
+        flat: ({ flat }) => flat,
+        // meta: ({ meta }) => meta,
+        // links: ({ links }) => links,
+        links: ({ flats: { links } }) => links,
+        isMore: ({ flats: { links } }) => !!links?.next,
     },
     mutations: {
-        "SET_PROJECT_ID": (state, payload) => state.project_id = payload,
-        "SET_FLOOR": (state, payload) => state.floor = payload,
-        "SET_ROOMS": (state, payload) => state.rooms = payload,
-        "SET_MIN_AREA": (state, payload) => state.min_area = payload,
-        "SET_MAX_AREA": (state, payload) => state.max_area = payload,
-        "SET_BLOCKS": (state, payload) => state.blocks = payload,
-        "SET_BLOCK": (state, payload) => state.block = payload,
-        "SET_MIN_PRICE": (state, payload) => state.min_price = payload,
-        "SET_MAX_PRICE": (state, payload) => state.max_price = payload,
-        "SET_SOLD": (state, payload) => state.sold = payload,
-        "SET_FLATS": (state, payload) => state.flats = payload,
-        "SET_META": (state, payload) => state.meta = payload,
-        "SET_LINKS": (state, payload) => state.links = payload,
-        "SET_PER_PAGE": (state, payload) => state.per_page = payload,
+        "SET_STATE": (state, { key, value }) => state[key] = value,
+        "SET_MORE": (state, { key, value }) => state[key].data = state[key].data.concat(value),
+        // "SET_PROJECT_ID": (state, payload) => state.project_id = payload,
+        // "SET_FLOOR": (state, payload) => state.floor = payload,
+        // "SET_ROOMS": (state, payload) => state.rooms = payload,
+        // "SET_MIN_AREA": (state, payload) => state.min_area = payload,
+        // "SET_MAX_AREA": (state, payload) => state.max_area = payload,
+        // "SET_BLOCKS": (state, payload) => state.blocks = payload,
+        // "SET_BLOCK": (state, payload) => state.block = payload,
+        // "SET_MIN_PRICE": (state, payload) => state.min_price = payload,
+        // "SET_MAX_PRICE": (state, payload) => state.max_price = payload,
+        // "SET_SOLD": (state, payload) => state.sold = payload,
+        // "SET_META": (state, payload) => state.meta = payload,
+        // "SET_LINKS": (state, payload) => state.links = payload,
+        // "SET_PER_PAGE": (state, payload) => state.per_page = payload,
+        // "SET_FLATS": (state, payload) => state.flats = (state.flats.length) ? state.flats.concat(payload) : payload,
     },
     actions: {
-        async getFlats({ commit, getters }){
-            const params = { per_page: getters.per_page }
-            const { data: { data, meta, links } } = await axios.get('flats', { params: {...params, ...getters.requestFilters} })
-            commit("SET_FLATS", data)
-            commit("SET_META", meta)
-            commit("SET_LINKS", links)
+        async getFlats({ commit, getters }) {
+            // const params = { per_page: getters.per_page }
+            // const { data: { data, meta, links } } = await axios.get('flats', { params: { ...params, ...getters.activeRequestFilters } })
+            const { data } = await axios.get('flats', { params: { ...getters.activeRequestFilters } })
+
+            // commit("SET_FLATS", data)
+            // commit("SET_META", meta)
+            // commit("SET_LINKS", links)
+
+            // commit("SET_STATE", { key: "flats", value: data })
+            // commit("SET_STATE", { key: "meta", value: meta })
+            // commit("SET_STATE", { key: "links", value: links })
+            commit("SET_STATE", { key: "flats", value: data })
         },
-        async getBlocks({ commit, getters }){
+        async getBlocks({ commit, getters }) {
 
             const { data: { data } } = await axios.get('blocks', {
                 project_id: getters.project_id
             })
             commit("SET_BLOCKS", data)
         },
-        async clearFilter({ commit }){
+        async clearFilter({ commit }) {
+
             commit("SET_PROJECT_ID", null)
             commit("SET_FLOOR", null)
             commit("SET_ROOMS", null)
@@ -111,8 +113,25 @@ const flatsModule = {
             commit("SET_MAX_PRICE", null)
             commit("SET_SOLD", false)
 
-            const { data: { data } } = await axios.get('flats', { params: {...params, ...getters.requestFilters} })
+            const { data: { data } } = await axios.get('flats', { params: { ...params, ...getters.activeRequestFilters } })
             commit("SET_FLATS", data)
+        },
+        async loadMore({ commit, getters }) {
+            // commit("SET_PROJECT_ID", null)
+            // commit("SET_FLOOR", null)
+            // commit("SET_ROOMS", null)
+            // commit("SET_MIN_AREA", null)
+            // commit("SET_MAX_AREA", null)
+            // commit("SET_BLOCK", null)
+            // commit("SET_MIN_PRICE", null)
+            // commit("SET_MAX_PRICE", null)
+            // commit("SET_SOLD", false)
+
+            const { data: { data, meta, links } } = await axios.get(getters.links?.next, { params: { ...getters.activeRequestFilters } })
+            // commit("SET_FLATS", data)
+            commit("SET_MORE", { key: "flats", value: data })
+            // commit("SET_STATE", { key: "meta", value: meta })
+            // commit("SET_STATE", { key: "links", value: links })
         },
     }
 }

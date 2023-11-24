@@ -7,8 +7,8 @@ import MainLayout from "../../layouts/mainLayout.vue"
 <template>
 <main-layout>
   <div class="flex md:flex-row flex-col justify-between">
-    <FiltersPart/>
-    <RightPart/>
+    <FiltersPart />
+    <RightPart />
   </div>
 </main-layout>
 </template>

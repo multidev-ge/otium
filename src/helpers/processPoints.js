@@ -31,6 +31,6 @@ export default function processPoints(array, planWidth, planHeight) {
             if (i !== coords.length - 2) points += ','
         }
 
-        return {...room,coords, points, top, left, width, height};
+        return { ...room, coords, points, top, left, width, height };
     });
 };
