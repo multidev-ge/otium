@@ -14,7 +14,7 @@ watch(locale, (val) => {
 <template>
     <div>
         <div v-for="(lang, index) in supportLocales" class="flex flex-row items-center">
-            <button class="capitalize" :class="{ 'font-bold': locale === lang }" @click="setLocale(lang)">
+            <button class="capitalize hover:text-[#883F7C] transition-colors" :class="{ 'font-bold': locale === lang }" @click="setLocale(lang)">
                 {{ t(`languages.${lang}`) }}
             </button>
             <button v-if="(index + 1) < supportLocales.length" disabled class="focus:outline-none mx-1">/</button>

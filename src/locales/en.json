@@ -38,8 +38,8 @@
     "hide": "Hide",
     "clear": "Clear Filter"
   },
-  "apartmentsList": {
-    "apartment": "Apartment",
+  "flatsList": {
+    "flat": "Apartment",
     "floor": "Floor",
     "rooms": "Rooms",
     "area": "Area, m2",

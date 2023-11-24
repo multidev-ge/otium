@@ -38,8 +38,8 @@
     "hide": "დავმალოთ",
     "clear": "გასუფთავება"
   },
-  "apartmentsList": {
-    "apartment": "აპარტამენტი",
+  "flatsList": {
+    "flat": "აპარტამენტი",
     "floor": "სართული",
     "rooms": "ოთახები",
     "area": "ფართ. მ2",

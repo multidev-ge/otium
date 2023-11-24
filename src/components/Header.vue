@@ -39,7 +39,7 @@ onMounted(() => {
         </button>
       </div>
       <div class="hidden lg:flex lg:gap-x-3">
-        <router-link v-for="item in mainMenuLinks"
+        <router-link v-for="item in mainMenuLinks" class="hover:text-[#883F7C] transition-colors"
           :to="item.url"
           :class="[
             'text-lg font-medium leading-6',
@@ -51,7 +51,7 @@ onMounted(() => {
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
         <LanguageSwitcher class="hidden lg:flex lg:flex-1 lg:justify-end"/>
         <router-link to="/apartment-finder">
-          <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center hover:bg-black hover:text-white" @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`,`invert`)" @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`,`invert-0`)">
+          <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center hover:bg-black hover:text-white transition-colors" @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`,`invert`)" @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`,`invert-0`)">
             <button class="flex" v-text="t('menu.FYA')" />
             <!-- <img src="@/assets/icons/arrow-right.svg" class="stroke-white" alt=""> -->
             <arrowRight />
@@ -82,7 +82,7 @@ onMounted(() => {
                   :to="link.url"
                   class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
                   :class="{ 'text-[#88407c]': route.path === link.url }" v-text="link.title" />
-                <LanguageSwitcher class="flex w-full lg:hidden lg:flex-1 justify-center" />
+                <LanguageSwitcher class="flex w-full lg:hidden lg:flex-1 justify-center " />
               </div>
               <div class="pt-8">
                 <router-link to="/apartment-finder">
