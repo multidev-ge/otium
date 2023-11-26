@@ -77,7 +77,7 @@ const { t } = useI18n({ useScope: "global" })
           <p class="text-xl mr-5 md:w-auto w-1/2">{{ t("projects.next") }}</p>
           <div class="splide__arrows !flex relative  pt-24 ">
             <button class="splide__arrow splide__arrow--prev !hidden">{{ t("projects.prev") }}</button>
-            <button class="splide__arrow !bg-black !w-12 !h-12 text-xl  splide__arrow--next">
+            <button class="splide__arrow !bg-black !w-12 !h-12 text-xl splide__arrow--next">
               <ArrowForProjectsSplide />
             </button>
           </div>

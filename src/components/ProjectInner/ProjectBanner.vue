@@ -33,7 +33,7 @@ function goTo(floor){
         left: f.left
       }">
     </div>
-    <div v-if="floorHovered" :style="{ 
+    <!-- <div v-if="floorHovered" :style="{ 
         top: currentFloor.tooltip_pos.top, 
         left: (currentFloor.pos === 'left') ? currentFloor.tooltip_pos.left : 'auto',
         right: (currentFloor.pos === 'right') ? currentFloor.tooltip_pos.right : 'auto',
@@ -51,7 +51,7 @@ function goTo(floor){
           <h4>{{ det.value }}</h4>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <button @click="openPopup" class="block lg:hidden w-full py-3 mt-5 px-6 bg-[#F0EEEC] rounded-2xl font-medium">
     Choose a floor
