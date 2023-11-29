@@ -1,4 +1,5 @@
 import plan from '@/assets/images/01_00001.jpg'
+import before from '@/assets/images/01_00001_old.jpg'
 import imageDimensions from "@/helpers/imageDimensions";
 import processPoints from "@/helpers/processPoints";
 import { ref } from "vue";
@@ -8,7 +9,13 @@ const {
     planHeight
 } = await imageDimensions(plan).then(dimensions => dimensions).catch(err => console.log(err));
 
-const leftBlock = [
+
+
+// const oldImage = await imageDimensions(before).then(dimensions => dimensions).catch(err => console.log(err));
+
+// console.log(planWidth, planHeight, oldImage.planWidth, oldImage.planHeight)
+
+const leftBlock = ref([
     {
         // points: [
         //     // x / y
@@ -229,9 +236,9 @@ const leftBlock = [
             { name: "Rooms", value: "2 - 6" },
         ]
     }
-]
+])
 
-const rightBlock = [
+const rightBlock = ref([
     {
         // points: [
         //     // x / y
@@ -458,21 +465,54 @@ const rightBlock = [
             { name: "Rooms", value: "2 - 6" },
         ]
     },
-]
+])
+
+/**
+ * 3000
+ * 2093
+ * 2604
+ * from beginning = 511
+ * from bottom = 396
+ */
+
+console.log(leftBlock.value)
+
+leftBlock.value = leftBlock.value.map((floor) => {
+    return {
+        ...floor,
+        points: floor.points.map((point, index) => {
+        if(index % 2 == 0){ // every x coord
+            return point
+        }
+        // every y coord
+        return Math.round(point - 511)
+    })}
+})
+rightBlock.value = rightBlock.value.map((floor) => {
+    return {
+        ...floor,
+        points: floor.points.map((point, index) => {
+        if(index % 2 == 0){ // every x coord
+            return point
+        }
+        // every y coord
+        return Math.round(point - 511)
+    })}
+})
 
 export function useProjectBanner() {
     const floors = processPoints([
-        ...leftBlock,
-        ...rightBlock
+        ...leftBlock.value,
+        ...rightBlock.value
     ], planWidth, planHeight)
     //calculating tooltip position in percentage
-    console.log(floors)
+    // console.log(floors)
     floors.map(e => {
         const [x1, y1, x2, y2] = e.coords.slice(0, 4)
         const [z1, v1, z2, v2] = e.coords.slice(-4)
 
-        console.log('left:', x1,x2,y1,y2)
-        console.log('right:', z1, v1, z2, v2)
+        // console.log('left:', x1,x2,y1,y2)
+        // console.log('right:', z1, v1, z2, v2)
         e.tooltip_pos = {
             top: `${(y1 + y2) / (2 * planHeight) * 100}%`,
             left: `${(x1 + x2) / (1.2 * planWidth) * 100}%`,
