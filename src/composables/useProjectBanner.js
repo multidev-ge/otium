@@ -1,5 +1,4 @@
 import plan from '@/assets/images/01_00001.jpg'
-import before from '@/assets/images/01_00001_old.jpg'
 import imageDimensions from "@/helpers/imageDimensions";
 import processPoints from "@/helpers/processPoints";
 import { ref } from "vue";
@@ -8,12 +7,6 @@ const {
     planWidth,
     planHeight
 } = await imageDimensions(plan).then(dimensions => dimensions).catch(err => console.log(err));
-
-
-
-// const oldImage = await imageDimensions(before).then(dimensions => dimensions).catch(err => console.log(err));
-
-// console.log(planWidth, planHeight, oldImage.planWidth, oldImage.planHeight)
 
 const leftBlock = ref([
     {
@@ -466,16 +459,6 @@ const rightBlock = ref([
         ]
     },
 ])
-
-/**
- * 3000
- * 2093
- * 2604
- * from beginning = 511
- * from bottom = 396
- */
-
-console.log(leftBlock.value)
 
 leftBlock.value = leftBlock.value.map((floor) => {
     return {
