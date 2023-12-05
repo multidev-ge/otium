@@ -22,6 +22,7 @@ export default {
 </script>
 <template>
   <div class="hidden md:flex  flex-col w-3/5 font-medium">
+    <slot name="blocks"></slot>
     <div class="overflow-x-auto">
       <div class="inline-block min-w-full">
         <div class="overflow-hidden">
