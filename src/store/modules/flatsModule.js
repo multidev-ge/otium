@@ -5,7 +5,7 @@ const flatsModule = {
     state() {
         return {
             // flats params
-            project_id: null,
+            project_id: 1,
             floor: null,
             rooms: null,
             min_area: null,
@@ -21,6 +21,7 @@ const flatsModule = {
 
             // page thing
             page_id: 3,
+            per_page: 15,
             blocks: [],
         }
     },
@@ -35,7 +36,7 @@ const flatsModule = {
         max_price: ({ max_price }) => max_price,
         sold: ({ sold }) => sold,
         per_page: ({ per_page }) => per_page,
-        activeRequestFilters: ({flats}) => {
+        activeRequestFilters: (state) => {
             const options = {}
             const filters = [
                 "project_id",
@@ -47,8 +48,9 @@ const flatsModule = {
                 "min_price",
                 "max_price",
                 "sold",
+                "per_page",
             ]
-            filters.forEach((param) => { if (flats[param]) { options[project_id] = flats[param] } })
+            filters.forEach((param) => { if (state[param]) { options[param] = state[param] } })
             return options
         },
 
@@ -101,7 +103,7 @@ const flatsModule = {
             })
             commit("SET_BLOCKS", data)
         },
-        async clearFilter({ commit }) {
+        async clearFilter({ commit, getters }) {
 
             commit("SET_PROJECT_ID", null)
             commit("SET_FLOOR", null)
@@ -113,7 +115,7 @@ const flatsModule = {
             commit("SET_MAX_PRICE", null)
             commit("SET_SOLD", false)
 
-            const { data: { data } } = await axios.get('flats', { params: { ...params, ...getters.activeRequestFilters } })
+            const { data: { data } } = await axios.get('flats', { params: { ...getters.activeRequestFilters } })
             commit("SET_FLATS", data)
         },
         async loadMore({ commit, getters }) {

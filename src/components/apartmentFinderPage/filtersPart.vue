@@ -87,6 +87,7 @@ export default {
     if(!this.projects.length){
       this.getProjects()
     }
+    this.getBlocks()
     this.getFlats()
   }
 }

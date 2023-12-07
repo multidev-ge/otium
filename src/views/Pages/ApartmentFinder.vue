@@ -1,15 +1,30 @@
-<script setup>
+<script>
 import FiltersPart from "@/components/apartmentFinderPage/filtersPart.vue"
 import RightPart from "@/components/apartmentFinderPage/rightPart.vue"
 import MainLayout from "../../layouts/mainLayout.vue"
 import { useProjectBanner } from "@/composables/useProjectBanner";
-
-const { data, functions } = useProjectBanner()
-
-const { blocks } = data
-
-console.log(blocks)
-
+import MapedImage from "@/components/MapedImage.vue";
+import image_path from "../../assets/images/maped/blocks/01.jpg"
+export default {
+  components: {
+    FiltersPart, RightPart, MainLayout, MapedImage
+  },
+  setup() {
+    const { data } = useProjectBanner()
+    const { blocks } = data
+    return {
+      blocks,
+      image_path
+    }
+  },
+  methods: {
+    async blockClicked({ block }){
+      this.$store.commit("flats/SET_PROJECT_ID", 1)
+      this.$store.commit("flats/SET_BLOCK", block)
+      this.$store.dispatch("flats/getFlats")
+    }
+  }
+}
 </script>
 
 <template>
@@ -17,20 +32,8 @@ console.log(blocks)
     <div class="flex md:flex-row flex-col justify-between">
       <FiltersPart />
       <RightPart>
-        <template #blocks>
-          <div class="relative mb-4">
-            <img class="w-full h-full rounded-xl" src="../../assets/images/01_00002.jpg">
-            <div v-for="f in blocks"
-              class="pointer-events-none lg:pointer-events-auto absolute opacity-80 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
-              @click="goTo(currentFloor.floor)" @mouseover="showTooltip(f)" @mouseleave="hideTooltip" :style="{
-                width: f.width,
-                height: f.height,
-                clipPath: `polygon(${f.points})`,
-                top: f.top,
-                left: f.left
-              }">
-            </div>
-          </div>
+        <template #mapedHeader>
+          <MapedImage :image_path="image_path" :options="blocks" @blockClicked="blockClicked" />
         </template>
       </RightPart>
     </div>
