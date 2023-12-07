@@ -497,7 +497,7 @@ rightBlock.value = rightBlock.value.map((floor) => {
                 return point
             }
             // every y coord
-            return Math.round(point - 511)
+            return Math.round(point - 508)
         })
     }
 })

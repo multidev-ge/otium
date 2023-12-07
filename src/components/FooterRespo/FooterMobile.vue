@@ -33,7 +33,7 @@ const { t } = useI18n({ useScope: 'global' })
                 v-model="contactFormData.name"
                 id="text"
                 type="text"
-                class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg"
+                class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg outline-none"
                 required
                 autocomplete="name"
               />
@@ -48,7 +48,7 @@ const { t } = useI18n({ useScope: 'global' })
                 v-model="contactFormData.phoneNumber"
                 id="tel"
                 type="tel"
-                class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg"
+                class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg outline-none"
                 required
                 autocomplete="tel"
               />
