@@ -21,55 +21,18 @@ defineProps(['content'])
 
 <template>
   <div class="container mx-auto md:px-0 mt-9 md:mt-0">
-    <ul class="m-d expand-list">
-      <li v-for="{type, data} in content" class="first-item" data-md-content="200">
-        <label name="tab" for="tab1" tabindex="-1" class="tab_lab text-2xl font-medium" role="tab">
+    <ul class="m-d expand-list md:whitespace-nowrap">
+      <li v-for="({type, data}, index) in content" class="mb-2" :class="{'first-item': index === 0}" data-md-content="200">
+        <label name="tab" :for="`tab${index}`" tabindex="-1" class="tab_lab text-2xl font-medium" role="tab">
           <span class="inline bg-[#F2F2F2] px-3 py-2 rounded-xl mr-3 md:mr-5">
-            <img class="inline mb-1" :src="`https://dashboard.otium.ge/uploads/${data?.icon}`" alt="" />
+            <img class="inline" :src="`https://dashboard.otium.ge/uploads/${data?.icon}`" alt="" />
           </span>
-          {{ data?.title }}</label>
-        <input type="checkbox" class="tab" id="tab1" tabindex="0" />
-        <span class="open-close-icon"><i class="fas fa-plus"></i><i class="fas fa-minus"></i></span>
+          <span class="md:whitespace-nowrap">{{ data?.title }}</span>
+        </label>
+        <input type="checkbox" class="tab" :id="`tab${index}`" tabindex="0" />
+        <span class="open-close-icon mt-2"><i class="fas fa-plus"></i><i class="fas fa-minus"></i></span>
         <div class="content text-lg" v-html="data?.content"></div>
-          <!-- {{ technicalinfo[0]?.faqs[0]?.faq[0]?.title }} -->
-        <!-- </div> -->
-        <!-- <div v-for="(content, index) in getContentList(
-          technicalinfo[0].faqs[0].faq[0]
-        )" :key="index" class="mycontentstyle content text-lg gap-3 flex">
-          <img class="inline mb-1 mt-1" :src="content.icon" alt="" />
-          <h2 class=""> {{ content.title }}</h2>
-        </div>-->
-      </li> 
-      <!-- <li class="" data-md-content="300">
-        <div class="flex">
-          <label name="tab" for="tab2" tabindex="-1" class="tab_lab text-2xl font-medium" role="tab">
-            <div class="flex gap-2">
-              <span class="inline mt-2 md:mt-0  w-[48px] h-[45px] bg-[#F2F2F2] px-3 py-2 rounded-xl mr-3 md:mr-5">
-                <img class="inline mb-1 " :src="technicalinfo[0].faqs[1].icon" alt="" />
-              </span>
-              <h2 class="  md:w-full w-2/5 	md:mt-2">{{ technicalinfo[0].faqs[1].title }}</h2>
-            </div>
-          </label>
-        </div>
-        <input type="checkbox" class="tab" id="tab2" tabindex="0" />
-        <span class="open-close-icon myspanstyle"><i class="fas fa-plus"></i><i class="fas fa-minus"></i></span>
-        <div class="content text-lg" v-for="(description, index) in technicalinfo[0]?.faqs[1]?.faq[
-          0
-        ]" :key="index">
-          {{ description }}
-        </div>
       </li>
-      <li class="border-b-0" data-md-content="600">
-        <label name="tab" for="tab3" tabindex="-1" class="tab_lab text-2xl font-medium" role="tab">
-          <span class="inline bg-[#F2F2F2] px-3 py-2 rounded-xl mr-3 md:mr-5">
-            <img class="inline mb-1" :src="technicalinfo[0].faqs[2].icon" alt="" />
-          </span>
-          {{ technicalinfo[0].faqs[2].title }}</label>
-        <input type="checkbox" class="tab" id="tab3" tabindex="0" />
-        <span class="open-close-icon"><i class="fas fa-plus"></i><i class="fas fa-minus"></i></span>
-
-        <div class="content text-lg"></div>
-      </li> -->
     </ul>
   </div>
 </template>

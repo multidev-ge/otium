@@ -15,6 +15,7 @@ const pagesModule = {
         page: ({ page }) => page,
         page_id: ({ page_id }) => page_id,
         blocks: ({ blocks }) => blocks,
+        title: ({ title }) => title,
     },
     mutations: {
         "SET_STATE": (state, { key, value }) => state[key] = value,

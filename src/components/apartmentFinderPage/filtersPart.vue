@@ -121,7 +121,7 @@ export default {
     <div class="flex flex-col gap-3">
       <label class="text-xl" for="project">{{ t("filters.rooms") }}</label>
       <div class="flex gap-2">
-        <div class="text-lg flex items-center border-black cursor-pointer justify-center border w-10	h-10 rounded-md"
+        <div class="text-lg flex items-center border-black cursor-pointer justify-center border w-10 h-10 rounded-md"
           @click.prevent="updateRooms(index+1)" v-for="(room, index) in rooms.quantity">
           <p>{{ index + 1 }}</p>
         </div>
