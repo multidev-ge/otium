@@ -43,7 +43,6 @@ function goTo(floor){
         floorHovered ? 'text-opacity-100' : 'opacity-0',
         (currentFloor.pos === 'right') ? 'rightTooltip' : 'leftTooltip'
         ]">
-
       <h3 class="pb-6 text-xl font-medium">{{ floorOrder(currentFloor.floor) }} floor</h3>
       <div class="text-base font-medium grid grid-cols-2 gap-y-6">
         <div v-for="det in currentFloor.details">
