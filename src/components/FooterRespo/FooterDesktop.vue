@@ -5,6 +5,7 @@ import useFooter from "@/composables/useFooter"
 import useHeader from "@/composables/useHeader"
 
 export default {
+  props: ['content'],
   computed: {
     name: {
       get() {
@@ -21,7 +22,7 @@ export default {
       set(value) {
         this.$store.commit('contact/SET_PHONE', value)
       }
-    }
+    },
   },
   methods: {
     ...mapActions('contact', ['submitContact'])
@@ -56,13 +57,13 @@ export default {
               <div class="md:w-1/3 mb-7 md:mb-0">
                 <label for="text" class="block text-base font-medium text-[#FFFFFF99]">{{ t("formLabels.name") }}</label>
                 <input v-model="name" id="text" type="text"
-                  class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg" required
+                  class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg" required
                   autocomplete="name" />
               </div>
               <div class="md:w-1/3 mb-12 md:mb-0">
                 <label for="tel" class="block text-base font-medium text-[#FFFFFF99]">{{ t("formLabels.phone") }}</label>
                 <input v-model="phone" id="tel" type="tel"
-                  class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg" required
+                  class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg" required
                   autocomplete="tel" />
               </div>
 
@@ -81,7 +82,7 @@ export default {
                   </p>
                 </div>
                 <p class="text-[16px] leading-[24px] text-[#FFFFFF99] pt-3 md:w-44 w-[344px] mb-7 md:mb-0">
-                  {{ FooterInfo[0].Footercomponents.address }}
+                  {{ content.address }}
                 </p>
               </div>
               <div class="w-1/3">
@@ -92,7 +93,7 @@ export default {
                   </p>
                 </div>
                 <p class="text-[16px] leading-[24px] text-[#FFFFFF99] pt-3 w-44">
-                  {{ FooterInfo[0].Footercomponents.number }}
+                  {{ content?.phone }}
                 </p>
               </div>
               <div class="w-1/5">
@@ -103,7 +104,7 @@ export default {
                   </p>
                 </div>
                 <p class="text-[16px] leading-[24px] text-[#FFFFFF99] pt-3 w-44">
-                  {{ FooterInfo[0].Footercomponents.mail }}
+                  {{ content?.email }}
                 </p>
               </div>
             </div>
