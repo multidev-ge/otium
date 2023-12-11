@@ -24,7 +24,7 @@ export default {
       t,
       apartments,
       dropDowns,
-      rooms,
+      Srooms: rooms,
       selectRoom,
       doubleSliderOptions,
       // clearFilter,
@@ -61,7 +61,7 @@ export default {
         this.$store.dispatch('flats/getFlats')
       }
     },
-    ...mapGetters('flats', ['blocks', 'requestFilters']),
+    ...mapGetters('flats', ['blocks', 'requestFilters', 'rooms']),
     ...mapGetters('projects', ['projects']),
   },
   methods: {
@@ -121,8 +121,11 @@ export default {
     <div class="flex flex-col gap-3">
       <label class="text-xl" for="project">{{ t("filters.rooms") }}</label>
       <div class="flex gap-2">
-        <div class="text-lg flex items-center border-black cursor-pointer justify-center border w-10 h-10 rounded-md"
-          @click.prevent="updateRooms(index+1)" v-for="(room, index) in rooms.quantity">
+        <div class="w-10 h-10 text-lg flex items-center justify-center border-black border rounded-md cursor-pointer"
+          @click.prevent="updateRooms(index+1)" v-for="(room, index) in Srooms.quantity"
+          :class="[
+            (rooms === (index + 1)) ? 'bg-[#883F7C] text-white' : ''
+          ]">
           <p>{{ index + 1 }}</p>
         </div>
       </div>
@@ -145,7 +148,7 @@ export default {
       <div class="flex gap-10">
         <div class="flex gap-2">
           <input v-model="sold" 
-            class="w-5 h-5 accent-black   rounded-full" name="hideShow" value="1" type="radio">
+            class="w-5 h-5 accent-black rounded-full" name="hideShow" value="1" type="radio">
           <label>{{ t('filters.show') }}</label>
         </div>
         <div class="flex gap-2">
