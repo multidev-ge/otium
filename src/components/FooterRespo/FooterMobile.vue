@@ -1,12 +1,12 @@
 <script setup>
 import { useI18n } from "vue-i18n"
-import { mapActions } from "vuex"
 import useFooter from "@/composables/useFooter";
 import useHeader from "@/composables/useHeader";
-
+defineProps(['content'])
 const { headerInfo } = useHeader();
 const { FooterInfo, contactFormData, submitContactForm } = useFooter();
 const { t } = useI18n({ useScope: 'global' })
+
 </script>
 <template>
   <footer class="bg-[#000000] mt-12">
@@ -33,7 +33,7 @@ const { t } = useI18n({ useScope: 'global' })
                 v-model="contactFormData.name"
                 id="text"
                 type="text"
-                class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg outline-none"
+                class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg"
                 required
                 autocomplete="name"
               />
@@ -48,7 +48,7 @@ const { t } = useI18n({ useScope: 'global' })
                 v-model="contactFormData.phoneNumber"
                 id="tel"
                 type="tel"
-                class="border-[#FFFFFF4D] block w-full bg-black outline-0 text-white border-b-2 text-lg outline-none"
+                class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg"
                 required
                 autocomplete="tel"
               />
@@ -77,7 +77,7 @@ const { t } = useI18n({ useScope: 'global' })
                 </p>
               </div>
               <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 md:w-44 mb-7 md:mb-0">
-                {{ FooterInfo[0].Footercomponents.address }}
+                {{ content?.address }}
               </p>
             </div>
             <div class="flex gap-14 px-4">
@@ -92,7 +92,7 @@ const { t } = useI18n({ useScope: 'global' })
                   </p>
                 </div>
                 <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 w-44">
-                  {{ FooterInfo[0].Footercomponents.number }}
+                  {{ content?.phone }}
                 </p>
               </div>
               <div class="w-1/5">
@@ -106,7 +106,7 @@ const { t } = useI18n({ useScope: 'global' })
                   </p>
                 </div>
                 <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 w-44">
-                  {{ FooterInfo[0].Footercomponents.mail }}
+                  {{ content?.email }}
                 </p>
               </div>
             </div>
