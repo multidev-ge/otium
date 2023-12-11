@@ -72,32 +72,34 @@ export default {
   </div>
   <!-- Mobile -->
   <TransitionGroup name="list" tag="div" class="md:hidden">
-    <div class="flex flex-col w-100 mx-auto rounded-lg border mb-5 border-[#9999994D] mt-10" v-for="card in flats.data"
-      :key="card?.id">
-      <img class="w-full" :src="card?.image_url" alt="">
+    <div class="flex flex-col w-100 mx-auto rounded-lg border mb-5 border-[#9999994D] mt-10" v-for="item in flats.data"
+      :key="item?.id">
+      <RouterLink :to="{ name: 'Apartment', params: { id: item.project_id, fid: item.floor, aid: item.id } }">
+        <img class="w-full" :src="item?.image_url" alt="">
+      </RouterLink>
       <div class="w-full">
         <div class="flex flex-row justify-between py-3 text-xl">
           <div class="w-full flex flex-col space-y-3 px-2">
             <div class="flex space-x-1">
               <label class="opacity-40 whitespace-nowrap">{{ t("flatsList.floor") }}</label>
               <div class="whitespace-nowrap">
-                <span>{{ card.floor }}</span><span class="opacity-30"> / </span>
-                <span class="opacity-30">{{ card.max_floors }}</span>
+                <span>{{ item.floor }}</span><span class="opacity-30"> / </span>
+                <span class="opacity-30">{{ item.max_floors }}</span>
               </div>
             </div>
             <div class="flex space-x-1">
               <p class="opacity-40 whitespace-nowrap">{{ t("flatsList.area") }}</p>
-              <div class="whitespace-nowrap">{{ card.area }}</div>
+              <div class="whitespace-nowrap">{{ item.area }}</div>
             </div>
           </div>
           <div class="w-full flex flex-col space-y-3 px-2">
             <div class="flex space-x-1">
               <p class="opacity-40 whitespace-nowrap">{{ t("flatsList.rooms") }}</p>
-              <p class="whitespace-nowrap">{{ card.rooms }}</p>
+              <p class="whitespace-nowrap">{{ item.rooms }}</p>
             </div>
             <div class="flex space-x-1">
               <p class="opacity-40 whitespace-nowrap">{{ t("flatsList.price") }}</p>
-              <div class="whitespace-nowrap">${{ card.price.toLocaleString() }}</div>
+              <div class="whitespace-nowrap">${{ item.price.toLocaleString() }}</div>
             </div>
           </div>
         </div>

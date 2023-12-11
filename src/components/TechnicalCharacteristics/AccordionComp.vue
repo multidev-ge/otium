@@ -21,16 +21,16 @@ defineProps(['content'])
 
 <template>
   <div class="container mx-auto md:px-0 mt-9 md:mt-0">
-    <ul class="m-d expand-list md:whitespace-nowrap">
+    <ul class="m-d expand-list">
       <li v-for="({type, data}, index) in content" class="mb-2" :class="{'first-item': index === 0}" data-md-content="200">
-        <label name="tab" :for="`tab${index}`" tabindex="-1" class="tab_lab text-2xl font-medium" role="tab">
+        <label name="tab" :for="`tab${index}`" tabindex="-1" class="tab_lab text-2xl font-medium flex items-center" role="tab">
           <span class="inline bg-[#F2F2F2] px-3 py-2 rounded-xl mr-3 md:mr-5">
             <img class="inline" :src="`https://dashboard.otium.ge/uploads/${data?.icon}`" alt="" />
           </span>
-          <span class="md:whitespace-nowrap">{{ data?.title }}</span>
+          <span class="">{{ data?.title }}</span>
+          <span class="open-close-icon mb-6"><i class="fas fa-plus"></i><i class="fas fa-minus"></i></span>
         </label>
         <input type="checkbox" class="tab" :id="`tab${index}`" tabindex="0" />
-        <span class="open-close-icon mt-2"><i class="fas fa-plus"></i><i class="fas fa-minus"></i></span>
         <div class="content text-lg" v-html="data?.content"></div>
       </li>
     </ul>
@@ -88,11 +88,12 @@ defineProps(['content'])
 }
 
 .m-d input[class^="tab"] {
-  width: 100%;
-  height: 60px;
+  /* width: 100%;
+  height: 60px; */
   position: absolute;
-  left: 0;
-  top: 0;
+  /* left: 0;
+  top: 0; */
+  inset: 0;
 }
 
 .m-d input[class^="tab"]:hover {
@@ -176,6 +177,7 @@ defineProps(['content'])
 
 .m-d .open-close-icon i {
   position: absolute;
+  top:50%;
   left: 0;
 }
 
