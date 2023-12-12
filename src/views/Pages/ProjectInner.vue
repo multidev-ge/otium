@@ -47,13 +47,7 @@ export default {
       <h1 class="text-5xl md:text-9xl mb-6 md:mb-10 md: text-center font-semibold">{{ project?.title }}</h1>
       <div class="flex flex-col lg:gap-40 gap-20">
         <ProjectBanner />
-
-        
-
-          <component v-for="{data, type} in project?.page_data?.blocks" :is="type" :content="data"></component>
-    
-
-
+        <component v-for="{data, type} in project?.page_data?.blocks" :is="type" :content="data"></component>
         <!-- <Offerings /> -->
 
         <contact-map class="h-[640px] relative" :with-filter="true" />
