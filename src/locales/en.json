@@ -11,7 +11,9 @@
     "FYA": "Find your apartment"
   },
   "buttons": {
-    "termsOfDelivery": "Terms of delivery"
+    "termsOfDelivery": "Terms of delivery",
+    "RequestCall": "Request a Call",
+    "DownloadPdf": "Download PDF"
   },
   "formLabels": {
     "name": "Your Name",
@@ -45,6 +47,14 @@
     "area": "Area, m2",
     "price": "Price",
     "more": "Explore more"
+  },
+  "rooms": {
+    "kitchen_living": "kitchen/living room",
+    "hall": "Hall",
+    "bedroom": "Bedroom",
+    "terrace": "Terrace",
+    "wc": "WC",
+    "closet": "Closet"
   },
   "footer": {
     "contact": "Contact",
