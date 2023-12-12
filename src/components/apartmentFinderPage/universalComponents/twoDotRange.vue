@@ -21,7 +21,7 @@ const test = () => {
   props.defaultValues = [0, 200]
 
 }
-const components = { Slider };
+// const components = { Slider };
 const value = ref(props.defaultValues);
 const max = ref(props.maxValue);
 const merge = ref(props.merge)

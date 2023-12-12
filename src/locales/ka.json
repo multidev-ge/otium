@@ -11,7 +11,9 @@
     "FYA": "იპოვე ბინა"
   },
   "buttons": {
-    "termsOfDelivery": "პროექტის ჩაბარების პირობები"
+    "termsOfDelivery": "პროექტის ჩაბარების პირობები",
+    "RequestCall": "მოითხოვე ზარი",
+    "DownloadPdf": "გადმოწერე PDF"
   },
   "formLabels": {
     "name": "სახელი",
@@ -45,6 +47,14 @@
     "area": "ფართ. მ2",
     "price": "ფასი",
     "more": "მეტი"
+  },
+  "rooms": {
+    "kitchen_living": "სამზარეულო/მისაღები",
+    "hall": "ჰოლი",
+    "bedroom": "საძნებელი",
+    "terrace": "ტერასა",
+    "wc": "სველი წერტილი",
+    "closet": "გარდერობი"
   },
   "footer": {
     "contact": "კონტაქტი",

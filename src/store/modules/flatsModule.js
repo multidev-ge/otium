@@ -96,6 +96,10 @@ const flatsModule = {
             // commit("SET_STATE", { key: "links", value: links })
             commit("SET_STATE", { key: "flats", value: data })
         },
+        async getFlat({ commit }, id) {
+            const { data } = await axios.get(`flats/${id}`)
+            commit("SET_STATE", { key: "flat", value: data })
+        },
         async getBlocks({ commit, getters }) {
 
             const { data: { data } } = await axios.get('blocks', {

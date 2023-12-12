@@ -70,6 +70,7 @@ const routes = [
                   {
                     path: "apartment/:aid",
                     name: "Apartment",
+                    props: true,
                     component: () => import('../../views/Pages/ApartmentPage.vue'),
                   },
                 ]
