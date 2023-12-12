@@ -6,9 +6,12 @@ import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
 import { useRouter } from "vue-router";
 import MyScrollPicker from "@/components/ProjectInner/MyScrollPicker.vue";
 import floorOrder from "@/helpers/floorOrder";
+import { useI18n } from "vue-i18n";
 
 const router = useRouter()
 const project = useProjectBanner()
+
+const { t } = useI18n({useScope:'global'})
 
 const { data, functions } = project
 const { floors, popupIsOpen, floorHovered, currentFloor, currentFloorNum } = data
@@ -53,14 +56,14 @@ function goTo(floor){
     </div> -->
   </div>
   <button @click="openPopup" class="block lg:hidden w-full py-3 mt-5 px-6 bg-[#F0EEEC] rounded-2xl font-medium">
-    Choose a floor
+    {{ t('floors.chooseAFloor') }}
     <arrow-right class="inline-block ml-1" />
   </button>
 
   <div v-if="popupIsOpen" class="block  lg:hidden fixed w-full bg-[#FFFFFF] left-0 bottom-0 z-50 rounded-t-xl p-6">
     <xIcon @click="closePopup" class="absolute top-6 right-6" />
     <div class="flex flex-col items-center">
-      <p class="text-xl font-medium">choose a floor</p>
+      <p class="text-xl font-medium">{{ t('floors.chooseAFloor') }}</p>
       <MyScrollPicker class="my-7" v-model="currentFloorNum" :options="floors.map((e) => {
         return {
           name: floorOrder(e.floor),
@@ -72,7 +75,7 @@ function goTo(floor){
         closePopup()
         router.push(`/projects/123/floor/${currentFloorNum}`)
       }" class="w-full p-3 bg-black rounded-2xl text-[#FFFFFF]">
-        Choose
+        {{ t('floors.choose') }}
         <right-arrow color="white" class="inline-block ml-1" />
       </button>
 

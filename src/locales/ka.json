@@ -96,5 +96,9 @@
   },
   "technical": {
     "backToProject": "პროექტზე დაბრუნება"
+  },
+  "floors": {
+    "chooseAFloor": "აირჩიე სართული",
+    "choose": "აირჩიე"
   }
 }

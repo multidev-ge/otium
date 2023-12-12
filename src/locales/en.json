@@ -96,5 +96,9 @@
   },
   "technical": {
     "backToProject": "Back to Project"
+  },
+  "floors": {
+    "chooseAFloor": "Choose a floor",
+    "choose": "choose"
   }
 }
