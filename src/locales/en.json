@@ -72,6 +72,7 @@
     "address": "Address",
     "sale": "Apartments for sale",
     "left": "apartments left",
+    "apartments": "Apartments",
     "status": "Status",
     "more": "More about project",
     "next": "Scroll to view other projects",
@@ -92,13 +93,15 @@
     "send": "Send"
   },
   "apartment": {
-    "backToFloor": "Back to floor"
+    "backToFloor": "Back to floor",
+    "allApartments": "All Apartments"
   },
   "technical": {
     "backToProject": "Back to Project"
   },
   "floors": {
     "chooseAFloor": "Choose a floor",
-    "choose": "choose"
+    "choose": "choose",
+    "chooseABlock": "Choose a block"
   }
 }

@@ -71,6 +71,7 @@
     "title": "პროექტები",
     "address": "მისამართი",
     "sale": "აპარტამენტები",
+    "apartments": "აპარტამენტები",
     "left": "გასაყიდი",
     "status": "სტატუსი",
     "more": "პროექტის შესახებ",
@@ -92,13 +93,15 @@
     "send": "გაგზავნა"
   },
   "apartment": {
-    "backToFloor": "სართულზე დაბრუნება"
+    "backToFloor": "სართულზე დაბრუნება",
+    "allApartments": "ყველა აპარტამენტი"
   },
   "technical": {
     "backToProject": "პროექტზე დაბრუნება"
   },
   "floors": {
     "chooseAFloor": "აირჩიე სართული",
-    "choose": "აირჩიე"
+    "choose": "აირჩიე",
+    "chooseABlock": "აირჩიე ბლოკი"
   }
 }

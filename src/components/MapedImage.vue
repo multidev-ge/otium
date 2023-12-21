@@ -1,27 +1,31 @@
 <script setup>
-import { onMounted } from 'vue';
-import { useStore } from 'vuex';
-// defineProps(['image_path', 'polygons'])
-const image_path = await import('@/assets/images/01_00001.jpg')
-const polygons = []
-const emit = defineEmits(['polygonClicked'])
-// const store = useStore()
+import { onMounted, ref, watch } from "vue"
+import { getImageOriginalSizeFromUrl, el, processPoints } from "../composables/useMapedImages"
+
+const props = defineProps({ image: String, maps: Array })
+const fragments = ref([])
+
+onMounted(async () => {
+    const { img: { naturalWidth, naturalHeight } } = await getImageOriginalSizeFromUrl(props.image)
+    fragments.value = processPoints(props.maps, naturalWidth, naturalHeight)
+    console.log(fragments.value)
+})
+const emit = defineEmits(['clicked', 'hovered'])
 </script>
 <template>
     <div class="relative mb-4">
-        <img class="w-full h-full rounded-xl" :src="image_path">
-        <!-- polygons -->
-        <div v-for="polygon in polygons"
-            @click.prevent="emit('polygonClicked', polygon)"
-            class="pointer-events-none lg:pointer-events-auto absolute opacity-50 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300 hover:opacity-50"
-            :class="{'!bg-[#FFFFFF]': polygon?.block == store.getters['flats/block']}"
+        <img class="w-full h-full rounded-xl" :src="image" ref="el">
+        <div v-for="fragment in fragments" @click.prevent="emit('clicked', fragment)"
+            @hover.prevent="emit('hovered', fragment)" :key="fragment?.index"
+            class="pointer-events-none lg:pointer-events-auto absolute cursor-pointer hover:!bg-[#FFFFFF] transition duration-300 opacity-50 hover:opacity-50"
             :style="{
-                width: polygon?.width,
-                height: polygon?.height,
-                clipPath: `polygon(${polygon?.points})`,
-                top: polygon?.top,
-                left: polygon?.left
+                width: fragment?.width,
+                height: fragment?.height,
+                clipPath: `polygon(${fragment?.points})`,
+                top: fragment?.top,
+                left: fragment?.left,
             }">
         </div>
     </div>
 </template>
+<!-- :class="{ '!bg-[#FFFFFF]': fragment?.block == 1 }"  -->
