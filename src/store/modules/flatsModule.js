@@ -23,6 +23,7 @@ const flatsModule = {
             page_id: 3,
             per_page: 15,
             blocks: [],
+            floors: [],
         }
     },
     getters: {
@@ -32,6 +33,7 @@ const flatsModule = {
         min_area: ({ min_area }) => min_area,
         max_area: ({ max_area }) => max_area,
         block: ({ block }) => block,
+        floors: ({ floors }) => floors,
         min_price: ({ min_price }) => min_price,
         max_price: ({ max_price }) => max_price,
         sold: ({ sold }) => sold,
@@ -139,6 +141,13 @@ const flatsModule = {
             // commit("SET_STATE", { key: "meta", value: meta })
             // commit("SET_STATE", { key: "links", value: links })
         },
+        async getFloors({commit, getters}) {
+            const { data } = await axios.get('floors', { params: { 'block_id': (getters.block?.id) ? getters.block?.id : getters.block }} )
+
+            commit("SET_STATE", { key: "floors", value: data })
+            console.log('floors', data)
+            
+        }
     }
 }
 

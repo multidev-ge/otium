@@ -1,6 +1,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import ProjectBanner from "@/components/ProjectInner/ProjectBanner.vue"
+// import MapedImage from '../../components/MapedImage.vue'
 import MainLayout from "@/layouts/mainLayout.vue"
 import Offerings from "@/components/ProjectInner/Offerings.vue"
 import RightPart from "@/components/apartmentFinderPage/rightPart.vue"
@@ -13,6 +14,7 @@ import { useI18n } from 'vue-i18n'
 export default {
   components: {
     ProjectBanner,
+    // MapedImage,
     MainLayout,
     Offerings,
     RightPart,

@@ -1,25 +1,31 @@
 <script setup>
 import { useProjectBanner } from "@/composables/useProjectBanner";
-import ArrowRight from "@/assets/icons/arrow-right.vue";
-import XIcon from "@/assets/icons/xIcon.vue";
-import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
+
 import { useRouter } from "vue-router";
-import MyScrollPicker from "@/components/ProjectInner/MyScrollPicker.vue";
+import MobileFloorsPicker from "../../components/Pickers/MobileFloorsPicker.vue"
 import floorOrder from "@/helpers/floorOrder";
 import { useI18n } from "vue-i18n";
 
+import useApartments from "../../composables/useApartments"
+import useProjects from "../../composables/useProjects"
+import { onMounted } from "vue";
+
+const { block } = useApartments()
+const { blocks, getBlocks } = useProjects()
+
 const router = useRouter()
 const project = useProjectBanner()
-
-const { t } = useI18n({useScope:'global'})
+const { t } = useI18n({ useScope: 'global' })
 
 const { data, functions } = project
 const { floors, popupIsOpen, floorHovered, currentFloor, currentFloorNum } = data
 const { openPopup, closePopup, showTooltip, hideTooltip } = functions
 
-function goTo(floor){
+function goTo(floor) {
   router.push(`/projects/123/floor/${floor}`)
 }
+
+onMounted(() => blocks ?? getBlocks())
 </script>
 
 <template>
@@ -27,8 +33,7 @@ function goTo(floor){
     <img class="w-full h-full rounded-xl" src="../../assets/images/01_00001.jpg">
     <div v-for="f in floors"
       class="pointer-events-none lg:pointer-events-auto absolute opacity-80 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
-      @click="goTo(currentFloor.floor)" @mouseover="showTooltip(f)"
-      @mouseleave="hideTooltip" :style="{
+      @click="goTo(currentFloor.floor)" @mouseover="showTooltip(f)" @mouseleave="hideTooltip" :style="{
         width: f.width,
         height: f.height,
         clipPath: `polygon(${f.points})`,
@@ -36,16 +41,15 @@ function goTo(floor){
         left: f.left
       }">
     </div>
-    <!-- <div v-if="floorHovered" :style="{ 
-        top: currentFloor.tooltip_pos.top, 
-        left: (currentFloor.pos === 'left') ? currentFloor.tooltip_pos.left : 'auto',
-        right: (currentFloor.pos === 'right') ? currentFloor.tooltip_pos.right : 'auto',
-      }"
-      class="tooltip absolute h-60 p-8 bg-[#FFFFFF] rounded-xl duration-300"
-      :class="[
-        floorHovered ? 'text-opacity-100' : 'opacity-0',
-        (currentFloor.pos === 'right') ? 'rightTooltip' : 'leftTooltip'
-        ]">
+    <div v-if="floorHovered" class="tooltip absolute h-60 p-8 bg-[#FFFFFF] rounded-xl duration-300" :class="[
+      floorHovered ? 'text-opacity-100' : 'opacity-0',
+      (currentFloor.pos === 'right') ? 'rightTooltip' : 'leftTooltip'
+    ]" :style="{
+  top: currentFloor.tooltip_pos.top,
+  // left: (currentFloor.pos === 'left') ? currentFloor.tooltip_pos.left : 'auto',
+  // right: (currentFloor.pos === 'right') ? currentFloor.tooltip_pos.right : 'auto',
+  left: currentFloor.tooltip_pos.left,
+}">
       <h3 class="pb-6 text-xl font-medium">{{ floorOrder(currentFloor.floor) }} floor</h3>
       <div class="text-base font-medium grid grid-cols-2 gap-y-6">
         <div v-for="det in currentFloor.details">
@@ -53,34 +57,10 @@ function goTo(floor){
           <h4>{{ det.value }}</h4>
         </div>
       </div>
-    </div> -->
-  </div>
-  <button @click="openPopup" class="block lg:hidden w-full py-3 mt-5 px-6 bg-[#F0EEEC] rounded-2xl font-medium">
-    {{ t('floors.chooseAFloor') }}
-    <arrow-right class="inline-block ml-1" />
-  </button>
-
-  <div v-if="popupIsOpen" class="block  lg:hidden fixed w-full bg-[#FFFFFF] left-0 bottom-0 z-50 rounded-t-xl p-6">
-    <xIcon @click="closePopup" class="absolute top-6 right-6" />
-    <div class="flex flex-col items-center">
-      <p class="text-xl font-medium">{{ t('floors.chooseAFloor') }}</p>
-      <MyScrollPicker class="my-7" v-model="currentFloorNum" :options="floors.map((e) => {
-        return {
-          name: floorOrder(e.floor),
-          value: e.floor
-        }
-      })" />
-
-      <button @click="() => {
-        closePopup()
-        router.push(`/projects/123/floor/${currentFloorNum}`)
-      }" class="w-full p-3 bg-black rounded-2xl text-[#FFFFFF]">
-        {{ t('floors.choose') }}
-        <right-arrow color="white" class="inline-block ml-1" />
-      </button>
-
     </div>
   </div>
+
+  <MobileFloorsPicker />
 </template>
 
 <style scoped>
@@ -99,6 +79,7 @@ function goTo(floor){
   border-color: transparent white transparent transparent;
   transform: translateX(1px);
 }
+
 .rightTooltip::after {
   content: " ";
   position: absolute;

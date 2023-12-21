@@ -60,6 +60,7 @@ const routes = [
               },
               {
                 path: 'floor/:fid',
+                name: 'floors',
                 component: () => new Promise(resolve => resolve(defineComponent(RouterView))),
                 children: [
                   {

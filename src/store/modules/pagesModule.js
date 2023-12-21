@@ -23,7 +23,12 @@ const pagesModule = {
     actions: {
         async getPage({ commit }, id) {
             const { data: { data } } = await axios.get(`pages/${id}`)
-            
+            // [
+            //     "page_id",
+            //     "blocks",
+            //     "slug",
+            //     "title"
+            // ].forEach(key => { commit("SET_STATE", { key: key, value: data[?`${key}`}]) })
             commit("SET_STATE", { key: "page_id", value: data?.id })
             commit("SET_STATE", { key: "blocks", value: data?.blocks })
             commit("SET_STATE", { key: "slug", value: data?.slug })
