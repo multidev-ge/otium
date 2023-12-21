@@ -511,23 +511,32 @@ export function useProjectBanner() {
     //calculating tooltip position in percentage
     // console.log(floors)
     floors.map(e => {
-        const [x1, y1, x2, y2] = e.coords.slice(0, 4)
-        const [z1, v1, z2, v2] = e.coords.slice(-4)
 
-        // console.log('left:', x1,x2,y1,y2)
-        // console.log('right:', z1, v1, z2, v2)
+        // group
+        const YCoords = e.coords.filter((num, index) => index % 2 === 1)
+        const XCoords = e.coords.filter((num, index) => index % 2 !== 1)
+
+        const x_pos = (e.pos === 'left') ? Math.max(...XCoords) : Math.min(...XCoords)
+        const y_pos = Math.max(...YCoords)
+
         e.tooltip_pos = {
-            top: `${(y1 + y2) / (2 * planHeight) * 100}%`,
-            left: `${(x1 + x2) / (1.2 * planWidth) * 100}%`,
-            right: `${(v1 + v2) / (2.9 * planWidth) * 100}%`,
+            // top: `${(y1 + y2) / (2 * planHeight) * 100}%`,
+            top: (e.pos === 'left') ? `${Math.round((y_pos + 20) / (planHeight) * 100)}%` : `${Math.round((y_pos - 20) / (1.2 * planHeight) * 100)}%`,
+            left: (e.pos === 'left') ? `${Math.round((x_pos + 20) / (planWidth) * 100)}%` : `${Math.round((x_pos - 20) / (1.7 * planWidth) * 100)}%`,
         }
+        
+        // console.log(e)
+        // console.log(x_pos)
+        // console.log(XCoords)
+        // console.log(YCoords)
     })
     const popupIsOpen = ref(false)
     const floorHovered = ref(false)
     const currentFloor = ref()
     const currentFloorNum = ref()
-    function openPopup() {
-        popupIsOpen.value = true
+
+    function openPopup(type = false) {
+        popupIsOpen.value = (type) ? type : true
         document.body.style.overflow = 'hidden'
     }
     function closePopup() {

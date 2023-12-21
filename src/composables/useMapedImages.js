@@ -1,18 +1,24 @@
-import { ref } from "vue"
+import { computed } from "vue"
+import { useStore } from "vuex"
 
 export default function useMapedImages(){
 
-    /**
-     * @param dir projects|blocks|floors|apartments
-     * @param params { id }
-     */
-    async function loadImage(dir, params){
-        const image = await import('@/assets/images/maped/01_00001.jpg')
-        console.log(image)
-        // const maps = await import('...')
+
+    const store = useStore()
+
+    const mapedImage = computed(() => store.getters('mapedImages/mapedImage'))
+    // const mapedImage = computed(store.getters('mapedImages/mapedImage'))
+
+    async function loadMapedImage(){
+        // const polygons
+        // const polygons = 
+        // const image = await import(image_path)
+        // load polygons json
+
     }
 
     return {
-        loadImage
+        mapedImage,
+        loadMapedImage
     }
 }
