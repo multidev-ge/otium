@@ -20,20 +20,24 @@ export default function useProjects() {
         get: () => store.getters['flats/block']
     })
 
-    // methods
     const getProjects = async () => {
         await store.dispatch('projects/getProjects')
     }
+
     const getProject = async (...args) => {
         await store.dispatch('projects/getProject', ...args)
     }
-    // floors
+
     const getBlocks = async () => {
         await store.dispatch('flats/getBlocks')
     }
-    // getFloors
+
     const getFloors = async () => {
         await store.dispatch('flats/getFloors')
+    }
+
+    const getFloor = async (...args) => {
+        await store.dispatch('flats/getFloor', ...args)
     }
 
     return {
@@ -47,5 +51,6 @@ export default function useProjects() {
         getProject,
         getBlocks,
         getFloors,
+        getFloor,
     }
 }

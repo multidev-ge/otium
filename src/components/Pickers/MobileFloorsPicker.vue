@@ -49,7 +49,7 @@ function setFloor() {
     <div class="block lg:hidden">
         <button @click="openPopup" class="w-full py-3 mt-5 px-6 bg-[#F0EEEC] rounded-2xl font-medium">
             <span v-if="block">{{ t('floors.chooseAFloor') }}</span>
-            <span v-else>choose a block</span>
+            <span v-else>{{ t('floors.chooseABlock') }}</span>
             <arrow-right class="inline-block ml-1" />
         </button>
 
@@ -78,7 +78,7 @@ function setFloor() {
                 </button>
 
                 <button v-else @click="setBlock" class="w-full p-3 bg-black rounded-2xl text-[#FFFFFF]">
-                    choose block
+                    {{ t('floors.choose') }}
                     <right-arrow color="white" class="inline-block ml-1" />
                 </button>
 

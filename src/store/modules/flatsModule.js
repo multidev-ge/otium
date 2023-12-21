@@ -145,7 +145,15 @@ const flatsModule = {
             const { data } = await axios.get('floors', { params: { 'block_id': (getters.block?.id) ? getters.block?.id : getters.block }} )
 
             commit("SET_STATE", { key: "floors", value: data })
-            console.log('floors', data)
+            // console.log('floors', data)
+            
+        },
+
+        async getFloor({commit, getters}, id) {
+            const { data } = await axios.get(`floors/${id}`)
+
+            commit("SET_STATE", { key: "floor", value: data })
+            // console.log('floors', data)
             
         }
     }
