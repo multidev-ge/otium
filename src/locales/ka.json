@@ -103,5 +103,13 @@
     "chooseAFloor": "აირჩიე სართული",
     "choose": "აირჩიე",
     "chooseABlock": "აირჩიე ბლოკი"
+  },
+  "calculator": {
+    "startApplying": "შეავსე განაცხადი",
+    "yourMonthlyPayment": "ყოველთვიური გადასახადი",
+    "prePayment": "წინასწარი შენატანი",
+    "percentage": "საპროცენტო განაკვეთი",
+    "years": "პერიოდი (წელი)",
+    "total": "სრული ღირებულება"
   }
 }

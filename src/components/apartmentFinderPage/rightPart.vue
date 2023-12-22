@@ -50,7 +50,7 @@ export default {
                 <td class="whitespace-nowrap w-1/4 py-4">{{ item.area }}</td>
                 <td class="whitespace-nowrap w-1/4 py-4">$ {{ item.price?.toLocaleString() }}</td>
                 <td class="whitespace-nowrap px-6 w-1/4 py-4">
-                  <RouterLink :to="{ name: 'Apartment', params: { id: item.project_id, fid: item.floor, aid: item.id } }">
+                  <RouterLink :to="{ name: 'Apartment', params: { id: item.id } }">
                     <RightArrow class="cursor-pointer" />
                   </RouterLink>
                 </td>
@@ -74,7 +74,7 @@ export default {
   <TransitionGroup name="list" tag="div" class="md:hidden">
     <div class="flex flex-col w-100 mx-auto rounded-lg border mb-5 border-[#9999994D] mt-10" v-for="item in flats.data"
       :key="item?.id">
-      <RouterLink :to="{ name: 'Apartment', params: { id: item.project_id, fid: item.floor, aid: item.id } }">
+      <RouterLink :to="{ name: 'Apartment', params: { id: item.id } }">
         <img class="w-full" :src="item?.image_url" alt="">
       </RouterLink>
       <div class="w-full">
