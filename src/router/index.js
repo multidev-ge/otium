@@ -6,9 +6,9 @@ import {
 // import { computed } from "vue"
 import routes from "./routes"
 import { useTitle, useFavicon } from '@vueuse/core'
-import favIcon from "@/assets/icons/favIcon.svg"
-const icon = useFavicon()
-icon.value = favIcon
+// import favIcon from "@/assets/icons/favIcon.svg"
+// const icon = useFavicon()
+// icon.value = favIcon
 
 const router = createRouter({
   history: createWebHistory(),
