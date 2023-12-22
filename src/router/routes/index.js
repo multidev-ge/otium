@@ -55,6 +55,18 @@ const routes = [
         name: "Projects",
         component: () => import('../../views/Pages/Projects.vue'),
       },
+      {
+        path: '/projects/:id',
+        name: "Project",
+        props: true,
+        component: () => import('../../views/Pages/ProjectInner.vue')
+      },
+      {
+        path: '/projects/:id/details',
+        name: "TechnicalPage",
+        props: true,
+        component: () => import('../../views/Pages/TechnicalPage.vue'),
+      },
       // {
         // path: ':id',
         // component: () => new Promise(resolve => resolve(defineComponent(RouterView))),
