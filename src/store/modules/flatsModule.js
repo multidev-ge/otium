@@ -14,7 +14,7 @@ const flatsModule = {
             block_id: null,
             min_price: null,
             max_price: null,
-            sold: false,
+            sold: 1,
             // flats response
             flats: {},
             // flats/{id} as param in url
@@ -90,7 +90,9 @@ const flatsModule = {
         async getFlats({ commit, getters }) {
             // const params = { per_page: getters.per_page }
             // const { data: { data, meta, links } } = await axios.get('flats', { params: { ...params, ...getters.activeRequestFilters } })
+            // const params = {...getters.activeRequestFilters, sold: (!!getters.activeRequestFilters.sold) ? 1 : 0}
             const { data } = await axios.get('flats', { params: { ...getters.activeRequestFilters } })
+
 
             // commit("SET_FLATS", data)
             // commit("SET_META", meta)
