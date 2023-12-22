@@ -54,12 +54,14 @@ function setFloor() {
         </button>
 
         <div v-if="popupIsOpen" class="fixed w-full bg-[#FFFFFF] left-0 bottom-0 z-50 rounded-t-xl p-6">
-            <XIcon @click="closePopup" class="absolute top-6 right-6" />
+            <XIcon @click="() => {block= null; closePopup()}" class="absolute top-6 right-6" />
+            <ArrowRight v-if="block" @click.prevent="block = null" class="absolute top-6 left-6 rotate-180" />
             <div class="flex flex-col items-center">
 
                 <div class="text-xl font-medium">
-                    <a v-if="block" class="-ml-4 mr-2" href="#" @click.prevent="block = null">{{ t('floors.backToBlocks') }}</a>
-                    <span>{{ t('floors.chooseAFloor') }}</span>
+                    <!-- <a v-if="block" class="-ml-4 mr-2" href="#" >{{ t('floors.backToBlocks') }}</a> -->
+                    <span v-if="block">{{ t('floors.chooseAFloor') }}</span>
+                    <span v-else>{{ t('floors.chooseABlock') }}</span>
                 </div>
 
                 <MyScrollPicker v-if="block" class="my-7" v-model="picker_floor" :options="floors.map((e) => {
