@@ -40,7 +40,7 @@ onMounted(() => {
 </script>
 <template>
   <section class="w-full flex flex-col space-y-4">
-    <router-link class="inline-block" :to="{ name: 'project', params: { id: route.params?.id } }">
+    <router-link class="inline-block" :to="{ name: 'Project', params: { id: route.params?.id } }">
       <button class="text-base text-[#000000] flex gap-3">
         <img class="mt-1" src="../../assets/icons/arrow-left.svg" alt="" />
         {{ t("technical.backToProject") }}
