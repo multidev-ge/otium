@@ -28,18 +28,18 @@ const { popupIsOpen } = data
 const { openPopup, closePopup } = functions
 
 function setBlock() {
-    closePopup()
+    // closePopup()
     block.value = picker_block.value
     getFloors()
+    // openPopup()
 }
 function setFloor() {
     closePopup()
     floor.value = picker_floor.value
     router.push({
-        name: 'floors',
+        name: 'Floor',
         params: {
-            id: '123',
-            fid: floor.value
+            id: floor.value
         }
     })
 }
@@ -48,15 +48,19 @@ function setFloor() {
 <template>
     <div class="block lg:hidden">
         <button @click="openPopup" class="w-full py-3 mt-5 px-6 bg-[#F0EEEC] rounded-2xl font-medium">
-            <span v-if="block">{{ t('floors.chooseAFloor') }}</span>
-            <span v-else>{{ t('floors.chooseABlock') }}</span>
+            <!-- <span v-if="block">{{ t('floors.chooseAFloor') }}</span> -->
+            <span >{{ t('floors.chooseABlock') }}</span>
             <arrow-right class="inline-block ml-1" />
         </button>
 
         <div v-if="popupIsOpen" class="fixed w-full bg-[#FFFFFF] left-0 bottom-0 z-50 rounded-t-xl p-6">
             <XIcon @click="closePopup" class="absolute top-6 right-6" />
             <div class="flex flex-col items-center">
-                <p class="text-xl font-medium">{{ t('floors.chooseAFloor') }}</p>
+
+                <div class="text-xl font-medium">
+                    <a v-if="block" class="-ml-4 mr-2" href="#" @click.prevent="block = null">{{ t('floors.backToBlocks') }}</a>
+                    <span>{{ t('floors.chooseAFloor') }}</span>
+                </div>
 
                 <MyScrollPicker v-if="block" class="my-7" v-model="picker_floor" :options="floors.map((e) => {
                     return {

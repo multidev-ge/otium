@@ -147,7 +147,7 @@ export default {
       <p class="text-xl">{{ t('filters.sold') }}</p>
       <div class="flex gap-10">
         <div class="flex gap-2">
-          <input v-model="sold" 
+          <input v-model="sold" :checked="!!sold"
             class="w-5 h-5 accent-black rounded-full" name="hideShow" value="1" type="radio">
           <label>{{ t('filters.show') }}</label>
         </div>

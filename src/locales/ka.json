@@ -102,7 +102,8 @@
   "floors": {
     "chooseAFloor": "აირჩიე სართული",
     "choose": "აირჩიე",
-    "chooseABlock": "აირჩიე ბლოკი"
+    "chooseABlock": "აირჩიე ბლოკი",
+    "backToBlocks": "უკან"
   },
   "calculator": {
     "startApplying": "შეავსე განაცხადი",
