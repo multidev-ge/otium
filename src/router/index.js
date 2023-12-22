@@ -5,7 +5,10 @@ import {
 // import { useStore } from "vuex"
 // import { computed } from "vue"
 import routes from "./routes"
-import { useTitle } from '@vueuse/core'
+import { useTitle, useFavicon } from '@vueuse/core'
+import favIcon from "@/assets/icons/favIcon.svg"
+const icon = useFavicon()
+icon.value = favIcon
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,6 +18,9 @@ const router = createRouter({
     return { top: 0 }
   },
 })
+
+
+
 
 router.beforeEach(async (to, from) => {
 
