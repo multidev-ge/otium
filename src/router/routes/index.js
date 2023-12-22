@@ -5,17 +5,26 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: () => import("../../views/Pages/Homepage.vue")
+    component: () => import("../../views/Pages/Homepage.vue"),
+    meta: {
+      title: 'G'
+    }
   },
   {
     path: '/company',
     name: 'OtiumBrandStory',
-    component: () => import('../../views/Pages/OtiumBrandStory.vue')
+    component: () => import('../../views/Pages/OtiumBrandStory.vue'),
+    meta: {
+      title: 'G - Our Brand Story'
+    }
   },
   {
     path: "/contact",
     name: "Contact",
-    component: () => import("../../views/Pages/ContactPage.vue")
+    component: () => import("../../views/Pages/ContactPage.vue"),
+    meta: {
+      title: 'G - Contact'
+    }
   },
   {
     path: '/media',
@@ -25,12 +34,18 @@ const routes = [
         path: "",
         name: "Media",
         component: () => import('../../views/Pages/MediaPage.vue'),
+        meta: {
+          title: 'G - Media'
+        }
       },
       {
         path: ":id",
         name: "MediaInner",
-        component: () => import('../../views/Pages/mediaInner.vue'),
         props: true,
+        component: () => import('../../views/Pages/mediaInner.vue'),
+        meta: {
+          title: 'G - Media'
+        }
       },
     ]
   },
@@ -39,12 +54,18 @@ const routes = [
     name: "Floor",
     props: true,
     component: () => import('../../views/Pages/FloorPage.vue'),
+    meta: {
+      title: 'G - Floor'
+    }
   },
   {
     path: "/apartments/:id",
     name: "Apartment",
     props: true,
     component: () => import('../../views/Pages/ApartmentPage.vue'),
+    meta: {
+      title: 'G - Apartment'
+    }
   },
   {
     path: '/projects',
@@ -54,18 +75,27 @@ const routes = [
         path: "",
         name: "Projects",
         component: () => import('../../views/Pages/Projects.vue'),
+        meta: {
+          title: 'G - Projects'
+        }
       },
       {
         path: '/projects/:id',
         name: "Project",
         props: true,
-        component: () => import('../../views/Pages/ProjectInner.vue')
+        component: () => import('../../views/Pages/ProjectInner.vue'),
+        meta: {
+          title: 'G - Project'
+        }
       },
       {
         path: '/projects/:id/details',
         name: "TechnicalPage",
         props: true,
         component: () => import('../../views/Pages/TechnicalPage.vue'),
+        meta: {
+          title: 'G - Project Technical Caracteristics'
+        }
       },
       // {
         // path: ':id',
@@ -108,6 +138,9 @@ const routes = [
     path: '/apartment-finder',
     name: 'ApartmentFinder',
     component: () => import('../../views/Pages/ApartmentFinder.vue'),
+    meta: {
+      title: 'G - Find Apartment'
+    }
   },
 ]
 export default routes
