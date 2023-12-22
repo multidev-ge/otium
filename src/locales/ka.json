@@ -94,7 +94,8 @@
   },
   "apartment": {
     "backToFloor": "სართულზე დაბრუნება",
-    "allApartments": "ყველა აპარტამენტი"
+    "allApartments": "ყველა აპარტამენტი",
+    "name": "აპარტამენტი ნომერი {number}"
   },
   "technical": {
     "backToProject": "პროექტზე დაბრუნება"
