@@ -1,8 +1,10 @@
 <script>
+import { onMounted } from "vue"
 import { useI18n } from "vue-i18n"
 import { mapActions } from "vuex"
 import useFooter from "@/composables/useFooter"
 import useHeader from "@/composables/useHeader"
+
 
 export default {
   props: ['content'],
@@ -29,13 +31,17 @@ export default {
   },
   setup() {
 
-    const { headerInfo } = useHeader();
+    const { headerInfo, getMenu, mainMenuLinks } = useHeader()
     const { FooterInfo } = useFooter();
     const { t } = useI18n({ useScope: 'global' })
+    onMounted(() => {
+      getMenu()
+    })
     return {
       t,
       headerInfo,
       FooterInfo,
+      mainMenuLinks,
     }
   },
 }
@@ -57,14 +63,14 @@ export default {
               <div class="md:w-1/3 mb-7 md:mb-0">
                 <label for="text" class="block text-base font-medium text-[#FFFFFF99]">{{ t("formLabels.name") }}</label>
                 <input v-model="name" id="text" type="text"
-                  class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg" required
-                  autocomplete="name" />
+                  class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg"
+                  required autocomplete="name" />
               </div>
               <div class="md:w-1/3 mb-12 md:mb-0">
                 <label for="tel" class="block text-base font-medium text-[#FFFFFF99]">{{ t("formLabels.phone") }}</label>
                 <input v-model="phone" id="tel" type="tel"
-                  class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg" required
-                  autocomplete="tel" />
+                  class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg"
+                  required autocomplete="tel" />
               </div>
 
               <button type="submit"
@@ -112,50 +118,63 @@ export default {
               <h2 class="text-[#FFFFFF99] text-[14px] leading-[18px] font-medium	">
                 {{ t("footer.social") }}
               </h2>
-              <div class="flex gap-3 pt-3">
-                <a href="#">
-                  <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
-                    <component class="" :is="FooterInfo[0].Footercomponents.mediaicon1" />
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
-                    <component class="" :is="FooterInfo[0].Footercomponents.mediaicon2" />
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
-                    <component class="" :is="FooterInfo[0].Footercomponents.mediaicon3" />
-                  </div>
-                </a>
-                <a href="#">
-                  <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
-                    <component class="" :is="FooterInfo[0].Footercomponents.mediaicon4" />
-                  </div>
-                </a>
-                <div class="flex gap-[71px] lg:gap-[71px] md:pl-20 lg:pl-28 md:gap-10 ">
-                  <router-link to="/company">
-                    <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                      {{ headerInfo[0].headercomponents.title }}
-                    </a>
-                  </router-link>
-                  <router-link to="/projects">
-                    <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                      {{ headerInfo[0].headercomponents.title1 }}
-                    </a>
-                  </router-link>
-                  <router-link to="/media">
-                    <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                      {{ headerInfo[0].headercomponents.title2 }}
-                    </a>
-                  </router-link>
-                  <router-link to="/contact">
-                    <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                      {{ headerInfo[0].headercomponents.title3 }}
-                    </a>
-                  </router-link>
+              <div class="flex flex-row justiry-between w-full">
+                <div class="flex gap-3 pt-3">
+                  <a href="#">
+                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                      <component class="" :is="FooterInfo[0].Footercomponents.mediaicon1" />
+                    </div>
+                  </a>
+                  <a href="#">
+                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                      <component class="" :is="FooterInfo[0].Footercomponents.mediaicon2" />
+                    </div>
+                  </a>
+                  <a href="#">
+                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                      <component class="" :is="FooterInfo[0].Footercomponents.mediaicon3" />
+                    </div>
+                  </a>
+                  <a href="#">
+                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                      <component class="" :is="FooterInfo[0].Footercomponents.mediaicon4" />
+                    </div>
+                  </a>
+                  
                 </div>
+                <div class="flex gap-[71px] lg:gap-[71px] md:pl-20 lg:pl-28 md:gap-10 flex-1 items-center justify-end whitespace-nowrap">
+                    <router-link v-for="item in mainMenuLinks" :to="item.url">
+                      <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
+                        {{ item?.title }}
+                      </a>
+                    </router-link>
+                    <!-- <router-link to="/projects">
+                      <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
+                        {{ headerInfo[0].headercomponents.title1 }}
+                      </a>
+                    </router-link>
+                    <router-link to="/media">
+                      <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
+                        {{ headerInfo[0].headercomponents.title2 }}
+                      </a>
+                    </router-link>
+                    <router-link to="/contact">
+                      <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
+                        {{ headerInfo[0].headercomponents.title3 }}
+                      </a>
+                    </router-link> -->
+                  </div>
+                <!-- <div class="hidden lg:flex lg:justify-between pt-3 items-center flex-1">
+                  <router-link v-for="item in mainMenuLinks" class="text-[#FFF] hover:text-[#883F7C] transition-colors uppercase" :to="item.url"
+                    :class="[
+                      'text-lg font-medium leading-6',
+                      { 'active-link': $route.path === item.url }
+                    ]" v-text="item?.title">
+                  </router-link>
+                </div> -->
               </div>
+
+
             </div>
           </div>
         </div>
