@@ -43,12 +43,12 @@ export default {
         this.$store.dispatch('flats/getBlocks')
       }
     },
-    block: {
+    block_id: {
       get(){
-        return this.$store.state.flats.block
+        return this.$store.state.flats.block_id
       },
       set(val){
-        this.$store.commit("flats/SET_BLOCK", val)
+        this.$store.commit("flats/SET_BLOCK_ID", val)
         this.$store.dispatch('flats/getFlats')
       }
     },
@@ -110,11 +110,11 @@ export default {
     <div class="flex flex-col gap-3">
       <label class="text-xl font-normal" for="project">{{ t("filters.block") }}</label>
       <select 
-        v-model="block"
+        v-model="block_id"
         class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
         :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
         <option :value="null" disabled>{{ t("filters.block") }}</option>
-        <option v-for="block in blocks" :value="block" :key="block">{{ block }}</option>
+        <option v-for="block in blocks" :value="block?.id" :key="block?.id">{{ block?.name }}</option>
       </select>
     </div>
     <!-- <dropdown :name="dropDowns.block.name" :defaultName="dropDowns.block.value" :options="dropDowns.block.list" /> -->

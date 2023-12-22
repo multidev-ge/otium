@@ -12,7 +12,7 @@ const payments = ref(5)
 const rate = ref(2)
 const prepayment = ref(10000)
 
-const { t } = useI18n({useScope:'global'})
+const { t } = useI18n({ useScope: 'global' })
 
 const annuitet = ref('calculating ...')
 
@@ -21,7 +21,7 @@ const calculate = async () => {
   annuitet.value = 'calculating ...'
 
   setTimeout(async () => {
-    
+
     const { data } = await axios.get('calculator', {
       params: {
         total_property_price: price.value,
@@ -34,12 +34,10 @@ const calculate = async () => {
     annuitet.value = Math.round(data?.monthly_payment)
   }, 1000);
 
-
 }
 
-const currentYear = (new Date()).getFullYear();
-const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + (i * step));
-// console.log(range(currentYear, currentYear - 50, -1)); 
+const currentYear = (new Date()).getFullYear()
+const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + (i * step))
 
 const info = ref()
 
@@ -56,7 +54,8 @@ onMounted(async () => {
 <template>
   <div class="flex max-xl:flex-col xl:grid xl:grid-cols-2 xl:grid-rows-2 bg-black rounded-xl">
     <div class="order-1 flex flex-col gap-y-4 p-4 xl:p-16">
-      <h2 class="text-white font-medium text-[32px] leading-[38.4px] lg:text-[40px] lg:leading-normal">{{ (info?.data) ? info.data.title : '' }}</h2>
+      <h2 class="text-white font-medium text-[32px] leading-[38.4px] lg:text-[40px] lg:leading-normal">{{ (info?.data) ?
+        info.data.title : '' }}</h2>
       <p class="text-white text-xl font-medium leading-8 opacity-60">{{ (info?.data) ? info.data.description : '' }}
       </p>
     </div>
@@ -102,7 +101,8 @@ onMounted(async () => {
         </div>
 
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
-          <label for="paymentYears" class="block text-sm font-medium !leading-6 opacity-40">{{ t('calculator.years') }}</label>
+          <label for="paymentYears" class="block text-sm font-medium !leading-6 opacity-40">{{ t('calculator.years')
+          }}</label>
           <select id="paymentYears" class="border-0 outline-0" v-model="payments" @change="calculate">
             <option v-for="year in range(1, 1 + 36, +1)" :value="year" v-text="year" />
           </select>

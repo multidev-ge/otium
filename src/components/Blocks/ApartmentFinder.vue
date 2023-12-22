@@ -38,7 +38,7 @@ onMounted(async () => {
                     class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
                     :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
                     <option :value="null" disabled>{{ t("filters.block") }}</option>
-                    <option v-for="block in blocks" :value="block" :key="block">{{ block }}</option>
+                    <option v-for="block in blocks" :value="block?.id" :key="block?.id">{{ block?.name }}</option>
                 </select>
             </div>
             <div class="flex flex-col gap-3">
