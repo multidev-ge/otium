@@ -103,5 +103,13 @@
     "chooseAFloor": "Choose a floor",
     "choose": "choose",
     "chooseABlock": "Choose a block"
+  },
+  "calculator": {
+    "startApplying": "Start Applying",
+    "yourMonthlyPayment": "Your monthly payment",
+    "prePayment": "Pre payment",
+    "percentage": "Percentage",
+    "years": "Split payment in years",
+    "total": "Total property price"
   }
 }
