@@ -5,6 +5,7 @@ import {
 // import { useStore } from "vuex"
 // import { computed } from "vue"
 import routes from "./routes"
+import { useTitle } from '@vueuse/core'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,6 +17,9 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from) => {
+
+  const {meta} = to
+  const title = useTitle(meta?.title ?? 'G')
   // return true
   // const store = useStore()
   // const pages = computed(() => store.getters('pages/pages'))
