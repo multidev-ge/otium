@@ -44,7 +44,7 @@ export default {
               <tr class="text-xl" v-for="item in flats.data" :key="item?.id">
                 <td class="whitespace-nowrap w-1/4 py-4"><img class="rounded-lg w-28" :src="item?.image_url" alt="">
                 </td>
-                <td class="whitespace-nowrap w-1/4 py-4"><span>{{ item.floor }}</span><span class="opacity-30"> /
+                <td class="whitespace-nowrap w-1/4 py-4"><span>{{ item?.floor?.floor_num }}</span><span class="opacity-30"> /
                   </span><span class="opacity-30">{{ item?.max_floors }}</span></td>
                 <td class="whitespace-nowrap w-1/4 py-4">{{ item.rooms }}</td>
                 <td class="whitespace-nowrap w-1/4 py-4">{{ item.area }}</td>
@@ -83,7 +83,7 @@ export default {
             <div class="flex space-x-1">
               <label class="opacity-40 whitespace-nowrap">{{ t("flatsList.floor") }}</label>
               <div class="whitespace-nowrap">
-                <span>{{ item.floor }}</span><span class="opacity-30"> / </span>
+                <span>{{ item?.floor?.floor_num }}</span><span class="opacity-30"> / </span>
                 <span class="opacity-30">{{ item.max_floors }}</span>
               </div>
             </div>

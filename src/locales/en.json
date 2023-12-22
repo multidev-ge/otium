@@ -94,7 +94,8 @@
   },
   "apartment": {
     "backToFloor": "Back to floor",
-    "allApartments": "All Apartments"
+    "allApartments": "All Apartments",
+    "name": "Apartment number: {number}"
   },
   "technical": {
     "backToProject": "Back to Project"
