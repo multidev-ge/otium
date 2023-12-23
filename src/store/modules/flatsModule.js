@@ -17,7 +17,7 @@ const flatsModule = {
             block_id: null,
             min_price: null,
             max_price: null,
-            sold: 1,
+            sold: null,
             flats: {},
             flat: {},
             page_id: 3,
@@ -59,6 +59,15 @@ const flatsModule = {
                 "max_price",
                 "sold",
                 "per_page",
+            ]
+            filters.forEach((param) => { if (state[param]) { options[param] = state[param] } })
+            return options
+        },
+        floorRequestFilters: (state) => {
+            const options = {}
+            const filters = [
+                "project_id",
+                "block_id",
             ]
             filters.forEach((param) => { if (state[param]) { options[param] = state[param] } })
             return options
@@ -120,7 +129,7 @@ const flatsModule = {
         // },
 
         async getFloors({ commit, getters }) {
-            const { data } = await axios.get(`floors`, { params: { block_id: getters.block_id } })
+            const { data } = await axios.get(`floors`, { params: { ...getters.floorRequestFilters } })
             commit("SET_STATE", { key: "floors", value: data })
         },
 

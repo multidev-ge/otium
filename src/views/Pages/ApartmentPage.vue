@@ -14,7 +14,7 @@ onMounted(async () => { await getFlat(props.id) })
 </script>
 <template>
   <mainLayout>
-    <div class="flex flex-col md:mx-auto mt-1 sm:max-2xl:mt-2 2xl:mt-4 mb-56 sm:max-2xl:mb-48 2xl:mb-40">
+    <div class="flex flex-col md:mx-auto mt-1 sm:max-2xl:-mt-12 2xl:-mt-14 mb-56 sm:max-2xl:mb-48 2xl:mb-40">
       <!-- {{ flat }} -->
       <div class="flex flex-row justify-start">
         <router-link v-if="flat" class="flex flex-row justify-start items-center gap-2 py-6 rounded-2xl font-medium leading-8"
@@ -23,7 +23,7 @@ onMounted(async () => { await getFlat(props.id) })
           {{ t("apartment.backToFloor") }}
         </router-link>
       </div>
-      <ApartmentSection class="xl:mt-7" />
+      <ApartmentSection class="" />
       <MortgageCalculator class="mt-20 xl:mt-28" />
       <ApartmentFinder />
     </div>
