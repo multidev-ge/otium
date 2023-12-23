@@ -49,6 +49,9 @@
     "price": "ფასი",
     "more": "მეტი"
   },
+  "statuses": {
+    "sold": "გაყიდული"
+  },
   "rooms": {
     "kitchen_living": "სამზარეულო/მისაღები",
     "hall": "ჰოლი",
@@ -96,7 +99,10 @@
   "apartment": {
     "backToFloor": "სართულზე დაბრუნება",
     "allApartments": "ყველა აპარტამენტი",
-    "name": "აპარტამენტი №{number}"
+    "name": "აპარტამენტი №{number}",
+    "size": "ფართი",
+    "bedroom": "საცხოვრებელი",
+    "price": "ფასი"
   },
   "technical": {
     "backToProject": "პროექტზე დაბრუნება"

@@ -47,7 +47,11 @@
     "rooms": "Rooms",
     "area": "Area, m2",
     "price": "Price",
-    "more": "Explore more"
+    "more": "Explore more",
+    
+  },
+  "statuses": {
+    "sold": "Sold"
   },
   "rooms": {
     "kitchen_living": "kitchen/living room",
@@ -96,7 +100,10 @@
   "apartment": {
     "backToFloor": "Back to floor",
     "allApartments": "All Apartments",
-    "name": "Apartment №{number}"
+    "name": "Apartment №{number}",
+    "size": "Size",
+    "bedroom": "Bedroom",
+    "price": "price"
   },
   "technical": {
     "backToProject": "Back to Project"

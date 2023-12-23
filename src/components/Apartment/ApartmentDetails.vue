@@ -85,7 +85,7 @@ watch(fomSubmitedSuccessfully, () => {
       <contact-form :messageField="false" @formSubmited="showSuccessAlert">
         <template #submitButton>
           <button type="submit"
-            class="hover:bg-[#A258A6] transition duration-100 ease-in-out lg:w-fit whitespace-nowrap bg-[#883F7C] flex items-center gap-x-1.5 px-7 py-3 rounded-2xl text-[#FFFAFA] font-medium leading-6">
+            class="hover:bg-[#A258A6] transition duration-100 ease-in-out w-full whitespace-nowrap bg-[#883F7C] flex items-center justify-center gap-x-1.5 px-7 py-3 rounded-2xl text-[#FFFAFA] font-medium leading-6">
             {{ t('buttons.RequestCall') }}
             <contact-right-arrow-icon />
           </button>
