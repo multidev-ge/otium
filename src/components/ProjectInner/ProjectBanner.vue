@@ -23,8 +23,8 @@ const { openPopup, closePopup, showTooltip, hideTooltip } = functions
 
 const store = useStore()
 
-const original_floors = computed(() => store.getters['flats/floors'])
-const original_blocks = computed(() => store.getters['flats/blocks'])
+const original_floors = computed(() => store.getters['mainProject/floors'])
+const original_blocks = computed(() => store.getters['mainProject/blocks'])
 
 const mappedFloors = computed(() => {
   return floors.map(floor => {
@@ -47,10 +47,10 @@ function goTo(floor) {
   router.push({ name: "Floor", params: { id: floor } })
 }
 
-onMounted(() => {
-  store.commit('flats/SET_STATE', { key: 'project_id', value: 1 })
-  store.dispatch("flats/getBlocks")
-  store.dispatch("flats/getFloors")
+onMounted(async () => {
+  store.commit("mainProject/SET_STATE", { key: 'project_id', value: 1 })
+  store.dispatch("mainProject/getBlocks")
+  store.dispatch("mainProject/getFloors")
 })
 </script>
 

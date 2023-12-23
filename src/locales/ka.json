@@ -111,7 +111,8 @@
     "chooseAFloor": "აირჩიე სართული",
     "choose": "აირჩიე",
     "chooseABlock": "აირჩიე ბლოკი",
-    "backToBlocks": "უკან"
+    "backToBlocks": "უკან",
+    "floorNumber": "სართული"
   },
   "calculator": {
     "startApplying": "შეავსე განაცხადი",
@@ -128,7 +129,7 @@
     "floor": "სართული",
     "apartments": "აპარტამენტები",
     "prices": "ფასები",
-    "sizes": "ფართი m²",
+    "sizes": "ფართი მ²",
     "rooms": "ოთახები"
   }
 }

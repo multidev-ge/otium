@@ -1,43 +1,85 @@
 <script setup>
-import { onMounted } from "vue";
 // import useFloor from "@/composables/floor/useFloor"
 import imageDimensions from "@/helpers/imageDimensions";
 import processPoints from "@/helpers/processPoints";
 import FloorApartment from "@/components/Floor/FloorApartment.vue"
 import FloorCarousel from "@/components/Floor/FloorCarousel.vue"
-import { ref, watch, computed } from "vue"
+import { onMounted, ref, watch, computed } from "vue"
 import useProjects from "../../composables/useProjects";
 import MapedImage from "../MapedImage.vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 // const props = defineProps(['id'])
 // const block = useFloor()
-// const blockLength = block.value.length
-// const floorNumber = ref(Math.round(blockLength / 2))
+
+
 // const currentFloor = ref(block.value[floorNumber.value - 1])
 const props = defineProps(['id'])
-const { floor, getFloor } = useProjects()
+// const { floor, getFloor } = useProjects()
 
-// const floors = processPoints([...leftBlock.value, ...rightBlock.value], planWidth, planHeight)
-// 
+const store = useStore()
+const router = useRouter()
 
-// const currentFloorFlats = computed(() => {
-//   return (planWidth && planHeight)
-//     ? processPoints(floor.value.flats.map(flat => {
-//       flat.points = flat['map'].split(',').map(point => Number(point))
-//       return {
-//         ...flat,
-//         isSold: !!flat.sold,
-//         details: {
-//           size: flat?.area,
-//           beedroom: flat?.for_living,
-//           price: flat?.price,
-//         }
-//       }
-//     }), dimensions.planWidth, dimensions.planHeight)
-//     : []
+const getFloor = async (...args) => {
+
+  await store.dispatch('floors/getFloor', ...args)
+
+  const { planWidth, planHeight } = await imageDimensions(floor.value?.image_url)//.then(dimensions => dimensions).catch(err => console.log(err))
+
+  floor.value.flats = processPoints(floor.value.flats.map(flat => {
+    // console.log(flat['map'])
+    flat.points = (flat['map']) ? flat['map'].split(',').map(point => Number(point)) : []
+    return {
+      ...flat,
+      isSold: !!flat.sold,
+      details: {
+        size: flat?.area,
+        beedroom: flat?.for_living,
+        price: flat?.price,
+      }
+    }
+  }), planWidth, planHeight)
+
+  // store.commit('floors/SET_STATE', { key: 'floor', value: floor })
+
+}
+
+const floor = computed(() => store.getters['floors/floor'])
+const floors = computed(() => store.getters['floors/floors'])
+
+const blockLength = computed(() => store.getters['floors/floors']?.length)
+const floorNumber = ref(1) //(() => Math.round(floor.value?.floor) ?? null)
+
+function navigate(newVal) {
+
+  console.log(newVal)
+
+  const filtered = floors.value.filter(fl => fl.floor === newVal)
+
+  router.push({ name: "Floor", params: { id: filtered[0]?.id } })
+
+  getFloor(filtered[0]?.id)
+  // await store.dispatch("floors/getFloor", props.id)
+
+  // store.commit('floors/SET_STATE', { key: "block_id", value: floor.value?.block?.id })
+  // store.dispatch("floors/getFloors")
+  floorNumber.value = newVal
+
+}
+// const floorNumber = computed({
+//   get: () => store.getters['floors/floor']?.floor,
+//   set: (newVal) => {
+//     store.commit('floors/SET_STATE', {key: })
+//   }
 // })
 
-// watch(floorNumber, (newFloor) => currentFloor.value = block.value[newFloor - 1])
-
+onMounted(async () => {
+  await getFloor(props.id)
+  // await store.dispatch("floors/getFloor", props.id)
+  store.commit('floors/SET_STATE', { key: "block_id", value: floor.value?.block?.id })
+  await store.dispatch("floors/getFloors")
+  floorNumber.value = Math.round(floor.value?.floor) ?? null
+})
 </script>
 
 <template>
@@ -55,7 +97,7 @@ const { floor, getFloor } = useProjects()
         :key="apartment?.id" />
     </div>
     <!-- {{ currentFloorFlats }} -->
-    <!-- <floor-carousel :floorNumber="floorNumber" :blockLength="blockLength" @previousFloor="floorNumber--" -->
-    <!-- @nextFloor="floorNumber++" @changeFloor="(floor) => floorNumber = floor" /> -->
+    <floor-carousel v-if="blockLength && floorNumber" :floorNumber="floorNumber" :blockLength="blockLength"
+      @previousFloor="navigate(floorNumber - 1)" @nextFloor="navigate(floorNumber + 1)" @changeFloor="navigate" />
   </div>
 </template>
