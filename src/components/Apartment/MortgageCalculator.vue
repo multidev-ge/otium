@@ -103,7 +103,7 @@ onMounted(async () => {
         <div class="pl-6 pt-4 pb-5 border border-opacity-20 rounded-md whitespace-nowrap">
           <label for="paymentYears" class="block text-sm font-medium !leading-6 opacity-40">{{ t('calculator.years')
           }}</label>
-          <select id="paymentYears" class="border-0 outline-0" v-model="payments" @change="calculate">
+          <select id="paymentYears" class="border-0 outline-0 bg-white" v-model="payments" @change="calculate">
             <option v-for="year in range(1, 1 + 36, +1)" :value="year" v-text="year" />
           </select>
         </div>

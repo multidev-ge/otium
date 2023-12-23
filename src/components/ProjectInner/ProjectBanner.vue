@@ -22,7 +22,7 @@ const { floors, popupIsOpen, floorHovered, currentFloor, currentFloorNum } = dat
 const { openPopup, closePopup, showTooltip, hideTooltip } = functions
 
 function goTo(floor) {
-  router.push(`/projects/123/floor/${floor}`)
+  router.push({ name: "Floor", params: { id: floor } })
 }
 
 onMounted(() => blocks ?? getBlocks())

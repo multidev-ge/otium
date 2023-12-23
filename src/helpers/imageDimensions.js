@@ -1,4 +1,5 @@
-export default function imageDimensions(imagePath) {
+export default async function imageDimensions(imagePath) {
+    // console.log('imagepath',imagePath)
     const img = new Image()
     img.src = imagePath
 

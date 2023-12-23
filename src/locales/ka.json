@@ -95,7 +95,7 @@
   "apartment": {
     "backToFloor": "სართულზე დაბრუნება",
     "allApartments": "ყველა აპარტამენტი",
-    "name": "აპარტამენტი ნომერი {number}"
+    "name": "აპარტამენტი №{number}"
   },
   "technical": {
     "backToProject": "პროექტზე დაბრუნება"
@@ -113,5 +113,8 @@
     "percentage": "საპროცენტო განაკვეთი",
     "years": "პერიოდი (წელი)",
     "total": "სრული ღირებულება"
+  },
+  "dimentions":{
+    "sqmeter": "{amount} მ²"
   }
 }

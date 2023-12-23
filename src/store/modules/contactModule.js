@@ -28,7 +28,7 @@ const contactModule = {
                 message: getters.message,
             })
 
-            console.log(response)
+            // console.log(response)
 
             commit("SET_NAME", null)
             commit("SET_PHONE", null)

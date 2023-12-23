@@ -95,7 +95,7 @@
   "apartment": {
     "backToFloor": "Back to floor",
     "allApartments": "All Apartments",
-    "name": "Apartment number: {number}"
+    "name": "Apartment №{number}"
   },
   "technical": {
     "backToProject": "Back to Project"
@@ -113,5 +113,8 @@
     "percentage": "Percentage",
     "years": "Split payment in years",
     "total": "Total property price"
+  },
+  "dimentions":{
+    "sqmeter": "{amount} m²"
   }
 }
