@@ -1,5 +1,7 @@
 import { computed } from "vue"
 import { useStore } from "vuex"
+import imageDimensions from "../helpers/imageDimensions"
+import processPoints from "../helpers/processPoints"
 
 export default function useProjects() {
 
@@ -37,7 +39,27 @@ export default function useProjects() {
     }
 
     const getFloor = async (...args) => {
+
         await store.dispatch('flats/getFloor', ...args)
+
+        const { planWidth, planHeight } = await imageDimensions(floor.value?.image_url)//.then(dimensions => dimensions).catch(err => console.log(err))
+
+        floor.value.flats = processPoints(floor.value.flats.map(flat => {
+            // console.log(flat['map'])
+            flat.points = (flat['map']) ? flat['map'].split(',').map(point => Number(point)) : []
+            return {
+              ...flat,
+              isSold: !!flat.sold,
+              details: {
+                size: flat?.area,
+                beedroom: flat?.for_living,
+                price: flat?.price,
+              }
+            }
+          }), planWidth, planHeight)
+
+        store.commit('flats/SET_STATE', {key: floor, value: floor})
+        
     }
 
     return {
