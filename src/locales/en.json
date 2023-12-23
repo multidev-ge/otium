@@ -47,8 +47,7 @@
     "rooms": "Rooms",
     "area": "Area, m2",
     "price": "Price",
-    "more": "Explore more",
-    
+    "more": "Explore more"
   },
   "statuses": {
     "sold": "Sold"
@@ -102,6 +101,7 @@
     "allApartments": "All Apartments",
     "name": "Apartment №{number}",
     "size": "Size",
+    
     "bedroom": "Bedroom",
     "price": "price"
   },
@@ -124,5 +124,12 @@
   },
   "dimentions":{
     "sqmeter": "{amount} m²"
+  },
+  "tooltip": {
+    "floor": "Floor",
+    "apartments": "Apartments",
+    "prices": "Prices",
+    "sizes": "Sizes m²",
+    "rooms": "Rooms"
   }
 }

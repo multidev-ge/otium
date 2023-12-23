@@ -47,7 +47,7 @@ onMounted(async () => {
   // get calculator info
   info.value = await axios.get('calculator/info')
 
-  console.log(info.value)
+  // console.log(info.value)
 })
 </script>
 

@@ -18,8 +18,8 @@ export default {
   methods: {
     ...mapActions('flats', ['loadMore'])
   },
-  mounted(){
-    if(!this.flats?.data?.length){
+  mounted() {
+    if (!this.flats?.data?.length) {
       this.$store.dispatch("flats/getFlats")
     }
   }
@@ -47,9 +47,17 @@ export default {
             </thead>
             <TransitionGroup name="list" tag="tbody">
               <tr class="text-xl" v-for="item in flats.data" :key="item?.id">
-                <td class="whitespace-nowrap w-1/4 py-4"><img class="rounded-lg w-28" :src="item?.image_url" alt="">
+                <td class="whitespace-nowrap w-1/4 py-4">
+                  <div class="relative w-28">
+                    <img class="w-full rounded-lg" :src="item?.image_url" alt="">
+                    <div v-show="item?.sold" class="absolute inset-0 flex items-center justify-center rounded-lg bg-[#E3555399] bg-opacity-60">
+                      <span class="text-[#FFFFFF] font-medium">{{ t('statuses.sold') }}</span>
+                    </div>
+                  </div>
+                  <!-- <img class="rounded-lg w-28" :src="item?.image_url" alt=""> -->
                 </td>
-                <td class="whitespace-nowrap w-1/4 py-4"><span>{{ item?.floor?.floor_num }}</span><span class="opacity-30"> /
+                <td class="whitespace-nowrap w-1/4 py-4"><span>{{ item?.floor?.floor_num }}</span><span
+                    class="opacity-30"> /
                   </span><span class="opacity-30">{{ item?.max_floors }}</span></td>
                 <td class="whitespace-nowrap w-1/4 py-4">{{ item.rooms }}</td>
                 <td class="whitespace-nowrap w-1/4 py-4">{{ item.area }}</td>
@@ -80,7 +88,10 @@ export default {
     <div class="flex flex-col w-100 mx-auto rounded-lg border mb-5 border-[#9999994D] mt-10" v-for="item in flats.data"
       :key="item?.id">
       <RouterLink :to="{ name: 'Apartment', params: { id: item.id } }">
-        <img class="w-full" :src="item?.image_url" alt="">
+        <div class="relative">
+          <img class="w-full" :src="item?.image_url" alt="">
+          <div class="absolute inset-0 bg-red bg-opacity-50"></div>
+        </div>
       </RouterLink>
       <div class="w-full">
         <div class="flex flex-row justify-between py-3 text-xl">
