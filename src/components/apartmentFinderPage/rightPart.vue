@@ -17,6 +17,11 @@ export default {
   },
   methods: {
     ...mapActions('flats', ['loadMore'])
+  },
+  mounted(){
+    if(!this.flats?.data?.length){
+      this.$store.dispatch("flats/getFlats")
+    }
   }
 }
 </script>
