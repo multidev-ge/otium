@@ -19,12 +19,15 @@ export default {
     }
   },
   computed: {
-    block_id() { return this.$store.getters['flats/block_id'] }
+    block_id() { return this.$store.getters['flats/block_id'] },
+    project_id() { return this.$store.getters['flats/project_id'] },
   },
   methods: {
     async blockClicked({ block }) {
       this.$store.commit("flats/SET_PROJECT_ID", 1)
       this.$store.commit("flats/SET_BLOCK_ID", block?.id)
+      this.$store.dispatch("flats/getFloors")
+      this.$store.commit("flats/SET_STATE", { key: "floor_id", value: null })
       this.$store.dispatch("flats/getFlats")
     }
   }
@@ -40,7 +43,7 @@ export default {
           <!-- <MapedImage :image_path="image_path" :options="blocks" @clicked="blockClicked" /> -->
           <div class="relative mb-4">
             <img class="w-full h-full rounded-xl" src="../../assets/images/01_00002.jpg">
-            <div v-for="f in blocks"
+            <div v-show="blocks?.length && project_id" v-for="f in blocks"
               class="pointer-events-none lg:pointer-events-auto absolute opacity-50 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
               :class="{ 'bg-[#FFFFFF]': f.block.id == block_id }" @click="blockClicked(f)" :style="{
                 width: f.width,

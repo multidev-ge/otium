@@ -32,6 +32,7 @@
     "title": "Find your apartment",
     "project": "Project",
     "block": "Block",
+    "floor": "Floor",
     "rooms": "Rooms",
     "area": "Area, m2",
     "price": "Price",
