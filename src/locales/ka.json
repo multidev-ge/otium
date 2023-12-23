@@ -123,5 +123,12 @@
   },
   "dimentions":{
     "sqmeter": "{amount} მ²"
+  },
+  "tooltip": {
+    "floor": "სართული",
+    "apartments": "აპარტამენტები",
+    "prices": "ფასები",
+    "sizes": "ფართი m²",
+    "rooms": "ოთახები"
   }
 }
