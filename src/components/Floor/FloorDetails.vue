@@ -9,17 +9,15 @@ const { floor } = useProjects()
 
 <template>
   <!-- Floor Details -->
-  <div class="flex flex-col justify-between">
+  <div class="flex flex-col justify-start gap-y-2">
     <h1 class="text-3xl lg:text-4.5xl font-medium leading-normal max-xl:hidden">
-      {{ floor?.floor }} {{ (floor?.floor === 1) ? 'st' : (floor?.floor === 2) ? 'nd' : 'th' }} floor
+      {{ floor?.floor }} {{ (floor?.floor === 1) ? '' : (floor?.floor === 2) ? '' : '' }} {{ t("filters.floor") }}
     </h1>
-
     <div class="grid max-xl:grid-cols-2 gap-y-6">
       <div>
         <span v-text="t('projects.apartments')" class="font-medium opacity-40" />
         <p class="font-medium">{{ floor?.free_apartments }}<span class="opacity-40"> / {{ floor?.apartments }}</span></p>
       </div>
-
       <div>
         <span v-text="t('filters.price')" class="text-base lg:text-lg font-medium lg:leading-8 opacity-60" />
         <p v-text="`${floor?.price?.min} - ${floor?.price?.max}`" class="font-medium" />
