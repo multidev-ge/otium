@@ -2,9 +2,13 @@
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue"
 import useProjects from "../../composables/useProjects";
 import { RouterLink } from "vue-router";
+import {computed} from "vue"
 import { useI18n } from "vue-i18n";
+import { useStore } from "vuex";
+const store = useStore()
 const { t } = useI18n({ useScope: 'global' })
-const { floor } = useProjects()
+const floor = computed(() => store.getters['floors/floor'])
+// const { floor } = useProjects()
 </script>
 
 <template>

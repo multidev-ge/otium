@@ -12,6 +12,8 @@ const store = createStore({
         "media": mediaModule,
         "projects": projectsModule,
         "flats": flatsModule,
+        "mainProject": flatsModule,
+        "floors": flatsModule,
     },
 })
 

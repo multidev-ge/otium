@@ -18,7 +18,7 @@ onMounted(async () => floor.value ?? await getFloor(props?.id))
     <div
       class="flex max-xl:flex-col-reverse xl:gap-x-14 max-xl:gap-y-7 md:mx-auto mb-40 sm:max-2xl:mb-52 2xl:mb-60">
       <floor-details />
-      <floor-plan v-if="floor" />
+      <floor-plan v-if="floor" :id="props.id" />
     </div>
   </main-layout>
 </template>

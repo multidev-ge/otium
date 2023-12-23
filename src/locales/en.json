@@ -112,7 +112,8 @@
     "chooseAFloor": "Choose a floor",
     "choose": "choose",
     "chooseABlock": "Choose a block",
-    "backToBlocks": "Back"
+    "backToBlocks": "Back",
+    "floorNumber": "Floor Numebr"
   },
   "calculator": {
     "startApplying": "Start Applying",
