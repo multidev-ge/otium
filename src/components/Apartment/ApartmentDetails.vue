@@ -92,7 +92,7 @@ watch(fomSubmitedSuccessfully, () => {
 
       <contact-form :messageField="false" @formSubmited="showSuccessAlert">
         <template #submitButton>
-          <button type="submit"
+          <button type="submit" :disabled="loading"
             class="hover:bg-[#A258A6] transition duration-100 ease-in-out w-full whitespace-nowrap bg-[#883F7C] flex items-center justify-center gap-x-1.5 px-7 py-3 rounded-2xl text-[#FFFAFA] font-medium leading-6">
             <div v-if="loading" class="w-6 h-6 rounded-full animate-spin
                     border-2 border-solid border-blue-500 border-t-transparent shadow-md"></div>
