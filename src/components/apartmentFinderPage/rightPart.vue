@@ -56,7 +56,8 @@ export default {
                   </div>
                   <!-- <img class="rounded-lg w-28" :src="item?.image_url" alt=""> -->
                 </td>
-                <td class="whitespace-nowrap w-1/4 py-4"><span>{{ item?.floor?.floor_num }}</span><span
+                <td class="whitespace-nowrap w-1/4 py-4"><span>{{ item?.floor?.floor_num }}</span>
+                  <span
                     class="opacity-30"> /
                   </span><span class="opacity-30">{{ item?.max_floors }}</span></td>
                 <td class="whitespace-nowrap w-1/4 py-4">{{ item.rooms }}</td>
@@ -96,26 +97,26 @@ export default {
       <div class="w-full">
         <div class="flex flex-row justify-between py-3 text-xl">
           <div class="w-full flex flex-col space-y-3 px-2">
-            <div class="flex space-x-1">
+            <div class="flex space-x-1 items-center justify-start">
               <label class="opacity-40 whitespace-nowrap">{{ t("flatsList.floor") }}</label>
-              <div class="whitespace-nowrap">
+              <p class="whitespace-nowrap">
                 <span>{{ item?.floor?.floor_num }}</span><span class="opacity-30"> / </span>
                 <span class="opacity-30">{{ item.max_floors }}</span>
-              </div>
+              </p>
             </div>
-            <div class="flex space-x-1">
+            <div class="flex space-x-1 items-center justify-start">
               <p class="opacity-40 whitespace-nowrap">{{ t("flatsList.area") }}</p>
-              <div class="whitespace-nowrap">{{ item.area }}</div>
+              <p class="whitespace-nowrap">{{ item.area }}</p>
             </div>
           </div>
           <div class="w-full flex flex-col space-y-3 px-2">
-            <div class="flex space-x-1">
+            <div class="flex space-x-1 items-center justify-start">
               <p class="opacity-40 whitespace-nowrap">{{ t("flatsList.rooms") }}</p>
               <p class="whitespace-nowrap">{{ item.rooms }}</p>
             </div>
-            <div class="flex space-x-1">
+            <div class="flex space-x-1 items-center justify-start">
               <p class="opacity-40 whitespace-nowrap">{{ t("flatsList.price") }}</p>
-              <div class="whitespace-nowrap">${{ item.price.toLocaleString() }}</div>
+              <p class="whitespace-nowrap">${{ item.price.toLocaleString() }}</p>
             </div>
           </div>
         </div>
