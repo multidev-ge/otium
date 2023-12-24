@@ -138,7 +138,7 @@ export default {
 
     <div class="flex flex-col gap-3">
       <label class="text-xl font-normal" for="project">{{ t("filters.floor") }}</label>
-      <select v-model="floor_id" :disabled="!floors?.length"
+      <select v-model="floor_id" :disabled="!floors?.length || !block_id"
         class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
         :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
         <option :value="null" disabled>{{ t("filters.floor") }}</option>
