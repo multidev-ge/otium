@@ -78,14 +78,14 @@ watch(fomSubmitedSuccessfully, () => {
         :selected="String(selectedFloor)" />
     </div> -->
     <div class="flex xl:flex-col max-xl:mt-10 sm:max-xl:justify-between max-xl:gap-x-10 xl:gap-y-7">
-      <div class="flex flex-col xl:gap-y-1.5 max-xl:justify-between">
+      <div class="flex flex-col xl:gap-y-1.5 max-xl:justify-between whitespace-nowrap">
         <span class="font-medium leading-6 opacity-40" v-text="t('filters.area')" />
-        <p class="text-xl font-medium leading-8" v-text="t('dimentions.sqmeter', { amount: flat?.current?.area })" />
+        <p class="flex items-center flex-1 text-xl font-medium leading-8 " v-text="t('dimentions.sqmeter', { amount: flat?.current?.area })" />
       </div>
 
-      <div class="flex flex-col xl:gap-y-1.5 max-xl:justify-between">
+      <div class="flex flex-col xl:gap-y-1.5 max-xl:justify-between whitespace-nowrap">
         <span class="font-medium leading-6 opacity-40" v-text="t('filters.price')" />
-        <p class="text-4.5xl font-bold text-[#7B9F89]" v-text="`$${flat?.current?.price}`" />
+        <p class="flex-1 text-4.5xl font-bold text-[#7B9F89]"><span>{{ `$${flat?.current?.price}` }}</span></p>
       </div>
     </div>
     <div class="flex flex-col gap-y-5 mt-6">

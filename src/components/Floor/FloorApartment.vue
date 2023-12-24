@@ -22,7 +22,7 @@ onMounted(() => null)
         class="max-md:hidden block lg:max-3xl:text-[20px] 3xl:text-xl font-bold leading-8 !opacity-100 text-[#E24A4A] rounded-2xl border-2 border-[#E24A4A] md:max-lg:px-2 lg:max-2xl:px-4 2xl:px-6 md:max-lg:py-1 lg:max-2xl:py-2 2xl:py-3 -rotate-12 sold">
         {{ t("statuses.sold") }}</span>
 
-      <div class="hidden max-md:!hidden !opacity-100 details md:max-lg:text-xs lg:max-xl:text-sm">
+      <div class="hidden max-md:!hidden !opacity-100 details md:max-lg:text-xs lg:max-xl:text-sm p-2">
         <p class="text-white font-medium leading-7"><span class="opacity-70">{{ t("apartment.size") }}:</span>
           {{ t('dimentions.sqmeter', { amount: apartment?.area }) }}
         </p>

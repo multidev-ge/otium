@@ -53,13 +53,14 @@
     "sold": "გაყიდული"
   },
   "rooms": {
-    "kitchen-living-room": "სამზარეულო/მისაღები",
+    "kitchen-living-room": "სტუდიო",
     "hall": "ჰოლი",
-    "bedroom": "საძნებელი",
+    "bedroom": "საძინებელი",
     "terrace": "ტერასა",
     "wc": "სველი წერტილი",
     "closet": "გარდერობი",
-    "storage": "სათავსო"
+    "storage": "სათავსო",
+    "kitchen": "სამზარეულო"
   },
   "footer": {
     "contact": "კონტაქტი",
