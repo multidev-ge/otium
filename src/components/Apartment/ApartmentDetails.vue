@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from "vue"
+import { computed, ref, watch } from "vue"
 import ApartmentDownloadIcon from "@/assets/icons/Apartment/ApartmentDownloadIcon.vue"
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue"
 import { useI18n } from "vue-i18n"
@@ -7,9 +7,15 @@ import useApartments from "../../composables/useApartments";
 import ContactForm from "../Contact/ContactForm.vue";
 import XIcon from "@/assets/icons/xIcon.vue"
 import Checked from "../../assets/icons/Checked.vue";
+import { useStore } from "vuex";
 const { t } = useI18n({ useScope: 'global' })
 const { flat } = useApartments()
 const fomSubmitedSuccessfully = ref(false)
+
+const store = useStore()
+
+const loading = computed(() => store.getters['contact/loading'])
+
 function downloadPdf() {
   const link = document.createElement('a');
   link.href = flat.value?.current?.pdf;
@@ -26,18 +32,19 @@ function showSuccessAlert() {
   setTimeout(() => {
     fomSubmitedSuccessfully.value = false
   }, 5000)
-  
+
 }
 function hideSuccessAlert() {
   fomSubmitedSuccessfully.value = false
 }
 
+
 watch(fomSubmitedSuccessfully, () => {
-  if(!!fomSubmitedSuccessfully.value){
+  if (!!fomSubmitedSuccessfully.value) {
     window.scrollTo(0, 0)
     document.body.classList.toggle('overflow-hidden')
     document.body.classList.toggle('touch-none')
-  }else{
+  } else {
     document.body.classList.toggle('overflow-hidden')
     document.body.classList.toggle('touch-none')
   }
@@ -73,7 +80,7 @@ watch(fomSubmitedSuccessfully, () => {
     <div class="flex xl:flex-col max-xl:mt-10 sm:max-xl:justify-between max-xl:gap-x-10 xl:gap-y-7">
       <div class="flex flex-col xl:gap-y-1.5 max-xl:justify-between">
         <span class="font-medium leading-6 opacity-40" v-text="t('filters.area')" />
-        <p class="text-xl font-medium leading-8" v-text="t('dimentions.sqmeter', {amount: flat?.current?.area})" />
+        <p class="text-xl font-medium leading-8" v-text="t('dimentions.sqmeter', { amount: flat?.current?.area })" />
       </div>
 
       <div class="flex flex-col xl:gap-y-1.5 max-xl:justify-between">
@@ -87,6 +94,8 @@ watch(fomSubmitedSuccessfully, () => {
         <template #submitButton>
           <button type="submit"
             class="hover:bg-[#A258A6] transition duration-100 ease-in-out w-full whitespace-nowrap bg-[#883F7C] flex items-center justify-center gap-x-1.5 px-7 py-3 rounded-2xl text-[#FFFAFA] font-medium leading-6">
+            <div v-if="loading" class="w-6 h-6 rounded-full animate-spin
+                    border-2 border-solid border-blue-500 border-t-transparent shadow-md"></div>
             {{ t('buttons.RequestCall') }}
             <contact-right-arrow-icon />
           </button>
