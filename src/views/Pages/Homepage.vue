@@ -11,6 +11,8 @@ import HomePageTitle from "../../components/Headings/HomePageTitle.vue"
 import ContactMap from "@/components/Contact/ContactMap.vue";
 import WhatWeOffer from "../../components/Blocks/WhatWeOffer.vue";
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
+import { useTitle } from '@vueuse/core'
 export default {
   components: {
     ProjectBanner,
@@ -26,17 +28,16 @@ export default {
 },
   setup() {
     const { t } = useI18n({ useScope: "global" })
-
     return { t }
   },
   computed: {
-    ...mapGetters("pages", ["blocks"])
+    ...mapGetters("pages", ["blocks", "title"])
   },
   methods: {
     ...mapActions("pages", ["getPage"])
   },
   mounted() {
-    this.getPage(3)
+    this.getPage(3).then(() => useTitle(`${this.title} - ${this.t('main.brand')}`) )
   }
 
 }

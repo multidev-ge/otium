@@ -6,6 +6,8 @@ import ContactMap from "@/components/Contact/ContactMap.vue"
 import MainLayout from "@/layouts/mainLayout.vue"
 /** Blocks */
 import ContactWithForm from "../../components/Blocks/ContactWithForm.vue"
+import { useTitle } from "@vueuse/core"
+import {useI18n} from "vue-i18n"
 
 export default {
   components: {
@@ -15,6 +17,10 @@ export default {
     ContactMap,
     ContactWithForm,
   },
+  setup(){
+    const {t} = useI18n({useScope: 'global'})
+    return {t}
+  },
   computed: {
     ...mapGetters('pages', [ 'id', 'title', 'slug', 'blocks' ])
   },
@@ -22,7 +28,7 @@ export default {
     ...mapActions('pages', [ 'getPage' ])
   },
   mounted() {
-    this.getPage(1)
+    this.getPage(1).then(() => useTitle(`${this.title} - ${this.t('main.brand')}`) )
   }
 }
 </script>

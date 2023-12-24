@@ -5,6 +5,8 @@ import ArrowDownIcon from "@/assets/icons/MediaPage/ArrowDownIcon.vue";
 // import {useMedia} from "@/composables/useMedia";
 import MediaCard from "@/components/MediaPage/MediaCard.vue";
 import { useI18n } from "vue-i18n";
+import { useTitle } from "@vueuse/core";
+
 
 // const {
 //   categories,
@@ -29,6 +31,7 @@ export default {
   mounted() {
     this.getCategories()
     this.getMedias()
+    useTitle(`${this.t("media.title")} - ${this.t('main.brand')}`)
   }
 }
 

@@ -2,6 +2,7 @@
 import { mapGetters, mapActions } from "vuex";
 import MainLayout from "@/layouts/mainLayout.vue";
 import SplideForProjects from "@/components/Projects/splideForProjects.vue";
+import { useI18n } from "vue-i18n";
 export default {
   components: {
     MainLayout,
@@ -13,7 +14,7 @@ export default {
   methods: {
     ...mapActions('projects', ['getProjects'])
   },
-  mounted(){
+  mounted() {
     this.getProjects()
   }
 }
@@ -21,8 +22,7 @@ export default {
 
 <template>
   <main-layout>
-    <SplideForProjects :content="projects"/>
+    <SplideForProjects :content="projects" />
   </main-layout>
-
 </template>
 

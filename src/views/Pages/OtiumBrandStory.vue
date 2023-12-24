@@ -10,7 +10,8 @@ import DoubleImage from "../../components/Blocks/DoubleImage.vue"
 import TwoColumnParagraph from "../../components/Blocks/TwoColumnParagraph.vue"
 import HeadingWithParagraph from "../../components/Blocks/HeadingWithParagraph.vue"
 import TeamMembers from "../../components/Blocks/TeamMembers.vue"
-
+import { useTitle } from "@vueuse/core";
+import { useI18n } from "vue-i18n";
 export default {
   components: {
     mainLayout,
@@ -24,14 +25,18 @@ export default {
     HeadingWithParagraph,
     TeamMembers,
   },
+  setup(){
+    const {t} = useI18n({useScope:'global'})
+    return {t}
+  },
   computed: {
-    ...mapGetters('pages', ['blocks'])
+    ...mapGetters('pages', ['blocks', 'title'])
   },
   methods: {
     ...mapActions('pages', ['getPage'])
   },
   mounted(){
-    this.getPage(4)
+    this.getPage(4).then(() => useTitle(`${this.title} - ${this.t('main.brand')}`) )
   }
 }
 </script>
