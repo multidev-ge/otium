@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue"
+import { onMounted, ref } from "vue"
 import MyScrollPicker from "@/components/ProjectInner/MyScrollPicker.vue"
 import ArrowRight from "@/assets/icons/arrow-right.vue"
 import XIcon from "@/assets/icons/xIcon.vue"
@@ -9,11 +9,12 @@ import { useProjectBanner } from "../../composables/useProjectBanner"
 import { useI18n } from "vue-i18n"
 import floorOrder from "@/helpers/floorOrder";
 import { useRouter } from "vue-router"
+import { useStore } from "vuex"
 
 
 const props = defineProps(['type'])
 
-const { block, floor, floors, blocks, getBlocks, getFloors } = useProjects()
+const { block, floor, floors, blocks, getBlocks, getFloors } = useProjects('mainProject')
 const { t } = useI18n({ useScope: 'global' })
 
 const router = useRouter()
@@ -43,7 +44,12 @@ function setFloor() {
         }
     })
 }
-
+const store = useStore()
+onMounted(async () => {
+  store.commit("flats/SET_STATE", { key: 'project_id', value: 1 })
+  store.dispatch("flats/getBlocks")
+  store.dispatch("flats/getFloors")
+})
 </script>
 <template>
     <div class="block lg:hidden">

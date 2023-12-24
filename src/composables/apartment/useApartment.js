@@ -22,7 +22,7 @@ export default function useApartment() {
         {
             points: [1136, 797, 1147, 802, 1141, 813, 1226, 844, 1232, 834, 1513, 938, 1504, 966, 1629, 1012, 1636, 983, 1768, 1035, 1918, 498, 1965, 410, 1399, 240, 1383, 327],
             icon: ApartmentKitchenIcon,
-            title: t('rooms.kitchen_living'),
+            title: t('rooms.kitchen-living-room'),
             area: 20
         },
         {
