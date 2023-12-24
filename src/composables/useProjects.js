@@ -7,8 +7,8 @@ export default function useProjects() {
 
     const store = useStore()
     // getters
-    const projects = computed(() => store.getters['projects/projects'] )
-    const project = computed(() => store.getters['projects/project'] )
+    const projects = computed(() => store.getters['flats/projects'] )
+    const project = computed(() => store.getters['flats/project'] )
 
     const blocks = computed(() => store.getters['flats/blocks'] )
     const floors = computed(() => store.getters['flats/floors'] )
@@ -22,12 +22,52 @@ export default function useProjects() {
         get: () => store.getters['flats/block']
     })
 
+    const project_id = computed ({
+        get() {
+          return store.getters['flats/project_id']
+        },
+        set(val) {
+          store.commit("flats/SET_STATE", { key: "project_id", value: val })
+          store.dispatch('flats/getBlocks')
+          store.dispatch('flats/getFlats')
+        }
+      })
+      const block_id = computed({
+        get() {
+          return store.getters['flats/block_id']
+        },
+        set(val) {
+          store.commit("flats/SET_STATE", { key: "block_id", value: val })
+          store.dispatch('flats/getFloors')
+          store.commit("flats/SET_STATE", { key: "floor_id", value: null })
+          store.dispatch('flats/getFlats')
+        }
+      })
+      const floor_id = computed({
+        get() {
+          return store.getters['flats/floor_id']
+        },
+        set(val) {
+          store.commit("flats/SET_STATE", { key: "floor_id", value: val })
+          store.dispatch('flats/getFlats')
+        }
+      })
+      const sold = computed({
+        get() {
+          return store.getters['flats/sold']
+        },
+        set(val) {
+          store.commit("flats/SET_SOLD", val)
+          store.dispatch('flats/getFlats')
+        }
+      })
+
     const getProjects = async () => {
-        await store.dispatch('projects/getProjects')
+        await store.dispatch('flats/getProjects')
     }
 
     const getProject = async (...args) => {
-        await store.dispatch('projects/getProject', ...args)
+        await store.dispatch('flats/getProject', ...args)
     }
 
     const getBlocks = async () => {
@@ -69,6 +109,10 @@ export default function useProjects() {
         block,
         floors,
         floor,
+        project_id,
+        block_id,
+        floor_id,
+        sold,
         getProjects,
         getProject,
         getBlocks,

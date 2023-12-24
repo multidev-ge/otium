@@ -2,13 +2,20 @@
 import ContactRightArrowIcon from "@/assets/icons/Contact/ContactRightArrowIcon.vue"
 import useProjects from "../../composables/useProjects";
 import { RouterLink } from "vue-router";
-import {computed} from "vue"
+import { computed, watch } from "vue"
 import { useI18n } from "vue-i18n";
 import { useStore } from "vuex";
 const store = useStore()
 const { t } = useI18n({ useScope: 'global' })
 const floor = computed(() => store.getters['floors/floor'])
-// const { floor } = useProjects()
+watch(floor, async () => {
+  store.commit('flats/SET_STATE', { key: 'project_id', value: 1 })
+  store.commit('flats/SET_STATE', { key: 'block_id', value: floor.value?.block.id })
+  await store.dispatch('flats/getProjects')
+  await store.dispatch('flats/getBlocks')
+  await store.dispatch('flats/getFloors')
+  store.commit('flats/SET_STATE', { key: 'floor_id', value: floor.value?.id })
+})
 </script>
 
 <template>
