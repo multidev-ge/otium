@@ -59,7 +59,8 @@
     "terrace": "Terrace",
     "wc": "WC",
     "closet": "Closet",
-    "storage": "Storage"
+    "storage": "Storage",
+    "kitchen": "Kitchen"
   },
   "footer": {
     "contact": "Contact",

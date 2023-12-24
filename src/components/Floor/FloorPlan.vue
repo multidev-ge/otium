@@ -97,7 +97,7 @@ onMounted(async () => {
         :key="apartment?.id" />
     </div>
     <!-- {{ currentFloorFlats }} -->
-    <floor-carousel v-if="blockLength && floorNumber" :floorNumber="floorNumber" :blockLength="blockLength"
+    <floor-carousel v-if="blockLength && floorNumber" :floorNumber="floorNumber" :blockLength="blockLength" class="p-4"
       @previousFloor="navigate(floorNumber - 1)" @nextFloor="navigate(floorNumber + 1)" @changeFloor="navigate" />
   </div>
 </template>

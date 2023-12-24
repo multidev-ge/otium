@@ -31,7 +31,7 @@ watch(floor, async () => {
       </div>
       <div>
         <span v-text="t('filters.price')" class="text-base lg:text-lg font-medium lg:leading-8 opacity-60" />
-        <p v-text="`${floor?.price?.min} - ${floor?.price?.max}`" class="font-medium" />
+        <p v-text="`$${floor?.price?.min} - $${floor?.price?.max}`" class="font-medium" />
       </div>
 
       <div>

@@ -28,7 +28,9 @@ const original_blocks = computed(() => store.getters['mainProject/blocks'])
 
 const mappedFloors = computed(() => {
   return floors.map(floor => {
-    let block_id = floor.post === 'left' ? 1 : 2
+
+    let block_id = floor.pos === 'left' ? 1 : 2
+
     const filtered_floor = original_floors.value.filter(f => f.floor === floor.floor && f.block_id === block_id)
     floor.details = [
       { name: t(`tooltip.apartments`), value: `${filtered_floor[0]?.apartments.free} / ${filtered_floor[0]?.apartments.total}` },
@@ -88,7 +90,7 @@ onMounted(async () => {
     </div>
   </div>
 
-  <MobileFloorsPicker />
+  <MobileFloorsPicker class="-mt-20" />
 </template>
 
 <style scoped>
