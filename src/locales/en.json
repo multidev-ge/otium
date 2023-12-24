@@ -58,7 +58,8 @@
     "bedroom": "Bedroom",
     "terrace": "Terrace",
     "wc": "WC",
-    "closet": "Closet"
+    "closet": "Closet",
+    "storage": "Storage"
   },
   "footer": {
     "contact": "Contact",

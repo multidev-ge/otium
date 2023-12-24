@@ -6,14 +6,20 @@ import useApartments from "../../composables/useApartments"
 import useProjects from "../../composables/useProjects"
 import { useI18n } from "vue-i18n"
 import { onMounted } from "vue";
+import { useStore } from "vuex";
 const { t } = useI18n({ useScope: "global" })
 
-const { project_id, block, sold, maxRooms, filterRooms, doubleSliderOptions, getFlats, twoChange, updateRooms, clearFilter } = useApartments()
+const { sold, maxRooms, filterRooms, doubleSliderOptions, getFlats, twoChange, updateRooms, clearFilter } = useApartments()
 
-const { projects, blocks, getProjects, getBlocks } = useProjects()
+const { projects, blocks, floors, block_id, floor_id, project_id, getProjects, getBlocks } = useProjects()
+
+const store = useStore()
 
 onMounted(async () => {
-    await getProjects()
+    if (!projects.value?.length) {
+        store.dispatch('flats/getProjects')
+    }
+    // await getProjects()
     await getBlocks()
     await getFlats()
 })
@@ -23,18 +29,18 @@ onMounted(async () => {
         <div class="md:w-1/6 w-11/12 md:mx-0 mx-auto flex flex-col font-medium  gap-10">
             <p class="text-4xl ">{{ t("filters.title") }}</p>
             <div class="flex flex-col gap-3">
-                <label class="text-xl font-normal" for="project" v-text="t('filters.project')" />
-                <select v-model="project_id"
+                <label class="text-xl font-normal" for="project">{{ t("filters.project") }}</label>
+                <select v-model="project_id" :disabled="!projects?.data?.length"
                     class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
                     :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
-                    <option :value="null" disabled v-html="t('filters.project')" />
-                    <option v-for="component in projects" :value="component?.id" :key="component?.id"
-                        v-html="component?.title" />
+                    <option :value="null" disabled>{{ t("filters.project") }}</option>
+                    <option v-for="component in projects.data" :value="component?.id" :key="component?.id">{{
+                        component.title }}</option>
                 </select>
             </div>
             <div class="flex flex-col gap-3">
-                <label class="text-xl font-normal" for="project" v-text="t('filters.block')" />
-                <select v-model="block"
+                <label class="text-xl font-normal" for="project">{{ t("filters.block") }}</label>
+                <select v-model="block_id" :disabled="!blocks.length"
                     class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
                     :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
                     <option :value="null" disabled>{{ t("filters.block") }}</option>
@@ -51,6 +57,16 @@ onMounted(async () => {
                         <p>{{ index + 1 }}</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <label class="text-xl font-normal" for="project">{{ t("filters.floor") }}</label>
+                <select v-model="floor_id" :disabled="!floors?.length"
+                    class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
+                    :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
+                    <option :value="null" disabled>{{ t("filters.floor") }}</option>
+                    <option v-for="floor in floors" :value="floor?.id" :key="floor?.id">{{ floor?.floor }}</option>
+                </select>
             </div>
 
             <TwoDotRange name="area" :displayName="t('filters.area')" :max-value="doubleSliderOptions.area.maxValue"
