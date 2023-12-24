@@ -52,9 +52,9 @@ onMounted(()=> getMenu())
                 {{ content?.address }}
               </p>
             </div>
-            <div class="flex gap-14 px-4">
-              <div class="w-1/3">
-                <div class="gap-2 flex">
+            <div class="flex flex-row justify-start spaxe-x-4 px-4">
+              <div class="w-full flex-col items-center">
+                <div class="flex flex-row justify-start items-center space-x-2">
                   <component class="" :is="FooterInfo[0].Footercomponents.icon2" />
                   <p class="text-sm text-[#FFFFFF99]">
                     {{ t("footer.phone") }}
@@ -64,8 +64,8 @@ onMounted(()=> getMenu())
                   {{ content?.phone }}
                 </p>
               </div>
-              <div class="w-1/5">
-                <div class="gap-2 flex">
+              <div class="w-full flex-col items-center">
+                <div class="flex flex-row justify-start items-center space-x-2">
                   <component class="" :is="FooterInfo[0].Footercomponents.icon1" />
                   <p class="text-sm text-[#FFFFFF99] whitespace-nowrap">
                     {{ t("footer.email") }}
@@ -78,7 +78,7 @@ onMounted(()=> getMenu())
             </div>
           </div>
           <div class="">
-            <h2 class="text-[#FFFFFF99] px-4 text-[14px] leading-[18px] font-medium	">
+            <h2 class="text-[#FFFFFF99] px-4 text-[14px] leading-[18px] font-medium">
               {{ t("footer.social") }}
             </h2>
             <div class="flex gap-3 pt-3 px-4">
@@ -103,29 +103,13 @@ onMounted(()=> getMenu())
                 </div>
               </a>
             </div>
-            <div class="grid grid-cols-2 gap-y-4 md:gap-[76px] md:pl-28 pt-11 px-4">
+            <div class="grid grid-cols-2 gap-y-4 gap-x-8 md:gap-[76px] md:pl-28 pt-11 px-4">
               <router-link v-for="item in mainMenuLinks" :to="item.url">
-                <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
+                <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF] whitespace-nowrap">
                   {{ item?.title }}
                 </a>
               </router-link>
-              <!-- <router-link to="/projects">
-                <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                  {{ headerInfo[0].headercomponents.title1 }}
-                </a>
-              </router-link>
-              <router-link to="/media">
-                <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                  {{ headerInfo[0].headercomponents.title2 }}
-                </a>
-              </router-link>
-              <router-link to="/contact">
-                <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                  {{ headerInfo[0].headercomponents.title3 }}
-                </a>
-              </router-link> -->
             </div>
-
             <div class="mt-14">
               <div class="relative justify-center flex ">
                 <img class="absolute" :src="FooterInfo[0].Footercomponents.img" alt="" />
