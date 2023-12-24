@@ -10,8 +10,9 @@ import Projects from "@/composables/forProject/Projects";
 import RightArrow from "@/assets/icons/apartmentFinderPage/rightArrow.vue";
 import SplideArrow from "@/assets/icons/mediaInnerPage/splideArrow.vue";
 import ArrowForProjectsSplide from "@/assets/icons/Projects/arrowForProjectsSplide.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useI18n } from 'vue-i18n'
+import { useTitle } from '@vueuse/core';
 defineProps(['content'])
 const projectsInfo = Projects
 const { projectsList } = projectsInfo()
@@ -39,7 +40,7 @@ const changeValue = (value) => {
   currentValue.value = value
 }
 const { t } = useI18n({ useScope: "global" })
-
+onMounted(() => useTitle(`${t("projects.title")} - ${t('main.brand')}`))
 </script>
 <template>
   <section class="">

@@ -14,9 +14,9 @@ import { useStore } from "vuex"
 
 const props = defineProps(['type'])
 
-const { block, floor, floors, blocks, getBlocks, getFloors } = useProjects('mainProject')
+const { block, floor, floors, blocks, getBlocks, getFloors } = useProjects()
 const { t } = useI18n({ useScope: 'global' })
-
+const store = useStore()
 const router = useRouter()
 const picker_floor = ref(null)
 const picker_block = ref(null)
@@ -30,13 +30,14 @@ const { openPopup, closePopup } = functions
 
 function setBlock() {
     // closePopup()
+    store.commit("flats/SET_STATE", { key: "block_id", value: picker_block.value })
     block.value = picker_block.value
     getFloors()
     // openPopup()
 }
 function setFloor() {
     closePopup()
-    floor.value = picker_floor.value
+    floor.value = (picker_floor.value) ? picker_floor.value : 1
     router.push({
         name: 'Floor',
         params: {
@@ -44,23 +45,23 @@ function setFloor() {
         }
     })
 }
-const store = useStore()
+
 onMounted(async () => {
-  store.commit("flats/SET_STATE", { key: 'project_id', value: 1 })
-  store.dispatch("flats/getBlocks")
-  store.dispatch("flats/getFloors")
+    store.commit("flats/SET_STATE", { key: 'project_id', value: 1 })
+    store.dispatch("flats/getBlocks")
+    store.dispatch("flats/getFloors")
 })
 </script>
 <template>
     <div class="block lg:hidden">
         <button @click="openPopup" class="w-full py-3 mt-5 px-6 bg-[#F0EEEC] rounded-2xl font-medium">
             <!-- <span v-if="block">{{ t('floors.chooseAFloor') }}</span> -->
-            <span >{{ t('floors.chooseABlock') }}</span>
+            <span>{{ t('floors.chooseABlock') }}</span>
             <arrow-right class="inline-block ml-1" />
         </button>
 
         <div v-if="popupIsOpen" class="fixed w-full bg-[#FFFFFF] left-0 bottom-0 z-50 rounded-t-xl p-6">
-            <XIcon @click="() => {block= null; closePopup()}" class="absolute top-6 right-6" />
+            <XIcon @click="() => { block = null; closePopup() }" class="absolute top-6 right-6" />
             <ArrowRight v-if="block" @click.prevent="block = null" class="absolute top-6 left-6 rotate-180" />
             <div class="flex flex-col items-center">
 
@@ -73,7 +74,7 @@ onMounted(async () => {
                 <MyScrollPicker v-if="block" class="my-7" v-model="picker_floor" :options="floors.map((e) => {
                     return {
                         name: floorOrder(e.floor),
-                        value: e.floor
+                        value: e.id
                     }
                 })" />
 

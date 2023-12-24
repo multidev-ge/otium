@@ -1,4 +1,7 @@
 {
+  "main": {
+    "brand": "Otium"
+  },
   "languages": {
     "en": "En",
     "ka": "Ge"
