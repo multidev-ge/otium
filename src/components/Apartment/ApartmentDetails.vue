@@ -6,6 +6,7 @@ import { useI18n } from "vue-i18n"
 import useApartments from "../../composables/useApartments";
 import ContactForm from "../Contact/ContactForm.vue";
 import XIcon from "@/assets/icons/xIcon.vue"
+import Checked from "../../assets/icons/Checked.vue";
 const { t } = useI18n({ useScope: 'global' })
 const { flat } = useApartments()
 const fomSubmitedSuccessfully = ref(false)
@@ -53,12 +54,12 @@ watch(fomSubmitedSuccessfully, () => {
               <XIcon @click.prevent="hideSuccessAlert" class="absolute top-6 right-6 cursor-pointer" />
             </div>
             <div class="">
-              <h2 class="font-semibold text-2xl">Thank You!</h2>
+              <h2 class="font-semibold text-2xl">{{ t("phrases.thanks") }}</h2>
             </div>
-            <div class="mt-2">
-              <p>Our sales will contact you soon</p>
+            <div class="mt-2 flex justify-start space-x-2">
+              <Checked />
+              <p>{{ t("phrases.contact_back") }}</p>
             </div>
-
           </div>
         </div>
       </div>

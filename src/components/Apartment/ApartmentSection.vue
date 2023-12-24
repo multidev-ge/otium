@@ -15,7 +15,7 @@ const { t } = useI18n({ useScope: 'global' })
     <ApartmentPlan :currentRoom="currentRoom" :rooms="rooms"
       class="xl:ml-1 xl:mr-8 max-xl:order-1 max-xl:mt-14 max-xl:mb-7" />
     <ApartmentRoomSelector 
-      class="max-xl:order-3 max-xl:mt-20" />
+      class="max-xl:order-3 max-xl:mt-20" :currentRoom="currentRoom" :rooms="rooms" />
   </div>
 </template>
 

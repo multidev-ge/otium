@@ -53,7 +53,7 @@
     "sold": "Sold"
   },
   "rooms": {
-    "kitchen_living": "kitchen/living room",
+    "kitchen-living-room": "kitchen/living room",
     "hall": "Hall",
     "bedroom": "Bedroom",
     "terrace": "Terrace",
@@ -132,5 +132,9 @@
     "prices": "Prices",
     "sizes": "Sizes m²",
     "rooms": "Rooms"
+  },
+  "phrases": {
+    "thanks": "Thank You!",
+    "contact_back": "Our sales will contact you soon"
   }
 }
