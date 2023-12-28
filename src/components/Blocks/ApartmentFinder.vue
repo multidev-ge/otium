@@ -5,24 +5,30 @@ import RightPart from "@/components/apartmentFinderPage/rightPart.vue"
 import useApartments from "../../composables/useApartments"
 import useProjects from "../../composables/useProjects"
 import { useI18n } from "vue-i18n"
+// import { onMounted } from "vue"
+import { useStore } from "vuex"
 import { onMounted } from "vue";
-import { useStore } from "vuex";
 const { t } = useI18n({ useScope: "global" })
 
 const { sold, maxRooms, filterRooms, doubleSliderOptions, getFlats, twoChange, updateRooms, clearFilter } = useApartments()
 
-const { projects, blocks, floors, block_id, floor_id, project_id, getProjects, getBlocks } = useProjects()
+const { projects, blocks, floors, flats, block_id, floor_id, project_id, getProjects, getBlocks } = useProjects()
 
 const store = useStore()
 
 onMounted(async () => {
-    if (!projects.value?.length) {
-        store.dispatch('flats/getProjects')
+    if (!projects.value?.data?.length) {
+        await getProjects()
     }
-    // await getProjects()
-    await getBlocks()
-    await getFlats()
+    if (!blocks.value?.length) {
+        await getBlocks()
+    }
+    if (!flats.value?.data?.length) {
+        await getFlats()
+    }
 })
+
+
 </script>
 <template>
     <div class="md:flex justify-between mt-20 sm:max-2xl:mt-32 2xl:mt-40">

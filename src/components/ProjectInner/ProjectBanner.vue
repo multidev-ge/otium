@@ -23,15 +23,15 @@ const { openPopup, closePopup, showTooltip, hideTooltip } = functions
 
 const store = useStore()
 
-const original_floors = computed(() => store.getters['mainProject/floors'])
-const original_blocks = computed(() => store.getters['mainProject/blocks'])
+const main_floors = computed(() => store.getters['mainProject/floors'])
+const main_blocks = computed(() => store.getters['mainProject/blocks'])
 
 const mappedFloors = computed(() => {
   return floors.map(floor => {
 
     let block_id = floor.pos === 'left' ? 1 : 2
 
-    const filtered_floor = original_floors.value.filter(f => f.floor === floor.floor && f.block_id === block_id)
+    const filtered_floor = main_floors.value.filter(f => f.floor === floor.floor && f.block_id === block_id)
     floor.details = [
       { name: t(`tooltip.apartments`), value: `${filtered_floor[0]?.apartments.free} / ${filtered_floor[0]?.apartments.total}` },
       { name: t(`tooltip.prices`), value: `$${filtered_floor[0]?.price.min} - $${filtered_floor[0]?.price.max}` },
@@ -50,9 +50,15 @@ function goTo(floor) {
 }
 
 onMounted(async () => {
+
   store.commit("mainProject/SET_STATE", { key: 'project_id', value: 1 })
-  store.dispatch("mainProject/getBlocks")
-  store.dispatch("mainProject/getFloors")
+
+  if (!main_blocks.value?.length) {
+    store.dispatch("mainProject/getBlocks")
+  }
+  if(!main_floors.value?.length){
+    store.dispatch("mainProject/getFloors")
+  }
 })
 </script>
 

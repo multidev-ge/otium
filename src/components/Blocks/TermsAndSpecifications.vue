@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from "vue-i18n";
 import rightArrow from '../../assets/icons/apartmentFinderPage/rightArrow.vue';
 defineProps(['content'])
-const route = useRoute()
+const route = useRoute() // There is no more route.params.id
 const { t } = useI18n({ useScope: 'global' })
 </script>
 <template>

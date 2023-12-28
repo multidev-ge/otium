@@ -10,18 +10,19 @@ import { Bars3Icon, XMarkIcon, } from "@heroicons/vue/24/outline"
 import LanguageSwitcher from "./Head/LanguageSwitcher.vue"
 
 const route = useRoute()
-const { headerInfo, getMenu, mainMenuLinks } = useHeader()
+const { headerInfo, getMenu, menu } = useHeader()
 const mobileMenuOpen = ref(false)
 const { t } = useI18n({ useScope: 'global' })
 
-function onHover(e){
-  const children = 
-  console.log(`entered ${{...children}}`)
+function onHover(e) {
+  const children =
+    console.log(`entered ${{ ...children }}`)
 }
 
-onMounted(() => {
+if(!menu.value?.length){
   getMenu()
-})
+}
+
 </script>
 <template>
   <header class="bg-white">
@@ -39,19 +40,20 @@ onMounted(() => {
         </button>
       </div>
       <div class="hidden lg:flex lg:gap-x-3">
-        <router-link v-for="item in mainMenuLinks" class="hover:text-[#883F7C] transition-colors"
-          :to="item.url"
-          :class="[
+        <router-link v-if="menu?.length" v-for="item in menu" class="hover:text-[#883F7C] transition-colors"
+          :to="item?.url" :class="[
             'text-lg font-medium leading-6',
-            { 'active-link': $route.path === item.url }
-          ]"
-          v-text="item?.title">
+            { 'active-link': $route.path === item?.url }
+          ]" v-text="item?.title">
         </router-link>
       </div>
       <div class="hidden lg:flex lg:flex-1 lg:justify-end gap-8">
-        <LanguageSwitcher class="hidden lg:flex lg:flex-1 lg:justify-end"/>
+        <LanguageSwitcher class="hidden lg:flex lg:flex-1 lg:justify-end" />
         <router-link to="/apartment-finder">
-          <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center hover:bg-black hover:text-white transition-colors" @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`,`invert`)" @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`,`invert-0`)">
+          <div
+            class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center hover:bg-black hover:text-white transition-colors"
+            @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`, `invert`)"
+            @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`, `invert-0`)">
             <button class="flex" v-text="t('menu.FYA')" />
             <!-- <img src="@/assets/icons/arrow-right.svg" class="stroke-white" alt=""> -->
             <arrowRight />
@@ -77,16 +79,16 @@ onMounted(() => {
           <div class="-my-6 divide-y divide-gray-500/10 justify-center grid">
             <div class="space-y-2 py-6">
               <div class="grid justify-center gap-y-4">
-                <router-link v-for="(link, index) in mainMenuLinks"
-                  :key="index"
-                  :to="link.url"
+                <router-link v-for="(link, index) in menu" :key="index" :to="link.url"
                   class="-mx-3 flex justify-center rounded-lg px-3 py-2 text-lg font-medium leading-7 text-[#000000]"
                   :class="{ 'text-[#88407c]': route.path === link.url }" v-text="link.title" />
                 <LanguageSwitcher class="flex w-full lg:hidden lg:flex-1 justify-center " />
               </div>
               <div class="pt-8">
                 <router-link to="/apartment-finder">
-                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-centerhover:bg-black hover:text-white" @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`,`invert`)" @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`,`invert-0`)">
+                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-centerhover:bg-black hover:text-white"
+                    @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`, `invert`)"
+                    @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`, `invert-0`)">
                     <button class="flex text-[#554242]" v-text="t('menu.FYA')" />
                     <arrowRight />
                   </div>
@@ -103,6 +105,7 @@ onMounted(() => {
 .hovered {
   background: black;
 }
+
 .active-link {
   color: #88407c;
   /* You can replace 'red' with your desired shade of red */

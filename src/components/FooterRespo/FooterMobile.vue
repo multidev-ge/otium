@@ -1,33 +1,32 @@
 <script setup>
-import { onMounted } from "vue"
 import { useI18n } from "vue-i18n"
 import useFooter from "@/composables/useFooter"
 import useHeader from "@/composables/useHeader"
 defineProps(['content'])
-const { headerInfo, getMenu, mainMenuLinks } = useHeader();
+const { menu } = useHeader()
 const { FooterInfo, contactFormData, submitContactForm } = useFooter();
 const { t } = useI18n({ useScope: 'global' })
-onMounted(()=> getMenu())
+
 </script>
 <template>
   <footer class="bg-[#000000] mt-12">
-    <div class="mx-auto justify-between w-full py-20 container">
-      <div class="md:flex gap-8">
-        <div class="mb-6 md:mb-0 w-[45%] px-4">
+    <div class="container mx-auto justify-between w-full py-20">
+      <div class="xl:flex gap-8">
+        <div class="mb-6 xl:mb-0 w-[45%] px-4">
           <h2 class="text-[#FFFFFF] text-[32px] font-medium leading-10	">
             {{ t("footer.contact") }}
           </h2>
         </div>
 
-        <div class="md:px-4 w-full">
-          <form @submit.prevent="submitContactForm" class="md:flex md:gap-14 justify-between gap-4 px-4">
-            <div class="md:w-1/3 mb-7 md:mb-0">
+        <div class="xl:px-4 w-full">
+          <form @submit.prevent="submitContactForm" class="w-full flex flex-col xl:flex-row gap-4 xl:gap-14 justify-between px-4">
+            <div class="xl:w-1/3 mb-7 xl:mb-0">
               <label for="text" class="block text-base font-medium text-[#FFFFFF99]">{{ t("formLabels.name") }}</label>
               <input v-model="contactFormData.name" id="text" type="text"
                 class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg"
                 required autocomplete="name" />
             </div>
-            <div class="md:w-1/3 mb-12 md:mb-0">
+            <div class="xl:w-1/3 mb-12 xl:mb-0">
               <label for="tel" class="block text-base font-medium text-[#FFFFFF99]">{{ t("footer.phone") }}</label>
               <input v-model="contactFormData.phoneNumber" id="tel" type="tel"
                 class="border-[#FFFFFF4D] block w-full bg-black outline-0 focus:outline-none text-white border-b-2 text-lg"
@@ -35,20 +34,20 @@ onMounted(()=> getMenu())
             </div>
 
             <button type="submit"
-              class="flex gap-2 sm:w-full md:pt-3 px-6 py-3 w-full justify-center md:mt-1 md:px-14 text-base font-medium text-center text-[#221C32] rounded-xl bg-white hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+              class="flex gap-2 sm:w-full xl:pt-3 px-6 py-3 w-full justify-center xl:mt-1 xl:px-14 text-base font-medium text-center text-[#221C32] rounded-xl bg-white hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
               {{ t("footer.submit") }}
               <component class="mt-1" :is="FooterInfo[0].Footercomponents.icon" />
             </button>
           </form>
-          <div class="md:flex justify-between pt-16 pb-14">
-            <div class="md:w-1/3 px-4">
+          <div class="xl:flex justify-between pt-16 pb-14">
+            <div class="xl:w-1/3 px-4">
               <div class="gap-2 flex">
                 <component class="" :is="FooterInfo[0].Footercomponents.icon3" />
                 <p class="text-sm text-[#FFFFFF99]">
                   {{ t("footer.address") }}
                 </p>
               </div>
-              <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 md:w-44 mb-7 md:mb-0">
+              <p class="text-[16px] leading-[18px] text-[#FFFFFF99] pt-3 xl:w-44 mb-7 xl:mb-0">
                 {{ content?.address }}
               </p>
             </div>
@@ -76,6 +75,7 @@ onMounted(()=> getMenu())
                 </p>
               </div>
             </div>
+
           </div>
           <div class="">
             <h2 class="text-[#FFFFFF99] px-4 text-[14px] leading-[18px] font-medium">
@@ -103,12 +103,13 @@ onMounted(()=> getMenu())
                 </div>
               </a>
             </div>
-            <div class="grid grid-cols-2 gap-y-4 gap-x-8 md:gap-[76px] md:pl-28 pt-11 px-4">
-              <router-link v-for="item in mainMenuLinks" :to="item.url">
-                <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF] whitespace-nowrap">
-                  {{ item?.title }}
-                </a>
-              </router-link>
+            <div class="grid grid-cols-2 gap-y-4 gap-x-8 xl:gap-[76px] xl:pl-28 pt-11 px-4">
+              <router-link 
+                v-if="menu?.length"
+                v-for="item in menu"
+                :to="item?.url"
+                class="text-lg font-medium leading-6 text-[#FFFFFF] whitespace-nowrap"
+                v-text="item?.title" />
             </div>
             <div class="mt-14">
               <div class="relative justify-center flex ">
@@ -116,7 +117,7 @@ onMounted(()=> getMenu())
               </div>
               <div class="z-10 relative w-[137px] pl-4">
                 <router-link to="/">
-                  <img class="	" :src="FooterInfo[0].Footercomponents.otiumlogo" alt="" />
+                  <img class="" :src="FooterInfo[0].Footercomponents.otiumlogo" alt="" />
                 </router-link>
               </div>
             </div>
@@ -132,7 +133,7 @@ onMounted(()=> getMenu())
           <h2 class="text-[#61C5E2] text-lg font-bold	">{{ t("footer.growth_hunters") }}</h2>
         </div>
         <div class="justify-center flex pt-7">
-          <h2 class="text-[#FFFFFF] text-lg md:pl-36">{{ t("footer.rights") }}</h2>
+          <h2 class="text-[#FFFFFF] text-lg xl:pl-36">{{ t("footer.rights") }}</h2>
         </div>
       </div>
     </div>
