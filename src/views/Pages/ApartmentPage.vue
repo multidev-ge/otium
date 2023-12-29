@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue"
+import { onMounted, watch, computed } from "vue"
 import { useI18n } from "vue-i18n"
 import useApartments from "@/composables/useApartments"
 import mainLayout from "@/layouts/mainLayout.vue"
@@ -10,7 +10,9 @@ import ApartmentFinder from "@/components/Blocks/ApartmentFinder.vue"
 const props = defineProps(['id'])
 const { t } = useI18n({ useScope: "global" })
 const { getFlat, flat } = useApartments()
+const flat_id = computed(() => props.id)
 onMounted(async () => { await getFlat(props.id) })
+watch(flat_id, async () => await getFlat(props.id))
 </script>
 <template>
   <mainLayout>
