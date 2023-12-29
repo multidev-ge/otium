@@ -36,7 +36,7 @@ export default {
 
 <template>
   <main-layout>
-    <div class="flex md:flex-row flex-col justify-between">
+    <div class="flex lg:flex-row flex-col justify-between">
       <FiltersPart />
       <RightPart>
         <template #mapedHeader>

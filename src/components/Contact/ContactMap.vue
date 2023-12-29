@@ -2,30 +2,30 @@
   <!-- Contact Map -->
   <div>
     <div id="map" class="h-full w-full rounded-xl"></div>
-    <div v-if="withFilter"
-         class="flex flex-col max-lg:gap-y-6 lg:justify-between p-6 lg:p-10 absolute top-4 max-lg:left-4 lg:right-4 bg-white w-80  lg:w-[464px]
+    <div v-if="withFilter" class="flex flex-col max-lg:gap-y-6 lg:justify-between p-6 lg:p-10 lg:px-6 absolute top-4 max-lg:left-4 lg:right-4 bg-white w-80  lg:w-[464px]
          h-fit lg:h-[608px] rounded-xl">
       <h3 class="text-2xl font-medium lg:text-3xl">
-        Some nice things around the building
+        <!-- Some nice things around the building -->
+        {{ title }}
       </h3>
       <div class="flex flex-wrap items-start gap-3 lg:gap-4">
-        <div @click="selected = index" v-for="(label, index) in labels" :key="index"
-             :class="{'bg-black text-white': index === selected}"
-             class="flex cursor-pointer items-center rounded-lg border border-black px-6 py-3 gap-x-1.5 lg:rounded-2xl">
-          <img class="w-3.5 h-3.5" :src="label.icon" :alt="label.title + ' icon'">
-          <p v-text="label.title" class="font-medium lg:text-xl"/>
+        <div v-if="categories?.length" v-for="category in categories" :key="category.id" @click="selected = category.id"
+          :class="{ 'bg-black text-white': category.id === selected }"
+          class="flex cursor-pointer items-center rounded-lg border border-black px-6 py-3 gap-x-1.5 lg:rounded-2xl">
+          <CycleSvg class="w-3.5 h-3.5" :fill="category?.color" :alt="category?.title + ' icon'" />
+          <p v-text="category?.title" class="font-medium lg:text-xl" />
         </div>
       </div>
       <div class="flex max-lg:flex-col max-lg:gap-y-3 lg:items-center lg:justify-between">
         <div class="flex items-center gap-x-1">
-          <img class="h-6 w-6" src="@/assets/icons/Map/near.svg" alt="near icon"/>
-          <span class="text-xl font-medium opacity-40">Near: </span>
-          <span class="text-xl font-medium underline">400m</span>
+          <img class="h-6 w-6" src="@/assets/icons/Map/near.svg" alt="near icon" />
+          <span class="text-xl font-medium opacity-40">{{ t("map.labels.near.label") }} </span>
+          <span class="text-xl font-medium underline">{{ t("map.labels.near.value") }}</span>
         </div>
         <div class="flex items-center gap-x-1">
-          <img class="h-6 w-6" src="@/assets/icons/Map/accessibility.svg" alt="accessibility icon"/>
-          <span class="text-xl font-medium opacity-40">Accessibility: </span>
-          <span class="text-xl font-medium underline">Yes</span>
+          <img class="h-6 w-6" src="@/assets/icons/Map/accessibility.svg" alt="accessibility icon" />
+          <span class="text-xl font-medium opacity-40">{{ t("map.labels.accessibility.label") }} </span>
+          <span class="text-xl font-medium underline">{{ t("map.labels.accessibility.value") }}</span>
         </div>
       </div>
     </div>
@@ -33,8 +33,8 @@
 </template>
 
 <script setup>
-import {ref, onMounted, watch} from "vue";
-import {Loader} from "@googlemaps/js-api-loader";
+import { ref, onMounted, watch } from "vue";
+import { Loader } from "@googlemaps/js-api-loader";
 import background from "@/assets/logos/Map/background.png";
 import logo from "@/assets/logos/Map/logo.png";
 import super_markets from "@/assets/icons/Map/super_markets.svg";
@@ -43,13 +43,20 @@ import transport from "@/assets/icons/Map/transport.svg";
 import kindergarten from "@/assets/icons/Map/kindergarten.svg";
 import restaurants from "@/assets/icons/Map/restaurants.svg";
 import park from "@/assets/icons/Map/park.svg";
+import CycleSvg from "../../assets/icons/Map/CyrcleSvg.vue";
+import { useI18n } from "vue-i18n";
+import useGoogleMap from "@/composables/useGoogleMap"
 
-const {withFilter} = defineProps({
+const { withFilter } = defineProps({
   withFilter: {
     type: Boolean,
     default: false
   }
 })
+
+const { t } = useI18n({ useScope: 'global' })
+
+const { title, categories, getMap } = useGoogleMap()
 
 const labels = [
   {
@@ -95,16 +102,17 @@ watch(selected, (value, oldValue) => {
 });
 
 onMounted(() => {
+  getMap()
   const loader = new Loader({
     apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     version: "weekly",
   });
 
   loader.load().then(async () => {
-    const {Map} = await google.maps.importLibrary("maps");
+    const { Map } = await google.maps.importLibrary("maps");
 
     map.value = new Map(document.getElementById("map"), {
-      center: {lat: 41.7721719, lng: 44.7795627},
+      center: { lat: 41.7721719, lng: 44.7795627 },
       disableDefaultUI: true,
       zoom: 12,
       styles: [
@@ -278,7 +286,7 @@ onMounted(() => {
 
     // Add a background for the logo.
     new google.maps.Marker({
-      position: {lat: 41.7721719, lng: 44.7795627},
+      position: { lat: 41.7721719, lng: 44.7795627 },
       map: map.value,
       icon: {
         url: background,
@@ -296,7 +304,7 @@ onMounted(() => {
 
     // Add a logo to the map.
     new google.maps.Marker({
-      position: {lat: 41.7721719, lng: 44.7795627},
+      position: { lat: 41.7721719, lng: 44.7795627 },
       map: map.value,
       icon: {
         url: logo,
@@ -307,7 +315,7 @@ onMounted(() => {
 
     if (withFilter) {
       // Generate random 100 markers for each category.
-      const centerCoordinates = {lat: 41.7721719, lng: 44.7795627};
+      const centerCoordinates = { lat: 41.7721719, lng: 44.7795627 };
 
       labels.forEach((label, i) => {
         for (let j = 0; j < 100; j++) {
@@ -315,7 +323,7 @@ onMounted(() => {
           const randomLng = centerCoordinates.lng + (Math.random() - 0.5);
 
           const marker = new google.maps.Marker({
-            position: {lat: randomLat, lng: randomLng},
+            position: { lat: randomLat, lng: randomLng },
             map: map.value,
             visible: false,
             title: label.title,
@@ -339,7 +347,9 @@ a[href^="https://maps.google.com/maps"] {
   display: none !important
 }
 
-.gmnoprint a, .gmnoprint span, .gm-style-cc {
+.gmnoprint a,
+.gmnoprint span,
+.gm-style-cc {
   display: none;
 }
 

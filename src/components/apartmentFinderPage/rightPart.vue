@@ -26,14 +26,14 @@ export default {
 }
 </script>
 <template>
-  <div class="hidden md:flex  flex-col w-3/5 font-medium">
+  <div class="hidden lg:flex  flex-col w-3/5 font-medium">
     <slot name="mapedHeader"></slot>
     <div class="overflow-x-auto">
       <div class="inline-block min-w-full">
         <div class="overflow-hidden">
           <table class="min-w-full text-left">
             <thead class="">
-              <tr class="text-xl opacity-40 md:visible invisible">
+              <tr class="text-xl opacity-40 lg:visible invisible">
                 <th v-for="key in [
                   'flat',
                   'floor',
@@ -86,7 +86,7 @@ export default {
     </div>
   </div>
   <!-- Mobile -->
-  <TransitionGroup name="list" tag="div" class="md:hidden">
+  <TransitionGroup name="list" tag="div" class="lg:hidden">
     <div class="flex flex-col w-100 mx-auto rounded-lg border mb-5 border-[#9999994D] mt-10" v-for="item in flats.data"
       :key="item?.id">
       <RouterLink :to="{ name: 'Apartment', params: { id: item.id } }">

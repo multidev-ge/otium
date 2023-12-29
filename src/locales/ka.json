@@ -91,6 +91,18 @@
     "title": "მედია",
     "similar": "მსგავსი სიახლეები"
   },
+  "map": {
+    "labels": {
+      "near": {
+        "label": "რადიუსი:",
+        "value": "400მ"
+      },
+      "accessibility": {
+        "label": "ადაპტირებული:",
+        "value": "დიახ"
+      }
+    }
+  },
   "contact": {
     "phone": "ტელეფონი",
     "email": "ელ. ფოსტა",

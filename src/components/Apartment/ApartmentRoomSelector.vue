@@ -60,7 +60,7 @@ export default {
           :class="{ 'text-[#7B9F89] opacity-80': /* currentRoom === index + 1 } */ false}" />
       </div>
 
-      <p class="text-xl font-medium leading-8" :class="{ 'text-[#7B9F89]': currentRoom === index + 1 }"
+      <p class="text-xl font-medium leading-8" :class="{ 'text-[#7B9F89]': /** currentRoom === index + 1 */ false}"
         v-text="t('dimentions.sqmeter', { amount: area })" />
     </div>
   </div>
