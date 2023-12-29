@@ -52,7 +52,7 @@ watch(fomSubmitedSuccessfully, () => {
 </script>
 
 <template>
-  <div class="flex sm:max-xl:w-3/5 flex-col justify-start xl:py-14">
+  <div class="flex xl:w-3/5 flex-col justify-start xl:py-14">
     <Teleport to="body">
       <div v-if="!!fomSubmitedSuccessfully" class="hidden md:block absolute inset-0 bg-black bg-opacity-50">
         <div class="w-full h-full flex content-center items-center justify-center">
@@ -103,7 +103,7 @@ watch(fomSubmitedSuccessfully, () => {
       </contact-form>
 
       <a href="#" v-if="flat?.current?.pdf" @click.prevent="downloadPdf"
-        class="hover:brightness-90 transition duration-100 ease-in-out lg:w-fit whitespace-nowrap bg-[#F0EEEC] flex items-center gap-x-1.5 px-6 py-3 rounded-2xl font-medium leading-6">
+        class="w-full hover:brightness-90 transition duration-100 ease-in-out whitespace-nowrap bg-[#F0EEEC] flex items-center justify-center space-x-2 gap-x-1.5 px-6 py-3 rounded-2xl font-medium leading-6">
         {{ t('buttons.DownloadPdf') }}
         <apartment-download-icon />
       </a>
