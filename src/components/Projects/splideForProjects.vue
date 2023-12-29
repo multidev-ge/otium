@@ -68,14 +68,16 @@ onMounted(() => useTitle(`${t("projects.title")} - ${t('main.brand')}`))
                     <router-link :to="{ name: 'Project', params: { id: project?.id } }"
                       class="bg-[#F0EEEC] flex items-center gap-3 px-6 py-3 justify-center  rounded-2xl mb-7 ">{{ t("projects.more") }}<right-arrow /></router-link>
                   </div>
-                  <img class="2xl:w-2/4 2xl:flex hidden" alt="" :src="project?.image_url">
+                  <div class="2xl:w-3/4 2xl:flex hidden">
+                    <img class="object-contain aspect-auto" alt="" :src="project?.image_url">
+                  </div>
                 </div>
               </div>
             </SplideSlide>
           </SplideTrack>
         </div>
         <div class=" flex  max-w-md relative items-center  justify-between">
-          <p class="text-xl mr- 2xl:w-auto w-1/2">{{ t("projects.next") }}</p>
+          <p class="text-xl mr-4 2xl:w-auto w-1/2">{{ t("projects.next") }}</p>
           <div class="splide__arrows !flex relative pt-24">
             <button class="splide__arrow splide__arrow--prev !hidden">{{ t("projects.prev") }}</button>
             <button class="splide__arrow !bg-black !w-12 !h-12 text-xl splide__arrow--next">
