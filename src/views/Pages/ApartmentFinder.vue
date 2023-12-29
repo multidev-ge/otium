@@ -46,7 +46,7 @@ export default {
           <div class="relative mb-4">
             <img class="w-full h-full rounded-xl" src="../../assets/images/01_00002.jpg">
             <div v-show="blocks?.length && project_id" v-for="f in blocks"
-              class="lg:pointer-events-auto absolute opacity-50 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
+              class="pointer-events-auto absolute opacity-50 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
               :class="{ 'bg-[#FFFFFF]': f.block.id == block_id }" @click="blockClicked(f)" @touchstart="blockClicked(f)" :style="{
                 width: f.width,
                 height: f.height,
