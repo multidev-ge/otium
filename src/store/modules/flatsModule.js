@@ -157,7 +157,12 @@ const flatsModule = {
             const { data } = await axios.get(`flats/${id}`)
             commit("SET_STATE", { key: "flat", value: data })
         },
-
+        async getProject({ commit, getters }, id){
+            const { data } = await axios.get(`projects/${id}`, {
+                per_page: getters.per_page
+            })
+            commit("SET_STATE", {key: "project", value: data.current })
+        }
     }
 }
 
