@@ -31,8 +31,8 @@ onMounted(async () => {
 
 </script>
 <template>
-    <div class="lg:flex justify-between mt-20 sm:max-2xl:mt-32 2xl:mt-40">
-        <div class="w-11/12 lg:w-1/6 lg:mx-0 mx-auto flex flex-col font-medium  gap-10">
+    <div class="w-full flex flex-col lg:flex-row justify-between gap-10">
+        <div class="w-full lg:w-1/6 mx-auto flex flex-col font-medium gap-10">
             <p class="text-4xl ">{{ t("filters.title") }}</p>
             <div class="flex flex-col gap-3">
                 <label class="text-xl font-normal" for="project">{{ t("filters.project") }}</label>
@@ -70,7 +70,7 @@ onMounted(async () => {
                 <select v-model="floor_id" :disabled="!floors?.length || !block_id"
                     class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
                     :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
-                    <option :value="null" disabled>{{ t("filters.floor") }}</option>
+                    <option :value="null">{{ t("filters.floor") }}</option>
                     <option v-for="floor in floors" :value="floor?.id" :key="floor?.id">{{ floor?.floor }}</option>
                 </select>
             </div>
@@ -101,6 +101,10 @@ onMounted(async () => {
             <p @click="clearFilter" class="underline opacity-40 text-base cursor-pointer">{{ t('filters.clear') }}</p>
         </div>
         <!-- <FiltersPart /> -->
-        <RightPart />
+        <RightPart class="w-full lg:w-4/6 lg:pl-4 flex flex-col">
+            <template #mapedHeader>
+                <slot name="mapedHeader"></slot>    
+            </template>
+        </RightPart>
     </div>
 </template>
