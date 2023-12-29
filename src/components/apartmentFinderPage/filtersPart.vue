@@ -103,7 +103,7 @@ export default {
 
 </script>
 <template>
-  <div class="md:w-1/6 w-11/12 md:mx-0 mx-auto flex flex-col font-medium  gap-10">
+  <div class="lg:w-1/6 w-11/12 lg:mx-0 mx-auto flex flex-col font-medium  gap-10">
     <p class="text-4xl ">{{ t("filters.title") }}</p>
     <div class="flex flex-col gap-3">
       <label class="text-xl font-normal" for="project">{{ t("filters.project") }}</label>

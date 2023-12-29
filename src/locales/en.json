@@ -91,6 +91,18 @@
     "title": "Media",
     "similar": "Similar news"
   },
+  "map": {
+    "labels": {
+      "near": {
+        "label": "Near:",
+        "value": "400m"
+      },
+      "accessibility": {
+        "label": "Accessibility:",
+        "value": "Yes"
+      }
+    }
+  },
   "contact": {
     "phone": "Phone",
     "email": "Email",
