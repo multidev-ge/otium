@@ -32,6 +32,7 @@ const mappedFloors = computed(() => {
     let block_id = floor.pos === 'left' ? 1 : 2
 
     const filtered_floor = main_floors.value.filter(f => f.floor === floor.floor && f.block_id === block_id)
+    
     floor.details = [
       { name: t(`tooltip.apartments`), value: `${filtered_floor[0]?.apartments.free} / ${filtered_floor[0]?.apartments.total}` },
       { name: t(`tooltip.prices`), value: `$${filtered_floor[0]?.price.min} - $${filtered_floor[0]?.price.max}` },
@@ -46,6 +47,7 @@ const mappedFloors = computed(() => {
 })
 
 function goTo(floor) {
+  console.log(floor)
   router.push({ name: "Floor", params: { id: floor } })
 }
 
@@ -56,7 +58,7 @@ onMounted(async () => {
   if (!main_blocks.value?.length) {
     store.dispatch("mainProject/getBlocks")
   }
-  if(!main_floors.value?.length){
+  if (!main_floors.value?.length) {
     store.dispatch("mainProject/getFloors")
   }
 })
@@ -66,8 +68,8 @@ onMounted(async () => {
   <div class="relative">
     <img class="w-full h-full rounded-xl" src="../../assets/images/01_00001.jpg">
     <div v-for="f in mappedFloors"
-      class="pointer-events-none lg:pointer-events-auto absolute opacity-80 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
-      @click="goTo(f?.id)" @mouseover="showTooltip(f)" @mouseleave="hideTooltip" :style="{
+      class="pointer-events-auto absolute opacity-80 cursor-pointer hover:bg-[#FFFFFF] transition duration-300"
+      @click="goTo(f?.id)" @touched="goTo(f?.id)" @mouseover="showTooltip(f)" @mouseleave="hideTooltip" :style="{
         width: f.width,
         height: f.height,
         clipPath: `polygon(${f.points})`,
@@ -80,8 +82,6 @@ onMounted(async () => {
       (currentFloor.pos === 'right') ? 'rightTooltip' : 'leftTooltip'
     ]" :style="{
   top: currentFloor.tooltip_pos.top,
-  // left: (currentFloor.pos === 'left') ? currentFloor.tooltip_pos.left : 'auto',
-  // right: (currentFloor.pos === 'right') ? currentFloor.tooltip_pos.right : 'auto',
   left: currentFloor.tooltip_pos.left,
 }">
       <h3 class="pb-6 text-xl font-medium">{{ currentFloor.floor }} {{ t("tooltip.floor") }}</h3>
@@ -91,7 +91,6 @@ onMounted(async () => {
           <h4 class="opacity-40">{{ det.name }}</h4>
           <h4>{{ det.value }}</h4>
         </div>
-
       </div>
     </div>
   </div>
