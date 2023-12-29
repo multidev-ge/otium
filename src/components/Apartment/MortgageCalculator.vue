@@ -39,7 +39,7 @@ const calculate = async () => {
 const currentYear = (new Date()).getFullYear()
 const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + (i * step))
 
-const info = ref()
+const info = ref(null)
 
 
 onMounted(async () => {
@@ -61,7 +61,7 @@ onMounted(async () => {
     </div>
 
     <div class="order-3 p-4 xl:p-16 flex max-xl:flex-col max-xl:gap-y-5 items-center gap-x-6 max-xl:mt-7">
-      <a class="max-sm:w-full cursor-pointer transition duration-100 ease-in-out hover:brightness-90" target="_blank"
+      <a v-if="info?.data?.bog_button" class="max-sm:w-full cursor-pointer transition duration-100 ease-in-out hover:brightness-90" target="_blank"
         href="https://bankofgeorgia.ge/ka/retail/loans/mortgage/mortgage-application">
         <div class="xl:relative flex items-center py-4 xl:py-8 pl-10 xl:pl-6 pr-20 xl:pr-12 bg-[#FCE1D3] rounded-xl">
           <div class="flex gap-x-4 items-center">
@@ -72,7 +72,7 @@ onMounted(async () => {
         </div>
       </a>
 
-      <a class="max-sm:w-full cursor-pointer transition duration-100 ease-in-out hover:brightness-90" target="_blank"
+      <a v-if="info?.data?.tbc_button" class="max-sm:w-full cursor-pointer transition duration-100 ease-in-out hover:brightness-90" target="_blank"
         href="https://tbcmortgage.ge/?utm_source=google&utm_medium=search_keyword&utm_campaign=tbcmortgage_general&utm_content=mainkeywords&gad=1&gclid=Cj0KCQjwi7GnBhDXARIsAFLvH4mgkdxtROzPQkwxdd07hEBVsQJBPCsAL5xW9bHiCyBuNCK9gf8j-9UaAuc1EALw_wcB">
         <div class="xl:relative flex  items-center py-4 xl:py-8 pl-10 xl:pl-6 pr-20 xl:pr-12 bg-[#E5F7FD] rounded-xl">
           <div class="flex gap-x-4 items-center">
