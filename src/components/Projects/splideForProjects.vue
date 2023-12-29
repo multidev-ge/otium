@@ -52,14 +52,14 @@ onMounted(() => useTitle(`${t("projects.title")} - ${t('main.brand')}`))
           <SplideTrack>
             <SplideSlide v-for="(project) in content">
               <div class="flex">
-                <div class=" flex md:flex-row flex-col md:w-full justify-between">
-                  <div class="md:w-2/6 flex flex-col md:items-start">
-                    <p class="font-medium text-5xl md:text-8xl md:mb-12 mb-7">{{ t("projects.title") }}</p>
+                <div class=" flex 2xl:flex-row flex-col 2xl:w-full justify-between">
+                  <div class="2xl:w-2/6 flex flex-col 2xl:items-start">
+                    <p class="font-medium text-5xl 2xl:text-8xl 2xl:mb-12 mb-7">{{ t("projects.title") }}</p>
                     <div class="gap-7 flex flex-col mb-6 ">
                       <p class="text-4xl font">{{ project?.title }}</p>
-                      <img class="md:hidden" alt="" :src="project?.image_url">
+                      <img class="2xl:hidden" alt="" :src="project?.image_url">
                       <ProjectInfo :icon="AddressIcon" :icon-name="t('projects.address')" :value="project?.address" />
-                      <div class="flex md:flex-col justify-between gap-7">
+                      <div class="flex 2xl:flex-col justify-between gap-7">
                         <ProjectInfo :icon="HomeIcon" :icon-name="t('projects.sale')"
                           :value="`${project?.apartments_left} ${t('projects.left')}`" />
                         <ProjectInfo :icon="StatusIcon" :icon-name="t('projects.status')" :value="project?.status" />
@@ -68,21 +68,21 @@ onMounted(() => useTitle(`${t("projects.title")} - ${t('main.brand')}`))
                     <router-link :to="{ name: 'Project', params: { id: project?.id } }"
                       class="bg-[#F0EEEC] flex items-center gap-3 px-6 py-3 justify-center  rounded-2xl mb-7 ">{{ t("projects.more") }}<right-arrow /></router-link>
                   </div>
-                  <img class="md:w-2/4 md:flex hidden" alt="" :src="project?.image_url">
+                  <img class="2xl:w-2/4 2xl:flex hidden" alt="" :src="project?.image_url">
                 </div>
               </div>
             </SplideSlide>
           </SplideTrack>
         </div>
         <div class=" flex  max-w-md relative items-center  justify-between">
-          <p class="text-xl mr- md:w-auto w-1/2">{{ t("projects.next") }}</p>
+          <p class="text-xl mr- 2xl:w-auto w-1/2">{{ t("projects.next") }}</p>
           <div class="splide__arrows !flex relative pt-24">
             <button class="splide__arrow splide__arrow--prev !hidden">{{ t("projects.prev") }}</button>
             <button class="splide__arrow !bg-black !w-12 !h-12 text-xl splide__arrow--next">
               <ArrowForProjectsSplide />
             </button>
           </div>
-          <p class="md:-ml-16 md:pl-0 pl-8 text-2xl"><span>{{ currentValue }}</span> / <span class="opacity-30">{{
+          <p class="2xl:-ml-16 2xl:pl-0 pl-8 text-2xl"><span>{{ currentValue }}</span> / <span class="opacity-30">{{
             content.length }}</span></p>
         </div>
       </div>

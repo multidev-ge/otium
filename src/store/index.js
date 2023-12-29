@@ -4,6 +4,7 @@ import contactModule from './modules/contactModule'
 import mediaModule from './modules/mediaModule'
 import projectsModule from './modules/projectsModule'
 import flatsModule from './modules/flatsModule'
+import menusModule from './modules/menus'
 
 const store = createStore({
     modules: {
@@ -14,6 +15,7 @@ const store = createStore({
         "flats": flatsModule,
         "mainProject": flatsModule,
         "floors": flatsModule,
+        "menus": menusModule,
     },
 })
 

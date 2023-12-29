@@ -47,9 +47,15 @@ function setFloor() {
 }
 
 onMounted(async () => {
+
     store.commit("flats/SET_STATE", { key: 'project_id', value: 1 })
-    store.dispatch("flats/getBlocks")
-    store.dispatch("flats/getFloors")
+    
+    if (!blocks.value?.length) {
+        await getBlocks()
+    }
+    if(!floors.value?.data?.length){
+        await getFloors()
+    }
 })
 </script>
 <template>

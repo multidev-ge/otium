@@ -1,8 +1,7 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import MainLayout from "@/layouts/mainLayout.vue";
-import SplideForProjects from "@/components/Projects/splideForProjects.vue";
-import { useI18n } from "vue-i18n";
+import SplideForProjects from "@/components/Projects/splideForProjects.vue"
 export default {
   components: {
     MainLayout,

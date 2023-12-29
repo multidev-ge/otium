@@ -7,8 +7,8 @@ const pagesModule = {
             page_id: null,
             pages: [],
             blocks: [],
-            slug: [],
-            title: [],
+            slug: '',
+            title: '',
         }
     },
     getters: {
@@ -22,18 +22,14 @@ const pagesModule = {
     },
     actions: {
         async getPage({ commit }, id) {
+            
             const { data: { data } } = await axios.get(`pages/${id}`)
-            // [
-            //     "page_id",
-            //     "blocks",
-            //     "slug",
-            //     "title"
-            // ].forEach(key => { commit("SET_STATE", { key: key, value: data[?`${key}`}]) })
             commit("SET_STATE", { key: "page_id", value: data?.id })
             commit("SET_STATE", { key: "blocks", value: data?.blocks })
             commit("SET_STATE", { key: "slug", value: data?.slug })
             commit("SET_STATE", { key: "title", value: data?.title })
         },
+
         async getPages({ commit }){
             const { data } = await axios.get('pages')
             commit("SET_STATE", { key: "pages", value: data })

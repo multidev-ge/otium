@@ -1,11 +1,8 @@
 <script>
-import { onMounted } from "vue"
 import { useI18n } from "vue-i18n"
 import { mapActions } from "vuex"
 import useFooter from "@/composables/useFooter"
 import useHeader from "@/composables/useHeader"
-
-
 export default {
   props: ['content'],
   computed: {
@@ -31,24 +28,22 @@ export default {
   },
   setup() {
 
-    const { headerInfo, getMenu, mainMenuLinks } = useHeader()
-    const { FooterInfo } = useFooter();
+    const { headerInfo, menu } = useHeader()
+    const { FooterInfo } = useFooter()
     const { t } = useI18n({ useScope: 'global' })
-    onMounted(() => {
-      getMenu()
-    })
+
     return {
       t,
       headerInfo,
       FooterInfo,
-      mainMenuLinks,
+      menu,
     }
   },
 }
 </script>
 <template>
   <footer class="bg-[#000000] w-full mt-12">
-    <div class="container mx-auto justify-between py-20">
+    <div class="container mx-auto py-20">
       <div class="block md:block xl:block gap-8">
         <div class="mb-6 md:mb-0 flex">
           <!-- <h2 class="text-[#FFFFFF] text-3xl"></h2> -->
@@ -140,41 +135,11 @@ export default {
                       <component class="" :is="FooterInfo[0].Footercomponents.mediaicon4" />
                     </div>
                   </a>
-                  
                 </div>
                 <div class="flex gap-[71px] lg:gap-[71px] md:pl-20 lg:pl-28 md:gap-10 flex-1 items-center justify-end whitespace-nowrap">
-                    <router-link v-for="item in mainMenuLinks" :to="item.url">
-                      <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                        {{ item?.title }}
-                      </a>
-                    </router-link>
-                    <!-- <router-link to="/projects">
-                      <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                        {{ headerInfo[0].headercomponents.title1 }}
-                      </a>
-                    </router-link>
-                    <router-link to="/media">
-                      <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                        {{ headerInfo[0].headercomponents.title2 }}
-                      </a>
-                    </router-link>
-                    <router-link to="/contact">
-                      <a href="#" class="text-lg font-medium leading-6 text-[#FFFFFF]">
-                        {{ headerInfo[0].headercomponents.title3 }}
-                      </a>
-                    </router-link> -->
+                    <router-link v-if="menu" v-for="item in menu" :to="item?.url" class="text-lg font-medium leading-6 text-[#FFFFFF]" v-text="item?.title"/>
                   </div>
-                <!-- <div class="hidden lg:flex lg:justify-between pt-3 items-center flex-1">
-                  <router-link v-for="item in mainMenuLinks" class="text-[#FFF] hover:text-[#883F7C] transition-colors uppercase" :to="item.url"
-                    :class="[
-                      'text-lg font-medium leading-6',
-                      { 'active-link': $route.path === item.url }
-                    ]" v-text="item?.title">
-                  </router-link>
-                </div> -->
               </div>
-
-
             </div>
           </div>
         </div>

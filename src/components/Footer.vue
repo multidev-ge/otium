@@ -1,8 +1,8 @@
 <script setup>
 import axios from '../interceptors/axios'
-import { ref, onMounted } from 'vue';
-import FooterDesktop from './FooterRespo/FooterDesktop.vue';
-import FooterMobile from './FooterRespo/FooterMobile.vue';
+import { ref, onMounted } from 'vue'
+import FooterDesktop from './FooterRespo/FooterDesktop.vue'
+import FooterMobile from './FooterRespo/FooterMobile.vue'
 
 
 const info = ref({})
@@ -18,8 +18,6 @@ onMounted(() => {
 
 </script>
 <template>
- <div> 
-  <FooterDesktop :content="info" class="md:block hidden" />
-  <FooterMobile :content="info" class="md:hidden block" />
- </div>
+  <FooterDesktop :content="info" class="hidden xl:block" />
+  <FooterMobile :content="info" class="block xl:hidden" />
 </template>
