@@ -21,7 +21,7 @@ const flatsModule = {
             flats: {},
             flat: {},
             page_id: 3,
-            per_page: 15,
+            per_page: 8,
             blocks: [],
             floors: [],
         }

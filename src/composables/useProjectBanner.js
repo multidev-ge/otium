@@ -312,6 +312,7 @@ export function useProjectBanner() {
     const store = useStore()
 
     const floors = processPoints([...leftBlock.value, ...rightBlock.value], planWidth, planHeight)
+    // console.log('floors:',floors)
 
     const blocks = processPoints([...mainBlocks.value], planWidthBlocks, planHeightBlocks)
 
@@ -323,14 +324,18 @@ export function useProjectBanner() {
         const YCoords = e.coords.filter((num, index) => index % 2 === 1)
         const XCoords = e.coords.filter((num, index) => index % 2 !== 1)
 
-        const x_pos = (e.pos === 'left') ? Math.max(...XCoords) : Math.min(...XCoords)
+        const x_pos_max = Math.max(...XCoords)
+        const x_pos_min = Math.min(...XCoords)
         const y_pos = Math.max(...YCoords)
 
-        e.tooltip_pos = {
-            // top: `${(y1 + y2) / (2 * planHeight) * 100}%`,
-            top: (e.pos === 'left') ? `${Math.round((y_pos) / (planHeight) * 100)}%` : `${Math.round((y_pos - 20) / (1.2 * planHeight) * 100)}%`,
-            left: (e.pos === 'left') ? `${Math.round((1.05 * x_pos + 20) / (planWidth) * 100)}%` : `${Math.round((x_pos - 20) / (1.8 * planWidth) * 100)}%`,
+        if(planWidth && planHeight){
+            e.tooltip_pos = {
+                // top: `${(y1 + y2) / (2 * planHeight) * 100}%`,
+                top: (e.pos === 'left') ? `${Math.round((y_pos) / (planHeight) * 100)}%` : `${Math.round((y_pos - 20) / (1.2 * planHeight) * 100)}%`,
+                left: (e.pos === 'left') ? `${Math.round((1.05 * x_pos_max + 20) / (planWidth) * 100)}%` : `${Math.round((1-(x_pos_max * 0.85 / planWidth)) * 100)}%`,
+            }
         }
+        
 
         // console.log(e)
         // console.log(x_pos)
