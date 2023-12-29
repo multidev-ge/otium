@@ -77,7 +77,7 @@ onMounted(async () => {
         left: f.left
       }">
     </div>
-    <div v-if="floorHovered" class="tooltip absolute h-60 p-8 bg-[#FFFFFF] rounded-xl duration-300" :class="[
+    <div v-if="floorHovered" class="tooltip hidden 2xl:block absolute h-60 p-8 bg-[#FFFFFF] rounded-xl duration-300" :class="[
       floorHovered ? 'text-opacity-100' : 'opacity-0',
       (currentFloor.pos === 'right') ? 'rightTooltip' : 'leftTooltip'
     ]" :style="{

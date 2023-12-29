@@ -7,7 +7,18 @@ const state = () => {
 }
 
 const getters = {
-    menu: ({ menu }) => menu
+    menu: ({ menu }) => menu.sort((a, b) => {
+
+        if(b.url === '/media') return -1
+
+        if (a.id < b.id) {
+            return -1
+        }
+        if (a.id > b.id) {
+            return 1
+        }
+        return 0
+    })
 }
 
 const mutations = {
