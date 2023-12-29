@@ -10,7 +10,7 @@ export default function useGoogleMap() {
     const getMap = async () => {
         await store.dispatch('maps/getMap')
 
-        console.log(categories.value)
+        // console.log(categories.value)
     }
     return {
         title,
