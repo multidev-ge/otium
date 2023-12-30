@@ -51,8 +51,7 @@ onMounted(() => useTitle(`${t("projects.title")} - ${t('main.brand')}`))
         <div>
           <SplideTrack>
             <SplideSlide v-for="(project) in content">
-              <div class="flex">
-                <div class=" flex 2xl:flex-row flex-col 2xl:w-full justify-between">
+                <div class="flex 2xl:flex-row flex-col 2xl:w-full justify-between">
                   <div class="2xl:w-2/6 flex flex-col 2xl:items-start">
                     <p class="font-medium text-5xl 2xl:text-8xl 2xl:mb-12 mb-7">{{ t("projects.title") }}</p>
                     <div class="gap-7 flex flex-col mb-6 ">
@@ -68,11 +67,10 @@ onMounted(() => useTitle(`${t("projects.title")} - ${t('main.brand')}`))
                     <router-link :to="{ name: 'Project', params: { id: project?.id } }"
                       class="bg-[#F0EEEC] flex items-center gap-3 px-6 py-3 justify-center  rounded-2xl mb-7 ">{{ t("projects.more") }}<right-arrow /></router-link>
                   </div>
-                  <div class="2xl:w-3/4 2xl:flex hidden">
+                  <div class="2xl:w-7/12 2xl:flex hidden">
                     <img class="object-contain aspect-auto" alt="" :src="project?.image_url">
                   </div>
                 </div>
-              </div>
             </SplideSlide>
           </SplideTrack>
         </div>
