@@ -45,9 +45,11 @@ onMounted(() => {
             <RouterLink class="w-full lg:w-2/6" :to="{ name: 'MediaInner', params: { id: media?.id } }">
               <img class="w-full h-auto rounded-lg" :src="media.image_url" alt="">
             </RouterLink>
-            <div class="w-full flex gap-2 flex-col ">
+            <div class="w-full flex flex-col h-full justify-between items-start">
               <p class="text-lg text-[#00000099]">{{ media?.category?.title }} // {{ media?.date }}</p>
-              <p class="text-2xl pb-5 leading-9">{{ media?.title }}</p>
+              <RouterLink :to="{ name: 'MediaInner', params: { id: media?.id } }">
+                <p class="text-2xl leading-9">{{ media?.title }}</p>
+              </RouterLink>
             </div>
             <div class="flex h-full w-auto items-end">
               <ArrowUpRight />
