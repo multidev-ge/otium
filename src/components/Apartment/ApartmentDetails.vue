@@ -52,7 +52,7 @@ watch(fomSubmitedSuccessfully, () => {
 </script>
 
 <template>
-  <div class="flex xl:w-3/5 flex-col justify-start xl:py-14">
+  <div class="flex flex-col justify-start xl:py-14">
     <Teleport to="body">
       <div v-if="!!fomSubmitedSuccessfully" class="hidden md:block absolute inset-0 bg-black bg-opacity-50">
         <div class="w-full h-full flex content-center items-center justify-center">
