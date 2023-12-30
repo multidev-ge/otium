@@ -11,7 +11,7 @@ defineProps({
 
 <template>
   <!-- Apartment Plan -->
-  <div class="relative w-full h-auto flex items-start justify-start">
+  <div class="relative w-full h-auto flex items-start justify-start mt-16 xl:mt-0">
     <img class="object-contain aspect-auto" :src="flat?.current?.image_url" alt="apartment plan">
     <!-- <apartment-room v-for="(room, index) in rooms" :room="room" :key="index" -->
       <!-- :display="currentRoom === index + 1 ? 'block' : undefined" /> -->
