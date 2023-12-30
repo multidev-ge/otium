@@ -7,7 +7,7 @@ const mediaModule = {
         return {
             active: null,
             activePage: null,
-            per_page: 15,
+            per_page: 8,
             media: {},
             similar: [],
             medias: [],
@@ -25,8 +25,24 @@ const mediaModule = {
         medias: ({ medias }) => medias,
         filteredMedias: ({ medias, active }) => medias.filter(media => media.category.id === active),
         categories: ({ categories }) => categories,
+        links: ({ medias: { links } }) => links,
+        isMore: ({ medias: { links } }) => !!links?.next,
+        activeRequestFilters: (state) => {
+            const options = {}
+            const filters = [
+                "per_page"
+            ]
+            filters.forEach((param) => { if (state[param]) { options[param] = state[param] } })
+            return options
+        },
     },
     mutations: {
+        "SET_STATE": (state, { key, value }) => state[key] = value,
+        "SET_MORE": (state, { key, value }) => {
+            state[key].data = state[key].data.concat(value.data)
+            state[key].links = value.links
+            state[key].meta = value.meta
+        },
         "SET_NEXT_PAGE": (state, payload) => state.next_page = payload,
         "SET_ACTIVE": (state, payload) => state.active = payload,
         "SET_ACTIVE_PAGE": (state, payload) => state.activePage = payload,
@@ -38,13 +54,12 @@ const mediaModule = {
     },
     actions: {
         async getMedias({ commit, getters }, more = false) {
-            const { data: { data, links } } = await axios.get('media', {
-                per_page: getters.per_page,
-                page: (!more) ? 1 : getters.activePage + 1
-            })
-            const { next } = links
-            commit("SET_NEXT_PAGE", next)
-            commit("SET_MEDIAS", { data: data, more: more })
+            const { data } = await axios.get('media', { params: { ...getters.activeRequestFilters } })
+
+            commit("SET_STATE", { key: "medias", value: data })
+            // const { next } = links
+            // commit("SET_NEXT_PAGE", next)
+            // commit("SET_MEDIAS", { data: data, more: more })
         },
         async getMedia({ commit }, id) {
             const { data: { data, similar } } = await axios.get(`media/${id}`)
@@ -52,14 +67,21 @@ const mediaModule = {
             commit("SET_MEDIA", data)
             commit("SET_SIMILAR", similar)
         },
+
         async getCategories({ commit, getters }) {
             const { data } = await axios.get('categories')
             commit("SET_CATEGORIES", data.data)
             commit("SET_ACTIVE", (getters.categories.length) ? getters.categories[0].id : null)
         },
-        async setActive({ commit }, id){
+
+        async setActive({ commit }, id) {
             commit('SET_ACTIVE', id)
-        }
+        },
+
+        async loadMore({ commit, getters }) {
+            const { data } = await axios.get(getters.links?.next, { params: { ...getters.activeRequestFilters } })
+            commit("SET_MORE", { key: "medias", value: data })
+        },
 
     }
 }

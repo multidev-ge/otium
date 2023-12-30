@@ -25,7 +25,7 @@ export default {
   <main-layout>
     <div class="w-full flex flex-col xl:flex-row justify-between xl:space-x-20">
       <left-side class="xl:w-9/12" :content="media" />
-      <right-part class="xl:w-4/12" :content="similar" />
+      <right-part class="xl:w-4/12 px-auto" :content="similar" />
     </div>
   </main-layout>
 </template>
