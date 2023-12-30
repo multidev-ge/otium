@@ -16,7 +16,9 @@ const { t } = useI18n({ useScope: 'global' })
             </RouterLink>
             <div class="w-full flex gap-2 flex-col ">
                 <p class="text-lg text-[#00000099]">{{ news?.category?.title }} // {{ news?.date }}</p>
-                <p class="text-2xl pb-5 leading-9">{{ news?.description }}</p>
+                <RouterLink class="w-full" :to="{ name: 'MediaInner', params: { id: news?.id } }">
+                <p class="text-2xl pb-5 leading-9">{{ news?.title }}</p>
+            </RouterLink>
             </div>
         </div>
     </section>

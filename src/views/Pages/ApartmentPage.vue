@@ -27,7 +27,7 @@ watch(flat_id, async () => await getFlat(props.id))
       </div>
       <ApartmentSection class="" />
       <MortgageCalculator class="mt-20 xl:mt-28" />
-      <ApartmentFinder />
+      <ApartmentFinder class="mt-20" />
     </div>
   </mainLayout>
 </template>

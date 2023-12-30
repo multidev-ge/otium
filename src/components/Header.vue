@@ -54,7 +54,7 @@ if(!menu.value?.length){
             class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center hover:bg-black hover:text-white transition-colors"
             @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`, `invert`)"
             @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`, `invert-0`)">
-            <button class="flex" v-text="t('menu.FYA')" />
+            <button class="flex items-center" v-text="t('menu.FYA')" />
             <!-- <img src="@/assets/icons/arrow-right.svg" class="stroke-white" alt=""> -->
             <arrowRight />
           </div>
@@ -86,7 +86,7 @@ if(!menu.value?.length){
               </div>
               <div class="pt-8">
                 <router-link to="/apartment-finder">
-                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-centerhover:bg-black hover:text-white"
+                  <div class="flex gap-2 bg-[#F0EEEC] px-6 py-3 rounded-2xl items-center hover:bg-black hover:text-white"
                     @mouseenter="e => e.target.querySelector('svg').setAttribute(`class`, `invert`)"
                     @mouseleave="e => e.target.querySelector('svg').setAttribute(`class`, `invert-0`)">
                     <button class="flex text-[#554242]" v-text="t('menu.FYA')" />
