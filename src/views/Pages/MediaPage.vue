@@ -11,7 +11,7 @@ export default {
 
   components: { MainLayout, ArrowDownIcon, MediaCard },
   computed: {
-    ...mapGetters('media', ['categories', 'active', 'filteredMedias', 'next_page'])
+    ...mapGetters('media', ['categories', 'active', 'filteredMedias', 'isMore'])
   },
   setup() {
     const { t } = useI18n({ useScope: "global" })
@@ -19,7 +19,7 @@ export default {
     return { t }
   },
   methods: {
-    ...mapActions('media', ['getCategories', 'getMedias', 'setActive'])
+    ...mapActions('media', ['getCategories', 'getMedias', 'setActive', 'loadMore'])
   },
   mounted() {
     
@@ -49,8 +49,8 @@ export default {
         <MediaCard v-for="data in filteredMedias" :data="data" />
       </div>
 
-      <button v-if="next_page" class="flex gap-1.5  mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl"
-        @click.prevent="getMedias(true)">
+      <button v-if="isMore" class="flex gap-1.5  mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl"
+        @click.prevent="loadMore()">
         More
         <ArrowDownIcon />
       </button>

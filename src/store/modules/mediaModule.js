@@ -7,7 +7,7 @@ const mediaModule = {
         return {
             active: null,
             activePage: null,
-            per_page: 8,
+            per_page: 5,
             media: {},
             similar: [],
             medias: [],
@@ -23,7 +23,7 @@ const mediaModule = {
         similar: ({ similar }) => similar,
         media: ({ media }) => media,
         medias: ({ medias }) => medias,
-        filteredMedias: ({ medias, active }) => medias.filter(media => media.category.id === active),
+        filteredMedias: ({ medias, active }) => (!active || active === 1) ? medias?.data : medias?.data?.filter(media => media?.category?.id == active),
         categories: ({ categories }) => categories,
         links: ({ medias: { links } }) => links,
         isMore: ({ medias: { links } }) => !!links?.next,

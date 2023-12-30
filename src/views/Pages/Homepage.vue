@@ -7,6 +7,7 @@ import ContactMap from "@/components/Contact/ContactMap.vue"
 import ApartmentFinder from "@/components/Blocks/ApartmentFinder.vue"
 import MortgageCalculator from "@/components/Apartment/MortgageCalculator.vue"
 import rightArrow from "../../assets/icons/apartmentFinderPage/rightArrow.vue"
+import ArrowUpRight from "../../assets/icons/arrow-up-right.vue"
 import usePages from "@/composables/usePages"
 import { useI18n } from "vue-i18n"
 import { useStore } from "vuex"
@@ -49,7 +50,7 @@ onMounted(() => {
               <p class="text-2xl pb-5 leading-9">{{ media?.title }}</p>
             </div>
             <div class="flex h-full w-auto items-end">
-              <rightArrow class="-rotate-45" />
+              <ArrowUpRight />
             </div>
 
           </div>
