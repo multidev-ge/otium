@@ -77,7 +77,11 @@ const flatsModule = {
     },
     mutations: {
         "SET_STATE": (state, { key, value }) => state[key] = value,
-        "SET_MORE": (state, { key, value }) => state[key].data = state[key].data.concat(value),
+        "SET_MORE": (state, { key, value }) => {
+            state[key].data = state[key].data.concat(value.data)
+            state[key].links = value.links
+            state[key].meta = value.meta
+        },
         "SET_PROJECT_ID": (state, payload) => state.project_id = payload,
         "SET_FLOOR": (state, payload) => state.floor = payload,
         "SET_ROOMS": (state, payload) => state.rooms = payload,
@@ -119,7 +123,7 @@ const flatsModule = {
         },
 
         async loadMore({ commit, getters }) {
-            const { data: { data, meta, links } } = await axios.get(getters.links?.next, { params: { ...getters.activeRequestFilters } })
+            const { data } = await axios.get(getters.links?.next, { params: { ...getters.activeRequestFilters } })
             commit("SET_MORE", { key: "flats", value: data })
         },
 
