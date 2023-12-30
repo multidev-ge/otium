@@ -32,7 +32,7 @@ onMounted(async () => {
 </script>
 <template>
     <div class="w-full flex flex-col lg:flex-row justify-between gap-10">
-        <div class="w-full lg:w-1/6 mx-auto flex flex-col font-medium gap-10">
+        <div class="w-full lg:w-1/6 mx-auto xl:mx-0 flex flex-col font-medium gap-10">
             <p class="text-4xl ">{{ t("filters.title") }}</p>
             <div class="flex flex-col gap-3">
                 <label class="text-xl font-normal" for="project">{{ t("filters.project") }}</label>
