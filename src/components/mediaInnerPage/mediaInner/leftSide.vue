@@ -28,7 +28,7 @@ export default {
       <div class="flex gap-5 flex-col">
         <img class="rounded-lg" :src="content?.image_url" alt="">
         <p class="text-[#00000099] font-medium text-xl">{{ content?.category?.title }} // {{ content?.date }}</p>
-        <PageTitle class="2xl:text-[64px]" :title="content?.title" />
+        <PageTitle class="2xl:text-[64px] mb-0 pb-0" :title="content?.title" />
 
         <component v-for="{data, type} in content?.blocks" :is="type" :content="data" :class="{'!text-xl !leading-6.5xl text-[#00000099] text-opacity-60': (type === 'paragraph')}"></component>
         
