@@ -17,13 +17,11 @@ defineProps({
     <p class="text-lg font-medium text-[#626262] md:mb-2">
       {{ data.category.title }}, {{ data.date }}
     </p>
-
     <RouterLink :to="`/media/${data.id}`">
       <div class="h-28 text-xl md:text-3xl font-medium text-[#000] truncate-last-line">
         {{ data.title }}
       </div>
     </RouterLink>
-
   </div>
 </template>
 
