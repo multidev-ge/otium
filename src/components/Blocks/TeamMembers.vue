@@ -5,9 +5,8 @@ defineProps(['content'])
   <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 mb-16">
     <div class="pb-7 xl:pb-0" v-for="item in content?.member">
       <div class="rounded-xl w-full h-auto">
-        <img class="rounded-xl xl:w-[304px] xl:h-[303px] object-cover" :src="`https://dashboard.otium.ge/uploads/${item?.image}`" 
+        <img class="rounded-xl xl:w-[304px] xl:h-[303px] object-cover grayscale" :src="`https://dashboard.otium.ge/uploads/${item?.image}`" 
         :style="{
-          filter: grayscale(1),
           'object-position': 'top'
         }"
         alt="Slide Image" />
