@@ -19,11 +19,14 @@ export default {
     return { t }
   },
   methods: {
-    ...mapActions('media', ['getCategories', 'getMedias', 'setActive', 'loadMore'])
+    ...mapActions('media', ['getCategories', 'getMedias', 'setActive', 'loadMore', 'setPerPage'])
   },
   mounted() {
     
     this.getCategories()
+
+    this.setPerPage(9)
+
     this.getMedias()
 
     useTitle(`${this.t("media.title")} - ${this.t('main.brand')}`)
@@ -49,7 +52,7 @@ export default {
         <MediaCard v-for="data in filteredMedias" :data="data" />
       </div>
 
-      <button v-if="isMore" class="flex gap-1.5  mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl"
+      <button v-if="isMore" class="flex gap-1.5  mx-auto px-6 py-3 bg-[#F0EEEC] font-medium text-base rounded-2xl items-center"
         @click.prevent="loadMore()">
         More
         <ArrowDownIcon />

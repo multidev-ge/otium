@@ -68,7 +68,7 @@ onMounted(() => useTitle(`${t("projects.title")} - ${t('main.brand')}`))
                       class="bg-[#F0EEEC] flex items-center gap-3 px-6 py-3 justify-center  rounded-2xl mb-7 ">{{ t("projects.more") }}<right-arrow /></router-link>
                   </div>
                   <div class="2xl:w-7/12 2xl:flex hidden">
-                    <img class="object-contain aspect-auto" alt="" :src="project?.image_url">
+                    <img class="object-contain aspect-auto object-top" alt="" :src="project?.image_url">
                   </div>
                 </div>
             </SplideSlide>
