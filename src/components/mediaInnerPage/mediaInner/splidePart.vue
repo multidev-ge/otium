@@ -22,7 +22,7 @@ const mainOptions = {
     <Splide class="w-full" :options="mainOptions" :has-track="false" aria-label="My Favorite Images">
       <SplideTrack>
         <SplideSlide v-for="img in content.images">
-          <img class="rounded-lg" :src="`https://dashboard.otium.ge/uploads/${img}`" alt="">
+          <img class="rounded-lg w-full" :src="`https://dashboard.otium.ge/uploads/${img}`" alt="">
         </SplideSlide>
       </SplideTrack>
       <div class="flex">
