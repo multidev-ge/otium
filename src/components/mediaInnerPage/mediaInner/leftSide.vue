@@ -3,6 +3,7 @@ import mediaInner from "@/composables/forMediaInner/mediaInner";
 import DoubleText from "@/components/mediaInnerPage/universalComponents/doubleText.vue";
 import SplidePart from "@/components/mediaInnerPage/mediaInner/splidePart.vue";
 import Paragraph from "../../Blocks/Paragraph.vue";
+import PageTitle from "../../../components/Headings/PageTitle.vue"
 import Slider from "../../Blocks/Slider.vue";
 export default {
   props: ['content'],
@@ -12,6 +13,7 @@ export default {
     SplidePart,
     'paragraph': Paragraph,
     'slider': Slider,
+    PageTitle,
   },
   setup(){
     const { currentPageInfo } = mediaInner()
@@ -26,8 +28,9 @@ export default {
       <div class="flex gap-5 flex-col">
         <img class="rounded-lg" :src="content?.image_url" alt="">
         <p class="text-[#00000099] font-medium text-xl">{{ content?.category?.title }} // {{ content?.date }}</p>
+        <PageTitle class="2xl:text-[64px]" :title="content?.title" />
 
-        <component v-for="{data, type} in content?.blocks" :is="type" :content="data"></component>
+        <component v-for="{data, type} in content?.blocks" :is="type" :content="data" :class="{'!text-xl !leading-6.5xl text-[#00000099] text-opacity-60': (type === 'paragraph')}"></component>
         
         <!-- <div class="flex flex-col lg:gap-10 gap-5">
           <p class="font-medium lg:text-6.5xl text-2xl leading-6.5xl ">{{ content?.title }}</p>
