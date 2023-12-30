@@ -11,7 +11,7 @@ const { t } = useI18n({ useScope: 'global' })
 <template>
   <div class="flex flex-col xl:flex-row relative justify-between gap-10">
     <h1 class="absolute xl:-top-6 text-3.5xl xl:text-4.5xl font-medium whitespace-nowrap" v-text="t('apartment.name', {number: flat?.current?.number})" />
-    <ApartmentDetails class="max-xl:order-2" />
+    <ApartmentDetails class="max-xl:order-2 xl:w-1/6" />
     <ApartmentPlan :currentRoom="currentRoom" :rooms="rooms" class="flex xl:flex-1" />
     <ApartmentRoomSelector 
       class="max-xl:order-3 max-xl:mt-20" :currentRoom="currentRoom" :rooms="rooms" />
