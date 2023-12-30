@@ -20,6 +20,7 @@ const isMore = computed(() => store.getters['media/isMore'])
 const loadMore = () => store.dispatch('media/loadMore')
 onMounted(() => {
   getPage()
+  store.dispatch('media/setPerPage', 5)
   store.dispatch('media/getMedias')
 })
 </script>

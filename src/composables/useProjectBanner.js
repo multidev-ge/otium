@@ -332,7 +332,7 @@ export function useProjectBanner() {
             e.tooltip_pos = {
                 // top: `${(y1 + y2) / (2 * planHeight) * 100}%`,
                 top: (e.pos === 'left') ? `${Math.round((y_pos) / (planHeight) * 100)}%` : `${Math.round((y_pos - 20) / (1.2 * planHeight) * 100)}%`,
-                left: (e.pos === 'left') ? `${Math.round((1.05 * x_pos_max + 20) / (planWidth) * 100)}%` : `${Math.round((1-(x_pos_max * 0.85 / planWidth)) * 100)}%`,
+                left: (e.pos === 'left') ? `${Math.round((1.05 * x_pos_max + 20) / (planWidth) * 100)}%` : `${Math.round((1-(x_pos_max * 0.78 / planWidth)) * 100)}%`,
             }
         }
         

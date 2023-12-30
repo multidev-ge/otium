@@ -83,6 +83,10 @@ const mediaModule = {
             commit("SET_MORE", { key: "medias", value: data })
         },
 
+        async setPerPage({ commit }, val) {
+             commit("SET_STATE", { key: "per_page", value: val })
+        },
+
     }
 }
 
