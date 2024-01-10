@@ -26,7 +26,7 @@ onMounted(() => {
 </script>
 <template>
   <MainLayout>
-    <PageTitle :title="t('home.title')" />
+    <PageTitle :title="title" />
     <div class="flex flex-col fa-1xlg:gap-40 gap-20">
       <!-- static componetns on homepage -->
       <ProjectBanner />
