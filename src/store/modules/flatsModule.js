@@ -84,7 +84,7 @@ const flatsModule = {
         },
         "SET_PROJECT_ID": (state, payload) => state.project_id = payload,
         "SET_FLOOR": (state, payload) => state.floor = payload,
-        "SET_ROOMS": (state, payload) => state.rooms = payload,
+        "SET_ROOMS": (state, payload) => (state.rooms != payload) ? state.rooms = payload : state.rooms = null,
         "SET_MIN_AREA": (state, payload) => state.min_area = payload,
         "SET_MAX_AREA": (state, payload) => state.max_area = payload,
         "SET_BLOCKS": (state, payload) => state.blocks = payload,

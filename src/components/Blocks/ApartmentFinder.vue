@@ -39,7 +39,7 @@ onMounted(async () => {
                 <select v-model="project_id" :disabled="!projects?.data?.length"
                     class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
                     :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
-                    <option :value="null" disabled>{{ t("filters.project") }}</option>
+                    <option :value="null">{{ t("filters.project") }}</option>
                     <option v-for="component in projects.data" :value="component?.id" :key="component?.id">{{
                         component.title }}</option>
                 </select>
@@ -49,7 +49,7 @@ onMounted(async () => {
                 <select v-model="block_id" :disabled="!blocks.length"
                     class="w-full py-3 rounded-md border-r-8 border-transparent px-2 text-lg outline outline-black outline-1 opacity-40"
                     :class="Array.from(projects, (project) => project.id).includes(project_id) ? 'opacity-100' : 'opacity-40'">
-                    <option :value="null" disabled>{{ t("filters.block") }}</option>
+                    <option :value="null">{{ t("filters.block") }}</option>
                     <option v-for="block in blocks" :value="block?.id" :key="block?.id">{{ block?.name }}</option>
                 </select>
             </div>
