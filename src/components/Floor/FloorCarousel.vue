@@ -9,7 +9,7 @@ const { floorNumber, blockLength } = defineProps({
   blockLength: { type: Number, required: true }
 })
 const isFeatured = (floor) => floorNumber === floorNumber + 3 - floor
-const isValid = (floor) => floor >= 2 && floor <= blockLength + 1
+const isValid = (floor) => floor >= 1 && floor <= blockLength + 1
 const screenWidth = ref(window.innerWidth)
 const updateScreenWidth = () => screenWidth.value = window.innerWidth
 onMounted(() => window.addEventListener('resize', updateScreenWidth))
@@ -37,7 +37,7 @@ onBeforeUnmount(() => window.removeEventListener('resize', updateScreenWidth))
 
         <floor-caret-up-icon v-if="isFeatured(floor)" @click="emit('previousFloor')"
           :fill="screenWidth < 1280 ? 'black' : undefined" class="rotate-180 cursor-pointer"
-          :disabled="floorNumber === 2" />
+          :disabled="floorNumber === 1" />
       </div>
 
     </div>
