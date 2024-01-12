@@ -118,6 +118,7 @@
     "backToFloor": "Back to floor",
     "allApartments": "All Apartments",
     "name": "Apartment №{number}",
+    "office": "Office №{number}",
     "size": "Size",
     "bedroom": "Bedroom",
     "price": "price"

@@ -118,6 +118,7 @@
     "backToFloor": "სართულზე დაბრუნება",
     "allApartments": "ყველა აპარტამენტი",
     "name": "აპარტამენტი №{number}",
+    "office": "ოფისი №{number}",
     "size": "ფართი",
     "bedroom": "საცხოვრებელი",
     "price": "ფასი"
