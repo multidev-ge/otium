@@ -83,22 +83,22 @@ const { t } = useI18n({ useScope: 'global' })
             </h2>
             <div class="flex gap-3 pt-3 px-4">
               <a href="#">
-                <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#923B80]">
                   <component class="" :is="FooterInfo[0].Footercomponents.mediaicon1" />
                 </div>
               </a>
               <a href="#">
-                <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#923B80]">
                   <component class="" :is="FooterInfo[0].Footercomponents.mediaicon2" />
                 </div>
               </a>
               <a href="#">
-                <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#923B80]">
                   <component class="" :is="FooterInfo[0].Footercomponents.mediaicon3" />
                 </div>
               </a>
               <a href="#">
-                <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#923B80]">
                   <component class="" :is="FooterInfo[0].Footercomponents.mediaicon4" />
                 </div>
               </a>

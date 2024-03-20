@@ -2,14 +2,7 @@
 import { Splide, SplideTrack, SplideSlide } from '@splidejs/vue-splide'
 import ArrowForProjectsSplide from "@/assets/icons/Projects/arrowForProjectsSplide.vue";
 import '@splidejs/vue-splide/css';
-const images = [
-    { src: "https://picsum.photos/200/300", alt: "1" },
-    { src: "https://picsum.photos/200/300", alt: "2" },
-    { src: "https://picsum.photos/200/300", alt: "2" },
-    { src: "https://picsum.photos/200/300", alt: "2" },
-    { src: "https://picsum.photos/200/300", alt: "2" },
-]
-defineProps()
+defineProps(['images'])
 const options = {
     type: 'slide',
     perPage: 1,
@@ -21,7 +14,7 @@ const options = {
 }
 </script>
 <template>
-    <Splide :options="options" aria-label="Main Gallery" :has-track="false">
+    <Splide :options="options" aria-label="" :has-track="false">
         <SplideTrack class="rounded-xl">
             <SplideSlide v-for="image in images" class="">
                 <img :src="image?.src" :alt="image?.alt">

@@ -43,7 +43,7 @@ export default {
       <ApartmentFinder>
         <template #mapedHeader>
           <!-- <MapedImage :image_path="image_path" :options="blocks" @clicked="blockClicked" /> -->
-          <div class="relative mb-4">
+          <!-- <div class="relative mb-4">
             <img class="w-full h-full rounded-xl" src="../../assets/images/01_00002.jpg">
             <div v-show="blocks?.length && project_id" v-for="f in blocks"
               class="pointer-events-auto absolute opacity-50 cursor-pointer hover:!bg-[#FFFFFF] transition duration-300"
@@ -55,7 +55,7 @@ export default {
                 left: f.left
               }">
             </div>
-          </div>
+          </div> -->
         </template>
       </ApartmentFinder>
     <!-- </div> -->

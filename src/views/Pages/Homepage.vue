@@ -13,31 +13,29 @@ import usePages from "@/composables/usePages"
 import { useI18n } from "vue-i18n"
 import { useStore } from "vuex"
 import { RouterLink } from "vue-router"
-import DefaultSlider from "../../components/Sliders/DefaultSlider.vue"
+import ImageSlider from "../../components/Sliders/ImageSlider.vue"
+import WhatWeOffer from "../../components/Blocks/WhatWeOffer.vue"
 const { getPage, title, blocks, components } = usePages()
 const { t } = useI18n({ useScope: 'global' })
 const store = useStore()
 const medias = computed(() => store.getters['media/medias'])
 const isMore = computed(() => store.getters['media/isMore'])
-// const projects = computed(() => store.getters['projects/projects'])
 
-const getProjects = () => store.dispatch("projects/getProjects")
+const images = [
+    { src: "https://picsum.photos/200/300", alt: "1" },
+    { src: "https://picsum.photos/200/300", alt: "2" },
+    { src: "https://picsum.photos/200/300", alt: "3" },
+    { src: "https://picsum.photos/200/300", alt: "4" },
+    { src: "https://picsum.photos/200/300", alt: "5" },
+]
+
 const loadMore = () => store.dispatch('media/loadMore')
 onMounted(() => {
-
-  // if(!projects.value.length){
-  //   getProjects()
-  // }
-
   getPage()
   store.dispatch('media/setPerPage', 5)
   store.dispatch('media/getMedias')
-
-  
 })
 </script>
-
-
 
 <template>
   <MainLayout>
@@ -46,9 +44,9 @@ onMounted(() => {
       <!-- static componetns on homepage -->
       <!-- <ProjectBanner /> -->
       <!-- <SplideForProjects  v-if="projects.length" :content="projects" /> -->
-      <DefaultSlider />
+      <ImageSlider :images="images" />
       <!-- dynamic components according to api -->
-      <!-- <component v-if="blocks.length" v-for="block in blocks" :is="components[block.type]" :content="block.data" /> -->
+      <component v-if="blocks.length" v-for="block in blocks" :is="components[block.type]" :content="block.data" />
       <!-- static components on homepage -->
       <ContactMap class="w-full h-[840px] md:h-[640px] relative" :with-filter="true" />
       <!-- <ApartmentFinder /> -->

@@ -51,7 +51,7 @@ export default {
             <h2 class="text-[#FFFFFF] text-[32px] leading-[40px]	">
               {{ t("footer.contact") }}
             </h2>
-            <img class="hidden md:block w-[415px] h-[251px]" :src="FooterInfo[0].Footercomponents.img" alt="" />
+            <img class="hidden md:block w-[415px] h-[251px] color-[#923B80]" :src="FooterInfo[0].Footercomponents.img" alt="" />
           </div>
           <div class="md:px-4 w-[100%]">
             <form @submit.prevent="submitContact" class="md:flex md:gap-8 justify-between gap-4">
@@ -116,22 +116,22 @@ export default {
               <div class="flex flex-row justiry-between w-full">
                 <div class="flex gap-3 pt-3">
                   <a href="#">
-                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#923B80]">
                       <component class="" :is="FooterInfo[0].Footercomponents.mediaicon1" />
                     </div>
                   </a>
                   <a href="#">
-                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#923B80]">
                       <component class="" :is="FooterInfo[0].Footercomponents.mediaicon2" />
                     </div>
                   </a>
                   <a href="#">
-                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#923B80]">
                       <component class="" :is="FooterInfo[0].Footercomponents.mediaicon3" />
                     </div>
                   </a>
                   <a href="#">
-                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#FFFFFF1A]">
+                    <div class="flex justify-center items-center w-[48px] h-[48px] rounded-full bg-[#923B80]">
                       <component class="" :is="FooterInfo[0].Footercomponents.mediaicon4" />
                     </div>
                   </a>
