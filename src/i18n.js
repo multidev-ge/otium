@@ -3,7 +3,7 @@ import { createI18n } from 'vue-i18n';
 
 let i18n;
 
-export const FALLBACK_LOCALE = import.meta.env.VITE_APP_FALLBACK_LOCALE || 'en'
+export const FALLBACK_LOCALE = import.meta.env.VITE_APP_FALLBACK_LOCALE || 'ka'
 
 export const SUPPORT_LOCALES = ['en', 'ka']
 
