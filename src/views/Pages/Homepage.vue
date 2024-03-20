@@ -2,9 +2,10 @@
 import { onMounted, computed } from "vue"
 import MainLayout from "@/layouts/mainLayout.vue"
 import PageTitle from "@/components/Headings/PageTitle.vue"
-import ProjectBanner from "@/components/ProjectInner/ProjectBanner.vue"
+// import ProjectBanner from "@/components/ProjectInner/ProjectBanner.vue"
+// import SplideForProjects from "@/components/Projects/splideForProjects.vue"
 import ContactMap from "@/components/Contact/ContactMap.vue"
-import ApartmentFinder from "@/components/Blocks/ApartmentFinder.vue"
+// import ApartmentFinder from "@/components/Blocks/ApartmentFinder.vue"
 import MortgageCalculator from "@/components/Apartment/MortgageCalculator.vue"
 import rightArrow from "../../assets/icons/apartmentFinderPage/rightArrow.vue"
 import ArrowUpRight from "../../assets/icons/arrow-up-right.vue"
@@ -12,29 +13,45 @@ import usePages from "@/composables/usePages"
 import { useI18n } from "vue-i18n"
 import { useStore } from "vuex"
 import { RouterLink } from "vue-router"
+import DefaultSlider from "../../components/Sliders/DefaultSlider.vue"
 const { getPage, title, blocks, components } = usePages()
 const { t } = useI18n({ useScope: 'global' })
 const store = useStore()
 const medias = computed(() => store.getters['media/medias'])
 const isMore = computed(() => store.getters['media/isMore'])
+// const projects = computed(() => store.getters['projects/projects'])
+
+const getProjects = () => store.dispatch("projects/getProjects")
 const loadMore = () => store.dispatch('media/loadMore')
 onMounted(() => {
+
+  // if(!projects.value.length){
+  //   getProjects()
+  // }
+
   getPage()
   store.dispatch('media/setPerPage', 5)
   store.dispatch('media/getMedias')
+
+  
 })
 </script>
+
+
+
 <template>
   <MainLayout>
     <PageTitle :title="title" />
     <div class="flex flex-col fa-1xlg:gap-40 gap-20">
       <!-- static componetns on homepage -->
-      <ProjectBanner />
+      <!-- <ProjectBanner /> -->
+      <!-- <SplideForProjects  v-if="projects.length" :content="projects" /> -->
+      <DefaultSlider />
       <!-- dynamic components according to api -->
-      <component v-if="blocks.length" v-for="block in blocks" :is="components[block.type]" :content="block.data" />
+      <!-- <component v-if="blocks.length" v-for="block in blocks" :is="components[block.type]" :content="block.data" /> -->
       <!-- static components on homepage -->
       <ContactMap class="w-full h-[840px] md:h-[640px] relative" :with-filter="true" />
-      <ApartmentFinder />
+      <!-- <ApartmentFinder /> -->
       <MortgageCalculator />
       <div v-if="medias?.data?.length" class="hidden w-full xl:flex flex-col lg:flex-row justify-between flex-start">
         <div class="w-2/6">

@@ -1,37 +1,3 @@
-<template>
-  <!-- Contact Map -->
-  <div>
-    <div id="map" class="h-full w-full rounded-xl"></div>
-    <div v-if="withFilter" class="flex flex-col max-lg:gap-y-6 lg:justify-between p-6 lg:p-10 lg:px-6 absolute top-4 max-lg:left-4 lg:right-4 bg-white w-80  lg:w-[464px]
-         h-fit lg:h-[608px] rounded-xl">
-      <h3 class="text-2xl font-medium lg:text-3xl">
-        <!-- Some nice things around the building -->
-        {{ title }}
-      </h3>
-      <div class="flex flex-wrap items-start gap-3 lg:gap-4">
-        <div v-if="categories?.length" v-for="category in categories" :key="category.id" @click="selected = category.id"
-          :class="{ 'bg-black text-white': category.id === selected }"
-          class="flex cursor-pointer items-center rounded-lg border border-black px-6 py-3 gap-x-1.5 lg:rounded-2xl">
-          <CycleSvg class="w-3.5 h-3.5" :fill="category?.color" :alt="category?.title + ' icon'" />
-          <p v-text="category?.title" class="font-medium lg:text-xl" />
-        </div>
-      </div>
-      <div class="flex max-lg:flex-col max-lg:gap-y-3 lg:items-center lg:justify-between">
-        <div class="flex items-center gap-x-1">
-          <img class="h-6 w-6" src="@/assets/icons/Map/near.svg" alt="near icon" />
-          <span class="text-xl font-medium opacity-40">{{ t("map.labels.near.label") }} </span>
-          <span class="text-xl font-medium underline">{{ t("map.labels.near.value") }}</span>
-        </div>
-        <div class="flex items-center gap-x-1">
-          <img class="h-6 w-6" src="@/assets/icons/Map/accessibility.svg" alt="accessibility icon" />
-          <span class="text-xl font-medium opacity-40">{{ t("map.labels.accessibility.label") }} </span>
-          <span class="text-xl font-medium underline">{{ t("map.labels.accessibility.value") }}</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup>
 import { ref, onMounted, watch } from "vue";
 import { Loader } from "@googlemaps/js-api-loader";
@@ -45,7 +11,7 @@ import restaurants from "@/assets/icons/Map/restaurants.svg";
 import park from "@/assets/icons/Map/park.svg";
 import CycleSvg from "../../assets/icons/Map/CyrcleSvg.vue";
 import { useI18n } from "vue-i18n";
-import useGoogleMap from "@/composables/useGoogleMap"
+import useGoogleMaps from "@/composables/useGoogleMaps";
 
 const { withFilter } = defineProps({
   withFilter: {
@@ -56,7 +22,7 @@ const { withFilter } = defineProps({
 
 const { t } = useI18n({ useScope: 'global' })
 
-const { title, categories, getMap } = useGoogleMap()
+const { title, categories, getMap, google_maps_api_key, mapOptions } = useGoogleMaps()
 
 const labels = [
   {
@@ -100,190 +66,19 @@ watch(selected, (value, oldValue) => {
     }
   }
 });
-
 onMounted(() => {
   getMap()
   const loader = new Loader({
-    apiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    apiKey: google_maps_api_key,
     version: "weekly",
   });
 
-  loader.load().then(async () => {
+  loader.load()
+    .then(async (google) => {
     const { Map } = await google.maps.importLibrary("maps");
+    map.value = new Map(document.getElementById("map"), mapOptions);
 
-    map.value = new Map(document.getElementById("map"), {
-      center: { lat: 41.7721719, lng: 44.7795627 },
-      disableDefaultUI: true,
-      zoom: 12,
-      styles: [
-        {
-          "featureType": "all",
-          "elementType": "labels.icon",
-          "stylers": [
-            {
-              "visibility": "off"
-            }
-          ]
-        },
-        {
-          "featureType": "all",
-          "elementType": "labels.text.fill",
-          "stylers": [
-            {
-              "saturation": 36
-            },
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 40
-            }
-          ]
-        },
-        {
-          "featureType": "all",
-          "elementType": "labels.text.stroke",
-          "stylers": [
-            {
-              "visibility": "on"
-            },
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 16
-            }
-          ]
-        },
-        {
-          "featureType": "administrative",
-          "elementType": "geometry.fill",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 20
-            }
-          ]
-        },
-        {
-          "featureType": "administrative",
-          "elementType": "geometry.stroke",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 17
-            },
-            {
-              "weight": 1.2
-            }
-          ]
-        },
-        {
-          "featureType": "landscape",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 20
-            }
-          ]
-        },
-        {
-          "featureType": "poi",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 21
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry.fill",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 17
-            }
-          ]
-        },
-        {
-          "featureType": "road.highway",
-          "elementType": "geometry.stroke",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 29
-            },
-            {
-              "weight": 0.2
-            }
-          ]
-        },
-        {
-          "featureType": "road.arterial",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 18
-            }
-          ]
-        },
-        {
-          "featureType": "road.local",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 16
-            }
-          ]
-        },
-        {
-          "featureType": "transit",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 19
-            }
-          ]
-        },
-        {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [
-            {
-              "color": "#000000"
-            },
-            {
-              "lightness": 17
-            }
-          ]
-        },
-      ]
-    });
-
+    console.log(map)
     // Add a background for the logo.
     new google.maps.Marker({
       position: { lat: 41.7721719, lng: 44.7795627 },
@@ -334,26 +129,65 @@ onMounted(() => {
         }
       });
     }
+  }).catch((e) => {
+    // do something
+    
+    console.log(e)
   });
 });
 </script>
+<template>
+  <!-- Contact Map -->
+  <div>
+    <div id="map" class="h-full w-full rounded-xl"></div>
+    <div v-if="withFilter" class="flex flex-col max-lg:gap-y-6 lg:justify-between p-6 lg:p-10 lg:px-6 absolute top-4 max-lg:left-4 lg:right-4 bg-white w-80  lg:w-[464px]
+         h-fit lg:h-[608px] rounded-xl">
+      <h3 class="text-2xl font-medium lg:text-3xl">
+        <!-- Some nice things around the building -->
+        {{ title }}
+      </h3>
+      <div class="flex flex-wrap items-start gap-3 lg:gap-4">
+        <div v-if="categories?.length" v-for="category in categories" :key="category.id" @click="selected = category.id"
+          :class="{ 'bg-black text-white': category.id === selected }"
+          class="flex cursor-pointer items-center rounded-lg border border-black px-6 py-3 gap-x-1.5 lg:rounded-2xl">
+          <CycleSvg class="w-3.5 h-3.5" :fill="category?.color" :alt="category?.title + ' icon'" />
+          <p v-text="category?.title" class="font-medium lg:text-xl" />
+        </div>
+      </div>
+      <div class="flex max-lg:flex-col max-lg:gap-y-3 lg:items-center lg:justify-between">
+        <div class="flex items-center gap-x-1">
+          <img class="h-6 w-6" src="@/assets/icons/Map/near.svg" alt="near icon" />
+          <span class="text-xl font-medium opacity-40">{{ t("map.labels.near.label") }} </span>
+          <span class="text-xl font-medium underline">{{ t("map.labels.near.value") }}</span>
+        </div>
+        <div class="flex items-center gap-x-1">
+          <img class="h-6 w-6" src="@/assets/icons/Map/accessibility.svg" alt="accessibility icon" />
+          <span class="text-xl font-medium opacity-40">{{ t("map.labels.accessibility.label") }} </span>
+          <span class="text-xl font-medium underline">{{ t("map.labels.accessibility.value") }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+
 
 <style>
-a[href^="http://maps.google.com/maps"] {
+/* a[href^="http://maps.google.com/maps"] {
   display: none !important
 }
 
 a[href^="https://maps.google.com/maps"] {
   display: none !important
-}
+} */
 
-.gmnoprint a,
+/* .gmnoprint a,
 .gmnoprint span,
 .gm-style-cc {
   display: none;
-}
+} */
 
-.gmnoprint div {
+/* .gmnoprint div {
   background: none !important;
-}
+} */
 </style>
