@@ -1,9 +1,10 @@
 import axios from "axios"
+import i18n from "../../i18n"
 
 axios.defaults.baseURL = import.meta.env.VITE_APP_API_BASE_URL || "https://dashboard.otium.ge/api"
 axios.defaults.headers.common['Accept'] = 'application/json'
 axios.defaults.headers.common['Content-Type'] = 'application/json'
-axios.defaults.headers.common['Accept-Language'] = localStorage.getItem('lang') || 'en'
+axios.defaults.headers.common['Accept-Language'] = localStorage.getItem('lang') || import.meta.env.VITE_APP_FALLBACK_LOCALE || 'en'
 
 axios.interceptors.request.use(function(config){
 

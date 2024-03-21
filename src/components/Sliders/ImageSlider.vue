@@ -17,7 +17,7 @@ const options = {
     <Splide :options="options" aria-label="" :has-track="false">
         <SplideTrack class="rounded-xl">
             <SplideSlide v-for="image in images" class="">
-                <img :src="image?.src" :alt="image?.alt">
+                <img :src="`https://dashboard.otium.ge/uploads/${image?.image}`" :alt="image?.alt" class="object-cover">
             </SplideSlide>
         </SplideTrack>
         <div class="splide__arrows">
@@ -33,6 +33,6 @@ const options = {
 <style scopped>
 .splide__slide img {
     width: 100%;
-    max-height: 100svh;
+    max-height: 70svh;
 }
 </style>

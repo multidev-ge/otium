@@ -78,7 +78,7 @@ onMounted(() => {
     const { Map } = await google.maps.importLibrary("maps");
     map.value = new Map(document.getElementById("map"), mapOptions);
 
-    console.log(map)
+    // console.log(map)
     // Add a background for the logo.
     new google.maps.Marker({
       position: { lat: 41.7721719, lng: 44.7795627 },

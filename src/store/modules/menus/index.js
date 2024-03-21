@@ -9,7 +9,7 @@ const state = () => {
 const getters = {
     menu: ({ menu }) => menu.sort((a, b) => {
 
-        if(b.url === '/media') return -1
+        if (b.url === '/media') return -1
 
         if (a.id < b.id) {
             return -1
@@ -26,9 +26,11 @@ const mutations = {
 }
 
 const actions = {
-    getMenu: async ({ commit }) => axios.get('menus')
-        .then(response => commit("SET_STATE", { key: "menu", value: response.data }))
-        .catch(error => console.log(error))
+    getMenu: async ({ commit }) => {
+        axios.get('menus')
+            .then(response => commit("SET_STATE", { key: "menu", value: response.data }))
+            .catch(error => console.log(error))
+    }
 }
 
 const menusModule = {

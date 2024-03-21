@@ -13,22 +13,11 @@ import usePages from "@/composables/usePages"
 import { useI18n } from "vue-i18n"
 import { useStore } from "vuex"
 import { RouterLink } from "vue-router"
-import ImageSlider from "../../components/Sliders/ImageSlider.vue"
-import WhatWeOffer from "../../components/Blocks/WhatWeOffer.vue"
 const { getPage, title, blocks, components } = usePages()
 const { t } = useI18n({ useScope: 'global' })
 const store = useStore()
 const medias = computed(() => store.getters['media/medias'])
 const isMore = computed(() => store.getters['media/isMore'])
-
-const images = [
-    { src: "https://picsum.photos/200/300", alt: "1" },
-    { src: "https://picsum.photos/200/300", alt: "2" },
-    { src: "https://picsum.photos/200/300", alt: "3" },
-    { src: "https://picsum.photos/200/300", alt: "4" },
-    { src: "https://picsum.photos/200/300", alt: "5" },
-]
-
 const loadMore = () => store.dispatch('media/loadMore')
 onMounted(() => {
   getPage()
@@ -39,12 +28,12 @@ onMounted(() => {
 
 <template>
   <MainLayout>
-    <PageTitle :title="title" />
+    <!-- <PageTitle :title="title" /> -->
     <div class="flex flex-col fa-1xlg:gap-40 gap-20">
       <!-- static componetns on homepage -->
       <!-- <ProjectBanner /> -->
       <!-- <SplideForProjects  v-if="projects.length" :content="projects" /> -->
-      <ImageSlider :images="images" />
+      <!-- <ImageSlider :images="images" /> -->
       <!-- dynamic components according to api -->
       <component v-if="blocks.length" v-for="block in blocks" :is="components[block.type]" :content="block.data" />
       <!-- static components on homepage -->
