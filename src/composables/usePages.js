@@ -27,6 +27,8 @@ export default function usePages() {
         "team-members": defineAsyncComponent(() => import('@/components/Blocks/TeamMembers.vue')),
         "contact-with-form": defineAsyncComponent(() => import('@/components/Blocks/ContactWithForm.vue')),
         "terms-and-specifications": defineAsyncComponent(() => import('@/components/Blocks/TermsAndSpecifications.vue')),
+        "main-slider": defineAsyncComponent(() => import('@/components/Blocks/mainSlider.vue')),
+
     }
 
     // functions

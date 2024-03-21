@@ -3,9 +3,9 @@ import { createI18n } from 'vue-i18n';
 
 let i18n;
 
-export const FALLBACK_LOCALE = import.meta.env.VITE_APP_FALLBACK_LOCALE || 'ka'
+export const FALLBACK_LOCALE = import.meta.env.VITE_APP_FALLBACK_LOCALE || 'en'
 
-export const SUPPORT_LOCALES = ['en', 'ka']
+export const SUPPORT_LOCALES = ['en', 'ka', 'ru']
 
 export function setI18nLanguage(locale) {
     loadLocaleMessages(locale);
@@ -26,21 +26,20 @@ export async function loadLocaleMessages(locale) {
 
     i18n.global.setLocaleMessage(locale, messages.default);
 
-    return nextTick();
+    await nextTick()
 }
 
 export default function setupI18n() {
     if(!i18n) {
         let locale = localStorage.getItem('lang') || FALLBACK_LOCALE;
-
         i18n = createI18n({
             globalInjection: true,
             legacy: false,
             locale: locale,
             fallbackLocale: FALLBACK_LOCALE
         });
-
         setI18nLanguage(locale);
     }
+
     return i18n;
 }

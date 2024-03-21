@@ -12,7 +12,7 @@ import LanguageSwitcher from "./Head/LanguageSwitcher.vue"
 const route = useRoute()
 const { headerInfo, getMenu, menu } = useHeader()
 const mobileMenuOpen = ref(false)
-const { t } = useI18n({ useScope: 'global' })
+const { t, locale } = useI18n({ useScope: 'global' })
 
 function onHover(e) {
   const children =
@@ -22,6 +22,10 @@ function onHover(e) {
 if(!menu.value?.length){
   getMenu()
 }
+
+watch(locale,() => {
+  console.log('locale', locale.value);
+})
 
 </script>
 <template>

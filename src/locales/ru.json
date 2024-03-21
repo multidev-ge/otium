@@ -1,0 +1,158 @@
+{
+  "main": {
+    "brand": "ოტიუმი"
+  },
+  "languages": {
+    "en": "En",
+    "ka": "Ge"
+  },
+  "menu": {
+    "Company": "კომპანია",
+    "Projects": "პროექტები",
+    "Media": "მედია",
+    "Contact": "კონტაქტი",
+    "FYA": "იპოვე ბინა"
+  },
+  "buttons": {
+    "termsOfDelivery": "პროექტის ჩაბარების პირობები",
+    "RequestCall": "მოითხოვე ზარი",
+    "DownloadPdf": "გადმოწერე PDF"
+  },
+  "formLabels": {
+    "name": "სახელი",
+    "phone": "ტელეფონი"
+  },
+  "home": {
+    "title": "Living the urban lifestyle"
+  },
+  "defaults": {
+    "pagination": {
+      "showing": "შერჩეული აპარტამენტები:",
+      "out": "სულ აპარტამენტები:"
+    }
+  },
+  "filters": {
+    "title": "იპოვე შენი სახლი",
+    "project": "პროექტი",
+    "block": "ბლოკი",
+    "floor": "სართული",
+    "rooms": "ოთახები",
+    "area": "ფართობი, მ2",
+    "price": "ფასი",
+    "sold": "გაყიდული",
+    "show": "გამოვაჩინოთ",
+    "hide": "დავმალოთ",
+    "clear": "გასუფთავება"
+  },
+  "flatsList": {
+    "flat": "აპარტამენტი",
+    "floor": "სართული",
+    "rooms": "ოთახები",
+    "area": "ფართ. მ2",
+    "price": "ფასი",
+    "more": "მეტი"
+  },
+  "statuses": {
+    "sold": "გაყიდული"
+  },
+  "rooms": {
+    "kitchen-living-room": "სტუდიო",
+    "hall": "ჰოლი",
+    "bedroom": "საძინებელი",
+    "terrace": "ტერასა",
+    "wc": "სველი წერტილი",
+    "closet": "გარდერობი",
+    "storage": "სათავსო",
+    "kitchen": "სამზარეულო"
+  },
+  "footer": {
+    "contact": "კონტაქტი",
+    "submit": "გაგზავნა",
+    "rights": "ყველა უფლება დაცულია",
+    "powered": "დამზადებულია",
+    "growth_hunters": "GROWTH HUNTERS",
+    "social": "სოციალური ქსელი",
+    "email": "ელ. ფოსტა",
+    "phone": "ტელეფონი",
+    "address": "მისამართი"
+  },
+  "projects": {
+    "title": "პროექტები",
+    "address": "მისამართი",
+    "sale": "აპარტამენტები",
+    "apartments": "აპარტამენტები",
+    "left": "გასაყიდი",
+    "status": "სტატუსი",
+    "more": "პროექტის შესახებ",
+    "next": "იხილეთ სხვა პროექტები",
+    "prev": "წინა"
+  },
+  "media": {
+    "title": "მედია",
+    "similar": "მსგავსი სიახლეები"
+  },
+  "map": {
+    "labels": {
+      "near": {
+        "label": "რადიუსი:",
+        "value": "400მ"
+      },
+      "accessibility": {
+        "label": "ადაპტირებული:",
+        "value": "დიახ"
+      }
+    }
+  },
+  "contact": {
+    "phone": "ტელეფონი",
+    "email": "ელ. ფოსტა",
+    "address": "მისამართი",
+    "placeholders": {
+      "name": "სახელი",
+      "phone": "ტელეფონი",
+      "message": "შეტყობინება"
+    },
+    "send": "გაგზავნა"
+  },
+  "apartment": {
+    "backToFloor": "სართულზე დაბრუნება",
+    "allApartments": "ყველა აპარტამენტი",
+    "name": "აპარტამენტი №{number}",
+    "office": "ოფისი №{number}",
+    "size": "ფართი",
+    "bedroom": "საცხოვრებელი",
+    "price": "ფასი"
+  },
+  "technical": {
+    "backToProject": "პროექტზე დაბრუნება"
+  },
+  "floors": {
+    "chooseAFloor": "აირჩიე სართული",
+    "choose": "აირჩიე",
+    "chooseABlock": "აირჩიე ბლოკი",
+    "backToBlocks": "უკან",
+    "floorNumber": "სართული"
+  },
+  "calculator": {
+    "startApplying": "შეავსე განაცხადი",
+    "yourMonthlyPayment": "ყოველთვიური გადასახადი",
+    "prePayment": "წინასწარი შენატანი",
+    "percentage": "საპროცენტო განაკვეთი",
+    "years": "პერიოდი (წელი)",
+    "total": "სრული ღირებულება"
+  },
+  "dimentions":{
+    "sqmeter": "{amount} მ²"
+  },
+  "tooltip": {
+    "floor": "სართული",
+    "apartments": "აპარტამენტები",
+    "prices": "ფასები",
+    "sizes": "ფართი მ²",
+    "rooms": "ოთახები"
+  },
+  "phrases": {
+    "thanks": "გმადლობთ!",
+    "contact_back": "ჩვენი გაყიდვების მენეჯერი დაგიკავშირდებათ"
+  }
+}

@@ -9,7 +9,7 @@ export default function useHeader() {
     const store = useStore()
 
     const menu = computed(() => store.getters["menus/menu"])
-    const getMenu = async () => store.dispatch("menus/getMenu")
+    const getMenu = async () => await store.dispatch("menus/getMenu")
 
     const headerInfo = ref([
         {
